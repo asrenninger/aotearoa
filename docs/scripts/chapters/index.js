@@ -31,6 +31,7 @@ import * as ch7Exports      from './ch7-exports-chart.js';
 import * as ch8Urbanisation from './ch8-urbanisation.js';
 import * as ch9Pasifika     from './ch9-pasifika.js';
 import * as ch12TwoTides    from './ch12-twotides.js';
+import * as ch12TransTasman from './ch12-trans-tasman.js';
 
 mapboxgl.accessToken = MAPBOX_TOKEN;
 
@@ -45,7 +46,8 @@ const chapterModules = {
   ch7:        ch7Exports,
   ch8:        ch8Urbanisation,
   ch9:        ch9Pasifika,
-  ch12:       ch12TwoTides
+  ch12:       ch12TwoTides,
+  'ch12-tt':  ch12TransTasman
 };
 
 // State store for chapters that have `init()` — keyed by the chapter id

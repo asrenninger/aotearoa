@@ -183,7 +183,7 @@ export async function render() {
 
   const [world, arrivals, departures] = await Promise.all([
     d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json"),
-    d3.csv("data/nz-migrant-arrivals-2024.csv", d => ({
+    d3.csv("data/nz-migrant-arrivals-2026.csv", d => ({
       country: d.country, iso3: d.iso3,
       value: +d.arrivals, lonlat: [+d.lon, +d.lat],
     })),
@@ -198,7 +198,7 @@ export async function render() {
     root: inSvg, kind: "in", data: arrivals, land,
     eyebrow: "Arrivals to New Zealand",
     title: "Where new migrants come from",
-    stat: "115k",
+    stat: "111k",
   });
   renderPanel({
     root: outSvg, kind: "out", data: departures, land,

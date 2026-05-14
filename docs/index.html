@@ -22,7 +22,7 @@
 
 <!-- Project styles + entry script -->
 <link rel="stylesheet" href="./styles/frontiers.css">
-<script type="module" src="./scripts/main.js?v=10"></script>
+<script type="module" src="./scripts/main.js?v=11"></script>
 </head>
 
 <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
@@ -1676,6 +1676,15 @@
     </div>
 
     <p>The push and pull factors are embedding in country's economic conditions, as well as those of neighbouring Australia, which allows New Zealanders to move freely. Half of New Zealanders renting their home pay more than 40% of disposable income on rent — a common threshold for &ldquo;rent burden&rdquo; — and the IMF ranks New Zealand the worst country in the OECD for housing affordability. In the year to June 2025 average rent payments rose 9.0%; mortgage costs rose another 4.9%. Median earnings in Australia run roughly a third higher in nominal terms, and the gap is wider in mining and healthcare — sectors the departures are concentrated in. Whatever the policy answer, the structural pull is hard to legislate away: the Trans-Tasman Travel Arrangement guarantees New Zealanders automatic residency rights in Australia, and they exercise this right with growing frequency as the wage and housing gaps widen.</p>
+
+    <!-- Quarterly net trans-Tasman migration · rendered at runtime by
+         scripts/chapters/ch12-trans-tasman.js from
+         data/nz-au-migration-quarterly.csv. Stats NZ on arrivals, ABS on
+         departures (Australia counts NZ-citizen arrivals into Australia,
+         which is the cleanest source for the NZ → AU side). -->
+    <div class="figure reveal">
+      <svg id="trans-tasman" aria-label="Quarterly net trans-Tasman migration, Dec 2003 to Mar 2025"></svg>
+    </div>
 
     <p class="pull">Both major parties have called affordability a problem; they disagree on whether the lever to fix it operates through immigration, housing, or productivity.</p>
 
