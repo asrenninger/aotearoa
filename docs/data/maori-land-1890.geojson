@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Indicative areas remaining in Māori hands by 1890",
+    "description": "Highly schematic. Documented strongholds where Māori retained large contiguous blocks against Native Land Court / Crown / private purchase pressure. Not parcel-level. King Country and Central Plateau are merged into a single peanut-shaped polygon (with bridge vertices in the neck region) so the central-North-Island stronghold reads as one continuous area rather than two overlapping blobs; Catmull-Rom smoothing at render time softens the join.",
+    "see_also": "../docs/METHODOLOGY.md"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "king-country-central", "name": "Te Rohe Pōtae · Central Plateau" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [174.85, -38.15],
+          [175.30, -38.20],
+          [175.65, -38.55],
+          [175.78, -38.78],
+          [176.15, -38.90],
+          [176.40, -39.40],
+          [175.95, -39.65],
+          [175.45, -39.45],
+          [175.18, -39.25],
+          [175.10, -39.20],
+          [174.65, -38.95],
+          [174.65, -38.50],
+          [174.85, -38.15]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "te-urewera", "name": "Te Urewera" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [176.80, -38.35], [177.15, -38.30], [177.55, -38.55],
+          [177.55, -39.00], [177.20, -39.20], [176.85, -39.05],
+          [176.65, -38.75], [176.80, -38.35]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "east-cape", "name": "East Cape / Tairāwhiti hinterland" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [177.55, -37.85], [178.30, -37.78], [178.55, -38.05],
+          [178.40, -38.45], [177.85, -38.55], [177.55, -38.30],
+          [177.55, -37.85]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "tai-tokerau", "name": "Tai Tokerau hinterland" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [173.30, -34.85], [174.05, -34.95], [174.20, -35.50],
+          [173.85, -35.75], [173.45, -35.55], [173.30, -34.85]
+        ]]
+      }
+    }
+  ]
+}

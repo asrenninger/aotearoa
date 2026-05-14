@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Settler-era town reference markers",
+    "description": "Used in ch3 only. Coordinates city-hall accurate. Limited to towns the chapter narrative actually names."
+  },
+  "features": [
+    { "type": "Feature", "properties": { "name": "Auckland" },
+      "geometry": { "type": "Point", "coordinates": [174.76, -36.85] } },
+    { "type": "Feature", "properties": { "name": "Wellington" },
+      "geometry": { "type": "Point", "coordinates": [174.78, -41.29] } },
+    { "type": "Feature", "properties": { "name": "New Plymouth" },
+      "geometry": { "type": "Point", "coordinates": [174.07, -39.06] } },
+    { "type": "Feature", "properties": { "name": "Napier" },
+      "geometry": { "type": "Point", "coordinates": [176.91, -39.50] } },
+    { "type": "Feature", "properties": { "name": "Whanganui" },
+      "geometry": { "type": "Point", "coordinates": [175.05, -39.93] } }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "NZ Settlements Act 1863 confiscation zones",
+    "description": "Hand-drawn rough rings of the four major raupatu zones. Smoothed at render-time via Catmull-Rom into bezier-like blobs. Not cadastral.",
+    "source": "Waitangi Tribunal record",
+    "see_also": "../docs/METHODOLOGY.md"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "waikato",
+        "name": "Waikato",
+        "year": "1863",
+        "acres": 1200000,
+        "centroid": [175.20, -37.55]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [174.97, -37.10],
+          [175.20, -37.18],
+          [175.55, -37.30],
+          [175.65, -37.65],
+          [175.55, -37.95],
+          [175.20, -38.10],
+          [174.95, -38.05],
+          [174.85, -37.85],
+          [174.85, -37.50],
+          [174.92, -37.20],
+          [174.97, -37.10]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "taranaki",
+        "name": "Taranaki",
+        "year": "1865",
+        "acres": 1275000,
+        "centroid": [174.05, -39.30]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [174.10, -38.95],
+          [174.40, -39.00],
+          [174.55, -39.30],
+          [174.65, -39.55],
+          [174.45, -39.65],
+          [174.10, -39.55],
+          [173.85, -39.40],
+          [173.75, -39.30],
+          [173.85, -39.10],
+          [174.10, -38.95]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tauranga",
+        "name": "Tauranga",
+        "year": "1864",
+        "acres": 290000,
+        "centroid": [176.20, -37.75]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [175.95, -37.45],
+          [176.25, -37.55],
+          [176.55, -37.65],
+          [176.65, -37.85],
+          [176.40, -37.95],
+          [176.05, -37.90],
+          [175.92, -37.65],
+          [175.95, -37.45]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "eastern-bop",
+        "name": "Eastern Bay of Plenty",
+        "year": "1866",
+        "acres": 448000,
+        "centroid": [177.15, -38.05]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [176.85, -37.95],
+          [177.05, -37.90],
+          [177.30, -37.92],
+          [177.45, -38.00],
+          [177.45, -38.20],
+          [177.20, -38.30],
+          [176.95, -38.25],
+          [176.80, -38.10],
+          [176.85, -37.95]
+        ]]
+      }
+    }
+  ]
+}

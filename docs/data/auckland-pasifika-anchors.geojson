@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Auckland Pasifika settlement anchors",
+    "description": "Inner-city (Ponsonby/Grey Lynn) and southern suburbs (Ōtara, Māngere, Manukau). Used in the ch9 Auckland zoom step."
+  },
+  "features": [
+    { "type": "Feature", "properties": { "name": "Ponsonby / Grey Lynn", "era": "1960s entry" },
+      "geometry": { "type": "Point", "coordinates": [174.74, -36.860] } },
+    { "type": "Feature", "properties": { "name": "Ōtara", "era": "1970s onward" },
+      "geometry": { "type": "Point", "coordinates": [174.870, -36.990] } },
+    { "type": "Feature", "properties": { "name": "Māngere", "era": "1970s onward" },
+      "geometry": { "type": "Point", "coordinates": [174.797, -36.953] } },
+    { "type": "Feature", "properties": { "name": "Manukau", "era": "1970s onward" },
+      "geometry": { "type": "Point", "coordinates": [174.880, -37.005] } }
+  ]
+}
