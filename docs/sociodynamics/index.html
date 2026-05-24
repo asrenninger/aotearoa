@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landfalls — The arrivals that made Aotearoa New Zealand</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+<meta name="description" content="How migration made New Zealand. Polynesian navigators, British settlers, Cantonese miners, Pacific workers and Asian families — thirteen chapters on a country built by arrivals, the citizens it is now losing, and the politics it keeps arguing about afterwards.">
+
+<!-- Network hints: warm up the font + tile origins early -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.mapbox.com" crossorigin>
+<link rel="preconnect" href="https://a.tiles.mapbox.com" crossorigin>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Mapbox GL JS — only library we need -->
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js" defer></script>
+
+<!-- Project styles + entry script -->
+<link rel="stylesheet" href="./styles/frontiers.css">
+<script type="module" src="./scripts/main.js?v=11"></script>
+</head>
+
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<nav class="chapter-nav" aria-label="Chapter navigation">
+  <a href="#hero" data-label="Opening" class="active"></a>
+  <a href="#ch1" data-label="Ocean Frontier"></a>
+  <a href="#ch2" data-label="Contact"></a>
+  <a href="#ch3" data-label="Treaty &amp; Land"></a>
+  <a href="#ch4" data-label="Gold"></a>
+  <a href="#ch5" data-label="New Gold Mountain"></a>
+  <a href="#ch6" data-label="Vogel"></a>
+  <a href="#ch7" data-label="Refrigeration"></a>
+  <a href="#ch8" data-label="Welfare State"></a>
+  <a href="#ch9" data-label="Pacific"></a>
+  <a href="#ch10" data-label="Rupture"></a>
+  <a href="#ch11" data-label="Asian Auckland"></a>
+  <a href="#ch12" data-label="Two Tides"></a>
+  <a href="#ch13" data-label="Today"></a>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero" id="hero">
+  <div class="hero-overline">An Atlas of Migration</div>
+  <h1>Landfalls<br><em>Aotearoa</em></h1>
+  <p class="hero-sub">Aotearoa New Zealand was made by arrivals. Polynesian navigators settled the islands; British settlers appropriated land; Cantonese miners chased gold; Pacific workers filled factories; Asian families brought skills, schools and lifeways.</p>
+
+  <div class="hero-meta">
+    <span>c. 1250 — present</span>
+    <span>Thirteen chapters</span>
+    <span>Many histories, one state</span>
+  </div>
+
+  <!-- Atmospheric NZ outline with overlapping route arcs.
+       NZ silhouettes are simplified Natural-Earth coordinates (Douglas-
+       Peucker, ε≈6km), projected via equirectangular with cos(mid-lat)
+       compensation and centred at viewbox-origin (so the translate
+       below positions the whole country). -->
+  <svg class="hero-svg" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <pattern id="hatch-hero" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#a37c44" stroke-width="0.6" opacity="0.5"/>
+      </pattern>
+      <!-- Per-wave arrowhead markers — orient="auto" rotates them along
+           the path's terminal tangent so they stay aligned regardless of
+           the curve's approach angle. -->
+      <marker id="ah-poly"    viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d3557"/></marker>
+      <marker id="ah-british" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8c2230"/></marker>
+      <marker id="ah-chinese" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c9882a"/></marker>
+      <marker id="ah-pacific" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cc5e3f"/></marker>
+      <marker id="ah-asian"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b3a82"/></marker>
+    </defs>
+
+    <!-- Sea wash -->
+    <rect width="700" height="480" fill="#7c9d9d" opacity="0.08"/>
+    <!-- Compass / latitude flourishes -->
+    <g stroke="#8a7659" stroke-width="0.4" opacity="0.5" fill="none">
+      <line x1="0" y1="120" x2="700" y2="120" stroke-dasharray="2 6"/>
+      <line x1="0" y1="240" x2="700" y2="240" stroke-dasharray="2 6"/>
+      <line x1="0" y1="360" x2="700" y2="360" stroke-dasharray="2 6"/>
+    </g>
+
+    <!-- NZ silhouette — real Natural-Earth geometry, simplified.
+         Centred at (350, 230); same shape as the closing ch12 figure. -->
+    <g transform="translate(350, 230)">
+      <!-- North Island -->
+      <path d="M 8.7 -124.7 L 8.1 -122.5 L 7.0 -123.6 L 6.0 -122.1 L 7.6 -119.8 L 8.0 -121.9 L 9.4 -116.6 L 12.1 -114.6 L 11.6 -112.6 L 14.3 -116.9 L 14.6 -113.1 L 16.5 -112.4 L 16.6 -114.2 L 19.6 -112.6 L 19.2 -110.8 L 21.3 -112.7 L 24.9 -110.0 L 23.2 -108.3 L 25.3 -105.2 L 26.8 -106.2 L 25.3 -107.2 L 28.4 -108.7 L 29.5 -105.1 L 28.1 -106.0 L 31.8 -100.6 L 30.3 -99.7 L 32.3 -95.6 L 28.5 -98.2 L 28.4 -95.6 L 30.7 -95.8 L 30.6 -92.6 L 36.6 -85.2 L 34.6 -85.2 L 35.0 -82.5 L 34.0 -84.0 L 34.1 -80.3 L 36.2 -80.0 L 34.1 -79.5 L 35.6 -75.6 L 32.6 -76.2 L 33.5 -73.9 L 36.5 -75.1 L 36.7 -72.9 L 37.4 -75.3 L 37.8 -73.4 L 38.8 -74.6 L 39.9 -72.6 L 42.1 -73.2 L 44.1 -67.8 L 47.1 -68.4 L 47.8 -66.9 L 45.2 -74.8 L 46.7 -76.4 L 46.1 -79.5 L 43.9 -81.6 L 46.6 -82.1 L 48.1 -76.8 L 51.6 -77.8 L 49.4 -74.6 L 51.6 -75.3 L 53.5 -62.5 L 56.5 -59.3 L 53.7 -61.6 L 53.8 -59.2 L 57.2 -57.4 L 57.2 -59.5 L 71.4 -51.2 L 78.0 -53.4 L 80.8 -58.3 L 84.7 -61.0 L 89.5 -60.5 L 93.6 -57.8 L 90.2 -51.7 L 89.5 -40.9 L 86.0 -37.3 L 83.8 -37.4 L 83.0 -29.6 L 84.8 -28.7 L 83.4 -26.1 L 82.4 -26.7 L 82.7 -29.4 L 81.2 -29.7 L 75.7 -30.1 L 70.3 -27.3 L 67.8 -22.6 L 68.7 -18.6 L 71.2 -17.8 L 66.8 -7.4 L 53.4 14.4 L 43.3 21.9 L 41.8 21.9 L 41.2 17.9 L 36.3 17.9 L 36.7 13.9 L 34.4 16.4 L 32.2 14.6 L 36.3 11.5 L 40.6 2.7 L 42.1 -5.0 L 41.0 -8.8 L 36.8 -13.4 L 31.7 -14.5 L 27.9 -18.8 L 22.7 -20.3 L 19.2 -25.2 L 20.7 -28.6 L 29.4 -32.1 L 32.1 -35.0 L 33.9 -49.6 L 37.5 -49.7 L 35.2 -50.0 L 36.7 -52.4 L 35.1 -52.0 L 35.2 -54.3 L 38.1 -56.8 L 36.1 -56.5 L 34.0 -63.7 L 35.9 -66.0 L 33.9 -65.0 L 31.6 -70.8 L 33.3 -70.6 L 34.4 -67.1 L 35.4 -68.7 L 34.0 -68.9 L 37.6 -70.0 L 35.1 -71.9 L 35.8 -73.2 L 30.7 -71.4 L 25.9 -82.2 L 26.9 -83.3 L 29.9 -79.2 L 30.2 -84.8 L 27.1 -85.5 L 31.0 -87.2 L 27.7 -86.6 L 29.8 -89.6 L 28.1 -87.8 L 26.4 -90.0 L 25.9 -88.8 L 27.9 -87.5 L 26.7 -87.0 L 22.9 -90.0 L 21.5 -95.0 L 21.1 -93.2 L 26.1 -85.3 L 24.2 -84.3 L 13.8 -101.1 L 17.7 -106.4 L 16.2 -107.2 L 16.2 -105.4 L 13.8 -104.8 L 13.3 -102.1 L 11.7 -104.8 L 12.4 -106.6 L 11.3 -105.2 L 11.5 -107.0 L 9.0 -108.3 L 10.5 -110.5 L 9.9 -113.9 L 2.4 -123.3 L 2.9 -124.7 L 8.7 -124.7 Z"
+            fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+      <!-- South Island -->
+      <path d="M 6.0 -0.6 L 3.5 -0.4 L 2.2 2.2 L 5.3 6.2 L 7.7 5.2 L 9.1 15.6 L 16.6 10.5 L 18.1 11.4 L 19.0 10.1 L 18.0 9.7 L 20.7 7.9 L 23.5 8.0 L 19.5 9.6 L 19.5 11.6 L 22.3 10.6 L 19.7 15.3 L 25.0 12.9 L 21.3 13.3 L 22.2 11.0 L 22.6 12.4 L 23.7 11.3 L 22.2 9.6 L 22.9 8.7 L 25.8 8.8 L 26.1 10.8 L 27.9 9.3 L 26.9 11.9 L 25.5 11.7 L 26.3 13.2 L 21.9 15.1 L 28.0 13.8 L 23.7 18.3 L 27.4 24.7 L 18.7 38.6 L 16.1 39.7 L 11.9 49.1 L 3.5 55.5 L 3.6 61.6 L 4.9 62.3 L 2.6 63.1 L 8.5 63.3 L 8.9 67.5 L 7.4 68.2 L 6.7 65.4 L 6.9 68.5 L 3.8 66.2 L -1.5 67.5 L 2.0 66.0 L -1.5 65.1 L -2.2 67.7 L -18.1 76.1 L -20.8 81.6 L -20.3 88.8 L -24.6 95.6 L -25.5 100.6 L -29.2 105.1 L -27.2 106.6 L -30.3 109.0 L -26.9 106.6 L -26.9 108.6 L -33.8 110.7 L -41.3 120.6 L -44.2 121.1 L -42.7 121.3 L -43.5 122.3 L -53.8 125.0 L -56.8 122.5 L -60.7 123.6 L -64.2 122.1 L -64.0 123.7 L -65.7 121.8 L -63.9 121.3 L -64.1 119.6 L -65.2 120.9 L -67.2 118.0 L -72.3 119.1 L -76.2 114.4 L -80.8 116.7 L -89.0 115.6 L -90.4 114.2 L -86.1 110.0 L -91.3 112.9 L -88.3 109.7 L -90.1 109.9 L -89.3 108.3 L -93.3 111.3 L -93.2 107.2 L -85.0 105.0 L -88.8 105.4 L -87.0 104.0 L -88.7 102.9 L -84.5 100.8 L -89.7 102.5 L -88.9 99.1 L -86.1 99.7 L -88.0 97.2 L -82.1 100.5 L -84.6 97.4 L -80.5 97.1 L -84.6 96.3 L -85.1 93.5 L -82.7 94.5 L -84.5 92.8 L -83.5 91.6 L -82.3 93.5 L -81.1 92.7 L -83.0 90.9 L -80.1 91.5 L -82.2 90.0 L -79.4 87.6 L -77.4 90.6 L -78.2 86.5 L -76.7 86.4 L -76.5 88.4 L -76.8 85.4 L -74.8 86.0 L -76.1 84.6 L -73.7 82.7 L -70.9 84.6 L -72.4 80.7 L -64.1 71.2 L -57.4 70.4 L -43.3 61.7 L -35.2 54.9 L -34.4 52.2 L -25.6 46.9 L -20.0 38.9 L -16.2 25.0 L -10.2 22.9 L -6.9 17.8 L -5.8 15.3 L -6.3 7.1 L 1.2 -0.2 L 6.0 -0.6 Z"
+            fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+      <!-- Stewart Island (off-Bluff, southern tip) -->
+      <ellipse cx="-70" cy="129" rx="5" ry="2.5" fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.6"/>
+    </g>
+
+    <!-- Destination zone — same dashed ring as ch12 -->
+    <circle cx="350" cy="230" r="155" fill="none" stroke="#c9b894" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7"/>
+
+    <!-- Five diagrammatic corner arrows — same structure as ch12 but
+         without dates. Asia gets two arrows (1865 + 1990 waves implied
+         by the two paths). C2 control points are on the corner-side of
+         each endpoint so the terminal tangents point toward NZ centre. -->
+    <g fill="none" stroke-width="3.5" stroke-linecap="round" opacity="0.9">
+      <!-- Europe · NW corner -->
+      <circle cx="50" cy="60" r="6" fill="#8c2230"/>
+      <path d="M 50 60 C 180 90, 182 143, 217 161" stroke="#8c2230" marker-end="url(#ah-british)"/>
+
+      <!-- Polynesia · NE corner -->
+      <circle cx="650" cy="60" r="6" fill="#1d3557"/>
+      <path d="M 650 60 C 520 90, 519 143, 483 161" stroke="#1d3557" marker-end="url(#ah-poly)"/>
+
+      <!-- Asia 1st wave · SW corner direct -->
+      <circle cx="50" cy="400" r="6" fill="#6b3a82"/>
+      <path d="M 50 400 C 170 380, 182 317, 217 299" stroke="#6b3a82" marker-end="url(#ah-asian)"/>
+
+      <!-- Asia 2nd wave · same SW origin, wider westward bow -->
+      <path d="M 50 400 C -30 320, 160 230, 200 230" stroke="#6b3a82" marker-end="url(#ah-asian)"/>
+
+      <!-- Pasifika · SE corner -->
+      <circle cx="650" cy="400" r="6" fill="#cc5e3f"/>
+      <path d="M 650 400 C 520 380, 519 317, 483 299" stroke="#cc5e3f" marker-end="url(#ah-pacific)"/>
+    </g>
+
+    <!-- Corner labels — region only, no dates -->
+    <g font-family="IBM Plex Mono" font-size="11" letter-spacing="2">
+      <text x="50"  y="44"  fill="#8c2230">EUROPE</text>
+      <text x="650" y="44"  fill="#1d3557" text-anchor="end">POLYNESIA</text>
+      <text x="50"  y="424" fill="#6b3a82">ASIA</text>
+      <text x="650" y="424" fill="#cc5e3f" text-anchor="end">PASIFIKA</text>
+    </g>
+  </svg>
+
+  <div class="scroll-indicator">Scroll to begin</div>
+</section>
+
+<!-- ============== ACT I ============== -->
+<div class="act-divider">
+  <div class="marker">Act I · The Ocean</div>
+  <div class="act-title">Before the colony</div>
+  <div class="act-years">c. 1250 — 1840</div>
+</div>
+
+<!-- Aramoana · ocean pathway — rendered in aumoana (southern sea-clay blue).
+     The waves are the sea now, not just the metaphor of it. -->
+<div class="maori-strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="strip-aramoana" x="0" y="0" width="48" height="80" patternUnits="userSpaceOnUse">
+        <rect width="48" height="80" fill="#e6d4a8"/>
+        <path d="M 0 16 L 12 8 L 24 16 L 36 8 L 48 16" stroke="#2c6479" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 0 50 L 12 36 L 24 50 L 36 36 L 48 50" stroke="#1a1411" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="6" cy="29" r="1.2" fill="#2c6479"/>
+        <circle cx="18" cy="29" r="1.2" fill="#2c6479"/>
+        <circle cx="30" cy="29" r="1.2" fill="#2c6479"/>
+        <circle cx="42" cy="29" r="1.2" fill="#2c6479"/>
+        <path d="M 0 72 L 12 64 L 24 72 L 36 64 L 48 72" stroke="#2c6479" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#strip-aramoana)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 1: Polynesian Settlement (Sticky Scrolly) ============ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter One</div>
+    <h2 class="chapter-title">The sea was a road,<br><em>and the people who travelled it</em></h2>
+    <p class="chapter-dek">East Polynesian voyagers settled an unpeopled archipelago and became <em>tangata whenua</em>. Later arrivals encountered established communities, kinship networks, and systems of governance.</p>
+  </div>
+
+  <div class="scrolly-map" data-chapter="ch1">
+    <div class="map-sticky">
+      <div class="map-overline">Te Moana-nui-a-Kiwa · The Great Ocean of Kiwa</div>
+      <div class="map-pane" id="map-ch1"></div>
+    </div>
+
+    <div class="features">
+      <div class="step-card" data-step="1" data-action="ch1-step1">
+        <div class="step-tag">Step 1 · The Pacific</div>
+        <p class="drop-cap">Aotearoa was the last large landmass on Earth to be settled by humans. Probably between 1250 and 1300 CE, East Polynesian navigators — using winds, currents, swells, stars, bird flight, and inherited knowledge of voyaging — found and settled it.</p>
+        <p>Rather than drift, Polynesians had learned the patterns of winds, swells, stars and birds.</p>
+      </div>
+
+      <div class="step-card" data-step="2" data-action="ch1-step2">
+        <div class="step-tag">Step 2 · The vector</div>
+        <div class="stat">c. 1250&ndash;1300</div>
+        <div class="stat-label">Estimated settlement window</div>
+        <p>The settlers came from somewhere in central East Polynesia — the Society Islands and Cook Islands lie along the most likely vector. Aotearoa was colder, larger, and ecologically different from tropical Polynesia. Settlement required adaptation: kūmara would grow only in some districts; fishing, birding, gathering, and seasonal mobility became central.</p>
+      </div>
+
+      <div class="step-card" data-step="3" data-action="ch1-step3">
+        <div class="step-tag">Step 3 · Landfall</div>
+        <p>Their descendants became <em>tangata whenua</em> — the people of the land. They built pā, gardens, fishing grounds, waka networks, alliances and rivalries, and the political map with which Europeans would later interact.</p>
+        <p class="pull">Whakapapa and mana ordered wealth. Exchange made obligations as well as goods.</p>
+        <p>Europeans arrived in a country already governed, worked and claimed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layered Māori-ancestry map, rendered at runtime by
+       scripts/chapters/ch1-lineages.js. Sits after the scrolly voyaging map,
+       deepening the chapter's argument: voyagers we just watched cross
+       the Pacific carry a layered genome — Austronesian, Melanesian,
+       and Polynesian sub-branch all stacked. -->
+  <div class="figure reveal lineage-fig">
+    <h3 class="lineage-fig-title">Māori are from the Polynesian branch of the Austronesian branch of the human tree, picking up some Melanesian along the way.</h3>
+    <p class="lineage-fig-lead">The broad <span class="lin-east">Austronesian</span> root (~75% of Māori ancestry) sweeps out of Taiwan and across the Pacific. A <span class="lin-pap">Melanesian</span> root (~25%) was picked up in transit across Near Oceania. Within the Austronesian lineage, a Pacific branch — what we today call <span class="lin-poly">Polynesian</span>, traced by the maternal lineage mtDNA B4a1a1 — split off and travelled the Lapita route from Vanuatu into Polynesia and Aotearoa.</p>
+    <div class="lineage-fig-map" id="lineage-fig-map"></div>
+    <p class="lineage-fig-sources">Sources: Allen Ancient DNA Resource v66 (Harvard Dataverse 2026); Skoglund 2016; Posth 2018; Lipson 2018, 2020; Larena 2021; Liu 2022; Ioannidis 2020.</p>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 2: Contact era ============ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Two</div>
+    <h2 class="chapter-title">A maritime fringe<br><em>before mass arrival</em></h2>
+    <p class="chapter-dek">Sealers, whalers, traders, missionaries, escaped convicts — and a Māori commercial response that, for two decades, fed the colonial towns that would soon displace it.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">From</span> the late eighteenth century, Europeans and Americans entered the waters around New Zealand as part of the wider Australasian maritime economy. Many came via Sydney. They sought seals, whales, timber, flax, food, sex, trade, and strategic position.</p>
+
+    <p>By 1840, there were only about 2,000 non-Māori in the country, against perhaps 100,000 Māori. The newcomers were overwhelmingly male and largely British, though Americans were prominent in some ports. In 1838, 54 of the 96 whaling ships visiting the Bay of Islands were American.</p>
+
+    <!-- Population imbalance figure -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Population, 1840</text>
+
+        <!-- Māori bar -->
+        <g transform="translate(0, 40)">
+          <text x="0" y="-6" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">MĀORI</text>
+          <rect x="0" y="0" width="700" height="44" fill="#2d5a3d"/>
+          <text x="710" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">100,000</text>
+          <!-- Small dot grid representation -->
+          <g fill="#f3ecdd" opacity="0.5">
+            <g id="maori-dots"></g>
+          </g>
+        </g>
+
+        <!-- Pākehā bar -->
+        <g transform="translate(0, 110)">
+          <text x="0" y="-6" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">NON-MĀORI</text>
+          <rect x="0" y="0" width="14" height="44" fill="#8c2230"/>
+          <text x="22" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">2,000</text>
+        </g>
+
+        <!-- Caption -->
+        <g transform="translate(0, 190)">
+          <line x1="0" y1="0" x2="800" y2="0" stroke="#c9b894" stroke-width="0.5"/>
+          <text class="map-label" x="0" y="14" fill="#8a7659">A 50:1 ratio. Each block scaled to population. The newcomers were a coastal fringe.</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>Māori traded back. They sold pork, potatoes, flax and timber; bought muskets, tools and ships; chartered vessels, planted wheat, and supplied Sydney-linked ports. The money economy arrived through these exchanges, and Māori adapted to it.</p>
+
+    <p>The two decades from about 1840 to 1860 are sometimes described as a <em>golden age</em> of Māori enterprise. Producers supplied colonial towns with potatoes, wheat, and pigs; invested in ploughs, flour mills, and coastal vessels; and used the growth of settler towns as markets. In 1858 dozens of vessels in Auckland province were registered or licensed to Māori owners.</p>
+
+    <p class="pull" style="font-size:24px;border-left-color:var(--wave-maori);border-left-width:3px;">In many districts, early colonial towns depended on Māori food, Māori transport and Māori commerce.</p>
+
+    <p>The Americans at port were a harbinger of a broader change: distance was collapsing. Whaling fleets had drawn the first Pākehā into Pacific waters in fragile barques. By the 1860s, fast clippers had cut the London-to-New Zealand passage from about 120 days to 75; auxiliary steam halved it again in the 1880s. Mortality on migrant ships fell from roughly 3% in the 1830s to under half a percent fifty years later. The Pacific that had been the edge of the world was becoming a regular shipping lane. What followed — the gold rush, Vogel's 290,000, the wool and frozen-meat trades — travelled on it.</p>
+
+    <!-- London → NZ passage-time chart.
+         Range bars (aumoana) show typical voyage spread per era; ink dots
+         the median; soft envelope band ties them together. The collapse
+         is visual — 150 days at the whaling end of the chart, 1 day at
+         the jet bookend. Sources: Bateson, Gold Fleet for California
+         (1963); emigration commissioners' annual reports; Te Ara. -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 332" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Days from London to New Zealand · 1820–1965</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The Pacific stops being the edge of the world</text>
+
+        <!-- Top-right stat callout -->
+        <g transform="translate(750, 30)">
+          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="34" fill="#1d1610">120 → 1 day</text>
+          <text x="0" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">LONDON → NEW ZEALAND · 1845 → 1965</text>
+        </g>
+
+        <!-- Y-axis gridlines + tick labels.
+             Plot maps days→y as: y = 240 − (days/180)·155, so 0d→240,
+             60d→188.3, 120d→136.7, 180d→85. -->
+        <g stroke="#c9b894" stroke-width="0.5" opacity="0.55">
+          <line x1="80" y1="85"     x2="750" y2="85"/>
+          <line x1="80" y1="136.67" x2="750" y2="136.67"/>
+          <line x1="80" y1="188.33" x2="750" y2="188.33"/>
+          <line x1="80" y1="240"    x2="750" y2="240"/>
+        </g>
+        <g font-family="IBM Plex Mono" font-size="9" fill="#8a7659" text-anchor="end">
+          <text x="74" y="74"  font-size="8" letter-spacing="1.5">DAYS</text>
+          <text x="74" y="89">180</text>
+          <text x="74" y="140">120</text>
+          <text x="74" y="192">60</text>
+          <text x="74" y="244">0</text>
+        </g>
+
+        <!-- Voyage-time envelope: top path is the era max, the return run
+             traces the era min, so the polygon is the band of typical
+             passage times across the period. -->
+        <path d="M 103 85 L 196 124 L 288 158 L 380 188 L 565 207 L 750 239 L 565 216 L 380 204 L 288 184 L 196 158 L 103 128 Z"
+              fill="#2c6479" opacity="0.18" stroke="none"/>
+        <!-- Median trend through the dot centres -->
+        <path d="M 103 111 L 196 137 L 288 175 L 380 197 L 565 212 L 750 239"
+              stroke="#2c6479" stroke-width="1.2" fill="none" opacity="0.6"/>
+
+        <!-- Per-era marks: range stem (aumoana) + median dot (ink),
+             with day callout above and year + vessel label below. -->
+        <g>
+          <!-- 1820s · whaling barque -->
+          <line x1="103" y1="85"  x2="103" y2="128" stroke="#2c6479" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="103" cy="111" r="4" fill="#1d1610"/>
+          <text x="103" y="78" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">~150d</text>
+          <text x="103" y="262" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1820s</text>
+          <text x="103" y="276" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">whaling barque</text>
+
+          <!-- 1845 · full-rigged sail emigrant ship -->
+          <line x1="196" y1="124" x2="196" y2="158" stroke="#2c6479" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="196" cy="137" r="4" fill="#1d1610"/>
+          <text x="196" y="116" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">~120d</text>
+          <text x="196" y="262" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1845</text>
+          <text x="196" y="276" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">rigged sail</text>
+
+          <!-- 1865 · composite clipper -->
+          <line x1="288" y1="158" x2="288" y2="184" stroke="#2c6479" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="288" cy="175" r="4" fill="#1d1610"/>
+          <text x="288" y="150" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">~75d</text>
+          <text x="288" y="262" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1865</text>
+          <text x="288" y="276" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">composite clipper</text>
+
+          <!-- 1885 · auxiliary steam -->
+          <line x1="380" y1="188" x2="380" y2="204" stroke="#2c6479" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="380" cy="197" r="4" fill="#1d1610"/>
+          <text x="380" y="180" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">~50d</text>
+          <text x="380" y="262" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1885</text>
+          <text x="380" y="276" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">auxiliary steam</text>
+
+          <!-- 1925 · refrigerated screw steamer -->
+          <line x1="565" y1="207" x2="565" y2="216" stroke="#2c6479" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="565" cy="212" r="4" fill="#1d1610"/>
+          <text x="565" y="198" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">~32d</text>
+          <text x="565" y="262" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1925</text>
+          <text x="565" y="276" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">refrigerated screw</text>
+
+          <!-- 1965 · DC-8 jet (single point — discontinuous) -->
+          <circle cx="750" cy="239" r="4" fill="#1d1610"/>
+          <text x="750" y="224" text-anchor="end" font-family="Fraunces" font-size="13" font-weight="600" fill="#1d1610">1d</text>
+          <text x="750" y="262" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">1965</text>
+          <text x="750" y="276" text-anchor="end" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#8a7659">DC-8 jet service</text>
+        </g>
+
+        <!-- Caption rule + source lines (two-line, to fit the viewBox) -->
+        <line x1="0" y1="294" x2="800" y2="294" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="319" fill="#8a7659">Sources: Bateson 1963; emigration commissioners' reports; Te Ara.</text>
+      </svg>
+    </div>
+
+    <p>But contact was also a demographic catastrophe for the Māori. Pathogens, muskets, and land appropriation altered the balance. The Māori population fell through the nineteenth century, reaching a low of about 42,000 by 1896.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- ============== ACT II ============== -->
+<div class="act-divider">
+  <div class="marker">Act II · The Settler Colony</div>
+  <div class="act-title">Land, gold, and assisted passages</div>
+  <div class="act-years">1840 — 1890</div>
+</div>
+
+<!-- Roimata Toroa · albatross tears — the salt drying on a sea-bird's face
+     that returns only to breed; sorrow and arrival woven together
+     (Ngāti Porou: Pourangahua's albatrosses bringing kūmara). -->
+<div class="maori-strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="strip-roimata" x="0" y="0" width="40" height="80" patternUnits="userSpaceOnUse">
+        <rect width="40" height="80" fill="#e6d4a8"/>
+        <g fill="#1a1411">
+          <path d="M 10 6 q -2 6 0 12 q 2 -6 0 -12 z"/>
+          <path d="M 10 24 q -2 6 0 12 q 2 -6 0 -12 z"/>
+          <path d="M 10 42 q -2 6 0 12 q 2 -6 0 -12 z"/>
+          <path d="M 10 60 q -2 6 0 12 q 2 -6 0 -12 z"/>
+        </g>
+        <g fill="#d4a316">
+          <path d="M 30 15 q -2 6 0 12 q 2 -6 0 -12 z"/>
+          <path d="M 30 33 q -2 6 0 12 q 2 -6 0 -12 z"/>
+          <path d="M 30 51 q -2 6 0 12 q 2 -6 0 -12 z"/>
+        </g>
+        <line x1="10" y1="0" x2="10" y2="80" stroke="#1a1411" stroke-width="0.4" opacity="0.3"/>
+        <line x1="30" y1="0" x2="30" y2="80" stroke="#1a1411" stroke-width="0.4" opacity="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#strip-roimata)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 3: Treaty + Land Alienation ============ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Three</div>
+    <h2 class="chapter-title">Treaty, war,<br><em>and the conversion of land</em></h2>
+    <p class="chapter-dek">After 1840 immigration became a tool of colonisation. The settler colony needed people and it needed land — surveyed and farmed, saleable and taxable.</p>
+  </div>
+
+  <div class="scrolly-map" data-chapter="ch3">
+    <div class="map-sticky">
+      <div class="map-overline">North Island · Te Ika-a-Māui</div>
+      <div class="map-pane" id="map-ch3"></div>
+    </div>
+
+    <div class="features">
+      <div class="step-card" data-step="1" data-action="ch3-step1">
+        <div class="step-tag">Step 1 · 1840</div>
+        <p class="drop-cap">The Treaty of Waitangi in 1840 formalised British authority — though Māori and English versions said different things about sovereignty, government and land. After 1840, settlement companies and colonial governments tried to reproduce a British society in the South Pacific: farms, towns, churches, ports, schools, and a disciplined labouring class.</p>
+      </div>
+      <div class="step-card" data-step="2" data-action="ch3-step2">
+        <div class="step-tag">Step 2 · The mechanism</div>
+        <p>Land and wages pulled. Rural poverty, land enclosure and religious dissent pushed. Gold turned New Zealand from a remote colony into a gamble worth taking. Provincial governments paid fares, promised property, and recruited labour: farmers, builders, masons, miners and soldiers. For Māori the same process meant land alienation.</p>
+      </div>
+      <div class="step-card" data-step="3" data-action="ch3-step3">
+        <div class="step-tag">Step 3 · Waikato, 1863</div>
+        <div class="stat">80% &rarr; 40%</div>
+        <div class="stat-label">North Island Māori land share, 1860 → 1890</div>
+        <p>In 1860 Māori still held about 80% of North Island land; by 1890 it had fallen to roughly 40%. The 1863 invasion of Waikato — south from Auckland across the Mangatāwhiri — was tied to punishing the Kīngitanga and clearing land for settlement.</p>
+      </div>
+      <div class="step-card" data-step="4" data-action="ch3-step4">
+        <div class="step-tag">Step 4 · Taranaki and the Bay</div>
+        <p>Confiscations under the New Zealand Settlements Act of 1863 took more than four million acres across Waikato, Taranaki and the eastern Bay of Plenty. The Native Land Court and associated laws transferred millions more between 1865 and 1890.</p>
+        <p class="pull">The wars of the 1840s and 1860s were wars over land, and thus became wars of migration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 4: Gold Rush ============ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Four</div>
+    <h2 class="chapter-title">The Pacific gold rush,<br><em>and the influx no planner ordered</em></h2>
+    <p class="chapter-dek">Miners came through an existing circuit — diggers pulled from California to Victoria to Otago, with Cantonese miners flowing towards Otago. In a decade the influx nearly tripled the colony's European population.</p>
+  </div>
+
+  <div class="scrolly-map" data-chapter="ch4">
+    <div class="map-sticky">
+      <div class="map-overline">The Pacific Mining Circuit · 1848 – 1881</div>
+      <div class="map-pane" id="map-ch4"></div>
+
+      <!-- Population chart inset — visible during steps 2–4.
+           Bars fill in progressively as the chapter advances. -->
+      <div class="ch4-pop" id="ch4-pop" data-fill="0">
+        <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg">
+          <text class="map-label" x="0" y="14" fill="#8a7659">NZ non-Māori population · 1858–1881</text>
+          <g id="ch4-pop-bars" transform="translate(32, 36)"></g>
+          <line x1="0" y1="186" x2="400" y2="186" stroke="#c9b894" stroke-width="0.5"/>
+          <text class="ch4-pop-anno" id="ch4-anno-1864" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1864 · OTAGO FIELDS PEAK</text>
+          <text class="ch4-pop-anno" id="ch4-anno-1867" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1867 · WEST COAST PEAK</text>
+          <text class="ch4-pop-anno" id="ch4-anno-1881" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1881 · ALLUVIAL GOLD WORKED OUT</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="features features-right">
+      <div class="step-card" data-step="1" data-action="ch4-step1">
+        <div class="step-tag">Step 1 · A Pacific circuit</div>
+        <p class="drop-cap">From 1848, gold turned the Pacific into a labour market. The strike at Sutter's Mill in California pulled tens of thousands across oceans; Ballarat and Bendigo did the same three years later. By the time Gabriel Read panned a creek in central Otago in May 1861, the circuit was already running — same men, same tools, same dispositions, moving from one strike to the next.</p>
+        <p class="pull">New Zealand became the next node in a broader Pacific gold rush.</p>
+      </div>
+
+      <div class="step-card" data-step="2" data-action="ch4-step2">
+        <div class="step-tag">Step 2 · Otago, 1861</div>
+        <div class="stat">99,000 → 256,000</div>
+        <div class="stat-label">New Zealand's non-Māori population, 1861 → 1871</div>
+        <p>Gabriel Read's strike at Tuapeka in May 1861 was followed a year later by Hartley and Reilly's at Dunstan — a 40-kilogram parcel of gold delivered to Dunedin that triggered the heaviest rush yet. By early 1864 more than 22,000 men were on the Otago fields.</p>
+        <p>The colony had only 99,000 Europeans at the start of the decade. By its end it had 256,000. Three of every four were new arrivals.</p>
+        <p class="pull">Gold made the settler colony grow.</p>
+      </div>
+
+      <div class="step-card" data-step="3" data-action="ch4-step3">
+        <div class="step-tag">Step 3 · The crossover, 1865</div>
+        <div class="stat">~ 29,000</div>
+        <div class="stat-label">West Coast fields population, 1867</div>
+        <p>Hunt's strike on the West Coast in February 1865 emptied parts of Otago in months. By 1866 Hokitika — empty beach two years earlier — was briefly the most populous settlement in the colony, with over a hundred hotels and the country's busiest port.</p>
+        <p>The hop redrew the sectarian map. Otago was Scots and Presbyterian; the West Coast became Irish and Catholic — a contrast that would outlast the gold by a century.</p>
+      </div>
+
+      <div class="step-card" data-step="4" data-action="ch4-step4">
+        <div class="step-tag">Step 4 · What the rush left</div>
+        <p>By 1881 the alluvial gold was largely worked out. But by then the rush had left a country behind: 60,000 had become nearly half a million in twenty years, in towns whose banks, newspapers, courts, breweries and universities outran the gold itself.</p>
+        <p class="pull">It also bankrolled what came next. Vogel's 1870s borrowing programme — which would assist another 290,000 settlers — leaned on the credit and shipping infrastructure the rush had built. An accidental rush financed a planned colony.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-map structural section. The map showed the geographic story
+       (where and when); this section pulls back to ask who actually came,
+       and bridges to ch5's Cantonese opening. The diagram below shows
+       only flows that ended in NZ; lines are weighted by approximate
+       contribution to NZ migration, not by total flow through each node. -->
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Gold</span> rushes ran on circuits. A strike inherited diggers and kit from the last one, then supplied the next. New Zealand's rush, when it came in 1861, sat downstream of a cascade that had begun in California thirteen years earlier.</p>
+
+    <p>The dominant trans-Tasman pathway into Otago ran through Australia. Cornish, Irish, Welsh and Scots miners had migrated to Victoria across the 1850s, drawn by the Ballarat and Bendigo strikes; when those fields began to thin, many crossed to Otago. Direct British and Irish arrivals — people who had never set foot in Australia — were the next biggest stream.</p>
+
+    <p>California's contribution was technological as much as demographic. The 1848 strike had primed the whole Anglophone circuit — tools, contracts, supply chains, even boomtown vernacular — but only about five hundred American-born residents were resident in New Zealand by 1871. The Californian imprint travelled mainly through Victoria, in the hands of British and Irish miners who had worked both fields.</p>
+
+    <p>Another route began in the Pearl River delta of Guangdong, running through Hong Kong, opened in 1865 by an Otago Chamber of Commerce worried about the West Coast drain. From 1869 ships ran direct.</p>
+
+    <div class="figure ch4-network-figure reveal">
+      <svg viewBox="0 0 1000 712" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <text class="map-label" x="40" y="32" fill="#8a7659">Origins · Waystations · Destinations</text>
+        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">A labour circuit, around the pacific rim</text>
+
+        <!-- Stat callout, top-right -->
+        <g transform="translate(960, 50)">
+          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="40" fill="#1d1610">+ 500</text>
+          <text x="0" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">AMERICANS IN NEW ZEALAND · 1861 → 1871</text>
+        </g>
+
+        <!-- Column headers -->
+        <g font-family="IBM Plex Mono" font-size="10" letter-spacing="3" fill="#8a7659">
+          <text x="120" y="115" text-anchor="middle">ORIGINS</text>
+          <text x="500" y="115" text-anchor="middle">WAY-STATIONS</text>
+          <text x="880" y="115" text-anchor="middle">NEW ZEALAND</text>
+          <line x1="40"  y1="124" x2="200" y2="124" stroke="#c9b894" stroke-width="0.5"/>
+          <line x1="420" y1="124" x2="580" y2="124" stroke="#c9b894" stroke-width="0.5"/>
+          <line x1="800" y1="124" x2="960" y2="124" stroke="#c9b894" stroke-width="0.5"/>
+        </g>
+
+        <!-- Edges (drawn first so node circles sit on top).
+             Each path's endpoints are anchored at the originating and
+             destination circle CENTERS; the circles' fills cover the
+             portion inside each marker, so the visible segment is exactly
+             the perimeter-to-perimeter run regardless of marker size or
+             approach angle. Widths are weighted by approximate contribution
+             to NZ migration. -->
+        <g fill="none" stroke-linecap="round">
+          <!-- British Isles → Victoria — dominant 1850s flow, primary
+               feeder into Otago via the Tasman -->
+          <path d="M 120 220 C 320 230, 360 320, 500 320" stroke="#8c2230" stroke-width="7"  opacity="0.85"/>
+          <!-- British Isles → Otago direct — second-largest stream -->
+          <path d="M 120 220 C 460 250, 600 250, 880 260" stroke="#8c2230" stroke-width="4"  opacity="0.7"  stroke-dasharray="6 5"/>
+          <!-- British Isles → Thames — Cornish hardrock specialists -->
+          <path d="M 120 220 C 460 280, 620 540, 880 588" stroke="#8c2230" stroke-width="2"  opacity="0.5"/>
+
+          <!-- Guangdong → Hong Kong (Cantonese embarkation port) -->
+          <path d="M 120 480 C 280 480, 360 500, 500 500" stroke="#c9882a" stroke-width="6"  opacity="0.85"/>
+          <!-- Hong Kong → Otago — direct shipping from 1869 -->
+          <path d="M 500 500 C 680 500, 720 280, 880 260" stroke="#c9882a" stroke-width="5"  opacity="0.8"/>
+
+          <!-- California → Victoria — Californians (largely British/Irish)
+               crossing as CA fields declined -->
+          <path d="M 500 180 C 600 180, 600 320, 500 320" stroke="#a37c44" stroke-width="5"  opacity="0.75"/>
+          <!-- California → Otago direct — the actual American/from-CA flow.
+               Surprisingly thin: ~500 American-born resident growth across
+               the whole decade. -->
+          <path d="M 500 180 C 680 180, 720 240, 880 260" stroke="#a37c44" stroke-width="2"  opacity="0.55"  stroke-dasharray="3 4"/>
+
+          <!-- Victoria → Otago — the largest single trans-Tasman flow -->
+          <path d="M 500 320 C 680 320, 720 260, 880 260" stroke="#a37c44" stroke-width="9"  opacity="0.9"/>
+          <!-- Victoria → West Coast — some bypassed Otago for the 1865 strike -->
+          <path d="M 500 320 C 680 320, 720 440, 880 440" stroke="#a37c44" stroke-width="3"  opacity="0.55"/>
+
+          <!-- Otago → West Coast internal hop, 1865 -->
+          <path d="M 880 260 C 880 360, 880 380, 880 440" stroke="#5a4530" stroke-width="6"  opacity="0.85"/>
+          <!-- West Coast → Thames — alluvial-to-quartz specialist transition -->
+          <path d="M 880 440 C 880 510, 880 540, 880 588" stroke="#5a4530" stroke-width="2"  opacity="0.5"/>
+        </g>
+
+        <!-- Origin nodes (no inner letters — labels below name them) -->
+        <g>
+          <circle cx="120" cy="220" r="14" fill="#8c2230"/>
+          <text x="120" y="252" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">BRITISH ISLES</text>
+          <text x="120" y="267" text-anchor="middle" fill="#8a7659" font-family="Source Serif 4" font-size="11" font-style="italic">Cornish · Irish · Scots · Welsh</text>
+
+          <circle cx="120" cy="480" r="14" fill="#c9882a"/>
+          <text x="120" y="512" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">GUANGDONG</text>
+          <text x="120" y="527" text-anchor="middle" fill="#8a7659" font-family="Source Serif 4" font-size="11" font-style="italic">Pearl River · Sze Yap districts</text>
+        </g>
+
+        <!-- Way-station nodes (open rings — passages, not origins) -->
+        <g>
+          <circle cx="500" cy="180" r="11" fill="#f3ecdd" stroke="#a37c44" stroke-width="2"/>
+          <text x="500" y="206" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">CALIFORNIA · 1848</text>
+
+          <circle cx="500" cy="320" r="14" fill="#f3ecdd" stroke="#a37c44" stroke-width="2"/>
+          <text x="500" y="349" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">VICTORIA · 1851</text>
+
+          <circle cx="500" cy="500" r="9" fill="#f3ecdd" stroke="#c9882a" stroke-width="2"/>
+          <text x="500" y="524" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">HONG KONG · 1865</text>
+        </g>
+
+        <!-- NZ field nodes (filled ink) -->
+        <g>
+          <circle cx="880" cy="260" r="14" fill="#1d1610"/>
+          <text x="880" y="291" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">OTAGO · 1861</text>
+
+          <circle cx="880" cy="440" r="12" fill="#1d1610"/>
+          <text x="880" y="468" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">WEST COAST · 1865</text>
+
+          <circle cx="880" cy="588" r="9" fill="#1d1610"/>
+          <text x="880" y="612" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">THAMES · 1867</text>
+        </g>
+
+        <line x1="40" y1="660" x2="960" y2="660" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="40" y="685" fill="#8a7659">The dominant pathway: Britain → Victoria → Otago, then Otago → West Coast in 1865.</text>
+        <text class="map-label" x="40" y="703" fill="#8a7659">Sources: Eldred-Grigg 2008; Ng 1993; NZ Census 1861–1881; Te Ara.</text>
+      </svg>
+    </div>
+
+    <p>Within New Zealand, the rush kept moving. Otago's diggers hopped to the West Coast in 1865, and on to Thames quartz fields by 1867. Each shift left behind a built environment — towns, banks, newspapers, courts — disproportionate to whatever gold remained.</p>
+
+    <p class="pull">The rush built the colony's first large non-British, non-Māori community, and a sustained ethnic split, as the Cantonese outlasted the goldfields.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 5: Chinese Migration ============ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Five</div>
+    <h2 class="chapter-title">New Gold Mountain,<br><em>and the making of exclusion</em></h2>
+    <p class="chapter-dek">Otago taught the colony a lasting habit: import the labour; resent the labourers.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">The</span> first Chinese migrant arrived at Port Chalmers on the <em>South Australian</em> in December 1865 — a single passenger, sent by Melbourne merchant Lowe Kong Meng on a reconnaissance for the Otago Chamber's invitation. Five more landed weeks later. By 1869 more than 2,000 Cantonese men were working what they called another <em>New Gold Mountain</em> — most from the Sze Yap districts of the Pearl River delta in Guangdong, where famine, drought, population pressures, and political disruptions had made departure a common strategy.</p>
+
+    <p>The draw was gold, but also remittance — many came intending to earn and return, not to settle. The gender imbalance was extreme: at the 1881 census, of just over 5,000 Chinese in the colony, only nine were women.</p>
+
+    <!-- Gender imbalance — single waffle of body silhouettes.
+         Men in chinese-gold; the nine women cluster in the bottom-right
+         corner in oxblood. Generated at runtime from scripts/chapters/ch5-exclusion.js.
+         ViewBox sized so the 50-row grid (ends at y≈660) clears the
+         caption rule and label below. -->
+    <div class="figure reveal gender-waffle-figure">
+      <svg viewBox="0 0 800 740" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <symbol id="person-glyph" viewBox="0 0 6 10">
+            <circle cx="3" cy="1.9" r="1.5"/>
+            <path d="M0.8 5 Q0.8 4 1.7 4 H4.3 Q5.2 4 5.2 5 V10 H0.8 Z"/>
+          </symbol>
+        </defs>
+
+        <text class="map-label" x="0" y="14" fill="#8a7659">Chinese population in New Zealand · 1881 census</text>
+        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A bachelor society, by policy as much as by chance</text>
+
+        <!-- Stat callouts -->
+        <g transform="translate(0, 80)">
+          <rect x="0" y="0" width="14" height="14" fill="#c9882a"/>
+          <text x="22" y="11" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5" fill="#4a3d2e">MEN · 4,995</text>
+        </g>
+        <g transform="translate(150, 80)">
+          <rect x="0" y="0" width="14" height="14" fill="#8c2230"/>
+          <text x="22" y="11" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5" fill="#4a3d2e">WOMEN · 9</text>
+        </g>
+
+        <!-- Waffle grid: 100 cols × 50 rows = 5,000 silhouettes (rounded
+             from the 5,004 census total). Bottom-right 3×3 cluster (nine
+             cells) is the women, marked in oxblood. Group offset:
+             translate(40, 110); cells 7 wide × 11 tall → grid spans
+             y = 110 → 660 in the SVG. -->
+        <g id="gender-waffle" transform="translate(40, 110)"></g>
+
+        <!-- Caption: rule at 690, label at 712 — well clear of the grid. -->
+        <line x1="0" y1="690" x2="800" y2="690" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="712" fill="#8a7659">Each silhouette one person · 1881 census · the bachelor society was structural — and policy hardened it.</text>
+      </svg>
+    </div>
+
+    <p>They mined, grew vegetables, opened shops, ran laundries and built family firms. But they also became the target of a racial politics that wanted New Zealand to be <em>white</em>: a British society in the South Pacific.</p>
+
+    <p>Parliament soon wrote the prejudice into law. From 1881 a <em>poll tax</em> was imposed on every Chinese arrival — £10 at first, raised to £100 in 1896, more than a year's wages for a labourer. The same Act capped Chinese passengers at one per ten tons of ship cargo, then in 1896 at one per two hundred. It would not be repealed for sixty-three years.</p>
+
+    <!-- Poll tax timeline — reveal-driven animation: line draws from left
+         to right; each tick fades in chronologically; the in-force span
+         (1881–1944) extends as a coloured bar. -->
+    <div class="figure reveal poll-tax-figure">
+      <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">The poll tax · 1881 → 2002</text>
+        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">Sixty-three years of legislative exclusion. Fifty-eight more before the apology.</text>
+
+        <!-- Year-span shading: tax in force from 1881 to 1944.
+             Originating at x=120 (1881), extending to x=620 (1944). -->
+        <rect class="pt-span" x="120" y="118" width="500" height="6" fill="#8c2230" opacity="0.65"/>
+        <text class="pt-span-label" x="370" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5" fill="#8c2230">63 YEARS · TAX IN FORCE</text>
+
+        <!-- Gap-period (1944 → 2002): tax abolished, no apology yet -->
+        <line class="pt-gap" x1="620" y1="121" x2="740" y2="121" stroke="#8a7659" stroke-width="1" stroke-dasharray="4 3"/>
+        <text class="pt-gap-label" x="680" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5" fill="#8a7659">58 YEARS · TO APOLOGY</text>
+
+        <!-- Timeline base line (drawn first → last) -->
+        <line class="pt-line" x1="40" y1="121" x2="760" y2="121" stroke="#1d1610" stroke-width="0.8"/>
+
+        <!-- Tick marks (each in its own group for staggered reveal) -->
+        <g class="pt-tick" data-pt-tick="1881">
+          <circle cx="120" cy="121" r="5" fill="#8c2230" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="120" y="92" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1881</text>
+          <text x="120" y="146" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">£10 poll tax imposed</text>
+          <text x="120" y="160" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">1 Chinese per 10 tons</text>
+        </g>
+        <g class="pt-tick" data-pt-tick="1896">
+          <circle cx="240" cy="121" r="5" fill="#8c2230" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="240" y="92" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1896</text>
+          <text x="240" y="146" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Tax raised to £100</text>
+          <text x="240" y="160" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">1 Chinese per 200 tons</text>
+        </g>
+        <g class="pt-tick" data-pt-tick="1944">
+          <circle cx="620" cy="121" r="5" fill="#8c2230" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="620" y="92" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1944</text>
+          <text x="620" y="146" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Repealed</text>
+          <text x="620" y="160" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">Finance Act</text>
+        </g>
+        <g class="pt-tick" data-pt-tick="2002">
+          <circle cx="740" cy="121" r="6" fill="#1d1610" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="740" y="92" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">2002</text>
+          <text x="740" y="146" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Crown apology</text>
+          <text x="740" y="160" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">Helen Clark</text>
+        </g>
+
+        <line x1="0" y1="194" x2="800" y2="194" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="214" fill="#8a7659">New Zealand was the last country to repeal its poll tax — and the first to apologise.</text>
+      </svg>
+    </div>
+
+    <p>Chinese miners were useful when Otago needed miners; later they were cast as racial outsiders. Pacific workers would experience a related pattern a century later. Immigration law did more than ration workers. It defined whiteness.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 6: Vogel ============ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Six</div>
+    <h2 class="chapter-title">Vogel's borrowed colony,<br><em>and the infrastructure state</em></h2>
+    <p class="chapter-dek">By the 1870s, gold was declining and wool prices had weakened. The government answered with debt, railways and assisted passages — and in doing so, it built a lasting state.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Capitalising</span> on the mining boom, the government borrowed in London to fund railways, roads, bridges, and mass assisted migration. Between 1871 and 1885 — when the non-Māori population was only just over a quarter of a million at the start — 289,026 people arrived, although about 40% later moved on. Most came from Britain and Ireland.</p>
+
+    <!-- Vogel-era public works infographic.
+         Composite: four before/after metric bars on the left; simplified
+         NZ silhouette with the 1885 railway network on the right. The
+         silhouette path is the same Natural-Earth simplification used in
+         the hero and ch12 figures. Railway segments are hand-traced from
+         line-by-line opening dates documented in the Rail Heritage Trust's
+         NZR mileage table — see docs/METHODOLOGY.md for which fragments
+         existed by 1885 and which trunk lines were still under construction. -->
+    <div class="figure ch6-vogel-figure reveal">
+      <svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Public works · 1870–1885</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A borrowed colony, in numbers</text>
+
+        <!-- Headline stat — total assisted arrivals across the Vogel window -->
+        <g transform="translate(900, 30)">
+          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="36" fill="#1d1610">289,026</text>
+          <text x="0" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">ASSISTED ARRIVALS · 1871–1885</text>
+        </g>
+
+        <!-- LEFT COLUMN — four before/after metric bars.
+             Bar widths normalised within each pair to the larger value, so
+             the visible ratio between the two bars *is* the growth ratio.
+             Year labels in Plex Mono; values in Fraunces. -->
+        <g transform="translate(0, 100)">
+
+          <!-- Row 1 · Railway mileage open: 46 (1870) → ~1,500 (1885).
+               Vogel window matches exactly. The 1870 bar is barely a
+               sliver next to the 1885 bar — the point of the figure. -->
+          <g>
+            <text class="map-label" x="0" y="0" fill="#8a7659">RAILWAY MILEAGE OPEN</text>
+            <text x="0" y="22" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1870</text>
+            <rect x="46" y="13" width="9" height="12" fill="#a8442d" opacity="0.55"/>
+            <text x="60" y="22" font-family="Fraunces" font-size="13" fill="#1d1610">46 mi</text>
+            <text x="0" y="46" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1885</text>
+            <rect x="46" y="37" width="290" height="12" fill="#8c2230"/>
+            <text x="345" y="46" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">1,500 mi</text>
+          </g>
+
+          <!-- Row 2 · Public debt: £7.8m (1870) → £18.6m (1876).
+               Window doesn't reach 1885 because the cleanest series we
+               have stops at 1876 — labelled honestly so the reader can
+               see the comparison's bounds. -->
+          <g transform="translate(0, 80)">
+            <text class="map-label" x="0" y="0" fill="#8a7659">PUBLIC DEBT</text>
+            <text x="0" y="22" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1870</text>
+            <rect x="46" y="13" width="122" height="12" fill="#a8442d" opacity="0.55"/>
+            <text x="173" y="22" font-family="Fraunces" font-size="13" fill="#1d1610">£7.8m</text>
+            <text x="0" y="46" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1876</text>
+            <rect x="46" y="37" width="290" height="12" fill="#8c2230"/>
+            <text x="345" y="46" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">£18.6m</text>
+          </g>
+
+          <!-- Row 3 · Telegraph line: 699 mi (1866) → 3,170 mi (1876).
+               Pre-Vogel anchor is 1866 (only clean datapoint we have on
+               the early end) — labelled as such. -->
+          <g transform="translate(0, 160)">
+            <text class="map-label" x="0" y="0" fill="#8a7659">TELEGRAPH LINE OPEN</text>
+            <text x="0" y="22" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1866</text>
+            <rect x="46" y="13" width="64" height="12" fill="#a8442d" opacity="0.55"/>
+            <text x="115" y="22" font-family="Fraunces" font-size="13" fill="#1d1610">699 mi</text>
+            <text x="0" y="46" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1876</text>
+            <rect x="46" y="37" width="290" height="12" fill="#8c2230"/>
+            <text x="345" y="46" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">3,170 mi</text>
+          </g>
+
+          <!-- Row 4 · Roads formed by 1876: ~2,000 mi.
+               No clean 1870 baseline — the colony had little central
+               road-making before Vogel. Pre-bar is a token tick to read
+               as "from nothing". -->
+          <g transform="translate(0, 240)">
+            <text class="map-label" x="0" y="0" fill="#8a7659">ROADS FORMED</text>
+            <text x="0" y="22" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1870</text>
+            <rect x="46" y="13" width="3" height="12" fill="#a8442d" opacity="0.55"/>
+            <text x="54" y="22" font-family="Fraunces" font-size="13" font-style="italic" fill="#8a7659">trace</text>
+            <text x="0" y="46" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">1876</text>
+            <rect x="46" y="37" width="290" height="12" fill="#8c2230"/>
+            <text x="345" y="46" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">2,000 mi</text>
+          </g>
+        </g>
+
+        <!-- RIGHT COLUMN — NZ rail network.
+             Path strings below are pasted from data/build/vogel-map.json,
+             generated by data/build/project-vogel-map.py from the repo's
+             nz-islands.geojson silhouette + an OSM rail-centreline dump
+             (railway=rail | disused | abandoned). Everything is run
+             through one equirectangular projection (lat0=-41, lon0=173,
+             scale=20), so silhouette and rails align by construction.
+             Modern operating rail in solid oxblood; lines later abandoned
+             (Otago Central, Catlins, Wairoa-Gisborne, etc.) sit behind
+             as faded dashed strokes — the figure shows both the surviving
+             Vogel-era trunk network and the wider Vogel/Liberal-era
+             footprint that's since been pulled up. -->
+        <g transform="translate(680, 295)">
+          <!-- Sea wash -->
+          <rect x="-180" y="-185" width="360" height="365" fill="#7c9d9d" opacity="0.06"/>
+
+          <!-- Map overline -->
+          <text x="0" y="-160" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="2" fill="#8a7659">RAIL NETWORK</text>
+
+          <!-- North Island silhouette -->
+          <path d="M1.2 -131.8L0.6 -129.6L-0.5 -130.7L-1.4 -129.2L-0.0 -128.8L0.1 -127.0L0.5 -129.0L1.1 -126.0L2.8 -123.3L1.8 -124.5L1.9 -123.8L4.5 -121.8L4.0 -119.8L5.6 -120.7L5.4 -122.6L6.7 -124.1L7.6 -122.6L6.1 -121.9L6.9 -120.4L8.9 -119.7L8.9 -121.4L11.8 -119.8L10.9 -118.7L11.5 -118.1L12.1 -119.7L13.4 -120.0L14.9 -117.6L17.0 -117.3L17.4 -116.4L16.0 -117.0L15.3 -115.7L16.5 -115.6L17.4 -112.6L18.9 -113.5L17.4 -114.5L19.3 -114.6L20.4 -116.0L20.2 -113.8L21.5 -112.5L20.1 -113.4L23.7 -108.1L23.6 -107.0L22.3 -107.1L24.3 -103.1L22.6 -104.6L20.9 -104.2L20.5 -105.7L20.4 -103.2L22.7 -103.4L22.6 -100.2L24.5 -99.2L24.5 -97.9L27.5 -94.5L27.3 -93.3L28.4 -93.0L26.4 -92.9L26.8 -90.3L25.9 -91.8L26.0 -88.1L28.0 -87.8L26.0 -87.4L27.5 -83.5L25.7 -84.8L24.5 -84.1L25.4 -83.9L25.4 -81.9L26.4 -83.1L28.3 -83.0L28.5 -80.8L29.2 -83.3L29.6 -81.3L30.6 -82.5L31.4 -82.3L31.6 -80.6L33.8 -81.2L35.1 -79.8L35.7 -75.9L38.7 -76.4L39.4 -75.0L38.2 -80.8L36.8 -82.7L37.8 -82.8L37.1 -83.3L38.3 -84.3L37.7 -87.4L35.8 -88.8L35.5 -90.2L38.2 -89.8L39.7 -84.7L43.0 -85.6L41.0 -82.5L41.7 -83.5L43.0 -83.2L43.3 -78.9L44.1 -78.9L43.6 -75.2L44.9 -70.6L47.8 -67.5L45.8 -69.5L44.4 -69.6L45.2 -67.4L47.9 -66.7L48.5 -65.6L48.6 -67.6L56.1 -62.4L61.9 -60.7L62.4 -59.6L62.6 -60.4L64.6 -59.7L68.8 -61.7L71.5 -66.5L75.4 -68.2L75.4 -69.1L80.0 -68.7L84.0 -66.0L80.8 -60.0L80.3 -54.7L80.9 -53.7L80.0 -49.4L76.7 -45.8L74.5 -46.0L73.7 -38.3L75.5 -37.4L74.1 -34.9L73.5 -34.2L73.5 -38.1L71.9 -38.4L66.6 -38.8L61.4 -36.0L58.9 -31.4L59.8 -27.5L62.2 -26.7L57.9 -16.4L55.6 -14.5L54.8 -10.8L51.7 -7.9L44.8 4.9L34.9 12.3L33.5 12.3L32.9 8.4L30.7 7.6L29.1 8.9L28.2 8.4L28.5 4.5L27.1 4.8L27.6 6.4L26.3 6.9L24.1 5.1L27.1 2.1L28.2 2.1L27.8 0.9L32.3 -6.5L33.8 -14.1L32.8 -17.8L28.6 -22.3L23.7 -23.5L19.9 -27.7L14.9 -29.2L12.3 -31.3L11.5 -34.0L12.9 -37.3L18.3 -40.5L21.4 -40.7L24.1 -43.6L25.8 -57.9L27.9 -56.9L29.3 -58.1L28.0 -58.9L27.0 -58.3L28.5 -60.7L27.0 -60.3L27.0 -62.6L27.5 -63.5L29.8 -63.9L29.8 -65.0L27.9 -64.7L25.9 -71.8L27.7 -74.0L25.8 -73.0L23.5 -78.7L25.2 -78.6L26.3 -75.1L26.2 -76.4L27.2 -76.7L25.9 -76.9L28.0 -78.4L29.4 -78.0L27.6 -80.1L27.0 -79.8L27.7 -81.1L25.2 -81.1L24.3 -79.6L22.6 -79.4L21.2 -84.8L17.9 -90.0L18.3 -91.5L18.2 -90.4L19.0 -91.1L21.0 -88.3L20.5 -87.4L21.9 -87.1L22.1 -92.5L20.1 -92.1L19.2 -93.2L23.0 -94.9L19.7 -94.4L20.6 -94.4L21.8 -97.2L21.0 -97.5L20.1 -95.4L19.4 -97.6L18.5 -97.7L18.0 -96.5L19.9 -95.2L18.8 -94.7L15.1 -97.7L13.7 -102.6L13.3 -100.8L18.2 -93.0L16.3 -92.0L15.5 -94.6L6.1 -108.6L6.9 -111.2L8.2 -110.9L10.0 -113.7L9.0 -114.1L8.9 -113.3L8.5 -114.5L8.5 -112.8L6.1 -112.2L5.7 -109.5L4.1 -112.2L4.8 -114.0L3.8 -112.6L3.0 -113.5L3.9 -114.4L2.7 -114.2L1.5 -115.6L3.0 -117.8L2.4 -121.1L-3.0 -129.0L-4.9 -130.4L-4.5 -131.8L-2.6 -131.1L1.2 -131.8Z"
+                fill="#ebe1cb" stroke="#5a4530" stroke-width="0.7" stroke-linejoin="round"/>
+          <!-- South Island silhouette -->
+          <path d="M-1.4 -9.8L-0.0 -9.5L-3.9 -9.6L-5.1 -7.0L-4.6 -5.0L-2.2 -3.1L0.3 -4.1L0.9 -0.7L-0.0 0.3L1.6 6.2L3.2 6.0L8.9 1.1L10.4 2.0L11.3 0.7L10.3 0.3L12.9 -1.5L13.2 -0.5L14.8 -2.0L15.6 -1.3L14.6 -1.4L13.9 0.0L11.8 0.2L11.8 2.2L12.5 1.2L14.4 1.2L12.4 3.1L13.2 3.7L11.5 5.3L11.9 5.8L14.1 4.7L13.4 4.3L17.1 3.5L13.5 3.8L14.3 1.6L14.7 2.9L15.8 1.9L15.6 0.3L15.1 1.1L14.3 0.2L15.1 -0.6L16.5 0.4L17.9 -0.5L18.2 1.4L20.0 0.2L19.0 2.5L17.6 2.3L18.4 3.8L14.1 5.6L20.0 4.3L18.8 6.4L17.1 6.4L15.9 8.7L16.0 10.3L16.7 11.2L16.9 10.1L19.4 15.1L15.2 20.6L13.4 24.8L10.6 27.6L10.9 28.7L9.9 28.4L8.4 29.8L4.3 39.1L-1.3 42.1L-3.8 45.3L-3.8 51.3L-2.5 52.0L-4.8 52.8L-2.2 52.6L-1.9 53.4L-1.6 52.3L-1.1 53.7L1.0 53.0L1.4 57.1L-0.0 57.8L-0.8 55.0L-0.5 58.1L-2.8 57.6L-3.6 55.9L-8.7 57.1L-5.3 55.7L-7.6 54.4L-8.8 54.7L-9.4 57.3L-20.1 62.3L-25.0 65.6L-27.6 70.9L-27.1 78.1L-31.3 84.8L-32.2 89.6L-35.8 94.1L-33.8 95.5L-36.9 97.9L-33.6 95.6L-33.5 97.5L-40.2 99.6L-42.0 103.5L-46.8 106.9L-47.6 109.4L-50.4 109.8L-49.0 110.0L-50.8 111.6L-56.4 113.1L-57.7 112.3L-59.8 113.6L-62.0 113.1L-62.7 111.2L-65.4 111.6L-64.7 111.2L-66.1 110.9L-65.7 112.0L-66.5 112.3L-69.1 112.0L-66.9 111.7L-70.0 110.8L-69.8 112.4L-71.4 110.5L-69.7 110.0L-69.9 108.3L-70.9 109.6L-72.9 106.7L-77.9 107.9L-79.4 106.4L-78.7 105.9L-79.8 104.0L-81.7 103.2L-83.7 103.0L-84.4 105.0L-86.1 105.5L-95.0 103.8L-95.5 103.1L-91.3 98.9L-93.5 99.9L-94.3 101.4L-94.6 100.7L-96.4 101.8L-95.7 100.0L-93.5 98.6L-95.2 98.8L-94.4 97.2L-98.3 100.3L-98.5 96.3L-92.2 95.5L-90.4 94.4L-94.0 94.4L-92.2 93.0L-93.9 93.1L-94.0 92.2L-90.7 91.5L-91.3 90.9L-89.7 89.8L-93.8 91.5L-95.1 90.8L-94.1 88.2L-91.3 88.7L-93.4 87.1L-92.4 85.6L-91.2 86.5L-91.6 87.1L-89.8 87.2L-90.4 88.5L-89.1 87.6L-87.5 89.6L-89.8 86.5L-87.8 85.7L-85.9 86.3L-86.9 86.1L-86.8 85.1L-89.8 85.4L-90.5 83.0L-89.6 82.5L-87.9 83.6L-89.7 82.0L-88.8 80.8L-87.7 82.7L-87.6 81.9L-86.4 81.9L-87.8 81.1L-88.1 79.8L-85.3 80.5L-87.6 79.3L-87.2 78.7L-84.2 76.8L-83.6 79.8L-82.8 79.9L-83.8 76.5L-82.7 75.3L-82.0 77.6L-82.3 74.7L-80.3 75.3L-81.2 73.5L-78.8 71.9L-76.5 73.9L-77.9 70.1L-75.0 66.4L-73.5 66.3L-73.9 65.2L-70.8 63.0L-69.9 60.8L-65.7 59.3L-63.3 59.9L-54.0 53.0L-50.6 52.2L-43.7 45.2L-41.7 44.8L-40.7 43.2L-42.3 44.3L-40.9 42.1L-33.7 38.3L-26.8 29.0L-22.8 16.6L-23.1 15.3L-20.5 15.2L-17.3 13.3L-14.0 8.3L-13.0 5.8L-13.5 -2.3L-7.4 -8.2L-6.9 -7.5L-6.1 -7.9L-6.1 -9.4L-1.4 -9.8Z"
+                fill="#ebe1cb" stroke="#5a4530" stroke-width="0.7" stroke-linejoin="round"/>
+          <!-- Stewart Island — projected from (168°E, -46.93°S) -->
+          <ellipse cx="-75.5" cy="118.6" rx="4.5" ry="2.2" fill="#ebe1cb" stroke="#5a4530" stroke-width="0.5"/>
+
+          <!-- Abandoned rail (drawn first, sits behind the operating network) -->
+          <path d="M34.5 -31.4L35.4 -31.6L36.3 -31.6M-46.7 80.3L-45.7 79.9L-45.1 80.5L-44.8 81.2L-44.1 82.2L-42.9 83.6M-32.5 80.6L-33.3 80.0L-34.0 79.0M-50.1 107.6L-49.9 108.2M-50.2 108.9L-50.9 109.5L-51.7 109.5M-52.6 109.4L-53.1 110.1M-11.8 50.0L-14.7 47.8M-61.2 102.0L-63.2 99.8L-64.5 97.7L-67.1 96.5L-68.8 94.8L-70.2 98.8L-70.4 103.1L-70.4 106.1M-60.2 101.1L-59.9 99.8L-60.3 98.9M-53.2 110.8L-54.5 110.2M-49.3 98.9L-50.0 98.2M-34.4 89.6L-35.4 88.2L-35.8 87.7M-64.3 98.0L-62.8 94.5M-46.0 102.4L-45.5 103.2M-48.5 105.0L-47.5 105.8M-62.6 107.6L-62.6 106.6L-63.6 106.2M-14.3 47.2L-13.4 46.2M-13.4 49.8L-14.1 49.7M68.3 -54.2L68.6 -54.8M70.2 -50.8L69.0 -51.3L68.5 -52.6L68.4 -53.5M73.3 -50.5L72.2 -50.9M-10.5 55.2L-9.6 53.8L-8.6 53.1M-1.3 34.3L0.4 33.1M-15.0 49.6L-15.9 49.6M-56.7 102.2L-56.8 101.4M32.1 -66.3L31.1 -66.3M40.2 -72.1L40.2 -70.5L40.9 -69.2M-15.2 11.2L-15.9 10.6L-16.9 12.1M-55.1 84.1L-54.4 85.0M58.9 -60.2L59.3 -60.9M11.6 -113.6L10.8 -113.5L10.9 -114.2L9.8 -113.9M-6.0 54.7L-5.6 55.3M13.9 -111.6L14.5 -111.9M-26.6 67.1L-27.9 65.4M11.6 -112.8L11.7 -112.1M-42.9 88.9L-43.2 89.5M-7.0 14.1L-7.7 13.8M74.9 -47.1L73.7 -50.1M-69.0 94.3L-68.9 93.2L-68.6 92.4M-2.3 35.5L-2.8 35.8L-4.8 36.8L-4.9 37.5L-5.3 38.7L-4.7 39.4M-72.0 93.4L-70.5 93.9L-69.6 94.3M-34.8 77.2L-33.7 77.6L-31.3 78.7L-29.9 80.4M-65.5 89.9L-65.2 89.4L-65.3 88.5M72.8 -47.8L74.4 -47.2M72.0 -48.0L72.2 -48.6L72.6 -47.9M12.2 -111.7L12.4 -110.9L13.5 -111.1M-31.9 36.0L-31.5 35.3M-74.1 105.8L-75.3 107.0M-12.2 45.9L-12.9 46.2M-11.2 56.2L-10.7 55.5M-4.5 56.3L-3.6 55.8M-14.8 55.2L-17.2 55.1L-18.1 55.0L-20.3 52.8M-55.3 96.1L-56.1 96.8L-56.9 98.3L-56.8 101.1M-15.8 11.7L-15.2 11.6M-53.2 94.4L-53.6 93.9M41.2 -71.6L41.9 -71.7M40.0 -74.0L40.3 -72.5M39.9 -74.8L38.4 -77.1M-31.1 75.7L-29.6 74.9L-28.3 74.6M-61.2 111.3L-64.3 109.6M-70.2 108.6L-67.2 109.0M16.9 -30.5L14.9 -30.5M33.7 3.3L34.9 2.5M-53.9 84.7L-53.4 84.1L-52.8 83.4L-52.7 82.4L-51.6 82.0L-50.6 81.3M-23.6 28.0L-24.5 27.0M31.7 2.4L32.3 2.2M-42.6 83.8L-41.3 84.2L-41.2 85.2M44.0 -69.1L44.6 -67.5M44.3 -70.6L44.0 -69.3M42.8 -72.0L44.1 -70.8M39.7 -68.0L40.8 -69.0M33.4 -19.3L32.5 -19.4L33.3 -20.7L32.9 -21.2M4.4 34.1L4.2 33.1M-49.1 81.3L-47.1 80.5"
+                fill="none" stroke="#8c2230" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2.2 2.2" opacity="0.5"/>
+
+          <!-- Operating rail network — modern OSM railway=rail centrelines -->
+          <path d="M36.1 -36.6L36.2 -37.2M-43.5 91.2L-43.2 92.0M3.5 36.0L3.4 35.4L4.2 34.5M41.4 -65.1L41.7 -62.2L41.7 -61.4L41.7 -60.4L42.1 -58.9L42.6 -57.7M40.7 -22.6L41.4 -23.2L42.0 -23.4M-60.4 101.7L-59.8 101.9M-63.7 106.4L-63.4 105.6L-63.1 104.9L-62.6 104.0L-62.1 103.4L-61.7 102.9L-61.2 102.0L-60.6 101.7M-69.5 108.2L-68.6 107.8L-67.7 107.5L-66.7 107.0L-64.3 106.4M-51.7 104.6L-51.4 105.2L-49.7 105.1M-45.9 102.2L-45.4 101.6L-44.6 100.9M-40.7 98.0L-40.1 97.8M-59.5 101.9L-58.8 101.9L-57.8 102.4M-29.4 80.0L-28.7 78.7M-24.5 61.2L-25.1 61.8M-21.7 60.1L-22.5 60.4L-23.9 60.9M-21.2 39.8L-20.7 40.2L-19.9 40.3M-14.5 48.1L-13.6 49.6L-12.9 49.9L-12.0 50.0L-9.5 51.8L-11.6 52.9M21.8 -26.0L21.4 -26.6L20.9 -27.2M30.9 -21.2L31.0 -22.0L29.9 -22.7L29.1 -23.1L28.4 -22.8L27.4 -23.2M35.9 -18.4L35.3 -18.7L33.5 -19.1M38.5 -67.0L38.9 -67.4L39.6 -68.0M37.0 -62.8L36.6 -63.5L35.6 -64.3M38.7 -15.6L37.9 -16.8L37.0 -17.4M39.2 -21.6L39.7 -22.1M19.6 -31.9L19.6 -32.6M-70.5 111.9L-70.9 111.0L-69.6 109.7M33.0 -52.8L33.3 -52.2M33.7 -51.3L34.7 -49.8L35.0 -49.2M35.0 -48.8L34.9 -47.7M35.9 -40.1L36.0 -41.3M26.1 -23.5L25.5 -24.3L24.6 -24.6L23.0 -24.5M36.3 -9.0L35.6 -8.7L34.0 -6.8M-34.6 90.7L-34.5 89.9M34.2 -64.1L34.3 -63.4L34.7 -61.6M22.6 -35.0L23.3 -35.4M-44.1 100.6L-43.5 100.1M46.5 -58.1L47.5 -58.4M-28.5 75.9L-28.4 75.2M18.2 -101.9L18.8 -102.7L19.4 -103.0L19.9 -103.4M32.6 -68.8L33.0 -67.8L32.6 -68.7M59.0 -59.9L59.6 -59.6M28.7 0.6L28.2 1.6L28.5 0.7M55.8 -51.3L57.4 -56.3L57.1 -59.1L56.5 -58.9M53.5 -63.6L54.1 -63.6M38.3 -66.8L39.6 -65.7M39.7 -65.5L40.9 -65.3M30.3 -1.6L30.7 -2.2L30.3 -1.6L30.0 -0.6L30.3 -1.6M29.7 -0.4L29.1 0.2L29.7 -0.4M19.1 -34.4L18.9 -35.0M19.4 -33.2L19.2 -33.8M18.4 -37.7L18.3 -36.5M17.2 14.4L17.2 13.8M-0.6 38.6L0.3 37.8M-19.5 58.5L-20.8 59.4M24.0 -35.3L24.5 -35.9M-33.6 84.6L-33.1 83.7M-28.5 77.6L-28.5 76.7M-26.5 67.3L-26.3 66.4M-21.2 26.2L-20.1 25.8M14.5 -102.0L14.2 -102.6M17.0 -39.0L18.0 -39.2M-5.4 47.4L-6.0 46.6M23.0 -94.6L23.1 -93.4M23.8 -89.8L23.5 -90.5M23.0 -88.8L23.5 -89.4M27.8 3.0L27.6 3.5M26.7 -38.2L27.1 -38.7M43.3 -55.6L42.9 -56.6M41.5 -9.8L41.9 -10.3L42.5 -11.1M38.2 -20.7L38.8 -21.3M33.8 -42.9L33.6 -43.8M34.2 -45.5L33.9 -44.7L33.6 -44.0M33.2 -55.1L32.6 -53.4M34.1 -57.6L33.8 -56.9L33.4 -56.3L33.3 -55.4M34.8 -59.2L34.5 -58.3M55.8 -62.7L56.5 -62.3L56.7 -61.6M49.6 -65.7L49.9 -65.0M31.2 -44.4L31.8 -44.5M-3.6 41.1L-4.4 39.4M15.9 19.2L16.4 18.6M10.5 27.0L11.0 26.6M19.3 -28.4L19.1 -29.8L19.3 -30.9M27.9 -80.4L27.7 -81.0M36.5 -18.5L37.4 -19.5M24.6 -36.5L25.2 -36.6M56.8 -25.5L57.3 -26.1L57.6 -26.7M50.8 -19.5L52.0 -19.5L52.6 -19.2L53.1 -19.7M15.1 10.6L14.5 10.3M1.1 37.7L1.7 37.9M-14.8 55.2L-18.9 58.1M-12.0 53.1L-14.4 54.8M-4.1 42.7L-3.7 41.4M56.9 -61.0L56.3 -58.7M43.7 -54.5L43.5 -55.2M34.8 -61.2L34.9 -60.0M23.5 -83.9L23.4 -83.3M39.7 -13.5L39.2 -13.1M42.0 -65.2L42.5 -65.7M29.3 -74.9L30.4 -75.1L29.3 -74.9L29.1 -75.6L29.3 -74.9M32.6 -68.9L32.7 -69.7L32.5 -71.3L32.7 -69.7M31.4 -73.8L32.2 -72.1M32.4 -66.8L32.9 -67.4L32.4 -66.8M34.9 -64.5L37.7 -66.7M19.9 -105.5L19.7 -106.4M26.5 -75.3L26.9 -75.9L26.1 -75.9M28.9 -77.2L29.3 -77.7L28.9 -77.2M44.2 -13.7L45.0 -14.4M54.8 -22.8L55.0 -23.4M63.2 -38.4L64.6 -38.4M65.5 -39.7L66.3 -39.9M49.5 -18.1L50.3 -18.9M-9.4 51.8L-8.4 51.3L-7.6 50.9M-7.2 50.8L-6.0 50.8L-7.0 50.8L-6.5 50.8M32.6 -66.4L33.9 -64.6L32.6 -66.4M58.1 -27.2L58.5 -27.8M-47.4 103.1L-46.6 102.6M-18.2 41.3L-17.4 41.9M-43.4 90.1L-43.5 90.8M-26.5 69.2L-26.3 68.5M14.5 21.1L15.1 20.3M40.4 -3.6L40.7 -4.2M13.4 -102.4L13.3 -101.7L12.8 -101.6L13.1 -101.2M-70.3 107.3L-70.3 106.3M-69.8 109.3L-70.1 108.9M-57.6 102.3L-56.6 102.3M-25.6 29.0L-26.2 29.1M-20.6 15.2L-20.0 15.0M47.1 -66.4L47.7 -66.6M-29.1 32.7L-29.5 33.2M-18.7 23.0L-17.9 22.8M-21.9 37.3L-21.7 38.8M27.8 2.7L28.1 2.2L27.8 2.7M74.4 -45.9L75.2 -46.7M-32.1 82.8L-31.3 82.1L-30.7 82.0M25.6 -81.8L26.0 -82.4L25.6 -81.8M59.2 -28.8L59.1 -30.0M37.7 0.7L38.9 -0.3M54.2 -21.2L54.7 -21.9M-25.6 62.6L-26.0 64.7M43.2 -11.7L43.6 -12.3M40.9 -4.7L41.1 -5.4M40.9 -7.5L40.7 -8.2M41.1 -13.9L41.7 -14.1M38.9 -30.7L38.3 -30.9M-49.0 104.8L-48.5 105.0L-48.1 104.1M57.6 -33.2L57.5 -33.9M57.4 -34.5L57.6 -35.3M73.4 -40.4L73.4 -39.7L73.1 -39.0M58.8 -28.0L59.2 -28.6M64.9 -38.7L65.2 -39.5M39.4 -0.8L40.0 -1.1M60.1 -37.2L59.7 -36.8M58.9 -36.3L59.6 -36.6M58.5 -30.3L58.5 -32.1L57.6 -32.4M60.8 -38.5L60.3 -37.8M-36.6 94.3L-35.5 93.4L-35.5 92.4M-35.9 95.6L-36.1 94.7M-65.3 88.4L-64.7 86.6M-5.8 49.4L-5.9 50.3M-40.1 95.1L-40.5 95.6M-17.0 43.2L-16.8 43.8M43.0 -66.0L44.3 -66.8M40.2 -1.3L40.2 -2.1M27.4 4.8L27.5 4.0L27.4 4.8M-42.4 99.1L-43.3 99.9M-34.3 89.6L-33.6 89.5L-32.8 88.3M-36.7 97.2L-37.4 97.4M50.7 -64.2L51.9 -63.7M47.9 -66.2L49.1 -66.1M-27.7 30.3L-27.9 30.9M-30.0 81.0L-29.6 80.4M47.4 -16.6L48.3 -17.3M15.5 -102.7L14.9 -102.2M19.2 -99.7L18.9 -100.3M21.8 -96.3L21.3 -97.0M23.6 -90.8L23.4 -91.4M-22.5 32.0L-23.2 31.1M28.1 -76.2L26.9 -75.9M40.2 -2.5L40.2 -3.5M-35.0 91.9L-34.6 91.1M46.0 -66.6L46.7 -66.3M24.0 -82.6L24.6 -82.4L24.0 -82.6M32.3 2.2L33.9 2.7L34.9 2.5M32.4 -4.6L32.1 -4.0M35.5 -41.3L35.4 -41.9M34.8 -46.5L34.5 -45.9M33.1 -21.1L32.4 -21.2M-19.4 40.2L-18.8 40.2M42.9 -25.3L42.3 -26.3M40.2 -30.4L39.4 -30.5M35.9 -33.3L36.1 -33.9M36.2 -35.7L36.1 -36.3M31.5 -3.2L31.2 -2.5"
+                fill="none" stroke="#8c2230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+
+          <!-- Major ports — eight harbours of the export machine.
+               Coords projected from real lat/lng with the same transform. -->
+          <g fill="#1d1610">
+            <circle cx="26.6"  cy="-83.0" r="2.2"/>  <!-- Auckland -->
+            <circle cx="16.2"  cy="-38.8" r="2.2"/>  <!-- New Plymouth -->
+            <circle cx="30.9"  cy="-21.4" r="2.2"/>  <!-- Wanganui -->
+            <circle cx="26.9"  cy="5.8"   r="2.2"/>  <!-- Wellington -->
+            <circle cx="59.0"  cy="-30.2" r="2.2"/>  <!-- Napier -->
+            <circle cx="-4.2"  cy="52.2"  r="2.2"/>  <!-- Lyttelton -->
+            <circle cx="-35.9" cy="96.2"  r="2.2"/>  <!-- Port Chalmers -->
+            <circle cx="-70.3" cy="112.0" r="2.2"/>  <!-- Bluff -->
+          </g>
+
+          <!-- Legend (bottom-left of the map area) -->
+          <g transform="translate(-180, 175)">
+            <line x1="0" y1="0" x2="14" y2="0" stroke="#8c2230" stroke-width="1.5"/>
+            <text x="20" y="3" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">OPERATING</text>
+            <line x1="80" y1="0" x2="94" y2="0" stroke="#8c2230" stroke-width="1.0" stroke-dasharray="2.2 2.2" opacity="0.5"/>
+            <text x="100" y="3" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">ABANDONED</text>
+            <circle cx="180" cy="0" r="2.2" fill="#1d1610"/>
+            <text x="188" y="3" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#4a3d2e">PORT</text>
+          </g>
+        </g>
+
+        <!-- Caption rule + source line -->
+        <line x1="0" y1="510" x2="900" y2="510" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="535" fill="#8a7659">Borrowed money laid the tracks; the tracks pulled the settlers; the settlers worked the land they reached.</text>
+        <text class="map-label" x="0" y="555" fill="#8a7659">Sources: Te Ara; NZ History; NZ Official Yearbook 1893; Statistics New Zealand; NZR Mileage Table; OpenStreetMap; Natural Earth.</text>
+      </svg>
+    </div>
+
+    <p>The bargain was plain: migrants would occupy land, build infrastructure and stabilise a British settler society. Railways were land policy on iron wheels. They linked farms to ports, ports to London credit, and credit to the next shipload of settlers.</p>
+
+    <!-- Yearly arrivals figure — companion to the public-works infographic
+         above. The infographic shows the scale of what was built; this
+         one shows the shape of the wave that built it: a 43,965-arrival
+         peak in 1874 (the +38,000 net-migration year, the largest single-
+         year gain in NZ history until 2002), the rapid roll-off through
+         1877-78, the 1879 second peak as the loan programme spent its
+         last big tranche, the deep 1881 trough, and the secondary 1883-84
+         uptick as Stout-Vogel re-opened assisted passages.
+
+         Numbers are total arrivals (UK + Australia + Other) from the NZ
+         Official Yearbook 1894's "Twenty Years" table. The yearbook
+         arrivals series starts at 1874; the Vogel scheme's 1871-73
+         ramp-up cohorts contributed ~50,000 more (Te Ara, "The great
+         migration: 1871 to 1885"). -->
+    <div class="figure ch6-arrivals-figure reveal">
+      <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Yearly arrivals · 1874–1885</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A wave of migration</text>
+
+        <!-- Stat callout, top-right -->
+        <g transform="translate(800, 100)">
+          <text x="0" y="0" text-anchor="end" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5" fill="#4a3d2e">ARRIVALS · 1871–1885</text>
+          <text x="0" y="50" text-anchor="end" font-family="Fraunces" font-size="50" font-weight="600" fill="#1d1610">289,026</text>
+          <text x="0" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">40% LATER LEFT THE COLONY</text>
+        </g>
+
+        <!-- Bars · oxblood, the chapter's signature. Real annual totals
+             from NZ Official Yearbook 1894, table "Twenty Years" arrivals.
+             Bars are at translate(40, 70) within the SVG; W=22, G=8;
+             max value 43,965 (1874) sets full-height = 200 SVG units. -->
+        <g transform="translate(40, 70)">
+          <g fill="#8c2230" opacity="0.92">
+            <rect x="0"   y="0"     width="22" height="200"  /> <!-- 1874 · 43,965 -->
+            <rect x="30"  y="55.7"  width="22" height="144.3"/> <!-- 1875 · 31,737 -->
+            <rect x="60"  y="116.3" width="22" height="83.7" /> <!-- 1876 · 18,414 -->
+            <rect x="90"  y="141.0" width="22" height="59.0" /> <!-- 1877 · 12,987 -->
+            <rect x="120" y="126.1" width="22" height="73.9" /> <!-- 1878 · 16,263 -->
+            <rect x="150" y="91.1"  width="22" height="108.9"/> <!-- 1879 · 23,957 -->
+            <rect x="180" y="131.1" width="22" height="68.9" /> <!-- 1880 · 15,154 -->
+            <rect x="210" y="156.0" width="22" height="44.0" /> <!-- 1881 ·  9,688 -->
+            <rect x="240" y="150.2" width="22" height="49.8" /> <!-- 1882 · 10,945 -->
+            <rect x="270" y="112.7" width="22" height="87.3" /> <!-- 1883 · 19,215 -->
+            <rect x="300" y="109.0" width="22" height="91.0" /> <!-- 1884 · 20,021 -->
+            <rect x="330" y="126.4" width="22" height="73.6" /> <!-- 1885 · 16,199 -->
+          </g>
+
+          <!-- Y-axis: a tick at 0 and at the peak (≈44k), with horizontal
+               rule at the baseline. No gridlines — keep it light. -->
+          <g font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659" text-anchor="end">
+            <text x="-6" y="3">44k</text>
+            <text x="-6" y="203">0</text>
+          </g>
+
+          <!-- Baseline -->
+          <line x1="0" y1="200" x2="352" y2="200" stroke="#1d1610" stroke-width="1"/>
+
+          <!-- Year ticks: every other year, plus 1885 -->
+          <g font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659" text-anchor="middle">
+            <text x="11"  y="216">1874</text>
+            <text x="71"  y="216">1876</text>
+            <text x="131" y="216">1878</text>
+            <text x="191" y="216">1880</text>
+            <text x="251" y="216">1882</text>
+            <text x="311" y="216">1884</text>
+          </g>
+
+          <!-- Peak callout — small annotation above the 1874 bar -->
+          <text x="11" y="-8" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#1d1610" text-anchor="middle">43,965</text>
+        </g>
+
+        <!-- Caption -->
+        <line x1="0" y1="300" x2="800" y2="300" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="320" fill="#8a7659">Total annual arrivals — the yearbook series begins at 1874.</text>
+        <text class="map-label" x="0" y="340" fill="#8a7659">Source: NZ Official Yearbook 1894.</text>
+      </svg>
+    </div>
+
+    <p>Smaller but significant streams arrived alongside. Germans and Scandinavians were recruited for some settlements. Dalmatians (later Croatians) came in connection with kauri gum. Australians moved back and forth across the Tasman. But Britain still supplied most migrants, and much of the self-image. New Zealand imagined itself as a <em>better Britain</em>: rural, moral, prosperous, egalitarian — and racially controlled.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- ============== ACT III ============== -->
+<div class="act-divider">
+  <div class="marker">Act III · The Pastoral Century</div>
+  <div class="act-title">A Britain of the south seas</div>
+  <div class="act-years">1882 — 1973</div>
+</div>
+
+<!-- Poutama · stairway — sea, land, sky. The climb between elements:
+     aumoana below, pounamu above, ink at the peak. Tāne's ascent through
+     the heavens to retrieve the baskets of knowledge — a country
+     building its way upward. -->
+<div class="maori-strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="strip-poutama" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <rect width="80" height="80" fill="#e6d4a8"/>
+        <rect x="0" y="60" width="40" height="20" fill="#2c6479"/>
+        <rect x="0" y="40" width="30" height="20" fill="#2d6e4d"/>
+        <rect x="0" y="20" width="20" height="20" fill="#2d6e4d"/>
+        <rect x="0" y="0"  width="10" height="20" fill="#1a1411"/>
+        <rect x="40" y="60" width="40" height="20" fill="#2c6479"/>
+        <rect x="50" y="40" width="30" height="20" fill="#2d6e4d"/>
+        <rect x="60" y="20" width="20" height="20" fill="#2d6e4d"/>
+        <rect x="70" y="0"  width="10" height="20" fill="#1a1411"/>
+        <g fill="#f7eed5">
+          <circle cx="5" cy="10" r="1.3"/>
+          <circle cx="5" cy="30" r="1.3"/><circle cx="15" cy="30" r="1.3"/>
+          <circle cx="5" cy="50" r="1.3"/><circle cx="15" cy="50" r="1.3"/><circle cx="25" cy="50" r="1.3"/>
+          <circle cx="5" cy="70" r="1.3"/><circle cx="15" cy="70" r="1.3"/><circle cx="25" cy="70" r="1.3"/><circle cx="35" cy="70" r="1.3"/>
+          <circle cx="75" cy="10" r="1.3"/>
+          <circle cx="65" cy="30" r="1.3"/><circle cx="75" cy="30" r="1.3"/>
+          <circle cx="55" cy="50" r="1.3"/><circle cx="65" cy="50" r="1.3"/><circle cx="75" cy="50" r="1.3"/>
+          <circle cx="45" cy="70" r="1.3"/><circle cx="55" cy="70" r="1.3"/><circle cx="65" cy="70" r="1.3"/><circle cx="75" cy="70" r="1.3"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#strip-poutama)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 7: Refrigeration ============ -->
+<section class="chapter" id="ch7">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Seven</div>
+    <h2 class="chapter-title">Refrigeration,<br><em>and a country tied to one market</em></h2>
+    <p class="chapter-dek">The first shipment of frozen meat to Britain in 1882 put meat and dairy at the heart of the country's exports. New Zealand was geographically Pacific — but economically and culturally British.</p>
+  </div>
+
+    <!-- Vignette: the Dunedin's 1882 voyage. World silhouette is Natural
+         Earth 1:110m projected through a Mollweide centred on the eastern
+         Pacific (LON_C = -90°), so the antimeridian cut runs through
+         central Asia and the voyage from Port Chalmers around Cape Horn
+         to London curves left-to-right across the map without wrapping.
+         Geometry is pre-projected by data/build/project-dunedin-voyage.py;
+         no runtime libraries — the figure is pure SVG. -->
+    <div class="full-chapter ch7-prelude">
+      <p>Refrigeration changed the cost of distance. The first successful shipment of frozen meat left New Zealand for Britain in 1882, carrying 4,311 sheep carcasses, 598 lambs and 22 pigs on the <em>Dunedin</em>.</p>
+
+      <div class="figure ch7-dunedin reveal">
+        <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+          <text class="map-label" x="0" y="14" fill="#8a7659">First frozen meat · 1882</text>
+          <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The voyage of the Dunedin</text>
+
+          <!-- Stat callout, top right -->
+          <g transform="translate(800, 30)">
+            <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="34" fill="#1d1610">98 days</text>
+            <text x="0" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">PORT CHALMERS → LONDON · 15 FEB → 24 MAY 1882</text>
+          </g>
+
+          <!-- World map -->
+          <g transform="translate(400, 240)">
+            <!-- Sea wash filling the projection ellipse -->
+            <ellipse cx="0" cy="0" rx="350.7" ry="175.4" fill="#7c9d9d" opacity="0.07"/>
+
+            <!-- Graticule (parallels + meridians, 30° spacing) -->
+            <path d="M-57.2 165.8L-71.0 160.3L-83.3 154.3L-94.3 147.9L-104.3 141.0L-113.5 133.7L-121.9 126.1L-129.5 118.2L-136.5 110.1L-142.9 101.7L-148.6 93.1L-153.8 84.3L-158.3 75.4L-162.4 66.3L-165.8 57.0L-168.8 47.7L-171.1 38.3L-173.0 28.8L-174.3 19.2L-175.1 9.6L-175.4 -0.0L-175.1 -9.6L-174.3 -19.2L-173.0 -28.8L-171.1 -38.3L-168.8 -47.7L-165.8 -57.0L-162.4 -66.3L-158.3 -75.4L-153.8 -84.3L-148.6 -93.1L-142.9 -101.7L-136.5 -110.1L-129.5 -118.2L-121.9 -126.1L-113.5 -133.7L-104.3 -141.0L-94.3 -147.9L-83.3 -154.3L-71.0 -160.3L-57.2 -165.8M-38.1 165.8L-47.3 160.3L-55.5 154.3L-62.9 147.9L-69.6 141.0L-75.7 133.7L-81.2 126.1L-86.3 118.2L-91.0 110.1L-95.2 101.7L-99.1 93.1L-102.5 84.3L-105.6 75.4L-108.2 66.3L-110.6 57.0L-112.5 47.7L-114.1 38.3L-115.3 28.8L-116.2 19.2L-116.7 9.6L-116.9 -0.0L-116.7 -9.6L-116.2 -19.2L-115.3 -28.8L-114.1 -38.3L-112.5 -47.7L-110.6 -57.0L-108.2 -66.3L-105.6 -75.4L-102.5 -84.3L-99.1 -93.1L-95.2 -101.7L-91.0 -110.1L-86.3 -118.2L-81.2 -126.1L-75.7 -133.7L-69.6 -141.0L-62.9 -147.9L-55.5 -154.3L-47.3 -160.3L-38.1 -165.8M-19.1 165.8L-23.7 160.3L-27.8 154.3L-31.4 147.9L-34.8 141.0L-37.8 133.7L-40.6 126.1L-43.2 118.2L-45.5 110.1L-47.6 101.7L-49.5 93.1L-51.3 84.3L-52.8 75.4L-54.1 66.3L-55.3 57.0L-56.3 47.7L-57.0 38.3L-57.7 28.8L-58.1 19.2L-58.4 9.6L-58.5 -0.0L-58.4 -9.6L-58.1 -19.2L-57.7 -28.8L-57.0 -38.3L-56.3 -47.7L-55.3 -57.0L-54.1 -66.3L-52.8 -75.4L-51.3 -84.3L-49.5 -93.1L-47.6 -101.7L-45.5 -110.1L-43.2 -118.2L-40.6 -126.1L-37.8 -133.7L-34.8 -141.0L-31.4 -147.9L-27.8 -154.3L-23.7 -160.3L-19.1 -165.8M0.0 165.8L0.0 160.3L0.0 154.3L0.0 147.9L0.0 141.0L0.0 133.7L0.0 126.1L0.0 118.2L0.0 110.1L0.0 101.7L0.0 93.1L0.0 84.3L0.0 75.4L0.0 66.3L0.0 57.0L0.0 47.7L0.0 38.3L0.0 28.8L0.0 19.2L0.0 9.6L0.0 -0.0L0.0 -9.6L0.0 -19.2L0.0 -28.8L0.0 -38.3L0.0 -47.7L0.0 -57.0L0.0 -66.3L0.0 -75.4L0.0 -84.3L0.0 -93.1L0.0 -101.7L0.0 -110.1L0.0 -118.2L0.0 -126.1L0.0 -133.7L0.0 -141.0L0.0 -147.9L0.0 -154.3L0.0 -160.3L0.0 -165.8M19.1 165.8L23.7 160.3L27.8 154.3L31.4 147.9L34.8 141.0L37.8 133.7L40.6 126.1L43.2 118.2L45.5 110.1L47.6 101.7L49.5 93.1L51.3 84.3L52.8 75.4L54.1 66.3L55.3 57.0L56.3 47.7L57.0 38.3L57.7 28.8L58.1 19.2L58.4 9.6L58.5 -0.0L58.4 -9.6L58.1 -19.2L57.7 -28.8L57.0 -38.3L56.3 -47.7L55.3 -57.0L54.1 -66.3L52.8 -75.4L51.3 -84.3L49.5 -93.1L47.6 -101.7L45.5 -110.1L43.2 -118.2L40.6 -126.1L37.8 -133.7L34.8 -141.0L31.4 -147.9L27.8 -154.3L23.7 -160.3L19.1 -165.8M38.1 165.8L47.3 160.3L55.5 154.3L62.9 147.9L69.6 141.0L75.7 133.7L81.2 126.1L86.3 118.2L91.0 110.1L95.2 101.7L99.1 93.1L102.5 84.3L105.6 75.4L108.2 66.3L110.6 57.0L112.5 47.7L114.1 38.3L115.3 28.8L116.2 19.2L116.7 9.6L116.9 -0.0L116.7 -9.6L116.2 -19.2L115.3 -28.8L114.1 -38.3L112.5 -47.7L110.6 -57.0L108.2 -66.3L105.6 -75.4L102.5 -84.3L99.1 -93.1L95.2 -101.7L91.0 -110.1L86.3 -118.2L81.2 -126.1L75.7 -133.7L69.6 -141.0L62.9 -147.9L55.5 -154.3L47.3 -160.3L38.1 -165.8M57.2 165.8L71.0 160.3L83.3 154.3L94.3 147.9L104.3 141.0L113.5 133.7L121.9 126.1L129.5 118.2L136.5 110.1L142.9 101.7L148.6 93.1L153.8 84.3L158.3 75.4L162.4 66.3L165.8 57.0L168.8 47.7L171.1 38.3L173.0 28.8L174.3 19.2L175.1 9.6L175.4 -0.0L175.1 -9.6L174.3 -19.2L173.0 -28.8L171.1 -38.3L168.8 -47.7L165.8 -57.0L162.4 -66.3L158.3 -75.4L153.8 -84.3L148.6 -93.1L142.9 -101.7L136.5 -110.1L129.5 -118.2L121.9 -126.1L113.5 -133.7L104.3 -141.0L94.3 -147.9L83.3 -154.3L71.0 -160.3L57.2 -165.8M76.2 165.8L94.7 160.3L111.0 154.3L125.7 147.9L139.1 141.0L151.3 133.7L162.5 126.1L172.7 118.2L182.0 110.1L190.5 101.7L198.1 93.1L205.0 84.3L211.1 75.4L216.5 66.3L221.1 57.0L225.0 47.7L228.2 38.3L230.6 28.8L232.4 19.2L233.5 9.6L233.8 -0.0L233.5 -9.6L232.4 -19.2L230.6 -28.8L228.2 -38.3L225.0 -47.7L221.1 -57.0L216.5 -66.3L211.1 -75.4L205.0 -84.3L198.1 -93.1L190.5 -101.7L182.0 -110.1L172.7 -118.2L162.5 -126.1L151.3 -133.7L139.1 -141.0L125.7 -147.9L111.0 -154.3L94.7 -160.3L76.2 -165.8M95.3 165.8L118.4 160.3L138.8 154.3L157.2 147.9L173.9 141.0L189.1 133.7L203.1 126.1L215.9 118.2L227.5 110.1L238.1 101.7L247.7 93.1L256.3 84.3L263.9 75.4L270.6 66.3L276.4 57.0L281.3 47.7L285.2 38.3L288.3 28.8L290.5 19.2L291.8 9.6L292.3 -0.0L291.8 -9.6L290.5 -19.2L288.3 -28.8L285.2 -38.3L281.3 -47.7L276.4 -57.0L270.6 -66.3L263.9 -75.4L256.3 -84.3L247.7 -93.1L238.1 -101.7L227.5 -110.1L215.9 -118.2L203.1 -126.1L189.1 -133.7L173.9 -141.0L157.2 -147.9L138.8 -154.3L118.4 -160.3L95.3 -165.8M-95.3 165.8L-118.4 160.3L-138.8 154.3L-157.2 147.9L-173.9 141.0L-189.1 133.7L-203.1 126.1L-215.9 118.2L-227.5 110.1L-238.1 101.7L-247.7 93.1L-256.3 84.3L-263.9 75.4L-270.6 66.3L-276.4 57.0L-281.3 47.7L-285.2 38.3L-288.3 28.8L-290.5 19.2L-291.8 9.6L-292.3 -0.0L-291.8 -9.6L-290.5 -19.2L-288.3 -28.8L-285.2 -38.3L-281.3 -47.7L-276.4 -57.0L-270.6 -66.3L-263.9 -75.4L-256.3 -84.3L-247.7 -93.1L-238.1 -101.7L-227.5 -110.1L-215.9 -118.2L-203.1 -126.1L-189.1 -133.7L-173.9 -141.0L-157.2 -147.9L-138.8 -154.3L-118.4 -160.3L-95.3 -165.8M-76.2 165.8L-94.7 160.3L-111.0 154.3L-125.7 147.9L-139.1 141.0L-151.3 133.7L-162.5 126.1L-172.7 118.2L-182.0 110.1L-190.5 101.7L-198.1 93.1L-205.0 84.3L-211.1 75.4L-216.5 66.3L-221.1 57.0L-225.0 47.7L-228.2 38.3L-230.6 28.8L-232.4 19.2L-233.5 9.6L-233.8 -0.0L-233.5 -9.6L-232.4 -19.2L-230.6 -28.8L-228.2 -38.3L-225.0 -47.7L-221.1 -57.0L-216.5 -66.3L-211.1 -75.4L-205.0 -84.3L-198.1 -93.1L-190.5 -101.7L-182.0 -110.1L-172.7 -118.2L-162.5 -126.1L-151.3 -133.7L-139.1 -141.0L-125.7 -147.9L-111.0 -154.3L-94.7 -160.3L-76.2 -165.8M-57.2 165.8L-71.0 160.3L-83.3 154.3L-94.3 147.9L-104.3 141.0L-113.5 133.7L-121.9 126.1L-129.5 118.2L-136.5 110.1L-142.9 101.7L-148.6 93.1L-153.8 84.3L-158.3 75.4L-162.4 66.3L-165.8 57.0L-168.8 47.7L-171.1 38.3L-173.0 28.8L-174.3 19.2L-175.1 9.6L-175.4 -0.0L-175.1 -9.6L-174.3 -19.2L-173.0 -28.8L-171.1 -38.3L-168.8 -47.7L-165.8 -57.0L-162.4 -66.3L-158.3 -75.4L-153.8 -84.3L-148.6 -93.1L-142.9 -101.7L-136.5 -110.1L-129.5 -118.2L-121.9 -126.1L-113.5 -133.7L-104.3 -141.0L-94.3 -147.9L-83.3 -154.3L-71.0 -160.3L-57.2 -165.8M-224.4 133.7L-219.4 133.7L-214.4 133.7L-209.3 133.7L-204.3 133.7L-199.2 133.7L-194.2 133.7L-189.1 133.7L-184.1 133.7L-179.0 133.7L-174.0 133.7L-169.0 133.7L-163.9 133.7L-158.9 133.7L-153.8 133.7L-148.8 133.7L-143.7 133.7L-138.7 133.7L-133.7 133.7L-128.6 133.7L-123.6 133.7L-118.5 133.7L-113.5 133.7L-108.4 133.7L-103.4 133.7L-98.4 133.7L-93.3 133.7L-88.3 133.7L-83.2 133.7L-78.2 133.7L-73.1 133.7L-68.1 133.7L-63.0 133.7L-58.0 133.7L-53.0 133.7L-47.9 133.7L-42.9 133.7L-37.8 133.7L-32.8 133.7L-27.7 133.7L-22.7 133.7L-17.7 133.7L-12.6 133.7L-7.6 133.7L-2.5 133.7L2.5 133.7L7.6 133.7L12.6 133.7L17.7 133.7L22.7 133.7L27.7 133.7L32.8 133.7L37.8 133.7L42.9 133.7L47.9 133.7L53.0 133.7L58.0 133.7L63.0 133.7L68.1 133.7L73.1 133.7L78.2 133.7L83.2 133.7L88.3 133.7L93.3 133.7L98.4 133.7L103.4 133.7L108.4 133.7L113.5 133.7L118.5 133.7L123.6 133.7L128.6 133.7L133.7 133.7L138.7 133.7L143.7 133.7L148.8 133.7L153.8 133.7L158.9 133.7L163.9 133.7L169.0 133.7L174.0 133.7L179.0 133.7L184.1 133.7L189.1 133.7L194.2 133.7L199.2 133.7L204.3 133.7L209.3 133.7L214.4 133.7L219.4 133.7L224.4 133.7M-317.3 70.8L-310.1 70.8L-303.0 70.8L-295.9 70.8L-288.7 70.8L-281.6 70.8L-274.5 70.8L-267.4 70.8L-260.2 70.8L-253.1 70.8L-246.0 70.8L-238.8 70.8L-231.7 70.8L-224.6 70.8L-217.5 70.8L-210.3 70.8L-203.2 70.8L-196.1 70.8L-188.9 70.8L-181.8 70.8L-174.7 70.8L-167.5 70.8L-160.4 70.8L-153.3 70.8L-146.2 70.8L-139.0 70.8L-131.9 70.8L-124.8 70.8L-117.6 70.8L-110.5 70.8L-103.4 70.8L-96.2 70.8L-89.1 70.8L-82.0 70.8L-74.9 70.8L-67.7 70.8L-60.6 70.8L-53.5 70.8L-46.3 70.8L-39.2 70.8L-32.1 70.8L-25.0 70.8L-17.8 70.8L-10.7 70.8L-3.6 70.8L3.6 70.8L10.7 70.8L17.8 70.8L25.0 70.8L32.1 70.8L39.2 70.8L46.3 70.8L53.5 70.8L60.6 70.8L67.7 70.8L74.9 70.8L82.0 70.8L89.1 70.8L96.2 70.8L103.4 70.8L110.5 70.8L117.6 70.8L124.8 70.8L131.9 70.8L139.0 70.8L146.2 70.8L153.3 70.8L160.4 70.8L167.5 70.8L174.7 70.8L181.8 70.8L188.9 70.8L196.1 70.8L203.2 70.8L210.3 70.8L217.5 70.8L224.6 70.8L231.7 70.8L238.8 70.8L246.0 70.8L253.1 70.8L260.2 70.8L267.4 70.8L274.5 70.8L281.6 70.8L288.7 70.8L295.9 70.8L303.0 70.8L310.1 70.8L317.3 70.8M-346.8 -0.0L-339.0 -0.0L-331.2 -0.0L-323.4 -0.0L-315.7 -0.0L-307.9 -0.0L-300.1 -0.0L-292.3 -0.0L-284.5 -0.0L-276.7 -0.0L-268.9 -0.0L-261.1 -0.0L-253.3 -0.0L-245.5 -0.0L-237.7 -0.0L-229.9 -0.0L-222.1 -0.0L-214.3 -0.0L-206.5 -0.0L-198.7 -0.0L-191.0 -0.0L-183.2 -0.0L-175.4 -0.0L-167.6 -0.0L-159.8 -0.0L-152.0 -0.0L-144.2 -0.0L-136.4 -0.0L-128.6 -0.0L-120.8 -0.0L-113.0 -0.0L-105.2 -0.0L-97.4 -0.0L-89.6 -0.0L-81.8 -0.0L-74.0 -0.0L-66.2 -0.0L-58.5 -0.0L-50.7 -0.0L-42.9 -0.0L-35.1 -0.0L-27.3 -0.0L-19.5 -0.0L-11.7 -0.0L-3.9 -0.0L3.9 -0.0L11.7 -0.0L19.5 -0.0L27.3 -0.0L35.1 -0.0L42.9 -0.0L50.7 -0.0L58.5 -0.0L66.2 -0.0L74.0 -0.0L81.8 -0.0L89.6 -0.0L97.4 -0.0L105.2 -0.0L113.0 -0.0L120.8 -0.0L128.6 -0.0L136.4 -0.0L144.2 -0.0L152.0 -0.0L159.8 -0.0L167.6 -0.0L175.4 -0.0L183.2 -0.0L191.0 -0.0L198.7 -0.0L206.5 -0.0L214.3 -0.0L222.1 -0.0L229.9 -0.0L237.7 -0.0L245.5 -0.0L253.3 -0.0L261.1 -0.0L268.9 -0.0L276.7 -0.0L284.5 -0.0L292.3 -0.0L300.1 -0.0L307.9 -0.0L315.7 -0.0L323.4 -0.0L331.2 -0.0L339.0 -0.0L346.8 -0.0M-317.3 -70.8L-310.1 -70.8L-303.0 -70.8L-295.9 -70.8L-288.7 -70.8L-281.6 -70.8L-274.5 -70.8L-267.4 -70.8L-260.2 -70.8L-253.1 -70.8L-246.0 -70.8L-238.8 -70.8L-231.7 -70.8L-224.6 -70.8L-217.5 -70.8L-210.3 -70.8L-203.2 -70.8L-196.1 -70.8L-188.9 -70.8L-181.8 -70.8L-174.7 -70.8L-167.5 -70.8L-160.4 -70.8L-153.3 -70.8L-146.2 -70.8L-139.0 -70.8L-131.9 -70.8L-124.8 -70.8L-117.6 -70.8L-110.5 -70.8L-103.4 -70.8L-96.2 -70.8L-89.1 -70.8L-82.0 -70.8L-74.9 -70.8L-67.7 -70.8L-60.6 -70.8L-53.5 -70.8L-46.3 -70.8L-39.2 -70.8L-32.1 -70.8L-25.0 -70.8L-17.8 -70.8L-10.7 -70.8L-3.6 -70.8L3.6 -70.8L10.7 -70.8L17.8 -70.8L25.0 -70.8L32.1 -70.8L39.2 -70.8L46.3 -70.8L53.5 -70.8L60.6 -70.8L67.7 -70.8L74.9 -70.8L82.0 -70.8L89.1 -70.8L96.2 -70.8L103.4 -70.8L110.5 -70.8L117.6 -70.8L124.8 -70.8L131.9 -70.8L139.0 -70.8L146.2 -70.8L153.3 -70.8L160.4 -70.8L167.5 -70.8L174.7 -70.8L181.8 -70.8L188.9 -70.8L196.1 -70.8L203.2 -70.8L210.3 -70.8L217.5 -70.8L224.6 -70.8L231.7 -70.8L238.8 -70.8L246.0 -70.8L253.1 -70.8L260.2 -70.8L267.4 -70.8L274.5 -70.8L281.6 -70.8L288.7 -70.8L295.9 -70.8L303.0 -70.8L310.1 -70.8L317.3 -70.8M-224.4 -133.7L-219.4 -133.7L-214.4 -133.7L-209.3 -133.7L-204.3 -133.7L-199.2 -133.7L-194.2 -133.7L-189.1 -133.7L-184.1 -133.7L-179.0 -133.7L-174.0 -133.7L-169.0 -133.7L-163.9 -133.7L-158.9 -133.7L-153.8 -133.7L-148.8 -133.7L-143.7 -133.7L-138.7 -133.7L-133.7 -133.7L-128.6 -133.7L-123.6 -133.7L-118.5 -133.7L-113.5 -133.7L-108.4 -133.7L-103.4 -133.7L-98.4 -133.7L-93.3 -133.7L-88.3 -133.7L-83.2 -133.7L-78.2 -133.7L-73.1 -133.7L-68.1 -133.7L-63.0 -133.7L-58.0 -133.7L-53.0 -133.7L-47.9 -133.7L-42.9 -133.7L-37.8 -133.7L-32.8 -133.7L-27.7 -133.7L-22.7 -133.7L-17.7 -133.7L-12.6 -133.7L-7.6 -133.7L-2.5 -133.7L2.5 -133.7L7.6 -133.7L12.6 -133.7L17.7 -133.7L22.7 -133.7L27.7 -133.7L32.8 -133.7L37.8 -133.7L42.9 -133.7L47.9 -133.7L53.0 -133.7L58.0 -133.7L63.0 -133.7L68.1 -133.7L73.1 -133.7L78.2 -133.7L83.2 -133.7L88.3 -133.7L93.3 -133.7L98.4 -133.7L103.4 -133.7L108.4 -133.7L113.5 -133.7L118.5 -133.7L123.6 -133.7L128.6 -133.7L133.7 -133.7L138.7 -133.7L143.7 -133.7L148.8 -133.7L153.8 -133.7L158.9 -133.7L163.9 -133.7L169.0 -133.7L174.0 -133.7L179.0 -133.7L184.1 -133.7L189.1 -133.7L194.2 -133.7L199.2 -133.7L204.3 -133.7L209.3 -133.7L214.4 -133.7L219.4 -133.7L224.4 -133.7" fill="none" stroke="#a37c44" stroke-width="0.35" stroke-linejoin="round" opacity="0.35"/>
+
+            <!-- Land — Natural Earth 1:110m, pre-projected -->
+            <path d="M19.3 165.8L17.7 167.0L14.8 166.5L19.1 165.3L19.3 165.8M-45.4 165.1L-51.6 163.4L-45.4 165.1M32.0 163.2L29.6 165.8L23.4 167.1L21.8 166.6L29.5 163.2L32.0 163.2M-27.3 156.6L-25.2 156.6L-25.9 157.5L-28.6 156.4L-27.3 156.6M-31.2 156.6L-29.4 157.2L-32.7 156.6L-31.2 156.6M-8.3 154.2L-6.3 154.3L-5.6 155.1L-9.8 155.1L-11.5 154.2L-8.3 154.2M20.7 152.7L19.5 154.6L16.0 155.1L16.7 154.5L13.9 154.4L15.3 153.2L17.0 153.1L18.3 150.3L20.2 149.3L20.7 152.7M36.3 141.2L31.8 142.4L30.6 143.6L30.7 144.8L26.0 147.1L25.6 148.5L27.1 149.9L27.2 152.3L25.4 156.9L14.9 161.2L9.7 161.4L11.7 163.0L8.5 163.7L8.0 164.7L8.6 165.6L15.0 168.0L16.1 168.7L15.7 169.7L22.6 167.9L25.7 168.4L38.2 166.2L40.1 164.8L35.7 165.1L38.8 163.3L62.6 158.1L64.8 156.6L75.6 153.2L77.2 153.9L79.7 152.6L80.5 152.8L79.8 153.4L80.7 153.5L84.9 153.1L84.1 153.8L96.9 151.0L98.3 151.2L97.0 152.5L102.3 151.1L103.4 151.2L102.6 151.8L106.0 151.0L109.9 151.3L108.8 152.3L114.0 151.9L128.0 148.7L128.5 148.9L127.5 149.9L128.9 149.8L128.0 150.8L159.1 144.3L161.8 144.4L158.9 146.7L159.7 146.8L158.9 147.8L164.1 146.8L166.8 147.7L146.0 154.6L195.6 144.8L192.7 146.4M-191.9 146.6L-182.1 146.6L-186.7 143.7L-176.7 146.1L-173.4 145.7L-174.3 144.7L-173.3 144.2L-160.5 146.6L-159.7 146.5L-160.8 145.4L-160.2 145.3L-153.0 145.8L-148.6 144.8L-151.6 143.3L-142.9 146.1L-134.3 146.0L-125.6 148.5L-118.9 149.3L-119.3 148.8L-105.2 152.1L-94.0 153.4L-87.7 156.9L-88.3 157.1L-87.9 158.0L-84.3 160.2L-70.6 164.2L-72.4 164.7L-65.6 167.0L-42.0 171.0L-0.0 175.4L-37.6 171.3L-39.9 170.7L-36.1 171.1L-37.4 170.6L-36.8 170.4L-21.6 172.2L-21.3 171.6L-29.9 170.2L-39.3 167.2L-35.1 167.5L-34.7 166.6L-36.2 165.7L-47.1 163.7L-51.7 161.6L-45.2 162.3L-43.3 161.0L-45.6 159.4L-43.8 159.7L-38.4 157.9L-26.1 158.2L-20.8 157.0L-18.6 158.5L-8.7 159.3L-8.4 158.7L-10.7 157.6L-12.4 155.3L-5.5 156.8L-0.1 156.4L0.7 155.2L4.2 156.6L7.4 157.2L8.6 156.1L11.8 157.4L18.8 155.9L21.1 154.4L21.4 150.7L24.6 146.0L30.8 142.1L36.9 139.9L38.4 140.1L36.3 141.2M31.2 121.9L34.5 123.6L33.6 124.6L31.8 124.0L29.8 125.4L28.3 125.1L24.6 123.2L21.8 119.9L26.4 122.3L29.5 119.3L30.5 119.5L31.2 121.9M45.8 116.4L46.7 117.3L46.0 118.0L43.9 118.6L43.5 117.9L42.0 118.8L41.5 117.9L45.8 116.4M237.9 113.6L235.4 113.7L239.2 111.4L240.3 112.3L237.9 113.6M-204.2 94.8L-202.0 95.6L-199.3 95.0L-195.4 100.0L-196.5 99.4L-196.2 100.9L-197.7 100.7L-205.5 94.6L-204.2 94.8M-158.8 95.1L-157.8 96.0L-157.2 95.1L-156.1 96.0L-155.4 100.4L-154.1 101.4L-156.0 102.2L-154.5 105.7L-155.2 107.3L-160.0 106.4L-161.5 104.1L-161.2 102.0L-159.5 99.6L-160.2 95.2L-159.8 94.2L-158.8 95.1M-162.8 84.7L-160.1 87.0L-161.0 85.5L-156.8 88.5L-154.1 88.1L-153.1 91.3L-154.4 91.3L-153.3 95.9L-154.0 96.8L-155.6 95.9L-155.8 94.1L-157.2 92.9L-159.5 92.0L-160.0 91.3L-159.3 90.5L-161.0 87.4L-168.2 81.1L-164.4 82.7L-162.8 84.7M-191.2 52.8L-191.7 53.3L-194.6 51.6L-198.6 47.9L-191.2 52.8M-173.5 41.4L-172.7 43.4L-174.9 43.4L-174.8 41.5L-173.5 41.4M-171.9 40.2L-173.0 40.7L-173.5 39.8L-171.1 38.4L-170.8 39.6L-171.9 40.2M-170.7 39.5L-170.7 38.3L-170.7 39.5M-194.0 39.4L-194.5 39.7L-195.5 38.0L-194.0 39.4M-196.3 35.7L-195.5 37.7L-196.4 37.5L-197.4 35.0L-196.3 35.7M268.2 32.5L267.2 37.6L266.6 38.3L266.4 36.9L265.8 37.6L263.4 42.9L253.7 56.5L251.4 59.2L247.5 60.8L245.8 59.3L247.1 54.2L248.8 50.8L251.9 47.9L253.6 41.6L255.5 38.8L259.4 37.7L262.9 34.9L263.9 32.7L264.6 33.0L267.5 28.9L268.2 32.5M-242.0 33.0L-240.8 34.8L-239.8 33.9L-237.7 35.9L-232.7 45.3L-226.8 48.6L-223.4 53.2L-222.9 52.7L-221.4 53.3L-220.0 55.8L-214.5 60.0L-209.9 66.5L-206.5 74.6L-206.0 76.6L-206.6 77.7L-205.0 83.6L-202.7 87.5L-203.0 88.2L-204.8 88.3L-206.0 91.0L-209.5 89.7L-210.2 88.5L-210.9 90.5L-217.4 88.8L-222.6 84.6L-226.0 83.5L-228.0 80.7L-227.6 82.3L-228.8 82.7L-229.8 79.1L-231.1 77.4L-231.6 80.1L-230.9 81.9L-237.8 76.8L-244.8 74.2L-247.8 74.4L-250.9 76.0L-252.7 75.9L-254.8 77.5L-254.1 79.6L-260.4 79.8L-261.5 82.2L-264.0 82.2L-268.4 80.3L-270.9 75.8L-284.7 62.9L-285.6 61.9L-284.1 62.9L-286.1 60.8L-283.7 62.4L-288.0 57.9L-290.1 51.8L-289.0 53.6L-289.1 52.0L-286.6 49.3L-285.2 49.5L-282.7 47.6L-280.0 47.0L-278.9 43.5L-279.7 41.2L-279.1 39.2L-277.6 41.3L-276.9 40.8L-278.0 39.7L-277.9 38.5L-276.8 39.0L-277.3 37.2L-275.8 34.1L-274.9 34.4L-275.1 33.8L-273.5 33.1L-270.2 35.6L-267.8 35.8L-268.6 34.5L-267.6 30.0L-266.6 29.2L-264.1 29.0L-264.4 27.8L-266.0 27.0L-265.1 26.7L-258.8 29.4L-256.7 28.4L-255.5 29.6L-256.2 31.8L-256.8 31.9L-256.5 35.9L-245.4 42.3L-244.4 41.5L-244.5 39.2L-246.4 29.7L-245.7 25.6L-242.0 33.0M-208.0 25.1L-207.3 26.0L-208.7 26.0L-209.7 24.5L-208.0 25.1M-288.0 24.6L-291.8 22.9L-290.1 22.5L-288.0 24.6M-210.7 23.7L-212.7 23.5L-213.2 22.2L-210.7 23.7M-209.2 23.0L-211.8 20.0L-211.2 20.0L-209.2 23.0M-280.9 24.3L-282.7 24.6L-282.2 22.3L-280.4 20.8L-276.1 20.2L-280.0 22.5L-280.9 24.3M-294.5 19.4L-292.6 19.9L-291.9 20.9L-296.3 21.7L-295.9 20.3L-294.9 20.3L-294.5 19.4M-284.8 19.4L-284.9 20.8L-290.3 21.1L-290.5 20.3L-289.0 19.8L-287.7 20.5L-284.8 19.4M-213.2 20.0L-213.0 20.5L-216.7 17.8L-213.2 20.0M-218.0 17.6L-219.3 17.2L-220.2 15.9L-218.0 17.6M-313.1 16.3L-309.3 16.5L-309.1 15.5L-305.3 16.7L-304.3 18.2L-301.3 18.7L-298.7 20.1L-300.7 21.0L-303.0 20.0L-313.3 18.6L-319.4 16.5L-318.4 14.2L-316.0 14.3L-313.1 16.3M-262.6 14.9L-263.4 16.6L-263.3 13.1L-262.6 14.9M-221.4 16.4L-221.9 16.6L-223.9 14.2L-224.2 12.1L-221.2 15.7L-221.4 16.4M-229.3 13.2L-232.5 15.2L-236.4 13.8L-236.3 13.1L-233.5 13.2L-233.0 12.0L-232.7 13.3L-231.6 13.1L-230.1 11.4L-230.4 10.0L-228.9 10.4L-229.3 13.2M-277.8 8.3L-278.5 9.1L-279.9 8.7L-280.3 7.6L-278.4 7.5L-277.8 8.3M-271.6 7.4L-270.8 9.3L-272.5 8.3L-276.6 8.2L-276.2 6.8L-271.6 7.4M-227.3 10.8L-227.8 11.5L-228.8 9.1L-232.4 6.6L-231.8 6.0L-229.2 7.8L-227.3 10.8M-264.7 2.8L-264.0 6.7L-261.9 8.1L-260.4 5.5L-258.2 4.1L-256.5 4.1L-244.0 9.3L-241.4 11.7L-241.0 13.1L-237.6 14.6L-236.9 15.9L-238.7 16.1L-238.1 17.7L-234.4 21.9L-233.3 21.8L-233.2 22.8L-229.9 24.7L-230.0 25.4L-235.6 24.3L-240.0 19.4L-242.7 18.3L-245.3 19.8L-244.8 21.6L-246.2 22.4L-249.3 21.9L-251.4 19.9L-253.4 19.4L-253.8 20.1L-256.2 20.2L-255.7 18.2L-254.6 17.6L-256.6 13.0L-262.2 10.7L-265.3 8.5L-266.5 9.9L-267.1 8.0L-268.7 6.8L-265.3 6.0L-265.5 5.3L-268.3 5.3L-269.1 3.9L-270.9 3.4L-271.8 2.3L-268.1 0.9L-265.0 1.9L-264.7 2.8M-282.0 -3.4L-283.6 -1.0L-285.1 -0.6L-291.9 -0.6L-292.2 1.2L-290.4 3.4L-289.4 2.3L-285.8 1.5L-285.9 2.6L-286.7 2.2L-289.2 4.6L-285.5 11.3L-285.3 12.8L-286.3 13.5L-287.2 12.7L-286.4 10.7L-288.2 11.7L-288.8 11.0L-288.6 10.1L-290.2 8.7L-290.2 6.3L-291.4 7.0L-290.6 13.3L-291.8 13.6L-292.7 12.9L-292.9 8.4L-293.7 8.4L-294.5 6.7L-292.2 -1.4L-290.5 -3.1L-286.5 -2.1L-284.3 -2.2L-282.3 -3.9L-282.0 -3.4M-275.3 -2.7L-275.4 -0.6L-276.4 -0.9L-276.7 0.6L-275.9 1.9L-276.5 2.2L-277.8 -2.4L-276.7 -5.2L-276.6 -3.9L-275.5 -3.7L-275.3 -2.7M-318.9 14.1L-321.0 14.1L-325.7 10.1L-328.3 6.7L-332.7 -0.4L-333.9 -4.4L-339.5 -11.9L-339.5 -13.2L-335.3 -12.6L-329.9 -5.0L-327.9 -5.0L-323.8 -0.3L-324.5 1.7L-322.7 2.6L-321.6 5.6L-320.1 5.8L-319.1 7.4L-318.9 14.1M-296.3 -4.4L-294.2 -2.2L-296.5 -1.9L-297.1 1.9L-298.9 3.6L-299.3 9.6L-299.7 8.8L-301.8 9.9L-302.7 8.4L-305.1 7.5L-307.4 8.4L-308.2 7.2L-311.1 7.1L-311.5 3.8L-313.5 1.1L-313.5 -3.2L-312.3 -4.8L-310.9 -4.0L-309.4 -4.4L-308.9 -6.5L-305.6 -7.5L-297.3 -16.6L-296.5 -16.6L-295.8 -14.4L-293.1 -13.0L-293.3 -12.1L-294.6 -11.9L-294.4 -10.8L-295.9 -9.9L-297.2 -7.8L-295.9 -5.5L-296.3 -4.4M-278.0 -20.2L-278.2 -17.3L-279.2 -15.1L-279.5 -17.5L-280.6 -16.3L-280.2 -14.5L-280.9 -13.4L-283.0 -14.8L-283.3 -16.5L-282.6 -17.7L-283.6 -18.8L-286.9 -16.6L-286.0 -19.3L-283.4 -20.9L-283.0 -19.8L-280.9 -21.5L-279.5 -21.6L-279.2 -23.4L-277.9 -22.3L-278.0 -20.2M332.4 -14.9L330.8 -14.3L329.6 -16.2L328.6 -19.7L328.5 -23.6L332.9 -18.1L333.1 -15.6L332.4 -14.9M56.1 -24.3L54.1 -24.2L54.6 -25.8L56.1 -26.0L56.1 -24.3M-281.7 -24.7L-284.2 -21.7L-285.1 -23.3L-283.3 -26.1L-282.2 -26.2L-282.9 -24.6L-281.0 -26.9L-281.7 -24.7M-292.8 -22.4L-295.8 -20.1L-289.7 -27.3L-289.8 -25.3L-292.8 -22.4M-284.8 -28.5L-282.6 -27.8L-282.9 -26.8L-285.4 -25.0L-284.8 -28.5M-277.6 -29.2L-277.8 -26.5L-279.1 -27.1L-279.1 -24.8L-280.2 -24.3L-280.4 -27.6L-279.3 -27.4L-279.1 -28.3L-279.7 -30.1L-277.9 -30.0L-277.6 -29.2M-284.6 -31.3L-285.8 -29.3L-286.7 -32.3L-285.1 -32.2L-284.6 -31.3M-280.4 -44.2L-279.5 -43.5L-278.6 -44.1L-279.5 -40.9L-282.1 -38.1L-283.3 -34.3L-281.5 -34.3L-279.5 -33.0L-280.1 -30.0L-281.6 -32.5L-282.4 -31.6L-283.2 -33.0L-285.8 -33.2L-284.6 -34.8L-285.0 -35.3L-285.5 -34.5L-286.0 -35.8L-285.1 -39.1L-284.7 -38.4L-281.5 -44.2L-280.4 -44.2M46.1 -43.5L43.1 -42.9L42.9 -43.9L44.7 -44.2L46.1 -43.5M24.8 -42.7L23.1 -42.7L22.2 -44.1L24.7 -43.9L26.1 -42.7L24.8 -42.7M32.7 -47.4L37.6 -46.9L40.9 -44.4L40.2 -43.5L37.8 -44.0L36.8 -43.4L36.5 -44.0L35.2 -42.0L33.3 -43.5L30.4 -43.1L29.3 -43.8L29.5 -44.6L32.6 -44.0L33.3 -44.6L32.3 -46.5L31.1 -46.9L32.7 -47.4M-300.9 -44.6L-303.0 -43.5L-304.2 -44.2L-303.3 -46.2L-301.9 -47.3L-298.4 -47.9L-298.5 -47.0L-300.9 -44.6M-123.3 -45.5L-124.1 -45.5L-123.4 -48.3L-121.7 -46.5L-123.3 -45.5M-123.6 -49.2L-124.6 -49.9L-123.6 -49.2M-124.6 -50.5L-125.7 -50.3L-124.6 -50.5M-126.2 -50.8L-127.2 -51.4L-126.6 -51.7L-126.2 -50.8M-129.0 -52.3L-129.8 -52.5L-128.9 -52.9L-129.0 -52.3M19.1 -54.2L19.9 -53.3L21.6 -53.6L25.1 -50.5L26.9 -50.1L26.8 -49.4L29.6 -48.4L29.4 -47.8L23.0 -47.4L24.2 -48.7L22.2 -49.4L21.0 -51.4L15.2 -52.8L14.5 -53.3L15.2 -53.9L13.4 -54.0L11.1 -52.2L9.3 -52.1L11.5 -54.2L14.3 -55.2L19.1 -54.2M23.0 -56.5L21.3 -58.4L21.6 -59.8L23.0 -56.5M-275.8 -54.2L-277.6 -52.3L-276.8 -56.0L-271.9 -60.0L-271.4 -59.4L-275.8 -54.2M22.1 -63.0L20.2 -62.6L20.0 -63.5L22.1 -63.6L22.1 -63.0M23.6 -63.0L23.4 -61.4L22.1 -64.1L23.6 -63.0M-234.5 -80.2L-236.9 -78.1L-237.1 -78.8L-239.8 -77.0L-240.5 -77.6L-237.7 -80.0L-235.4 -80.7L-234.5 -80.2M213.4 -83.6L212.9 -82.7L213.5 -82.1L212.4 -81.2L210.3 -82.3L213.4 -83.6M194.7 -83.7L199.8 -82.8L200.0 -82.1L197.6 -81.9L195.0 -82.7L194.7 -83.7M177.0 -89.3L178.7 -85.7L172.7 -87.9L172.2 -89.0L177.0 -89.3M162.0 -95.7L164.0 -94.2L165.8 -91.3L164.9 -91.5L164.8 -90.7L163.7 -91.3L160.6 -95.2L162.0 -95.7M-218.4 -86.9L-223.2 -82.4L-229.3 -81.2L-233.7 -78.7L-234.2 -79.5L-233.0 -81.2L-241.3 -79.6L-240.9 -78.0L-246.7 -73.2L-246.9 -74.1L-245.0 -76.1L-245.6 -76.8L-245.1 -78.3L-235.7 -83.1L-231.8 -83.7L-230.3 -83.3L-225.3 -87.2L-225.0 -86.2L-219.0 -89.2L-213.7 -94.3L-209.7 -96.1L-213.1 -91.3L-216.5 -89.1L-218.4 -86.9M161.0 -97.8L161.7 -96.1L159.2 -98.0L159.4 -99.6L161.0 -97.8M-199.8 -102.1L-199.1 -101.6L-197.1 -102.5L-199.1 -100.1L-202.0 -99.6L-205.5 -97.4L-206.6 -98.9L-209.7 -96.5L-211.6 -96.5L-209.7 -98.6L-207.3 -100.3L-205.5 -100.4L-199.8 -105.0L-199.8 -102.1M40.6 -107.1L43.2 -106.9L42.1 -105.9L40.0 -106.7L39.9 -108.1L40.6 -107.1M42.2 -112.4L37.7 -113.9L40.3 -113.6L42.2 -112.4M-50.5 -111.1L-53.5 -111.8L-54.9 -113.8L-56.3 -114.2L-56.1 -115.8L-52.7 -114.8L-50.5 -111.1M49.6 -115.6L49.2 -113.8L50.0 -114.5L51.1 -114.1L50.8 -113.3L54.5 -112.7L54.6 -111.2L55.5 -111.5L57.0 -109.1L56.9 -107.3L55.1 -107.6L54.4 -109.6L53.2 -107.8L52.2 -107.8L53.0 -108.8L51.4 -109.3L46.8 -109.3L46.4 -109.9L47.2 -110.6L46.4 -111.2L48.3 -116.8L49.4 -117.5L50.1 -117.4L49.6 -115.6M-59.6 -122.3L-58.2 -122.4L-59.7 -120.2L-59.1 -118.6L-60.7 -121.0L-60.2 -122.5L-59.6 -122.3M-185.0 -115.7L-187.8 -112.1L-189.2 -112.8L-193.6 -109.8L-196.1 -106.2L-195.9 -107.5L-198.7 -105.9L-185.0 -118.1L-177.0 -122.9L-185.0 -115.7M119.3 -118.7L117.7 -117.6L115.4 -117.9L114.9 -120.0L112.4 -122.0L113.2 -124.4L116.9 -123.3L119.3 -118.7M139.9 -125.4L140.9 -123.8L137.1 -125.7L138.4 -126.3L139.9 -125.4M-83.7 -128.3L-85.6 -127.5L-85.9 -128.0L-85.4 -128.9L-82.0 -129.8L-81.9 -129.2L-83.7 -128.3M112.5 -131.1L113.3 -129.1L115.8 -129.3L117.7 -126.1L119.2 -125.9L128.5 -120.1L130.5 -119.7L131.4 -117.8L132.9 -116.8L132.5 -115.7L127.5 -115.6L127.4 -114.7L124.3 -114.5L124.7 -116.6L125.6 -117.1L121.9 -118.2L122.9 -118.8L120.3 -121.2L122.5 -121.0L121.7 -122.2L117.6 -123.8L115.4 -125.7L115.6 -124.8L112.1 -127.6L110.0 -131.1L112.5 -131.1M-95.5 -133.5L-96.5 -133.2L-97.3 -134.1L-94.9 -134.2L-95.5 -133.5M13.0 -137.7L12.6 -136.7L11.7 -137.4L12.1 -138.1L13.0 -137.7M9.7 -138.7L8.4 -137.7L7.2 -138.2L8.0 -139.0L9.7 -138.7M-95.2 -140.6L-92.7 -139.7L-94.3 -139.1L-96.0 -139.7L-95.2 -140.6M5.4 -143.9L5.7 -143.1L11.5 -140.5L10.6 -139.9L8.0 -141.1L5.3 -139.3L4.8 -140.3L3.3 -140.1L4.2 -141.0L4.6 -144.0L5.4 -143.9M82.4 -145.2L86.2 -142.9L86.3 -141.6L83.6 -140.1L78.0 -140.9L78.3 -141.7L75.0 -142.5L76.6 -142.9L73.3 -143.8L72.8 -144.9L74.2 -145.2L77.2 -144.0L77.8 -144.9L79.8 -144.4L80.5 -145.4L82.4 -145.2M15.2 -146.4L14.0 -146.3L13.8 -148.1L15.6 -147.9L15.2 -146.4M-92.5 -145.5L-90.9 -146.3L-88.3 -146.0L-88.3 -144.4L-92.5 -143.5L-95.6 -141.4L-97.5 -142.6L-96.8 -143.3L-99.1 -143.4L-97.7 -144.6L-102.0 -142.7L-91.7 -149.5L-90.9 -146.5L-92.5 -145.5M-5.7 -149.7L-6.4 -149.1L-9.9 -150.2L-8.1 -151.4L-5.7 -149.7M-86.6 -152.5L-87.8 -152.4L-84.7 -153.6L-86.6 -152.5M-85.2 -152.6L-86.6 -152.5L-84.4 -153.6L-83.1 -153.2L-85.2 -152.6M-0.5 -150.3L-0.6 -148.6L0.8 -149.9L2.0 -148.9L1.8 -147.6L2.8 -146.5L4.5 -149.2L4.4 -151.0L7.4 -150.6L8.8 -149.8L8.4 -148.1L9.2 -146.4L7.3 -145.2L4.6 -145.4L3.0 -142.3L-0.8 -140.3L-0.9 -139.1L-2.3 -138.9L-5.3 -135.4L-6.0 -131.7L-4.1 -131.4L-3.1 -128.2L-1.2 -128.6L6.8 -124.8L10.6 -124.5L11.1 -120.8L12.3 -118.5L14.7 -116.6L15.7 -117.3L16.3 -119.4L14.1 -123.5L16.2 -124.4L18.1 -127.1L16.6 -130.0L14.8 -131.5L16.0 -133.4L14.3 -137.9L15.1 -138.4L18.5 -137.7L19.4 -138.2L23.0 -135.8L25.2 -135.7L26.6 -131.7L29.1 -130.3L30.7 -131.4L31.8 -134.3L38.1 -128.0L38.0 -126.8L45.2 -123.4L46.4 -121.8L48.4 -120.8L49.3 -118.5L45.5 -116.3L44.2 -114.7L34.8 -114.7L32.2 -112.3L29.1 -107.6L30.3 -108.0L32.3 -110.7L35.1 -112.4L37.3 -112.6L38.8 -111.6L37.7 -110.2L39.5 -106.4L41.8 -105.4L44.3 -105.7L45.3 -108.0L45.7 -106.5L46.9 -105.8L39.3 -100.7L38.1 -100.9L37.7 -102.7L40.0 -104.4L35.8 -104.1L36.2 -103.4L31.7 -101.0L31.0 -98.2L32.6 -96.7L26.7 -95.1L29.6 -95.1L26.3 -94.7L26.2 -92.5L25.2 -90.8L24.0 -92.0L25.0 -89.6L23.8 -87.0L24.0 -88.6L22.7 -91.3L23.0 -88.9L21.9 -89.3L23.0 -88.6L24.5 -83.3L23.5 -81.7L19.0 -78.7L15.3 -74.1L15.5 -70.9L18.1 -63.7L17.6 -59.8L16.2 -59.8L15.1 -61.4L12.9 -66.0L12.7 -68.8L10.5 -71.0L8.7 -70.0L6.4 -71.8L1.5 -71.6L0.7 -71.2L1.4 -69.2L-0.3 -68.8L-1.6 -68.9L-2.9 -70.1L-6.9 -70.2L-12.9 -65.9L-14.6 -53.4L-13.4 -49.2L-11.1 -44.9L-8.4 -43.3L-2.7 -45.1L-1.5 -46.0L-0.5 -50.0L5.5 -51.3L5.9 -49.7L4.5 -46.9L4.1 -43.6L3.2 -44.2L3.1 -39.5L2.0 -38.0L3.6 -37.5L9.5 -38.3L12.6 -36.5L13.0 -34.3L11.9 -26.6L15.1 -21.6L16.6 -21.1L20.1 -23.1L25.5 -20.7L27.7 -22.7L28.0 -25.5L29.1 -26.6L31.9 -26.9L35.0 -29.8L36.2 -29.0L35.9 -27.7L34.7 -27.4L35.4 -25.1L34.6 -23.7L35.4 -21.8L36.2 -21.9L36.6 -23.7L35.8 -26.3L38.2 -27.3L37.9 -28.4L38.5 -29.2L39.3 -27.5L40.6 -27.4L42.0 -25.3L45.8 -25.5L48.5 -24.2L49.5 -25.5L54.2 -25.7L52.6 -25.0L53.3 -23.9L56.4 -22.5L56.8 -20.6L59.8 -19.2L61.2 -16.4L63.8 -14.3L70.0 -13.8L72.1 -13.0L74.6 -10.0L75.2 -10.1L76.9 -4.6L78.0 -4.2L78.0 -2.5L76.6 -0.5L77.2 0.2L80.6 0.6L80.7 3.0L82.2 1.4L87.8 3.7L88.8 5.1L88.4 6.5L90.7 5.7L94.5 7.0L97.4 6.9L102.6 11.6L105.7 12.4L107.1 17.6L106.1 21.6L98.4 31.3L95.9 42.7L91.2 52.2L88.9 54.6L83.8 55.5L77.7 59.1L75.8 61.4L73.9 67.8L62.6 80.8L60.4 82.0L58.2 81.8L55.6 80.9L54.8 79.7L54.5 80.8L56.3 82.7L55.8 84.3L56.6 85.2L56.3 86.3L54.1 89.1L51.4 90.3L46.2 90.6L45.7 94.6L44.6 95.3L42.8 95.6L41.4 94.9L40.7 95.4L40.5 97.6L41.5 98.2L42.5 97.5L42.8 98.6L39.6 100.6L38.4 103.9L36.9 103.9L35.4 105.0L34.7 106.6L37.3 108.5L36.4 110.4L34.3 111.5L32.9 113.9L30.6 115.7L31.3 118.9L29.4 118.8L27.2 120.0L26.6 121.9L24.5 121.3L21.6 118.8L21.6 111.5L24.4 107.9L22.1 107.3L23.8 105.4L24.8 101.9L26.5 102.7L27.9 98.3L26.9 97.7L26.0 100.4L25.1 100.1L27.9 91.5L27.8 86.9L28.5 86.8L32.6 76.3L33.2 68.2L34.5 65.4L37.2 47.1L37.0 43.8L35.2 42.5L35.1 41.5L26.7 35.1L26.3 32.4L19.9 17.3L17.0 14.7L17.6 13.7L16.7 11.4L19.9 6.4L19.5 5.3L18.8 6.5L17.6 5.4L17.7 2.5L18.3 2.2L19.3 -1.8L21.7 -3.3L22.5 -6.3L23.5 -6.5L25.0 -9.3L24.3 -9.8L24.3 -16.1L22.8 -18.0L22.9 -20.0L21.0 -21.6L20.2 -21.4L18.4 -19.4L19.4 -18.1L17.7 -17.3L17.3 -18.8L16.4 -18.5L16.0 -19.5L13.9 -19.9L13.8 -19.4L12.6 -20.3L12.3 -21.7L9.7 -24.2L9.4 -22.9L8.4 -23.8L8.3 -26.6L4.5 -30.9L5.1 -31.1L4.8 -31.9L2.9 -31.5L-2.4 -33.4L-6.4 -37.4L-8.9 -38.7L-12.5 -37.4L-25.5 -43.7L-29.1 -47.6L-29.4 -48.7L-28.5 -51.0L-29.7 -54.2L-33.7 -59.8L-35.2 -60.7L-35.1 -62.7L-39.9 -68.5L-41.0 -73.5L-43.6 -74.9L-43.9 -71.2L-39.3 -63.2L-38.0 -57.7L-37.1 -57.7L-35.9 -55.1L-37.1 -54.3L-37.5 -55.7L-40.7 -58.8L-40.7 -61.7L-45.3 -65.6L-44.4 -65.7L-43.4 -67.6L-45.6 -69.8L-47.7 -77.7L-49.5 -79.9L-52.9 -81.2L-54.7 -88.3L-56.2 -90.8L-56.6 -93.8L-55.5 -99.1L-52.9 -104.9L-52.5 -110.5L-50.2 -110.2L-50.0 -108.2L-49.2 -112.1L-52.4 -115.0L-54.7 -115.9L-54.2 -118.9L-55.7 -119.7L-55.3 -121.3L-56.4 -122.8L-55.9 -123.8L-57.3 -125.1L-56.9 -126.8L-57.8 -128.4L-57.5 -130.2L-60.8 -130.3L-63.4 -132.8L-68.0 -133.7L-70.8 -135.3L-72.5 -134.9L-73.2 -133.7L-79.1 -132.1L-74.5 -136.1L-81.7 -132.5L-81.5 -131.6L-83.8 -130.2L-92.7 -126.1L-103.9 -123.0L-91.4 -128.1L-86.3 -131.7L-89.7 -130.7L-89.7 -131.7L-90.6 -131.0L-90.3 -132.0L-93.0 -131.2L-91.3 -133.0L-91.5 -133.7L-93.4 -133.3L-94.1 -134.6L-93.2 -136.5L-91.6 -137.5L-88.1 -139.4L-82.5 -140.5L-82.1 -141.7L-80.5 -142.3L-86.0 -141.7L-87.2 -142.2L-87.0 -143.9L-81.1 -145.4L-80.2 -145.4L-81.4 -144.6L-79.0 -144.7L-78.9 -147.9L-79.6 -148.4L-70.3 -151.7L-63.0 -153.3L-62.0 -153.0L-62.2 -152.3L-52.7 -151.4L-47.5 -149.3L-39.1 -151.5L-38.9 -150.8L-37.1 -151.9L-35.9 -150.3L-33.8 -151.4L-34.5 -150.2L-31.3 -150.8L-24.8 -148.5L-26.6 -147.7L-20.9 -147.8L-20.1 -146.8L-18.7 -147.7L-19.5 -148.4L-18.7 -148.9L-16.5 -149.2L-15.0 -147.9L-12.1 -147.3L-8.9 -147.5L-8.9 -148.5L-7.9 -148.8L-6.4 -148.3L-6.5 -146.7L-5.7 -148.0L-4.9 -148.0L-4.3 -149.6L-6.4 -151.3L-6.1 -153.1L-4.8 -154.2L-2.7 -153.3L-1.5 -151.5L-2.4 -150.7L-0.5 -150.3M-21.5 -156.1L-22.3 -155.3L-20.1 -155.8L-19.2 -155.0L-17.8 -155.8L-17.0 -153.8L-16.4 -156.0L-14.7 -156.0L-13.9 -155.4L-13.8 -152.7L-10.8 -151.2L-11.1 -150.5L-12.8 -150.3L-12.7 -149.1L-16.2 -149.8L-24.1 -148.7L-24.3 -149.5L-26.5 -149.8L-27.0 -151.1L-21.9 -151.7L-27.1 -152.0L-27.3 -152.6L-24.7 -153.2L-27.6 -153.6L-25.1 -155.4L-21.5 -156.1M-12.7 -156.5L-13.8 -155.5L-14.9 -156.6L-12.7 -156.5M12.1 -156.0L9.5 -155.5L8.0 -156.9L12.1 -156.0M3.1 -156.1L3.8 -155.2L4.5 -156.4L6.7 -157.0L8.5 -155.4L8.5 -154.4L11.0 -155.5L15.1 -153.3L16.7 -153.6L20.6 -152.0L23.3 -149.8L21.8 -149.0L30.4 -145.9L30.6 -144.7L29.5 -142.7L25.5 -145.1L24.1 -144.9L24.3 -143.9L28.4 -141.6L29.8 -139.9L29.8 -138.6L24.7 -140.5L28.9 -137.2L22.5 -139.0L17.3 -142.2L17.4 -141.6L14.2 -141.4L13.1 -142.0L13.6 -143.3L18.0 -143.5L17.4 -144.1L18.5 -146.6L18.0 -147.4L13.4 -149.3L14.0 -149.8L10.9 -151.4L8.7 -150.7L1.3 -151.8L0.5 -152.4L1.5 -153.1L0.1 -153.1L-0.2 -154.7L1.4 -156.7L3.6 -157.1L3.1 -156.1M-9.0 -157.2L-6.4 -157.0L-7.2 -155.9L-5.9 -155.2L-6.3 -153.8L-8.8 -153.3L-11.4 -155.1L-9.4 -155.4L-10.2 -156.4L-9.0 -157.2M-111.9 -156.2L-114.6 -156.4L-110.5 -157.2L-111.9 -156.2M-2.9 -155.5L-3.9 -154.4L-5.0 -154.4L-5.3 -156.6L-3.8 -157.6L-0.4 -157.2L-2.9 -155.5M-28.8 -153.4L-31.8 -152.6L-33.4 -154.1L-29.5 -156.9L-29.6 -157.8L-23.5 -157.7L-22.4 -156.6L-26.5 -155.1L-28.8 -153.4M-98.0 -159.0L-101.6 -158.6L-99.8 -159.6L-98.0 -159.0M-3.0 -158.9L-3.5 -158.3L-5.6 -158.8L-3.9 -159.8L-3.0 -158.9M-100.5 -159.7L-109.8 -158.3L-104.8 -160.3L-101.0 -160.5L-100.5 -159.7M-6.5 -161.4L-6.0 -160.7L-6.7 -158.9L-10.1 -159.7L-9.8 -160.8L-6.5 -161.4M-14.2 -160.6L-12.5 -160.3L-13.4 -158.9L-20.1 -158.0L-17.8 -159.1L-22.6 -159.2L-19.6 -161.0L-15.4 -159.6L-15.9 -161.0L-14.9 -161.5L-14.2 -160.6M142.5 -152.3L138.6 -152.4L130.8 -154.4L119.7 -159.0L117.9 -160.7L119.4 -161.0L118.6 -161.5L119.4 -161.7L122.2 -161.1L126.0 -157.9L132.8 -154.9L142.5 -152.3M-3.5 -161.9L-1.2 -161.4L0.7 -159.8L7.1 -159.9L8.4 -158.8L6.8 -158.1L1.6 -158.0L-2.0 -158.6L-3.0 -160.8L-5.4 -161.4L-3.5 -161.9M-19.1 -162.7L-20.9 -161.1L-25.8 -160.5L-21.3 -162.5L-19.1 -162.7M-122.8 -161.7L-125.6 -161.0L-121.3 -161.4L-126.9 -159.4L-137.0 -157.7L-136.8 -157.1L-135.0 -157.4L-137.9 -156.4L-133.9 -157.0L-132.0 -156.8L-134.2 -156.1L-131.2 -155.8L-127.4 -157.0L-125.0 -156.7L-131.0 -154.3L-133.7 -152.4L-128.2 -154.1L-128.6 -153.4L-122.5 -153.5L-116.3 -155.7L-110.7 -154.6L-112.2 -153.7L-112.6 -152.5L-106.7 -152.5L-109.9 -150.7L-109.6 -150.2L-102.2 -150.5L-103.2 -149.0L-98.1 -151.3L-93.5 -150.9L-91.7 -149.5L-102.0 -142.7L-105.8 -142.0L-107.5 -139.1L-109.2 -137.9L-111.0 -138.3L-117.5 -136.7L-126.0 -133.5L-126.1 -134.8L-131.3 -133.3L-130.9 -134.0L-134.6 -133.4L-140.7 -130.4L-141.6 -129.6L-140.7 -129.2L-148.8 -123.9L-152.4 -122.9L-155.5 -120.6L-158.2 -120.1L-165.2 -116.2L-156.7 -124.9L-152.5 -127.6L-131.1 -135.8L-126.3 -138.4L-137.1 -134.7L-134.7 -137.0L-138.8 -136.3L-146.7 -133.2L-147.3 -132.1L-153.2 -131.4L-151.0 -132.8L-152.6 -133.1L-155.6 -132.1L-164.1 -131.9L-186.4 -123.6L-184.6 -123.4L-185.7 -122.2L-184.9 -121.7L-181.3 -122.6L-182.3 -120.4L-196.0 -111.0L-203.9 -106.6L-215.8 -100.4L-219.3 -99.2L-220.3 -99.1L-220.2 -100.2L-225.5 -98.0L-229.7 -95.0L-235.8 -92.6L-237.2 -91.4L-236.8 -90.1L-238.6 -86.1L-242.5 -82.3L-248.2 -80.7L-244.4 -85.9L-242.8 -86.3L-242.2 -88.2L-243.9 -88.0L-243.9 -89.0L-239.9 -92.1L-240.8 -93.0L-248.4 -90.7L-243.1 -94.0L-242.8 -95.2L-254.6 -90.4L-255.2 -88.9L-254.2 -88.5L-255.1 -87.5L-254.4 -86.9L-251.0 -88.5L-249.3 -87.5L-250.1 -86.4L-253.0 -85.8L-259.9 -81.9L-259.1 -80.7L-261.1 -74.7L-264.0 -72.4L-264.4 -71.2L-263.9 -70.5L-267.2 -66.8L-268.4 -66.6L-278.1 -58.3L-285.6 -54.2L-289.5 -52.9L-289.7 -53.7L-296.8 -51.0L-298.8 -48.5L-299.9 -48.4L-298.5 -51.0L-300.6 -51.7L-308.0 -47.1L-309.2 -45.5L-308.6 -39.9L-307.0 -36.6L-309.3 -28.0L-319.0 -20.6L-319.3 -22.2L-318.4 -23.8L-319.5 -25.2L-321.0 -25.5L-321.6 -29.2L-323.0 -30.3L-324.7 -30.3L-323.8 -32.1L-325.5 -32.1L-330.1 -22.2L-328.8 -22.1L-328.6 -17.8L-325.5 -14.7L-323.9 -11.7L-324.2 -6.7L-322.9 -3.1L-324.3 -2.9L-328.3 -6.6L-329.4 -9.5L-330.0 -12.8L-329.5 -14.5L-330.5 -17.6L-331.9 -20.1L-332.6 -18.7L-332.7 -20.0L-329.5 -27.4L-327.7 -40.5L-332.4 -37.6L-334.3 -38.4L-331.6 -43.5L-331.7 -46.2L-331.0 -47.1L-331.9 -47.4L-332.2 -49.3L-330.9 -54.2L-332.6 -54.3L-334.4 -52.0M334.4 -52.5L329.8 -51.2L330.9 -49.4L330.7 -48.1L328.9 -46.5L326.4 -40.7L326.8 -39.6L324.0 -38.0L326.5 -31.2L327.6 -24.8L326.7 -24.7L326.2 -22.9L327.0 -22.1L325.4 -21.4L324.5 -19.1L322.2 -21.4L303.3 -50.9L301.3 -49.5L299.8 -49.8L295.9 -52.6L296.3 -53.4L295.2 -54.4L290.2 -56.9L286.1 -60.3L277.7 -59.5L269.2 -61.1L265.6 -64.3L263.3 -62.8L255.5 -66.0L249.5 -71.2L247.2 -71.6L247.1 -70.7L246.0 -70.8L250.8 -65.6L254.7 -63.3L258.5 -58.8L257.2 -61.7L258.5 -61.2L261.2 -57.1L265.2 -57.3L266.4 -62.6L270.2 -57.6L274.6 -56.0L278.2 -53.1L277.9 -48.7L276.9 -48.3L278.0 -45.2L276.4 -44.3L276.4 -42.7L274.8 -42.1L275.2 -41.2L270.4 -39.2L270.7 -37.3L266.4 -35.2L265.2 -33.5L259.9 -31.8L259.0 -30.4L256.2 -30.3L252.7 -36.4L251.6 -40.1L246.0 -46.5L240.9 -50.7L237.1 -56.3L234.6 -57.7L225.6 -66.4L224.8 -66.4L223.4 -69.7L224.0 -65.5L218.4 -70.5L231.7 -56.9L232.3 -55.0L235.9 -52.4L240.3 -44.4L242.6 -43.0L245.9 -38.1L255.4 -30.4L256.2 -28.7L255.2 -28.1L258.6 -25.1L271.2 -28.8L271.9 -25.5L271.2 -19.4L269.3 -12.8L265.9 -6.9L259.4 -0.7L256.3 4.0L253.7 6.2L251.2 11.2L250.0 14.2L250.0 15.6L251.1 16.4L250.0 20.4L251.5 25.8L249.6 35.2L247.3 38.5L241.0 42.0L234.2 47.2L233.4 48.9L233.4 52.6L231.0 57.3L223.9 61.0L223.9 62.2L220.5 67.0L212.4 73.4L206.9 77.1L200.9 79.7L195.5 79.6L189.0 81.7L187.8 80.2L189.1 76.8L190.8 74.6L190.8 64.2L193.8 52.6L192.2 43.2L192.9 39.9L196.3 32.4L199.2 28.9L199.8 25.7L198.9 22.0L199.8 20.6L199.5 18.2L198.1 12.1L192.5 2.7L194.3 -7.4L191.5 -11.5L186.5 -10.2L183.1 -15.1L178.4 -14.8L171.2 -11.3L165.9 -12.4L159.5 -10.5L150.4 -17.4L144.8 -26.1L141.0 -29.2L140.3 -32.6L138.1 -35.3L139.8 -38.6L139.5 -43.3L138.2 -47.9L136.2 -50.0L135.9 -52.1L136.7 -54.0L136.6 -56.4L137.7 -58.2L137.6 -62.3L139.6 -66.4L141.1 -66.6L143.4 -70.7L141.8 -73.5L141.4 -76.6L141.9 -78.2L144.0 -80.1L143.9 -83.8L151.0 -82.5L155.5 -85.7L161.9 -85.9L163.0 -86.8L165.8 -86.3L168.2 -87.3L169.5 -87.0L170.2 -85.9L171.1 -86.7L174.3 -79.4L177.1 -77.9L184.8 -76.0L186.8 -74.0L194.1 -71.4L194.9 -73.1L193.4 -75.9L195.1 -77.3L203.2 -74.4L205.5 -74.4L210.8 -72.8L212.0 -74.2L213.5 -74.4L216.1 -73.0L216.0 -73.7L219.3 -73.0L219.8 -74.4L217.5 -81.3L214.4 -85.8L211.7 -86.1L211.5 -84.8L209.1 -84.6L206.8 -85.8L205.0 -85.8L205.2 -84.9L204.3 -84.6L201.7 -85.8L199.9 -85.8L195.1 -89.2L194.6 -90.9L192.7 -91.9L192.9 -94.0L195.4 -94.1L194.6 -95.8L198.0 -95.5L200.1 -97.5L202.7 -97.5L210.1 -95.2L213.2 -95.3L214.1 -96.4L211.6 -98.8L198.4 -104.3L199.2 -104.7L198.6 -106.4L196.8 -107.3L198.1 -108.1L197.6 -108.6L193.4 -106.5L198.1 -104.1L195.9 -102.5L191.6 -104.5L192.2 -105.6L191.3 -106.1L186.3 -107.1L187.8 -103.9L186.8 -103.6L189.5 -98.7L194.2 -95.4L192.4 -95.3L191.9 -93.4L190.2 -94.9L188.1 -95.2L186.6 -94.6L188.7 -93.4L188.1 -93.0L185.5 -93.7L188.5 -91.3L188.3 -90.9L191.3 -89.2L192.2 -88.0L190.2 -88.6L191.5 -87.4L190.6 -87.2L192.7 -85.3L189.5 -86.2L180.2 -93.7L177.9 -96.8L169.1 -100.7L164.6 -104.0L163.3 -104.3L163.6 -103.4L162.1 -105.1L160.6 -105.4L160.0 -104.6L162.7 -101.9L178.8 -93.5L179.1 -92.7L175.7 -94.1L176.1 -92.7L178.5 -90.7L177.9 -90.6L178.3 -88.7L177.7 -88.5L176.8 -90.9L174.0 -93.2L165.9 -96.8L159.2 -101.5L156.4 -102.5L154.6 -99.9L151.0 -100.4L149.2 -99.7L150.9 -97.2L150.3 -95.8L148.5 -95.3L149.1 -91.6L150.5 -90.4L150.6 -88.0L149.5 -87.5L149.3 -85.8L145.5 -85.8L144.6 -84.2L141.5 -86.4L137.6 -86.3L136.1 -89.3L134.4 -90.4L132.6 -95.7L129.2 -99.6L130.5 -101.2L140.7 -100.5L140.6 -101.8L137.9 -106.0L132.7 -109.2L129.8 -110.0L128.4 -111.5L133.0 -111.4L130.6 -113.7L132.7 -112.9L134.8 -114.4L133.8 -116.1L135.7 -117.5L134.2 -120.4L136.3 -121.6L138.1 -121.3L138.0 -122.2L131.0 -128.2L132.0 -128.4L132.2 -129.4L135.6 -127.0L136.1 -125.1L141.0 -122.2L142.2 -123.1L146.0 -121.7L148.4 -123.9L152.2 -123.0L151.5 -123.9L152.6 -124.5L147.5 -128.8L147.9 -129.5L151.9 -128.1L148.7 -130.7L145.1 -132.2L147.2 -133.0L150.3 -132.7L150.1 -133.7L147.4 -134.6L142.7 -133.4L138.4 -135.0L131.7 -139.5L130.3 -142.9L125.8 -144.5L124.8 -144.0L127.9 -141.7L128.6 -138.7L131.5 -136.2L137.0 -133.8L138.7 -131.7L138.0 -131.3L143.1 -126.3L141.2 -126.5L142.3 -125.0L140.8 -124.9L127.8 -132.7L128.0 -130.5L126.8 -130.1L123.9 -131.1L115.1 -137.3L115.2 -141.8L108.5 -150.9L109.2 -151.6L111.0 -151.5L109.5 -152.8L112.4 -153.0L118.1 -151.9L117.9 -151.4L121.3 -150.4L121.0 -151.0L136.8 -147.7L142.7 -144.9L141.8 -144.4L133.9 -145.5L147.7 -140.7L143.5 -143.0L148.4 -141.9L145.2 -143.6L144.2 -145.3L147.7 -144.6L137.6 -148.8L141.8 -148.3L148.1 -145.6L148.9 -146.0L146.7 -147.0L147.0 -149.3L149.5 -148.2L151.2 -148.0L150.5 -148.6L152.3 -148.6L152.0 -149.3L155.9 -148.3L149.4 -150.9L165.7 -148.0L149.8 -152.8L142.5 -155.9L149.5 -154.7L169.5 -148.5L176.7 -145.0L178.7 -144.7L174.1 -147.4L147.9 -155.6L158.4 -153.0L153.6 -154.8L160.0 -153.9L148.5 -156.9L152.3 -157.3L145.4 -159.1L146.1 -159.1M-144.1 -159.8L-120.3 -162.7L-123.6 -161.9L-122.8 -161.7M226.9 -95.9L231.3 -93.7L230.1 -93.5L231.7 -90.5L234.8 -87.8L238.9 -86.3L243.8 -86.5L239.8 -90.8L235.5 -93.2L234.1 -95.0L236.1 -94.5L236.9 -95.2L232.6 -97.7L231.8 -97.2L233.3 -95.6L229.0 -99.1L226.4 -99.9L221.3 -103.0L223.0 -102.8L221.3 -104.3L224.0 -104.4L221.8 -106.4L219.9 -107.7L216.6 -108.1L215.0 -106.8L215.8 -105.5L214.7 -105.2L215.5 -103.0L226.9 -95.9M-2.8 -162.5L-4.6 -162.9L-2.8 -162.5M-14.7 -162.7L-17.1 -162.8L-14.2 -163.1L-14.7 -162.7M82.6 -162.9L82.8 -162.4L78.1 -163.5L82.6 -162.9M-13.6 -164.0L-15.8 -163.7L-13.6 -164.0M-4.2 -163.2L-5.8 -163.3L-5.9 -164.3L-3.9 -163.7L-4.2 -163.2M-7.1 -163.6L-6.9 -163.0L-10.6 -163.7L-9.8 -164.1L-10.3 -164.9L-7.1 -163.6M-115.9 -163.6L-122.4 -163.0L-111.1 -164.9L-115.9 -163.6M70.1 -165.4L75.6 -164.4L81.4 -161.5L65.2 -165.3L70.1 -165.4M71.4 -166.3L75.9 -165.2L66.8 -166.2L71.4 -166.3M86.4 -166.5L87.3 -165.8L82.3 -166.5L86.4 -166.5M-115.7 -164.3L-118.0 -164.2L-111.0 -166.2L-101.3 -167.4L-115.7 -164.3M1.9 -165.3L2.8 -164.9L-0.6 -163.4L-2.0 -163.6L-2.7 -164.2L-2.1 -165.0L-3.3 -165.0L-4.2 -166.0L-2.8 -167.3L-1.4 -167.4L1.9 -165.3M10.7 -169.5L15.0 -168.7L12.8 -167.7L14.0 -167.7L12.1 -165.5L8.7 -164.9L10.1 -163.9L7.6 -162.1L9.2 -161.4L7.4 -160.6L0.4 -161.0L0.3 -161.7L1.7 -162.0L1.3 -163.0L3.7 -162.5L1.4 -163.6L3.2 -164.9L1.9 -166.1L5.0 -166.4L1.5 -166.4L-0.9 -168.1L2.3 -169.0L3.6 -168.6L5.3 -169.6L10.7 -169.5M30.1 -170.0L35.9 -168.7L31.4 -168.5L32.1 -168.3L36.6 -168.4L39.2 -167.2L41.0 -168.2L45.1 -167.4L45.4 -166.2L43.9 -166.0L45.5 -166.0L53.9 -161.7L52.3 -161.2L60.0 -157.8L58.2 -157.7L60.7 -156.6L58.6 -156.4L62.2 -154.6L59.6 -154.8L66.0 -152.2L64.7 -151.9L60.8 -153.4L62.5 -152.4L62.4 -151.5L66.6 -151.4L64.4 -148.6L60.8 -148.1L60.6 -145.6L59.3 -144.4L56.2 -143.5L57.2 -140.0L56.3 -138.6L57.8 -137.2L58.7 -133.9L51.7 -135.3L44.9 -140.3L38.6 -146.5L38.4 -148.4L39.5 -149.1L38.7 -151.0L36.9 -150.0L35.3 -150.5L34.3 -152.5L37.5 -152.1L32.0 -153.8L32.0 -155.2L27.3 -158.5L22.6 -160.5L16.9 -160.4L14.0 -161.8L17.2 -162.3L11.9 -163.2L11.8 -163.7L16.0 -165.0L13.9 -165.9L16.1 -167.4L15.3 -168.0L20.5 -168.1L21.0 -168.8L25.7 -167.9L22.5 -169.0L24.5 -170.0L30.1 -170.0" fill="#ebe1cb" fill-opacity="0.55" stroke="#5a4530" stroke-width="0.4" stroke-linejoin="round" opacity="0.92"/>
+
+            <!-- Projection ellipse limb -->
+            <ellipse cx="0" cy="0" rx="350.7" ry="175.4" fill="none" stroke="#8a7659" stroke-width="0.6" opacity="0.55"/>
+
+            <!-- Dunedin's voyage track. Drawn over a thin paper halo so the
+                 oxblood line stays legible even where it crosses the
+                 graticule and land outlines. -->
+            <path d="M-154.7 105.5L-138.1 108.0L-121.3 110.1L-89.9 112.1L-58.4 116.2L-28.4 120.2L0.0 124.2L31.1 126.1L45.4 120.2L62.8 103.8L85.6 70.8L111.5 28.8L126.4 -12.0L131.3 -47.7L127.4 -82.1L125.6 -103.8L128.7 -114.2L130.4 -117.2" fill="none" stroke="#f3ecdd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <path d="M-154.7 105.5L-138.1 108.0L-121.3 110.1L-89.9 112.1L-58.4 116.2L-28.4 120.2L0.0 124.2L31.1 126.1L45.4 120.2L62.8 103.8L85.6 70.8L111.5 28.8L126.4 -12.0L131.3 -47.7L127.4 -82.1L125.6 -103.8L128.7 -114.2L130.4 -117.2" fill="none" stroke="#8c2230" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+
+            <!-- Start (Port Chalmers) and end (London) dots, with Cape Horn
+                 as a small intermediate tick. -->
+            <circle cx="31.1" cy="126.1" r="2.5" fill="#1d1610"/>
+            <circle cx="-154.7" cy="105.5" r="4.5" fill="#8c2230" stroke="#f3ecdd" stroke-width="1.6"/>
+            <circle cx="130.4" cy="-117.2" r="4.5" fill="#8c2230" stroke="#f3ecdd" stroke-width="1.6"/>
+
+            <!-- Labels -->
+            <g font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.5" fill="#1d1610">
+              <text x="-154.7" y="123.5" text-anchor="middle">PORT CHALMERS</text>
+              <text x="130.4" y="-129.2" text-anchor="middle">LONDON</text>
+              <text x="31.1" y="142.1" text-anchor="middle" font-size="8" fill="#4a3d2e">CAPE HORN</text>
+            </g>
+            <!-- Dates carry a paper-coloured stroke halo via paint-order so
+                 they stay legible over land/graticule. -->
+            <g font-family="Source Serif 4" font-size="10.5" font-style="italic" fill="#8a7659"
+               stroke="#f3ecdd" stroke-width="3" stroke-linejoin="round" paint-order="stroke fill">
+              <text x="-154.7" y="137.5" text-anchor="middle">15 Feb 1882</text>
+              <text x="130.4" y="-143.2" text-anchor="middle">24 May 1882</text>
+            </g>
+          </g>
+
+          <!-- Caption rule + source line -->
+          <line x1="0" y1="423" x2="800" y2="423" stroke="#c9b894" stroke-width="0.5"/>
+          <text class="map-label" x="0" y="443" fill="#8a7659">Mollweide projection — world geometry from Natural Earth 1:110m.</text>
+          <text class="map-label" x="0" y="463" fill="#8a7659">Source: Bateson 1963 (voyage waypoints).</text>
+        </svg>
+      </div>
+    </div>
+
+
+  <div class="scrolly" data-chapter="ch7">
+    <div class="viz-pane">
+      <svg id="viz-ch7" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text class="map-label" x="20" y="22" fill="#8a7659">Share of New Zealand's exports to Britain · 1880–2024</text>
+        <text class="compass" x="20" y="38" fill="#8a7659">A century of dependence, then rapid retreat</text>
+        <!-- Plot is generated at runtime by scripts/chapters/ch7-exports-chart.js
+             from a 34-point annual-anchor series (Te Ara, Stats NZ, MFAT). -->
+        <text class="map-label" x="20" y="540" fill="#8a7659">Annual anchors with values interpolated between.</text>
+        <text class="map-label" x="20" y="560" fill="#8a7659">Sources: Te Ara; Statistics New Zealand; MFAT.</text>
+      </svg>
+    </div>
+
+    <div class="text-pane">
+      <div class="step" data-step="1" data-action="ch7-step1">
+        <p class="drop-cap">Wool had been important; refrigeration made meat and dairy the country's main export. Family farms, freezing works, dairy factories, rail to ports, agricultural science, producer boards and a state deeply involved in land, credit, marketing and infrastructure: the pastoral-export machine had arrived.</p>
+      </div>
+      <div class="step" data-step="2" data-action="ch7-step2">
+        <div class="stat">≈ 80%</div>
+        <div class="stat-label">Share of exports going to Britain, late 1930s</div>
+        <p>Even in 1960, Britain still took 53% of New Zealand exports. The country's institutions, language, law, parliamentary forms, schools and much of public culture were British-derived. Migrants were British-preferred — legally, culturally, administratively.</p>
+      </div>
+      <div class="step" data-step="3" data-action="ch7-step3">
+        <p>The pastoral economy was built on earlier Māori land loss. The farms that underpinned exports often rested on land taken by purchase, pressure, confiscation or legal fragmentation. Treaty settlements and iwi development have rebuilt part of a modern Māori economy — but the settlements themselves have generally represented only a small fraction of estimated historical losses.</p>
+      </div>
+      <div class="step" data-step="4" data-action="ch7-step4">
+        <p>The cliff in the chart begins long before 1973. Britain first applied to join the EEC in 1961; de Gaulle vetoed it in 1963 and again in 1967, but the signal was clear, and the colony began diversifying. By the time the UK actually entered the Community in 1973, New Zealand's British share had already fallen from 53% (1960) to 27% — most of the decline arrived as anticipation, not aftermath.</p>
+        <p class="pull">Britain joining the EEC in 1973 changed the economic model — and forced a new economic order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 8: Welfare State + Māori Urbanisation ============ -->
+<section class="chapter" id="ch8">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Eight</div>
+    <h2 class="chapter-title">The welfare state,<br><em>and a Māori migration of its own</em></h2>
+    <p class="chapter-dek">From the 1930s through the 1960s: pastoral exports, state protection, full employment, social security, suburban expansion — and a startlingly fast urbanisation.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">After</span> the Depression exposed the fragility of export dependence, the state became more interventionist. Import controls helped build domestic manufacturing; social security and labour market policy supported a more secure settler working and middle class.</p>
+
+    <p>Postwar migration again followed the economy. Britain remained the preferred source. Between 1947 and 1975, around 77,000 people came from Great Britain under an assisted scheme. They staffed factories, offices, farms, public services, and suburban expansion.</p>
+
+    <p>But the bigger movement was internal and it was Māori.</p>
+
+    <!-- Māori urbanisation figure.
+         Geometry: grids translate(80, 60) and (500, 60), each 156×156 (10×10
+         dots, 12+4 cell). Grid centres at (158, 138) and (578, 138). Gap
+         midpoint at x=368. Arrow centred on (368, 138). -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Māori urban share, 1945 → 1966 · a startlingly fast urbanisation</text>
+
+        <!-- 1945: 25% urban -->
+        <g transform="translate(80, 60)">
+          <text x="0" y="-12" font-family="IBM Plex Mono" font-size="11" fill="#4a3d2e" letter-spacing="1.5">1945</text>
+          <g id="dots-1945"></g>
+          <text x="0" y="200" font-family="Fraunces" font-size="42" font-weight="600" fill="#2d5a3d">25%</text>
+          <text x="0" y="222" font-family="IBM Plex Mono" font-size="10" fill="#8a7659" letter-spacing="1">URBAN</text>
+        </g>
+
+        <!-- Arrow — centred between the two grids both x and y -->
+        <g transform="translate(328, 138)">
+          <line x1="0" y1="0" x2="80" y2="0" stroke="#1d1610" stroke-width="1"/>
+          <polygon points="80,0 72,-4 72,4" fill="#1d1610"/>
+          <text x="40" y="-10" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" text-anchor="middle" letter-spacing="1.5">21 YEARS</text>
+        </g>
+
+        <!-- 1966: 62% urban -->
+        <g transform="translate(500, 60)">
+          <text x="0" y="-12" font-family="IBM Plex Mono" font-size="11" fill="#4a3d2e" letter-spacing="1.5">1966</text>
+          <g id="dots-1966"></g>
+          <text x="0" y="200" font-family="Fraunces" font-size="42" font-weight="600" fill="#2d5a3d">62%</text>
+          <text x="0" y="222" font-family="IBM Plex Mono" font-size="10" fill="#8a7659" letter-spacing="1">URBAN</text>
+        </g>
+
+        <line x1="0" y1="335" x2="800" y2="335" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="358" fill="#8a7659">Each grid = 100 dots. Filled dots = urban share. The reorganisation of Māori life across one generation.</text>
+      </svg>
+    </div>
+
+    <p>Driven by rural land shortages, urban factory jobs and an strong state interventions, Māori urbanisation transformed Auckland, Wellington, Hamilton, Rotorua and other centres. It produced urban marae, protest groups, churches, clubs and new music.</p>
+
+    <p class="pull">In a single generation, by and large, Māori moved from kāinga to suburbs, from seasonal work to factories, and from rural iwi politics to the politics of the city.</p>
+
+    <p>It changed Māori politics and it also changed what Pākehā thought Māori life was.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 9: Pacific Migration ============ -->
+<section class="chapter" id="ch9">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Nine</div>
+    <h2 class="chapter-title">Pacific labour,<br><em>and the Auckland that emerged</em></h2>
+    <p class="chapter-dek">Manufacturing wanted workers. Island economies offered limited wages. Churches, kin networks and remittance flows did the rest. Then the economy turned.</p>
+  </div>
+
+  <div class="scrolly-map" data-chapter="ch9">
+    <div class="map-sticky">
+      <div class="map-overline">South Pacific · Te Moana-nui-a-Kiwa</div>
+      <div class="map-pane" id="map-ch9"></div>
+      <!-- <div class="map-legend">
+        <div>PASIFIKA TO AUCKLAND, 1950s+</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#cc5e3f"></span>Source island</div>
+        <div class="legend-row"><span class="legend-swatch" style="background:#cc5e3f"></span>Migration corridor</div>
+      </div> -->
+    </div>
+
+    <div class="features">
+      <div class="step-card" data-step="1" data-action="ch9-step1">
+        <div class="step-tag">Step 1 · The wider archipelago</div>
+        <p class="drop-cap">From the late 1950s and especially the 1960s and early 1970s, Pacific workers became essential to Auckland's factories and services. Cook Islanders, Niueans and Tokelauans were New Zealand citizens; Samoans, Tongans and others entered through more regulated channels — though employers and governments often tolerated irregularity while labour was needed.</p>
+      </div>
+      <div class="step-card" data-step="2" data-action="ch9-step2">
+        <div class="step-tag">Step 2 · The corridors</div>
+        <p>Low island wages and limited opportunity met Auckland factory jobs and the demand for labour. Colonial and postcolonial ties opened the door. Churches, kin and remittance flows kept the route running.</p>
+        <p class="pull">A wage in Auckland could feed a village account back home.</p>
+      </div>
+      <div class="step-card" data-step="3" data-action="ch9-step3">
+        <div class="step-tag">Step 3 · Auckland</div>
+        <div class="stat">2,159 → 381,642</div>
+        <div class="stat-label">New Zealand's Pacific population, 1945 → 2018</div>
+        <p>Auckland — Ponsonby and Grey Lynn in particular, through the 1960s, and from the 1970s the southern suburbs around Ōtara, Māngere and Manukau — became a major Pacific city. Churches, rugby and league clubs, music, dance, food, language and politics followed the migrants south and west across the city.</p>
+      </div>
+      <div class="step-card" data-step="4" data-action="ch9-step4">
+        <div class="step-tag">Step 4 · The Dawn Raids, 1974 – 76</div>
+        <p>1973's oil shock turned the labour migrants into scapegoats. The Dawn Raids targeted alleged overstayers, overwhelmingly Pacific people — even though many overstayers were European or North American. Police entered homes; people were stopped in the street.</p>
+        <p class="pull">When labour was scarce, the rules bent. When jobs vanished, they stiffened.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ACT IV ============== -->
+<div class="act-divider">
+  <div class="marker">Act IV · The Open Country</div>
+  <div class="act-title">After Britain, after preference</div>
+  <div class="act-years">1973 — present</div>
+</div>
+
+<!-- Niho Taniwha · teeth of the taniwha — interlocking triangles in
+     pounamu greenstone. Chiefly lineage, strength, the watchful
+     protection of place. Reads as forest meeting water. -->
+<div class="maori-strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="strip-niho" x="0" y="0" width="60" height="80" patternUnits="userSpaceOnUse">
+        <rect width="60" height="80" fill="#e6d4a8"/>
+        <path d="M 0 0 L 15 28 L 30 0 L 45 28 L 60 0 Z" fill="#1a1411"/>
+        <path d="M 0 80 L 15 52 L 30 80 L 45 52 L 60 80 Z" fill="#2d6e4d"/>
+        <g fill="#1a1411">
+          <circle cx="7.5"  cy="40" r="1.4"/>
+          <circle cx="22.5" cy="40" r="1.4"/>
+          <circle cx="37.5" cy="40" r="1.4"/>
+          <circle cx="52.5" cy="40" r="1.4"/>
+        </g>
+        <path d="M 11 16 L 15 22 L 19 16 Z" fill="#f7eed5"/>
+        <path d="M 41 16 L 45 22 L 49 16 Z" fill="#f7eed5"/>
+        <path d="M 11 64 L 15 58 L 19 64 Z" fill="#f7eed5"/>
+        <path d="M 41 64 L 45 58 L 49 64 Z" fill="#f7eed5"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#strip-niho)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 10: Britain's Retreat ============ -->
+<section class="chapter" id="ch10">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Ten</div>
+    <h2 class="chapter-title">Rupture, restructure,<br><em>and the end of preference</em></h2>
+    <p class="chapter-dek">When the old market closed, the old migration order closed with it.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">In</span> 1970, Britain still took more than 90% of New Zealand's butter exports and 75% of its cheese exports. After 1973, that market steadily contracted. Combined with oil shocks, inflation, unemployment, and the declining viability of a protected, Britain-oriented system, the postwar settlement broke down.</p>
+
+    <!-- Restructuring infographic - twin scales -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Two restructurings, one decade</text>
+
+        <!-- Left: trade -->
+        <g transform="translate(0, 50)">
+          <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">EXPORT MARKETS</text>
+
+          <!-- 1970 -->
+          <g transform="translate(0, 30)">
+            <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#1d1610">1970</text>
+            <rect x="50" y="-10" width="280" height="14" fill="#8c2230"/>
+            <rect x="50" y="-10" width="0" height="14" fill="#6b3a82"/>
+            <text x="340" y="0" font-family="Fraunces" font-size="11" fill="#8c2230">UK ≈ 90%</text>
+          </g>
+          <!-- 2020 -->
+          <g transform="translate(0, 70)">
+            <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#1d1610">2020</text>
+            <rect x="50" y="-10" width="40" height="14" fill="#8c2230"/>
+            <rect x="90" y="-10" width="240" height="14" fill="#6b3a82"/>
+            <text x="340" y="0" font-family="Fraunces" font-size="11" fill="#6b3a82">Asia → leading bloc</text>
+          </g>
+          <line x1="0" y1="100" x2="400" y2="100" stroke="#c9b894" stroke-width="0.5"/>
+        </g>
+
+        <!-- Right: migration policy -->
+        <g transform="translate(0, 200)">
+          <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">MIGRATION POLICY BASIS</text>
+          <!-- 1970 -->
+          <g transform="translate(0, 30)">
+            <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#1d1610">PRE-1974</text>
+            <text x="80" y="0" font-family="Fraunces" font-size="14" font-style="italic" fill="#8c2230">Race · Nationality</text>
+          </g>
+          <!-- 2020 -->
+          <g transform="translate(0, 60)">
+            <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#1d1610">POST-1991</text>
+            <text x="80" y="0" font-family="Fraunces" font-size="14" font-style="italic" fill="#6b3a82">Skills · Capital · Family · Education</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <p>From 1984, the Labour government launched radical market liberalisation: deregulation, removal of many controls, financial liberalisation, state-sector reform, exposure of protected industries to competition. <em>Rogernomics</em> remains contested. It helped shift New Zealand toward an open, market-oriented economy — but it also produced recession, unemployment, and dislocation. Unemployment reached 11.1% in March 1992.</p>
+
+    <p>Migration policy changed alongside the economy. In 1974, New Zealand began moving away from race and nationality as the basis of admission. The 1987 Immigration Act and the 1991 points system changed the test for entry: skills, business, family reunification, capital and education.</p>
+
+    <p class="pull">In principle, this finally ended the formal preference for British and white migrants.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 11: Asian Turn ============ -->
+<section class="chapter" id="ch11">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Eleven</div>
+    <h2 class="chapter-title">Auckland turns to Asia,<br><em>and the city transforms</em></h2>
+    <p class="chapter-dek">The late-20th-century migration came through universities, businesses and families. It changed Auckland first. The city became Asian as well as Pacific.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Where</span> the Cantonese miners of the 1860s had been a male, rural, mining bachelor society, the new wave came as families, professionals, students, business migrants. Sources shifted across the period: Hong Kong, Taiwan, and South Korea early in the 1990s; China and India increasingly after 2000.</p>
+
+    <!-- Asian migration flow diagram. Same visual grammar as the ch4
+         miner-circuit network: filled origin circles weighted by approximate
+         contribution to NZ migration, labels below each marker, edges
+         anchored at circle centres so the fills cover the inside portion.
+         Two columns rather than three because most Asian migrants came
+         direct (no major way-station like Victoria played for the gold
+         rush). Origins are vertically grouped by era. -->
+    <div class="figure ch11-network-figure reveal">
+      <svg viewBox="0 0 1000 740" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <text class="map-label" x="40" y="32" fill="#8a7659">Asian migration · 1986–2006 · sources and destination</text>
+        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">Many routes to Auckland</text>
+
+        <!-- Stat callout, top-right -->
+        <g transform="translate(960, 50)">
+          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="34" fill="#1d1610">33,834 → 251,130</text>
+          <text x="0" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">ASIAN-BORN NZ RESIDENTS · 1986 → 2006</text>
+        </g>
+
+        <!-- Column headers -->
+        <g font-family="IBM Plex Mono" font-size="10" letter-spacing="3" fill="#8a7659">
+          <text x="180" y="115" text-anchor="middle">ORIGINS</text>
+          <text x="780" y="115" text-anchor="middle">NEW ZEALAND</text>
+          <line x1="60"  y1="124" x2="300" y2="124" stroke="#c9b894" stroke-width="0.5"/>
+          <line x1="660" y1="124" x2="900" y2="124" stroke="#c9b894" stroke-width="0.5"/>
+        </g>
+
+        <!-- Era subheadings on the origins column -->
+        <g font-family="IBM Plex Mono" font-size="9" letter-spacing="2" fill="#8a7659">
+          <text x="60" y="158">POST-2000 DOMINANT</text>
+          <text x="60" y="328">EARLY 1990s WAVE</text>
+          <text x="60" y="568">COUP-DRIVEN</text>
+        </g>
+
+        <!-- Edges (drawn before nodes so circles sit on top).
+             Each path runs from an origin's centre to Auckland's centre;
+             circle fills cover the inside portions. Widths are weighted
+             by approximate contribution to NZ migration: China largest
+             (especially post-2000), India second, the early-1990s wave
+             (HK / S Korea / Taiwan) at medium weight, and the smaller
+             Philippines and coup-driven Indo-Fijian streams thinner. -->
+        <g fill="none" stroke="#6b3a82" stroke-linecap="round">
+          <!-- Post-2000 dominant -->
+          <path d="M 180 195 C 420 195, 540 380, 780 380" stroke-width="9" opacity="0.85"/>  <!-- China → Auckland -->
+          <path d="M 180 270 C 420 270, 540 380, 780 380" stroke-width="7" opacity="0.8"/>   <!-- India → Auckland -->
+
+          <!-- Early 1990s wave -->
+          <path d="M 180 365 C 420 365, 540 380, 780 380" stroke-width="4" opacity="0.7"/>   <!-- Hong Kong → Auckland -->
+          <path d="M 180 425 C 420 425, 540 380, 780 380" stroke-width="4" opacity="0.7"/>   <!-- South Korea → Auckland -->
+          <path d="M 180 480 C 420 480, 540 380, 780 380" stroke-width="3" opacity="0.6"/>   <!-- Taiwan → Auckland -->
+          <path d="M 180 530 C 420 530, 540 380, 780 380" stroke-width="2" opacity="0.55"/>  <!-- Philippines → Auckland -->
+
+          <!-- Coup-driven -->
+          <path d="M 180 605 C 420 605, 540 400, 780 400" stroke-width="2.5" opacity="0.6" stroke-dasharray="6 5"/>  <!-- Fiji → Auckland -->
+        </g>
+
+        <!-- Origin nodes — sized loosely by approximate flow weight to NZ.
+             No inner letters; labels below. Asian violet (#6b3a82). -->
+        <g fill="#6b3a82">
+          <circle cx="180" cy="195" r="18"/>
+          <circle cx="180" cy="270" r="15"/>
+          <circle cx="180" cy="365" r="11"/>
+          <circle cx="180" cy="425" r="11"/>
+          <circle cx="180" cy="480" r="9"/>
+          <circle cx="180" cy="530" r="7"/>
+          <circle cx="180" cy="605" r="8"/>
+        </g>
+
+        <!-- Origin labels -->
+        <g text-anchor="middle" fill="#1d1610">
+          <text x="180" y="225" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">CHINA</text>
+          <text x="180" y="240" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">mainland · post-FTA surge</text>
+
+          <text x="180" y="297" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">INDIA</text>
+          <text x="180" y="312" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">families, students, professionals</text>
+
+          <text x="180" y="385" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">HONG KONG</text>
+          <text x="180" y="400" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">pre-1997 handover</text>
+
+          <text x="180" y="445" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">SOUTH KOREA</text>
+          <text x="180" y="460" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">education-led</text>
+
+          <text x="180" y="498" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">TAIWAN</text>
+
+          <text x="180" y="546" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">PHILIPPINES</text>
+
+          <text x="180" y="623" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">FIJI</text>
+          <text x="180" y="638" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">Indo-Fijian · 1987 + 2000 coups</text>
+        </g>
+
+        <!-- Auckland destination — concentric purple, sized larger -->
+        <g transform="translate(820, 380)">
+          <circle r="60" fill="#6b3a82" opacity="0.13"/>
+          <circle r="38" fill="#6b3a82" opacity="0.28"/>
+          <circle r="20" fill="#6b3a82"/>
+        </g>
+        <text x="820" y="465" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="2" fill="#1d1610">AUCKLAND</text>
+        <text x="820" y="482" text-anchor="middle" font-family="Source Serif 4" font-size="12" font-style="italic" fill="#6b3a82">⅔ of Asian New Zealanders</text>
+
+        <!-- Caption -->
+        <line x1="40" y1="660" x2="960" y2="660" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="40" y="685" fill="#8a7659">Edge width approximates contribution to NZ migration.</text>
+        <text class="map-label" x="40" y="703" fill="#8a7659">Origin mix shifted by era — HK, Taiwan and South Korea peaked in the 1990s; China and India after 2000.</text>
+        <text class="map-label" x="40" y="725" fill="#8a7659">Source: Statistics New Zealand.</text>
+      </svg>
+    </div>
+
+    <p>Hong Kong's handover, Fiji's coups, Asian education markets and New Zealand's points system all pushed in the same direction. So did Auckland's growing migrant networks, English-language schooling, and a clean-country brand.</p>
+
+    <p>By 2006, nearly a quarter of New Zealand's population was foreign-born. Auckland was no longer a British city with Māori and Pacific additions. Asia had become part of its machinery. Shops, schools and property markets changed first; food, media, churches and temples followed.</p>
+
+    <p class="pull">The shift also provoked backlash — &ldquo;Inv-Asian&rdquo; rhetoric, anxieties about housing and foreign capital, English-language debates, a new anti-Asian politics. But Asian New Zealanders also became more visible in Parliament, business, media and civic life.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 12: Two tides ============
+     Static-figure chapter on present-day flows: the log-azimuthal arrivals
+     and departures maps (rendered at runtime by scripts/chapters/ch12-twotides.js) over
+     the user's editorial paragraph, then a horizontal bar chart of net
+     migration by citizenship (year ended Jan 2026, Stats NZ). Closes with
+     a non-ideological cost-of-living and policy paragraph. -->
+
+<style>
+  /* ch12 uses the same .full-chapter width (920px) as every other
+     full-chapter section — keeping the prose column aligned with the
+     chapter head. The two flow-map panels still sit side-by-side; each
+     just renders at ~85% of its design size at this container width,
+     which keeps the typography readable while preserving the side-by-
+     side comparison the chapter relies on. */
+
+  /* Two-map composition layout. Stacks on narrow viewports. */
+  .tt-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 18px 0 0;
+  }
+  @media (max-width: 760px) {
+    .tt-pair { grid-template-columns: 1fr; }
+  }
+  .tt-pair figure { margin: 0; }
+  .tt-pair svg { display: block; width: 100%; height: auto; }
+  .tt-source-block {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 0.5px solid var(--rule);
+  }
+  /* Scope to ch12 so we beat the .full-chapter p { font-size: 19px } rule
+     on specificity — otherwise the source paragraph inherits the body
+     prose size instead of the 10px mono treatment used by other figures' captions. */
+  #ch12 .tt-source-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0;
+    max-width: none;
+  }
+
+  /* In-SVG typography — used by both the two map panels (rendered by
+     twotides.js) and the static citizenship bar chart below. */
+  .tt-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase;
+    fill: var(--ink-faint);
+  }
+  .tt-title {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 19px; fill: var(--ink);
+  }
+  .tt-stat {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 22px; fill: var(--ink);
+  }
+
+  /* Map panel elements */
+  .tt-sphere    { fill: none; stroke: var(--ink); stroke-width: 0.6; }
+  .tt-graticule { fill: none; stroke: #cdbf9c; stroke-width: 0.4; stroke-opacity: 0.7; }
+  .tt-land      { fill: var(--land); stroke: var(--land-deep); stroke-width: 0.35; }
+  .tt-flow      { fill: none; stroke-linecap: round; stroke-opacity: 0.85; }
+  .tt-flow.tt-in  { stroke: #a8442d; }   /* kokowai — inbound */
+  .tt-flow.tt-out { stroke: #2c6479; }   /* sea-clay — outbound */
+  .tt-city-dot.tt-in  { fill: #a8442d; stroke: var(--paper); stroke-width: 1; }
+  .tt-city-dot.tt-out { fill: #2c6479; stroke: var(--paper); stroke-width: 1; }
+  .tt-akl-dot   { fill: var(--ink); stroke: var(--paper); stroke-width: 1.2; }
+  .tt-akl-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+    fill: var(--ink);
+    paint-order: stroke; stroke: var(--paper); stroke-width: 3px;
+  }
+  .tt-city-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 10.5px; font-weight: 600;
+    fill: var(--ink);
+    paint-order: stroke; stroke: var(--paper); stroke-width: 2.8px;
+  }
+  .tt-city-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    paint-order: stroke; stroke: var(--paper); stroke-width: 2.8px;
+  }
+  .tt-city-count.tt-in  { fill: #a8442d; }
+  .tt-city-count.tt-out { fill: #2c6479; }
+
+  /* Citizenship bar-chart row elements */
+  .tt-row-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px; font-weight: 600;
+    fill: var(--ink);
+  }
+  .tt-row-num, .tt-row-num-neg {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .tt-row-num         { fill: var(--ink); }
+  .tt-row-num-neg     { fill: #2c6479; }
+  .tt-row-num-inside  {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    fill: var(--paper);
+  }
+  .tt-row-num-inside-dk {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    fill: var(--ink);
+  }
+  .tt-zero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.06em;
+    fill: var(--ink-faint);
+  }
+</style>
+
+<section class="chapter" id="ch12">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Twelve</div>
+    <h2 class="chapter-title">Two tides,<br><em>and the country between them</em></h2>
+    <p class="chapter-dek">Most arrivals last year came from a small handful of citizenships. Most departures went to a single country across the Tasman. The flows pass one another at customs.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">The</span> most recent year of migration data shows continued arrivals but many departures. Further, the people who depart and the people who arrive are characteristically different. Two flows — one Kiwi and the other foreign —pass one another at customs, going opposite directions, drawn by different forces.</p>
+
+    <!-- Double map composition — log-azimuthal arrivals + departures.
+         Rendered at runtime by scripts/chapters/ch12-twotides.js into the SVGs below. -->
+    <div class="figure reveal">
+      <div class="tt-pair">
+        <figure><svg id="tt-map-in"></svg></figure>
+        <figure><svg id="tt-map-out"></svg></figure>
+      </div>
+      <div class="tt-source-block">
+        <p class="tt-source-text">Sources: Statistics New Zealand; OECD.</p>
+      </div>
+    </div>
+
+    <p>The country runs two migration economies in opposite directions. In the year to January 2026, <strong>23,200 more people immigrated to Aotearoa than emigrated from the archipelago</strong> — and the country was still growing. Decomposed, though, and the asymmetry is stark: New Zealand gained roughly 60,000 foreign nationals, primarily from India, China and the Philippines, while losing approximately 37,000 New Zealand citizens — three out of every five of them across the Tasman. The previous calendar year was worse — a record net loss of 47,067 citizens, the largest exit in a single year on record. Until the late 1990s, net migration was negative, and limited immigration failed to replace the leavers; today, the replacements come from abroad, and they come from a small group of places. <strong>Six foreign citizenships contribute roughly half the arrivals; one citizenship contributes virtually all of the departures.</strong></p>
+
+    <!-- Net migration by citizenship — static horizontal bar chart over
+         hard-coded Stats NZ figures, year ended January 2026. Sorted by
+         signed magnitude with NZ-citizen net loss broken out at the
+         bottom in sea-clay; foreign citizenships above in kokowai. -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+        <text class="tt-eyebrow" x="0" y="16">Net migration by citizenship</text>
+        <text class="tt-stat" x="800" y="22" text-anchor="end">+23,200</text>
+        <text class="tt-title" x="0" y="46">More citizens leave than arrive on any single foreign passport</text>
+
+        <!-- Zero baseline -->
+        <line x1="524" y1="78" x2="524" y2="310" stroke="#1d1610" stroke-width="0.8"/>
+        <text class="tt-zero-label" x="524" y="324" text-anchor="middle">0</text>
+
+        <g dominant-baseline="middle">
+          <!-- Row 0: India +11,096 -->
+          <text class="tt-row-label" x="130" y="90" text-anchor="end">India</text>
+          <rect x="524" y="81" width="111" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="641" y="90">+11,096</text>
+
+          <!-- Row 1: China +9,249 -->
+          <text class="tt-row-label" x="130" y="118" text-anchor="end">China</text>
+          <rect x="524" y="109" width="92" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="622" y="118">+9,249</text>
+
+          <!-- Row 2: Philippines +7,708 -->
+          <text class="tt-row-label" x="130" y="146" text-anchor="end">Philippines</text>
+          <rect x="524" y="137" width="77" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="607" y="146">+7,708</text>
+
+          <!-- Row 3: Sri Lanka +4,918 -->
+          <text class="tt-row-label" x="130" y="174" text-anchor="end">Sri Lanka</text>
+          <rect x="524" y="165" width="49" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="579" y="174">+4,918</text>
+
+          <!-- Row 4: Samoa +1,757 -->
+          <text class="tt-row-label" x="130" y="202" text-anchor="end">Samoa</text>
+          <rect x="524" y="193" width="18" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="548" y="202">+1,757</text>
+
+          <!-- Row 5: South Africa +1,336 -->
+          <text class="tt-row-label" x="130" y="230" text-anchor="end">South Africa</text>
+          <rect x="524" y="221" width="13" height="18" fill="#a8442d"/>
+          <text class="tt-row-num" x="543" y="230">+1,336</text>
+
+          <!-- Row 6: aggregate of all other non-NZ citizenships +24,136.
+               Number sits inside the bar's right edge — the bar reaches
+               near the viewBox edge so an outside-tip label would clip. -->
+          <text class="tt-row-label" x="130" y="258" text-anchor="end">All other</text>
+          <rect x="524" y="249" width="241" height="18" fill="#a8442d" opacity="0.4"/>
+          <text class="tt-row-num-inside-dk" x="760" y="258" text-anchor="end">+24,136</text>
+
+          <!-- Row 7: New Zealand citizens net OUT, set apart by an extra
+               row gap and a distinct (sea-clay) colour. Number sits inside
+               the bar's right tip (near zero) in paper-tone — putting it
+               outside the left tip would collide with the row label. -->
+          <text class="tt-row-label" x="130" y="294" text-anchor="end">New Zealand</text>
+          <rect x="154" y="285" width="370" height="18" fill="#2c6479"/>
+          <text class="tt-row-num-inside" x="520" y="294" text-anchor="end">−36,994</text>
+        </g>
+
+        <!-- Caption rule + caption + source line. Caption on its own
+             line; source on the next line — same convention as every
+             other figure in the interactive. -->
+        <line x1="0" y1="338" x2="800" y2="338" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="354" fill="#8a7659">Year ended January 2026.</text>
+        <text class="map-label" x="0" y="374" fill="#8a7659">Source: Statistics New Zealand.</text>
+      </svg>
+    </div>
+
+    <p>The push and pull factors are embedding in country's economic conditions, as well as those of neighbouring Australia, which allows New Zealanders to move freely. Half of New Zealanders renting their home pay more than 40% of disposable income on rent — a common threshold for &ldquo;rent burden&rdquo; — and the IMF ranks New Zealand the worst country in the OECD for housing affordability. In the year to June 2025 average rent payments rose 9.0%; mortgage costs rose another 4.9%. Median earnings in Australia run roughly a third higher in nominal terms, and the gap is wider in mining and healthcare — sectors the departures are concentrated in. Whatever the policy answer, the structural pull is hard to legislate away: the Trans-Tasman Travel Arrangement guarantees New Zealanders automatic residency rights in Australia, and they exercise this right with growing frequency as the wage and housing gaps widen.</p>
+
+    <!-- Quarterly net trans-Tasman migration · rendered at runtime by
+         scripts/chapters/ch12-trans-tasman.js from
+         data/nz-au-migration-quarterly.csv. Stats NZ on arrivals, ABS on
+         departures (Australia counts NZ-citizen arrivals into Australia,
+         which is the cleanest source for the NZ → AU side). -->
+    <div class="figure reveal">
+      <svg id="trans-tasman" aria-label="Quarterly net trans-Tasman migration, Dec 2003 to Mar 2025"></svg>
+    </div>
+
+    <p class="pull">Both major parties have called affordability a problem; they disagree on whether the lever to fix it operates through immigration, housing, or productivity.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 13: The past did not pass ============ -->
+<section class="chapter" id="ch13">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Thirteen</div>
+    <h2 class="chapter-title">The past did not pass,<br><em>and the arrivals accumulate</em></h2>
+    <p class="chapter-dek">While the arc may be &ldquo;Māori, then British, then Chinese, then Pacific, then Asian,&rdquo; later arrivals met the institutions, land titles and prejudices left by earlier ones.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Today</span>, more than a quarter of New Zealand's population was born overseas. Ethnic identification is overlapping, not mutually exclusive — people identify with more than one group.</p>
+
+    <!-- Final composition figure -->
+    <div class="composition-grid reveal">
+      <div>
+        <div class="cat">European</div>
+        <div>
+          <div class="num">67.8%</div>
+          <div class="bar" style="background:#8c2230;width:97.7%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="cat">Māori</div>
+        <div>
+          <div class="num">17.8%</div>
+          <div class="bar" style="background:#2d5a3d;width:25.6%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="cat">Asian</div>
+        <div>
+          <div class="num">17.3%</div>
+          <div class="bar" style="background:#6b3a82;width:24.9%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="cat">Pacific peoples</div>
+        <div>
+          <div class="num">8.9%</div>
+          <div class="bar" style="background:#cc5e3f;width:12.8%"></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-faint); letter-spacing:0.06em; margin-top:-30px; margin-bottom:60px;">
+      2023 census · New Zealand statistics allow multigroup identification, so totals exceed 100%.
+    </p>
+
+    <!-- Final layered map: NZ with all migration arcs simultaneously.
+         Same Natural-Earth simplified silhouette as the hero, with all
+         five waves arriving at once and labelled with their dates. -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Aotearoa, layered</text>
+
+        <defs>
+          <pattern id="hatch-final" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#a37c44" stroke-width="0.5" opacity="0.6"/>
+          </pattern>
+          <!-- Chunky markers — used by the four diagrammatic corner
+               arrows on this final figure. Sized larger than the hero's
+               markers to match the heavier stroke. -->
+          <marker id="ah2-poly"    viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d3557"/></marker>
+          <marker id="ah2-british" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8c2230"/></marker>
+          <marker id="ah2-pacific" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cc5e3f"/></marker>
+          <marker id="ah2-asian"   viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b3a82"/></marker>
+        </defs>
+
+        <!-- Sea wash -->
+        <rect x="0" y="30" width="800" height="490" fill="#7c9d9d" opacity="0.07"/>
+
+        <!-- NZ silhouette — real Natural-Earth geometry, simplified.
+             Centred at (400, 270) so the four corner arrows balance. -->
+        <g transform="translate(400, 270)">
+          <!-- North Island -->
+          <path d="M 8.7 -124.7 L 8.1 -122.5 L 7.0 -123.6 L 6.0 -122.1 L 7.6 -119.8 L 8.0 -121.9 L 9.4 -116.6 L 12.1 -114.6 L 11.6 -112.6 L 14.3 -116.9 L 14.6 -113.1 L 16.5 -112.4 L 16.6 -114.2 L 19.6 -112.6 L 19.2 -110.8 L 21.3 -112.7 L 24.9 -110.0 L 23.2 -108.3 L 25.3 -105.2 L 26.8 -106.2 L 25.3 -107.2 L 28.4 -108.7 L 29.5 -105.1 L 28.1 -106.0 L 31.8 -100.6 L 30.3 -99.7 L 32.3 -95.6 L 28.5 -98.2 L 28.4 -95.6 L 30.7 -95.8 L 30.6 -92.6 L 36.6 -85.2 L 34.6 -85.2 L 35.0 -82.5 L 34.0 -84.0 L 34.1 -80.3 L 36.2 -80.0 L 34.1 -79.5 L 35.6 -75.6 L 32.6 -76.2 L 33.5 -73.9 L 36.5 -75.1 L 36.7 -72.9 L 37.4 -75.3 L 37.8 -73.4 L 38.8 -74.6 L 39.9 -72.6 L 42.1 -73.2 L 44.1 -67.8 L 47.1 -68.4 L 47.8 -66.9 L 45.2 -74.8 L 46.7 -76.4 L 46.1 -79.5 L 43.9 -81.6 L 46.6 -82.1 L 48.1 -76.8 L 51.6 -77.8 L 49.4 -74.6 L 51.6 -75.3 L 53.5 -62.5 L 56.5 -59.3 L 53.7 -61.6 L 53.8 -59.2 L 57.2 -57.4 L 57.2 -59.5 L 71.4 -51.2 L 78.0 -53.4 L 80.8 -58.3 L 84.7 -61.0 L 89.5 -60.5 L 93.6 -57.8 L 90.2 -51.7 L 89.5 -40.9 L 86.0 -37.3 L 83.8 -37.4 L 83.0 -29.6 L 84.8 -28.7 L 83.4 -26.1 L 82.4 -26.7 L 82.7 -29.4 L 81.2 -29.7 L 75.7 -30.1 L 70.3 -27.3 L 67.8 -22.6 L 68.7 -18.6 L 71.2 -17.8 L 66.8 -7.4 L 53.4 14.4 L 43.3 21.9 L 41.8 21.9 L 41.2 17.9 L 36.3 17.9 L 36.7 13.9 L 34.4 16.4 L 32.2 14.6 L 36.3 11.5 L 40.6 2.7 L 42.1 -5.0 L 41.0 -8.8 L 36.8 -13.4 L 31.7 -14.5 L 27.9 -18.8 L 22.7 -20.3 L 19.2 -25.2 L 20.7 -28.6 L 29.4 -32.1 L 32.1 -35.0 L 33.9 -49.6 L 37.5 -49.7 L 35.2 -50.0 L 36.7 -52.4 L 35.1 -52.0 L 35.2 -54.3 L 38.1 -56.8 L 36.1 -56.5 L 34.0 -63.7 L 35.9 -66.0 L 33.9 -65.0 L 31.6 -70.8 L 33.3 -70.6 L 34.4 -67.1 L 35.4 -68.7 L 34.0 -68.9 L 37.6 -70.0 L 35.1 -71.9 L 35.8 -73.2 L 30.7 -71.4 L 25.9 -82.2 L 26.9 -83.3 L 29.9 -79.2 L 30.2 -84.8 L 27.1 -85.5 L 31.0 -87.2 L 27.7 -86.6 L 29.8 -89.6 L 28.1 -87.8 L 26.4 -90.0 L 25.9 -88.8 L 27.9 -87.5 L 26.7 -87.0 L 22.9 -90.0 L 21.5 -95.0 L 21.1 -93.2 L 26.1 -85.3 L 24.2 -84.3 L 13.8 -101.1 L 17.7 -106.4 L 16.2 -107.2 L 16.2 -105.4 L 13.8 -104.8 L 13.3 -102.1 L 11.7 -104.8 L 12.4 -106.6 L 11.3 -105.2 L 11.5 -107.0 L 9.0 -108.3 L 10.5 -110.5 L 9.9 -113.9 L 2.4 -123.3 L 2.9 -124.7 L 8.7 -124.7 Z"
+                fill="url(#hatch-final)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+          <!-- South Island -->
+          <path d="M 6.0 -0.6 L 3.5 -0.4 L 2.2 2.2 L 5.3 6.2 L 7.7 5.2 L 9.1 15.6 L 16.6 10.5 L 18.1 11.4 L 19.0 10.1 L 18.0 9.7 L 20.7 7.9 L 23.5 8.0 L 19.5 9.6 L 19.5 11.6 L 22.3 10.6 L 19.7 15.3 L 25.0 12.9 L 21.3 13.3 L 22.2 11.0 L 22.6 12.4 L 23.7 11.3 L 22.2 9.6 L 22.9 8.7 L 25.8 8.8 L 26.1 10.8 L 27.9 9.3 L 26.9 11.9 L 25.5 11.7 L 26.3 13.2 L 21.9 15.1 L 28.0 13.8 L 23.7 18.3 L 27.4 24.7 L 18.7 38.6 L 16.1 39.7 L 11.9 49.1 L 3.5 55.5 L 3.6 61.6 L 4.9 62.3 L 2.6 63.1 L 8.5 63.3 L 8.9 67.5 L 7.4 68.2 L 6.7 65.4 L 6.9 68.5 L 3.8 66.2 L -1.5 67.5 L 2.0 66.0 L -1.5 65.1 L -2.2 67.7 L -18.1 76.1 L -20.8 81.6 L -20.3 88.8 L -24.6 95.6 L -25.5 100.6 L -29.2 105.1 L -27.2 106.6 L -30.3 109.0 L -26.9 106.6 L -26.9 108.6 L -33.8 110.7 L -41.3 120.6 L -44.2 121.1 L -42.7 121.3 L -43.5 122.3 L -53.8 125.0 L -56.8 122.5 L -60.7 123.6 L -64.2 122.1 L -64.0 123.7 L -65.7 121.8 L -63.9 121.3 L -64.1 119.6 L -65.2 120.9 L -67.2 118.0 L -72.3 119.1 L -76.2 114.4 L -80.8 116.7 L -89.0 115.6 L -90.4 114.2 L -86.1 110.0 L -91.3 112.9 L -88.3 109.7 L -90.1 109.9 L -89.3 108.3 L -93.3 111.3 L -93.2 107.2 L -85.0 105.0 L -88.8 105.4 L -87.0 104.0 L -88.7 102.9 L -84.5 100.8 L -89.7 102.5 L -88.9 99.1 L -86.1 99.7 L -88.0 97.2 L -82.1 100.5 L -84.6 97.4 L -80.5 97.1 L -84.6 96.3 L -85.1 93.5 L -82.7 94.5 L -84.5 92.8 L -83.5 91.6 L -82.3 93.5 L -81.1 92.7 L -83.0 90.9 L -80.1 91.5 L -82.2 90.0 L -79.4 87.6 L -77.4 90.6 L -78.2 86.5 L -76.7 86.4 L -76.5 88.4 L -76.8 85.4 L -74.8 86.0 L -76.1 84.6 L -73.7 82.7 L -70.9 84.6 L -72.4 80.7 L -64.1 71.2 L -57.4 70.4 L -43.3 61.7 L -35.2 54.9 L -34.4 52.2 L -25.6 46.9 L -20.0 38.9 L -16.2 25.0 L -10.2 22.9 L -6.9 17.8 L -5.8 15.3 L -6.3 7.1 L 1.2 -0.2 L 6.0 -0.6 Z"
+                fill="url(#hatch-final)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+          <!-- Stewart Island -->
+          <ellipse cx="-70" cy="129" rx="5" ry="2.5" fill="url(#hatch-final)" stroke="#5a4530" stroke-width="0.6"/>
+
+        </g>
+
+        <!-- Destination zone — a thin dashed ring around NZ. Arrows from
+             the four corners terminate on the ring's perimeter rather
+             than touching the silhouette, so the country reads as the
+             centrepiece, not as the contact surface. -->
+        <circle cx="400" cy="270" r="155" fill="none" stroke="#c9b894" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7"/>
+
+        <!-- Five diagrammatic corner arrows. Asia gets two arrows from
+             the same SW origin — one direct (1865 Cantonese miners), one
+             with a wider westward bow (1990 modern Asian wave).
+             Each path's second control point sits on the corner-side of
+             the endpoint so the bezier's terminal tangent points TOWARD
+             NZ centre — the arrowheads end up correctly oriented. -->
+        <g fill="none" stroke-width="4" stroke-linecap="round" opacity="0.9">
+          <!-- Europe · NW corner → NW perimeter -->
+          <circle cx="60" cy="80" r="7" fill="#8c2230"/>
+          <path d="M 60 80 C 200 110, 225 173, 269 197" stroke="#8c2230" marker-end="url(#ah2-british)"/>
+
+          <!-- Polynesia · NE corner → NE perimeter -->
+          <circle cx="740" cy="80" r="7" fill="#1d3557"/>
+          <path d="M 740 80 C 600 110, 575 173, 531 197" stroke="#1d3557" marker-end="url(#ah2-poly)"/>
+
+          <!-- Asia 1865 · SW corner direct → SW perimeter -->
+          <circle cx="60" cy="460" r="7" fill="#6b3a82"/>
+          <path d="M 60 460 C 200 430, 225 367, 269 343" stroke="#6b3a82" marker-end="url(#ah2-asian)"/>
+
+          <!-- Asia 1990 · same SW origin, wider westward bow → W perimeter -->
+          <path d="M 60 460 C -20 360, 195 270, 245 270" stroke="#6b3a82" marker-end="url(#ah2-asian)"/>
+
+          <!-- Pasifika · SE corner → SE perimeter -->
+          <circle cx="740" cy="460" r="7" fill="#cc5e3f"/>
+          <path d="M 740 460 C 600 430, 575 367, 531 343" stroke="#cc5e3f" marker-end="url(#ah2-pacific)"/>
+        </g>
+
+        <!-- Corner labels. Asia gets one label with both years inline. -->
+        <g font-family="IBM Plex Mono" font-size="11" letter-spacing="2">
+          <text x="60"  y="60"  fill="#8c2230">EUROPE · 1840</text>
+          <text x="740" y="60"  fill="#1d3557" text-anchor="end">POLYNESIA · 1250</text>
+          <text x="60"  y="488" fill="#6b3a82">ASIA · 1865, 1990</text>
+          <text x="740" y="488" fill="#cc5e3f" text-anchor="end">PASIFIKA · 1950</text>
+        </g>
+
+        <line x1="0" y1="510" x2="800" y2="510" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="532" fill="#8a7659">The routes differ. The question recurs: who may <tspan font-style="italic" fill="#1d1610">belong</tspan>?</text>
+      </svg>
+    </div>
+
+    <p>Māori settlement built the first societies. British colonisation rewrote both — by purchase, survey, decree and war. Gold added a Pacific contingent, a Cantonese population, and the colony's first poll tax. Refrigeration tied farms to London and made pastoral exports the country's livelihood for a long century.</p>
+
+    <p>After 1935 the welfare state reorganised the country around full employment, suburbs, factories and schools. Māori moved into cities; Pacific workers came to staff them; British migrants arrived under assistance. After 1973, Britain's retreat and market reform changed the test for entry from race and nationality to skills, capital and education — and Asian Auckland followed.</p>
+
+    <p class="pull" style="font-size:24px;">Gold towns that host surfers today are remnants of a Pacific labour market — California, Nevada, Victoria, Otago. The country as a whole is the manifestation of similar logics, built and rebuilt by the search for land, labour, capital and belonging.</p>
+
+    <p>Throughout its settled existence, opportunity has driven migration to Aotearoa New Zealand; the country has struggled over who belongs.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- Purapura Whetū · star seeds — a myriad of stars; great numbers of
+     people; ancestors long gone but never forgotten. A field of
+     stitches, each one a person, an arrival. Closing band. -->
+<div class="maori-strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="strip-purapura" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+        <rect width="32" height="32" fill="#e6d4a8"/>
+        <g stroke-width="1.4" stroke-linecap="round" fill="none">
+          <g stroke="#1a1411">
+            <line x1="4"  y1="4"  x2="12" y2="12"/>
+            <line x1="12" y1="4"  x2="4"  y2="12"/>
+          </g>
+          <g stroke="#d4a316">
+            <line x1="20" y1="4"  x2="28" y2="12"/>
+            <line x1="28" y1="4"  x2="20" y2="12"/>
+          </g>
+          <g stroke="#d4a316">
+            <line x1="4"  y1="20" x2="12" y2="28"/>
+            <line x1="12" y1="20" x2="4"  y2="28"/>
+          </g>
+          <g stroke="#1a1411">
+            <line x1="20" y1="20" x2="28" y2="28"/>
+            <line x1="28" y1="20" x2="20" y2="28"/>
+          </g>
+        </g>
+        <g stroke="#1a1411" stroke-width="0.8" opacity="0.5">
+          <line x1="16" y1="14" x2="16" y2="18"/>
+          <line x1="14" y1="16" x2="18" y2="16"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#strip-purapura)"/>
+  </svg>
+</div>
+
+<!-- =========== OUTRO ============ -->
+<section class="outro" id="outro">
+  <h2>Migrations</h2>
+  <p>The arrivals that made Aotearoa New Zealand.</p>
+  <div class="colophon">Andrew Renninger</div>
+</section>
+
+</body>
+</html>

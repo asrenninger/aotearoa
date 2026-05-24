@@ -1,46 +1,38 @@
-# Landfalls — deploy copy
+# Aotearoa — deploy build
 
-This is the static, public-deploy copy of the *Landfalls / Migration to
-Aotearoa* scrolly. It is intended to be served over HTTPS from a static
-host (GitHub Pages or equivalent).
+Static GitHub Pages build served at **https://asrenninger.github.io/aotearoa/**.
+Configure GitHub Pages to serve from the `main` branch `/docs` folder
+(Settings → Pages → Source: Deploy from a branch → `main` / `/docs`).
 
-## How to deploy
+No build step: the sites load ES modules and `fetch()` local data over HTTP,
+which work natively on any static HTTPS host.
 
-Drop the **contents** of this folder at the path your host serves from
-(e.g. repo root, or `/docs` if GitHub Pages is configured to serve from
-`/docs`). The `.nojekyll` marker skips Jekyll processing on GitHub Pages.
-
-No build step. The site loads ES modules and `fetch()`es local data over
-HTTP — both work natively on any static HTTPS host.
-
-## What this folder is
-
-Everything here is required at runtime:
+## Structure
 
 ```
 .
-├── .nojekyll          # Skips Jekyll processing on GitHub Pages
-├── index.html         # Page content + structure
-├── favicon.svg
-├── styles/
-│   └── frontiers.css
-├── scripts/
-│   ├── main.js
-│   ├── core/          # Cross-cutting infrastructure (scroll, palette, mapbox, projection, svg)
-│   └── chapters/      # Per-chapter render/init/actions modules
-└── data/              # Eight runtime data files (geojson + csv + json)
+├── .nojekyll            # skip Jekyll (don't mangle paths/underscored files)
+├── index.html           # landing page — two tiles, live page-peek on hover
+├── assets/              # landing tile graphics (extracted log-azimuthal maps)
+│   ├── ringfire.svg     #   eruption-density surface, Auckland-centred
+│   └── genetics.svg     #   Austronesian/Melanesian/Polynesian ancestry
+├── geodynamics/         # "Convulsions" — fire, water, and a changing sky
+└── sociodynamics/       # "Landfalls" — the arrivals that made Aotearoa
 ```
+
+Each atlas is fully self-contained (relative paths only) and runs from its
+own subfolder.
 
 ## Mapbox token
 
-The token in `scripts/core/mapbox-style.js` is URL-restricted to
-`asrenninger.github.io` in the Mapbox dashboard. It will return 401s
-from any other origin (including `localhost`); this is the URL
-restriction working as intended.
+`scripts/core/mapbox-style.js` in each atlas selects the token by hostname:
+the unrestricted dev token on `localhost`/`127.0.0.1`, and the token
+URL-restricted to `asrenninger.github.io` on `*.github.io`. Nothing to swap
+at deploy time.
 
-## Where the source lives
+## Source
 
-This is a stripped, token-swapped copy. The development source — with
-the unrestricted localhost token, the file:// portable-build script,
-the dev sandbox pages, and the data-pipeline scripts — lives in the
-sibling folder, e.g. `context/migration/` in the source repo.
+Development source lives in the sibling working repo under `context/`:
+`context/climate` → `geodynamics`, `context/migration` → `sociodynamics`,
+with the landing page and the tile extractor (`_extract_maps.py`) at the
+`context/` root.

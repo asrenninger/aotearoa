@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convulsions — Aotearoa, fire, water and a changing sky</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="How fire and water made New Zealand, and how the air is now remaking it. Thirteen chapters from Gondwana to the climates ahead — volcanoes, earthquakes, the ozone hole, and a warming country.">
+
+<!-- Network hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.mapbox.com" crossorigin>
+<link rel="preconnect" href="https://a.tiles.mapbox.com" crossorigin>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Mapbox GL JS -->
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js" defer></script>
+
+<!-- Project styles + entry script -->
+<link rel="stylesheet" href="./styles/frontiers.css?v=5">
+<script type="module" src="./scripts/main.js?v=30"></script>
+</head>
+
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<nav class="chapter-nav" aria-label="Chapter navigation">
+  <a href="#hero" data-label="Opening" class="active"></a>
+  <a href="#ch1" data-label="Gondwana"></a>
+  <a href="#ch2" data-label="Ring of Fire"></a>
+  <a href="#ch3" data-label="A New Island"></a>
+  <a href="#ch4" data-label="Fire Remembered"></a>
+  <a href="#ch5" data-label="The Newcomers"></a>
+  <a href="#ch6" data-label="Tarawera"></a>
+  <a href="#ch7" data-label="The Land Shakes"></a>
+  <a href="#ch8" data-label="The Air Changes"></a>
+  <a href="#ch9" data-label="The Ozone Hole"></a>
+  <a href="#ch10" data-label="Still Shaking"></a>
+  <a href="#ch11" data-label="The Heat"></a>
+  <a href="#ch12" data-label="Futures"></a>
+  <a href="#ch13" data-label="The Made Land"></a>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero" id="hero">
+  <div class="hero-overline">An Atlas of a Changing Climate</div>
+  <h1>Convulsions<br><em>Aotearoa</em></h1>
+  <p class="hero-sub">New Zealand was made by fire and water — a fragment of a drowned continent, raised on a seam between two plates, still erupting and shaking. Now its people are remaking the air above it.</p>
+
+  <div class="hero-meta">
+    <span>Deep time — 2100</span>
+    <span>Thirteen chapters</span>
+    <span>Fire, water, and air</span>
+  </div>
+
+  <!-- Diagrammatic hero: Aotearoa, the made land. The island (shared with the
+       migration atlas as a cross-atlas bookend) sits between a warming sky
+       (isotherms, above) and the drowned-continent strata it was raised from
+       (revealed below). -->
+  <svg class="hero-svg" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <pattern id="hatch-hero" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#a37c44" stroke-width="0.6" opacity="0.5"/>
+      </pattern>
+    </defs>
+
+    <!-- sea wash -->
+    <rect width="700" height="330" fill="#7c9d9d" opacity="0.06"/>
+
+    <!-- warming sky: isotherm lines across the top, gently bowed like a horizon -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M 0 26 C 233 18, 467 18, 700 26" stroke="#2c6479" stroke-width="1.2" opacity="0.45"/>
+      <path d="M 0 34 C 233 26, 467 26, 700 34" stroke="#7c9d9d" stroke-width="1.2" opacity="0.55"/>
+      <path d="M 0 42 C 233 34, 467 34, 700 42" stroke="#d8662f" stroke-width="1.3" opacity="0.6"/>
+    </g>
+
+    <!-- strata foundation: the drowned continent, raised. A stick-slip fault
+         runs on a diagonal near centre — the right block is thrown up a little,
+         so its surface stands a touch higher and the bands step across it. No
+         line: the eye reads the scarp and the discontinuity. -->
+    <defs>
+      <clipPath id="strata-left"><path d="M 0 230 L 400 230 L 470 330 L 0 330 Z"/></clipPath>
+      <clipPath id="strata-right"><path d="M 396 224 L 700 224 L 700 330 L 470 330 Z"/></clipPath>
+    </defs>
+    <g clip-path="url(#strata-left)">
+      <rect width="700" height="6"  y="230" fill="#c9a26b"/>
+      <rect width="700" height="9"  y="236" fill="#a37c44"/>
+      <rect width="700" height="8"  y="245" fill="#8a6a3b"/>
+      <rect width="700" height="10" y="253" fill="#6e5430"/>
+      <rect width="700" height="9"  y="263" fill="#4a3a2b"/>
+      <rect width="700" height="58" y="272" fill="#3a342c"/>
+    </g>
+    <g clip-path="url(#strata-right)">
+      <rect width="700" height="6"  y="224" fill="#c9a26b"/>
+      <rect width="700" height="9"  y="230" fill="#a37c44"/>
+      <rect width="700" height="8"  y="239" fill="#8a6a3b"/>
+      <rect width="700" height="10" y="247" fill="#6e5430"/>
+      <rect width="700" height="9"  y="257" fill="#4a3a2b"/>
+      <rect width="700" height="64" y="266" fill="#3a342c"/>
+    </g>
+
+    <!-- waterline — traces the top of the strata, up the slanted scarp face -->
+    <path d="M 0 230 L 400 230 L 396 224 L 700 224" fill="none" stroke="#2c6479" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Aotearoa — same silhouette as the migration atlas (cross-atlas bookend) -->
+    <g transform="translate(350, 132) scale(0.70)">
+      <path d="M 8.7 -124.7 L 8.1 -122.5 L 7.0 -123.6 L 6.0 -122.1 L 7.6 -119.8 L 8.0 -121.9 L 9.4 -116.6 L 12.1 -114.6 L 11.6 -112.6 L 14.3 -116.9 L 14.6 -113.1 L 16.5 -112.4 L 16.6 -114.2 L 19.6 -112.6 L 19.2 -110.8 L 21.3 -112.7 L 24.9 -110.0 L 23.2 -108.3 L 25.3 -105.2 L 26.8 -106.2 L 25.3 -107.2 L 28.4 -108.7 L 29.5 -105.1 L 28.1 -106.0 L 31.8 -100.6 L 30.3 -99.7 L 32.3 -95.6 L 28.5 -98.2 L 28.4 -95.6 L 30.7 -95.8 L 30.6 -92.6 L 36.6 -85.2 L 34.6 -85.2 L 35.0 -82.5 L 34.0 -84.0 L 34.1 -80.3 L 36.2 -80.0 L 34.1 -79.5 L 35.6 -75.6 L 32.6 -76.2 L 33.5 -73.9 L 36.5 -75.1 L 36.7 -72.9 L 37.4 -75.3 L 37.8 -73.4 L 38.8 -74.6 L 39.9 -72.6 L 42.1 -73.2 L 44.1 -67.8 L 47.1 -68.4 L 47.8 -66.9 L 45.2 -74.8 L 46.7 -76.4 L 46.1 -79.5 L 43.9 -81.6 L 46.6 -82.1 L 48.1 -76.8 L 51.6 -77.8 L 49.4 -74.6 L 51.6 -75.3 L 53.5 -62.5 L 56.5 -59.3 L 53.7 -61.6 L 53.8 -59.2 L 57.2 -57.4 L 57.2 -59.5 L 71.4 -51.2 L 78.0 -53.4 L 80.8 -58.3 L 84.7 -61.0 L 89.5 -60.5 L 93.6 -57.8 L 90.2 -51.7 L 89.5 -40.9 L 86.0 -37.3 L 83.8 -37.4 L 83.0 -29.6 L 84.8 -28.7 L 83.4 -26.1 L 82.4 -26.7 L 82.7 -29.4 L 81.2 -29.7 L 75.7 -30.1 L 70.3 -27.3 L 67.8 -22.6 L 68.7 -18.6 L 71.2 -17.8 L 66.8 -7.4 L 53.4 14.4 L 43.3 21.9 L 41.8 21.9 L 41.2 17.9 L 36.3 17.9 L 36.7 13.9 L 34.4 16.4 L 32.2 14.6 L 36.3 11.5 L 40.6 2.7 L 42.1 -5.0 L 41.0 -8.8 L 36.8 -13.4 L 31.7 -14.5 L 27.9 -18.8 L 22.7 -20.3 L 19.2 -25.2 L 20.7 -28.6 L 29.4 -32.1 L 32.1 -35.0 L 33.9 -49.6 L 37.5 -49.7 L 35.2 -50.0 L 36.7 -52.4 L 35.1 -52.0 L 35.2 -54.3 L 38.1 -56.8 L 36.1 -56.5 L 34.0 -63.7 L 35.9 -66.0 L 33.9 -65.0 L 31.6 -70.8 L 33.3 -70.6 L 34.4 -67.1 L 35.4 -68.7 L 34.0 -68.9 L 37.6 -70.0 L 35.1 -71.9 L 35.8 -73.2 L 30.7 -71.4 L 25.9 -82.2 L 26.9 -83.3 L 29.9 -79.2 L 30.2 -84.8 L 27.1 -85.5 L 31.0 -87.2 L 27.7 -86.6 L 29.8 -89.6 L 28.1 -87.8 L 26.4 -90.0 L 25.9 -88.8 L 27.9 -87.5 L 26.7 -87.0 L 22.9 -90.0 L 21.5 -95.0 L 21.1 -93.2 L 26.1 -85.3 L 24.2 -84.3 L 13.8 -101.1 L 17.7 -106.4 L 16.2 -107.2 L 16.2 -105.4 L 13.8 -104.8 L 13.3 -102.1 L 11.7 -104.8 L 12.4 -106.6 L 11.3 -105.2 L 11.5 -107.0 L 9.0 -108.3 L 10.5 -110.5 L 9.9 -113.9 L 2.4 -123.3 L 2.9 -124.7 L 8.7 -124.7 Z" fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+      <path d="M 6.0 -0.6 L 3.5 -0.4 L 2.2 2.2 L 5.3 6.2 L 7.7 5.2 L 9.1 15.6 L 16.6 10.5 L 18.1 11.4 L 19.0 10.1 L 18.0 9.7 L 20.7 7.9 L 23.5 8.0 L 19.5 9.6 L 19.5 11.6 L 22.3 10.6 L 19.7 15.3 L 25.0 12.9 L 21.3 13.3 L 22.2 11.0 L 22.6 12.4 L 23.7 11.3 L 22.2 9.6 L 22.9 8.7 L 25.8 8.8 L 26.1 10.8 L 27.9 9.3 L 26.9 11.9 L 25.5 11.7 L 26.3 13.2 L 21.9 15.1 L 28.0 13.8 L 23.7 18.3 L 27.4 24.7 L 18.7 38.6 L 16.1 39.7 L 11.9 49.1 L 3.5 55.5 L 3.6 61.6 L 4.9 62.3 L 2.6 63.1 L 8.5 63.3 L 8.9 67.5 L 7.4 68.2 L 6.7 65.4 L 6.9 68.5 L 3.8 66.2 L -1.5 67.5 L 2.0 66.0 L -1.5 65.1 L -2.2 67.7 L -18.1 76.1 L -20.8 81.6 L -20.3 88.8 L -24.6 95.6 L -25.5 100.6 L -29.2 105.1 L -27.2 106.6 L -30.3 109.0 L -26.9 106.6 L -26.9 108.6 L -33.8 110.7 L -41.3 120.6 L -44.2 121.1 L -42.7 121.3 L -43.5 122.3 L -53.8 125.0 L -56.8 122.5 L -60.7 123.6 L -64.2 122.1 L -64.0 123.7 L -65.7 121.8 L -63.9 121.3 L -64.1 119.6 L -65.2 120.9 L -67.2 118.0 L -72.3 119.1 L -76.2 114.4 L -80.8 116.7 L -89.0 115.6 L -90.4 114.2 L -86.1 110.0 L -91.3 112.9 L -88.3 109.7 L -90.1 109.9 L -89.3 108.3 L -93.3 111.3 L -93.2 107.2 L -85.0 105.0 L -88.8 105.4 L -87.0 104.0 L -88.7 102.9 L -84.5 100.8 L -89.7 102.5 L -88.9 99.1 L -86.1 99.7 L -88.0 97.2 L -82.1 100.5 L -84.6 97.4 L -80.5 97.1 L -84.6 96.3 L -85.1 93.5 L -82.7 94.5 L -84.5 92.8 L -83.5 91.6 L -82.3 93.5 L -81.1 92.7 L -83.0 90.9 L -80.1 91.5 L -82.2 90.0 L -79.4 87.6 L -77.4 90.6 L -78.2 86.5 L -76.7 86.4 L -76.5 88.4 L -76.8 85.4 L -74.8 86.0 L -76.1 84.6 L -73.7 82.7 L -70.9 84.6 L -72.4 80.7 L -64.1 71.2 L -57.4 70.4 L -43.3 61.7 L -35.2 54.9 L -34.4 52.2 L -25.6 46.9 L -20.0 38.9 L -16.2 25.0 L -10.2 22.9 L -6.9 17.8 L -5.8 15.3 L -6.3 7.1 L 1.2 -0.2 L 6.0 -0.6 Z" fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.9" stroke-linejoin="round"/>
+      <ellipse cx="-70" cy="129" rx="5" ry="2.5" fill="url(#hatch-hero)" stroke="#5a4530" stroke-width="0.6"/>
+    </g>
+  </svg>
+
+  <div class="scroll-indicator">Scroll to begin</div>
+</section>
+
+<!-- ============== ACT I ============== -->
+<div class="act-divider">
+  <div class="marker">Act I · Fire &amp; Stone</div>
+  <div class="act-title">The made land</div>
+  <div class="act-years">deep time — c. 1400 CE</div>
+</div>
+
+<!-- Act I strip · water layers — Zealandia, the drowned continent.
+     Variegated blue (aumoana / sea), thin stacked bands of randomised
+     thickness with woven stitch highlights. -->
+<div class="strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="5" y="0" fill="#7c9d9d"/>
+    <rect width="1200" height="4" y="5" fill="#bcd2cd"/>
+    <rect width="1200" height="4" y="9" fill="#7c9d9d"/>
+    <rect width="1200" height="5" y="13" fill="#5f8a8e"/>
+    <rect width="1200" height="7" y="18" fill="#9bbdb9"/>
+    <rect width="1200" height="5" y="25" fill="#7c9d9d"/>
+    <rect width="1200" height="4" y="30" fill="#234f60"/>
+    <rect width="1200" height="6" y="34" fill="#2c6479"/>
+    <rect width="1200" height="1" y="34" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="8" y="40" fill="#4d7575"/>
+    <rect width="1200" height="4" y="48" fill="#1b3d4a"/>
+    <rect width="1200" height="5" y="52" fill="#2c6479"/>
+    <rect width="1200" height="3" y="57" fill="#4d7575"/>
+    <rect width="1200" height="5" y="60" fill="#356b7a"/>
+    <rect width="1200" height="4" y="65" fill="#7c9d9d"/>
+    <rect width="1200" height="9" y="69" fill="#4d7575"/>
+    <rect width="1200" height="1" y="69" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="2" y="78" fill="#2c6479"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 1: Out of Gondwana =========== -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter One</div>
+    <h2 class="chapter-title">Out of Gondwana,<br><em>and the continent that drowned</em></h2>
+    <p class="chapter-dek">New Zealand is the high ground of Zealandia — a continent the size of the Indian subcontinent, almost entirely beneath the sea.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Around</span> 85 million years ago, a slab of continental crust began to tear away from the eastern edge of Gondwana. As the Tasman Sea opened behind it, the fragment stretched, thinned, and slowly sank. Geologists call it Zealandia, or Te Riu-a-Māui — a continent of roughly five million square kilometres, of which about ninety-four per cent now lies underwater.</p>
+
+    <p>For tens of millions of years there was barely any land at all. By the late Oligocene, perhaps twenty-five million years ago, Zealandia had drowned so completely that some scientists argue almost nothing stood above the waves. The New Zealand we know is young: most of its mountains have been pushed up only in the last five million years, as the plate boundary running through it began to crunch.</p>
+
+    <!-- Zealandia bathymetric map — rendered by scripts/chapters/ch1-zealandia.js -->
+    <div class="figure reveal">
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--ink);max-width:640px;margin:0 0 4px;">A continent of one's own</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;color:var(--ink-faint);margin:0 0 14px;">REAL BATHYMETRY · THE SUBMERGED CONTINENT, WITH THE ARCHIPELAGO POPPING OUT</p>
+      <div id="zealandia-map" style="width:100%;margin:0 auto;"></div>
+    </div>
+
+    <p>To stand in New Zealand, then, is to stand on the few peaks of a sunken world — the part of Zealandia that the collision of two plates has shoved back into the air. That collision is the engine of everything that follows.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 2: The Ring of Fire (sticky scrolly map) =========== -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Two</div>
+    <h2 class="chapter-title">The Ring of Fire,<br><em>and the country built on its seam</em></h2>
+    <p class="chapter-dek">The Pacific is ringed by the planet's most violent geology. New Zealand sits directly on the boundary where the Pacific and Australian plates grind past and beneath one another.</p>
+  </div>
+
+  <!-- Static overview: the world on a log-azimuthal projection centred on
+       Aotearoa, with a KDE of every recorded eruption (Smithsonian GVP via
+       TidyTuesday). Rendered by scripts/chapters/ch2-ringfire-static.js. -->
+  <div class="figure reveal">
+    <p style="font-family:'Fraunces',serif;font-style:italic;font-size:24px;line-height:1.25;color:var(--ink);max-width:680px;margin:0 auto 10px;text-align:center;">Aotearoa sits near the heart of the Ring of Fire.</p>
+    <div id="ringfire-map" style="max-width:720px;margin:0 auto;"></div>
+    <div class="figure-caption" style="max-width:720px;margin-left:auto;margin-right:auto;">
+      <span>Source: Smithsonian GVP</span>
+    </div>
+  </div>
+
+  <div class="scrolly-map" data-chapter="ch2">
+    <div class="map-sticky">
+      <div class="map-overline">Te Ahi Kā o Te Moana-nui-a-Kiwa · The Pacific Ring of Fire</div>
+      <div class="map-pane" id="map-ch2"></div>
+    </div>
+
+    <div class="features">
+      <div class="step-card" data-step="1" data-action="ch2-step1">
+        <div class="step-tag">Step 1 · The rim</div>
+        <p class="drop-cap">A horseshoe of volcanoes and trenches wraps the Pacific Ocean, from the Andes to Alaska to Japan to New Zealand. Around three-quarters of the world's active volcanoes — and most of its largest earthquakes — happen along this rim.</p>
+      </div>
+
+      <div class="step-card" data-step="2" data-action="ch2-step2">
+        <div class="step-tag">Step 2 · The seam</div>
+        <div class="stat">2 plates</div>
+        <div class="stat-label">Pacific and Australian, meeting through New Zealand</div>
+        <p>The boundary runs the length of the country. Off the North Island's east coast, the Pacific plate dives beneath the Australian along the Hikurangi subduction zone — capable, in the worst case, of a magnitude-9 earthquake and tsunami.</p>
+      </div>
+
+      <div class="step-card" data-step="3" data-action="ch2-step3">
+        <div class="step-tag">Step 3 · The Alpine Fault</div>
+        <div class="stat">1717</div>
+        <div class="stat-label">The fault's last major rupture</div>
+        <p>Down the spine of the South Island runs the Alpine Fault, moving the land past itself at around 27 millimetres a year. It ruptures roughly every three centuries; scientists put the chance of the next one within fifty years at about 75 per cent.</p>
+      </div>
+
+      <div class="step-card" data-step="4" data-action="ch2-step4">
+        <div class="step-tag">Step 4 · The Taupō Volcanic Zone</div>
+        <p>In the central North Island, the same forces open a rift of volcanoes — Ruapehu, Tongariro, Tarawera, Whakaari, and the vast caldera of Taupō.</p>
+        <p class="pull">Taupō's Ōruanui eruption, around 26,000 years ago, was the largest on Earth in the last 70,000 years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 3: A new island (animation) =========== -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Three</div>
+    <h2 class="chapter-title">A new island,<br><em>and the people who watched it rise</em></h2>
+    <p class="chapter-dek">Rangitoto, the youngest of Auckland's volcanoes, rose from the sea only about six centuries ago — and people were there to see it.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Auckland</span> is home to fifty-three volcanoes. The Auckland Volcanic Field has erupted, somewhere, dozens of times across the last 190,000 years. Most of its cones erupted once and went quiet. Then, around 1400 CE, a new vent opened in the Hauraki Gulf and built the largest of them all: Rangitoto, the broad shield island that frames the city's harbour today.</p>
+
+    <!-- Rangitoto eruption cross-section — built + animated by
+         scripts/chapters/ch3-rangitoto.js -->
+    <div class="figure reveal rangitoto-fig">
+      <svg id="rangitoto" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="figure-caption">
+        <span>Source: GNS Science; Te Ara; Science Learning Hub</span>
+      </div>
+    </div>
+
+    <p>We know people watched, because they left their feet behind. On neighbouring Motutapu Island, human and dog footprints are preserved <em>between</em> layers of Rangitoto's ash — pressed into the ground, then sealed by the next fall. Māori stood on that shore and saw a mountain born.</p>
+
+    <p class="pull">No story of the eruption itself survives in oral tradition. But the footprints are unarguable: humans arrived while the land was still making itself.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- ============== ACT II ============== -->
+<div class="act-divider">
+  <div class="marker">Act II · A Witnessed Land</div>
+  <div class="act-title">Fire in living memory</div>
+  <div class="act-years">c. 1250 — 1931</div>
+</div>
+
+<!-- Act II strip · earth layers — land built up by volcanic eruptions.
+     Variegated brown (kākaho → land → kokowai ochre → basalt) with woven
+     stitch highlights. -->
+<div class="strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="3" y="0" fill="#c9a26b"/>
+    <rect width="1200" height="3" y="3" fill="#d8be8f"/>
+    <rect width="1200" height="3" y="6" fill="#a37c44"/>
+    <rect width="1200" height="7" y="9" fill="#8a6a3b"/>
+    <rect width="1200" height="1" y="9" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="3" y="16" fill="#a37c44"/>
+    <rect width="1200" height="5" y="19" fill="#8a6a3b"/>
+    <rect width="1200" height="8" y="24" fill="#c9a26b"/>
+    <rect width="1200" height="7" y="32" fill="#a37c44"/>
+    <rect width="1200" height="1" y="32" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="8" y="39" fill="#c9a26b"/>
+    <rect width="1200" height="1" y="39" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="4" y="47" fill="#8a6a3b"/>
+    <rect width="1200" height="4" y="51" fill="#a8442d"/>
+    <rect width="1200" height="8" y="55" fill="#6e5430"/>
+    <rect width="1200" height="1" y="55" fill="#f7eed5" opacity="0.40"/>
+    <rect width="1200" height="4" y="63" fill="#a8442d"/>
+    <rect width="1200" height="4" y="67" fill="#4a3a2b"/>
+    <rect width="1200" height="4" y="71" fill="#a37c44"/>
+    <rect width="1200" height="5" y="75" fill="#8a6a3b"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 4: The descendants arrive =========== -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Four</div>
+    <h2 class="chapter-title">The descendants arrive,<br><em>and the land remembers fire</em></h2>
+    <p class="chapter-dek">Māori settlement coincided with one of the country's largest eruptions in a thousand years. The volatile land entered the oral record — as gods, ancestors, and a map of fire.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">When</span> East Polynesian voyagers settled Aotearoa around 1250–1300 CE, they arrived in a landscape that would not hold still. Within a few generations, around 1314, Mount Tarawera erupted in the Kaharoa event — the largest eruption in New Zealand for some seven hundred years, several times the size of the one that would make Tarawera famous in 1886.</p>
+
+    <p>That volatility is woven through Māori tradition. Earthquakes and eruptions are the work of <em>Rūaumoko</em>, the unborn child of the earth mother Papatūānuku, carried in the underworld and given fire to keep warm; his stirrings shake the ground.</p>
+
+    <!-- TVZ fire-route map — rendered by scripts/chapters/ch4-tvz.js -->
+    <div class="figure reveal">
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--ink);max-width:640px;margin:0 0 4px;">A legend that maps a rift</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;color:var(--ink-faint);margin:0 0 14px;">THE TRADITION'S FIRE-ROUTE, ON THE REAL VOLCANOES IT NAMES</p>
+      <div id="tvz-map" style="margin:0;"></div>
+    </div>
+
+    <p>In the founding tradition of Ngāti Tūwharetoa, Ngātoroirangi, a navigator and priest, climbed Tongariro and was trapped near its summit by a freezing southerly. Dying of cold, he called to his sisters, Kuiwai and Haungaroa, far to the north on Whakaari, to send him fire from the ancestral homeland of Hawaiki. It came as two fire spirits, Te Pupu and Te Hoata, who carried the fire underground from Whakaari and broke the surface again and again on the way south — at Rotorua, Tarawera, the boiling ground around Taupō, and at last Tongariro. Every place they surfaced is a real geothermal or volcanic centre, and in sequence they trace, almost exactly, the line of the Taupō Volcanic Zone. The tradition describes a single vein of underground fire running from the sea to the mountains — which is precisely what the rift is.</p>
+
+    <p>There is a name for traditions that carry a real geological event down the generations — <a href="https://en.wikipedia.org/wiki/Geomythology" target="_blank" rel="noopener">geomythology</a> — and their reach can be startling: across the Tasman, <a href="https://theconversation.com/ancient-aboriginal-stories-preserve-history-of-a-rise-in-sea-level-36010" target="_blank" rel="noopener">Aboriginal Australian stories</a> appear to preserve the shape of coastlines the sea drowned more than seven thousand years ago. Ngātoroirangi's fire belongs to that company — a memory that holds the form of a rift no one could ever have seen whole.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 5: The newcomers read the weather =========== -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Five</div>
+    <h2 class="chapter-title">The newcomers read the weather,<br><em>and clear the forest</em></h2>
+    <p class="chapter-dek">Europeans arrived expecting a Britain of the South. They found a wetter, windier, more violent country — and set about remaking its surface.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">To</span> the British settlers of the nineteenth century, New Zealand's climate was a selling point: temperate, green, familiar enough to grow English grass and graze English sheep. The reality was less obliging — a narrow, mountainous country in the path of the Roaring Forties, where the weather changes by the hour and the rivers flood without warning.</p>
+
+    <p>Their largest mark on the climate was indirect. To make pasture, they burned and felled the forest at a pace that dwarfed what had come before. Forest that had covered most of the country before people arrived — already reduced by earlier Māori burning — was cut back to less than a third of the land.</p>
+
+    <!-- Forest clearance figure -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Forest cover, share of land</text>
+        <text class="fig-title" x="0" y="42" font-size="22" fill="#1d1610">A country cleared for grass</text>
+        <g font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e">
+          <text x="0" y="86">PRE-HUMAN</text>
+          <rect class="bar-grow" x="120" y="76" width="560" height="16" fill="#2d6e4d"/>
+          <text x="690" y="89" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">~80%</text>
+          <text x="0" y="132">1840</text>
+          <rect class="bar-grow" x="120" y="122" width="372" height="16" fill="#2d6e4d" opacity="0.8" style="transition-delay:.15s"/>
+          <text x="502" y="135" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">~53%</text>
+          <text x="0" y="178">1900</text>
+          <rect class="bar-grow" x="120" y="168" width="230" height="16" fill="#2d6e4d" opacity="0.7" style="transition-delay:.3s"/>
+          <text x="360" y="181" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">~33%</text>
+          <text x="0" y="224">TODAY</text>
+          <rect class="bar-grow" x="120" y="214" width="168" height="16" fill="#2d6e4d" opacity="0.6" style="transition-delay:.45s"/>
+          <text x="298" y="227" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">~24%</text>
+        </g>
+        <line x1="0" y1="262" x2="800" y2="262" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="280" fill="#8a7659">Source: Ministry for the Environment; Te Ara</text>
+      </svg>
+    </div>
+
+    <p>It was the first deliberate, mass reshaping of the New Zealand environment by its newest arrivals. It would not be the last — and the next would be invisible.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 6: Tarawera 1886 =========== -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Six</div>
+    <h2 class="chapter-title">Tarawera, 1886,<br><em>and the night the terraces died</em></h2>
+    <p class="chapter-dek">The country's first great tourist wonder, the Pink and White Terraces, vanished in a single night — and the land gave warning first.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">In</span> the early hours of 10 June 1886, Mount Tarawera split open along a rift many kilometres long and erupted. Ash buried the surrounding villages; about 120 people died, most of them Māori. The Pink and White Terraces — Te Otukapuarangi and Te Tarata, silica staircases that drew visitors from across the world — were destroyed. They were perhaps the largest deposits of silica sinter — geyserite — anywhere on Earth, built up over centuries from the mineral-laden water of the geothermal springs and geysers below.</p>
+
+    <!-- NZ eruptions by VEI — rendered by scripts/chapters/ch6-eruptions.js -->
+    <div class="figure reveal">
+      <svg id="eruptions-chart" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" aria-label="New Zealand eruptions by size since 1000 CE"></svg>
+    </div>
+
+    <p>Eleven days before, a boatload of tourists crossing the lake to the terraces saw a war canoe — a waka taua, crowded with figures — glide through the mist and vanish. It matched no canoe known on the water. An aged Māori priest, the tohunga Tūhoto Ariki, read it as a warning: the people would be punished for selling the sacred terraces to sightseers. Whether it was a mirage, or a swell thrown up by the mountain already stirring, has been argued ever since — but the destruction it foretold was not in doubt. When Tarawera erupted, Tūhoto — reputedly over a hundred years old — was buried in his house and dug out alive four days later.</p>
+
+    <p class="pull">A wonder that had taken centuries to deposit was gone in hours. The land that built it took it back.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 7: The settler century shakes =========== -->
+<section class="chapter" id="ch7">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Seven</div>
+    <h2 class="chapter-title">The settler century shakes,<br><em>and rebuilds in Art Deco</em></h2>
+    <p class="chapter-dek">Twice the colonial era was reshaped by the ground itself — once raising a capital out of the sea, once flattening a city and rebuilding it whole.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">In</span> 1855, a magnitude-8.2 earthquake on the Wairarapa fault — the largest in New Zealand's recorded history — heaved the land around Wellington upward by metres. Much of the modern central city stands on ground that, before that night, was under the harbour.</p>
+
+    <!-- Quake timeline -->
+    <div class="figure reveal quake-figure">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Major earthquakes of the settler century</text>
+        <line class="qt-line" x1="40" y1="128" x2="760" y2="128" stroke="#3a342c" stroke-width="0.9"/>
+
+        <g class="qt-tick" data-i="0">
+          <circle cx="120" cy="128" r="5" fill="#3a342c" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="120" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1848</text>
+          <text x="120" y="152" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Marlborough</text>
+          <text x="120" y="166" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">M7.4</text>
+        </g>
+        <g class="qt-tick" data-i="1">
+          <circle cx="280" cy="128" r="7" fill="#c0431f" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="280" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1855</text>
+          <text x="280" y="152" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Wairarapa</text>
+          <text x="280" y="166" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">M8.2 · raised Wellington</text>
+        </g>
+        <g class="qt-tick" data-i="2">
+          <circle cx="440" cy="128" r="5" fill="#3a342c" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="440" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1929</text>
+          <text x="440" y="152" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Murchison</text>
+          <text x="440" y="166" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">M7.3</text>
+        </g>
+        <g class="qt-tick" data-i="3">
+          <circle cx="600" cy="128" r="7" fill="#c0431f" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="600" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1931</text>
+          <text x="600" y="152" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Napier</text>
+          <text x="600" y="166" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">M7.8 · 256 lives</text>
+        </g>
+        <g class="qt-tick" data-i="4">
+          <circle cx="740" cy="128" r="5" fill="#3a342c" stroke="#f3ecdd" stroke-width="1.4"/>
+          <text x="740" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="500" fill="#1d1610">1968</text>
+          <text x="740" y="152" text-anchor="middle" font-family="Source Serif 4" font-size="12" fill="#1d1610">Inangahua</text>
+          <text x="740" y="166" text-anchor="middle" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#4a3d2e">M7.1</text>
+        </g>
+
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="218" fill="#8a7659">Source: GNS Science; GeoNet; Te Ara</text>
+      </svg>
+    </div>
+
+    <p>On 3 February 1931, a magnitude-7.8 earthquake struck Hawke's Bay. It killed 256 people — the country's deadliest natural disaster — and razed Napier and Hastings. The seabed off Napier rose by around two metres, draining a lagoon and adding land the city still uses. Napier rebuilt fast, in the clean lines of the moment, and became one of the world's great Art Deco towns: a disaster legible in an architectural style.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- ============== ACT III ============== -->
+<div class="act-divider">
+  <div class="marker">Act III · The Changed Air</div>
+  <div class="act-title">An invisible reshaping</div>
+  <div class="act-years">c. 1850 — 2000</div>
+</div>
+
+<!-- Ice-core / CO2 strip · thin vertical bands + warming gradient -->
+<div class="strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="co2grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#e6d4a8"/>
+        <stop offset="0.5" stop-color="#a37c44"/>
+        <stop offset="1" stop-color="#4a3d2e"/>
+      </linearGradient>
+      <pattern id="core" width="14" height="80" patternUnits="userSpaceOnUse">
+        <rect width="14" height="80" fill="none"/>
+        <line x1="0" y1="0" x2="0" y2="80" stroke="#1d1610" stroke-width="0.6" opacity="0.18"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#co2grad)"/>
+    <rect width="1200" height="80" fill="url(#core)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 8: The Anthropocene arrives (chart-scrolly) =========== -->
+<section class="chapter" id="ch8">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Eight</div>
+    <h2 class="chapter-title">The Anthropocene arrives,<br><em>and the air starts to change</em></h2>
+    <p class="chapter-dek">For most of human history the air held about 280 parts of carbon dioxide per million. In a century and a half, we have pushed it past 420 — and New Zealand has measured the change from its own clean corner of the planet.</p>
+  </div>
+
+  <div class="scrolly" data-chapter="ch8">
+    <div class="viz-pane">
+      <svg id="viz-ch8" viewBox="0 0 600 540" xmlns="http://www.w3.org/2000/svg" aria-label="Atmospheric CO2 over time">
+        <text class="map-label" x="0" y="16" fill="#8a7659">Atmospheric CO₂ · parts per million</text>
+        <text class="fig-title" x="0" y="44" font-size="22" fill="#1d1610">The air, rewritten</text>
+        <line x1="0" y1="512" x2="600" y2="512" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="530" fill="#8a7659">Sources: NOAA; NIWA</text>
+        <!-- plot injected by scripts/chapters/ch8-co2.js -->
+      </svg>
+    </div>
+
+    <div class="text-pane">
+      <div class="step" data-step="1" data-action="ch8-step1">
+        <p class="drop-cap">Bubbles of ancient air, trapped in Antarctic ice, show carbon dioxide holding remarkably steady for thousands of years — around 280 parts per million through the whole rise of human civilisation.</p>
+        <div class="stat">280 ppm</div>
+        <div class="stat-label">The pre-industrial baseline</div>
+      </div>
+      <div class="step" data-step="2" data-action="ch8-step2">
+        <p>In 1958, a young scientist named Charles Keeling began measuring CO₂ on a Hawaiian volcano. His record — the Keeling Curve — caught the air in the act of changing, climbing year after year.</p>
+      </div>
+      <div class="step" data-step="3" data-action="ch8-step3">
+        <p>In 1972, New Zealand opened its own station at Baring Head, on the wild coast south of Wellington, sampling air that has crossed the Southern Ocean. It is the longest continuous CO₂ record in the Southern Hemisphere.</p>
+        <div class="stat">1972</div>
+        <div class="stat-label">Baring Head record begins, at 326 ppm</div>
+      </div>
+      <div class="step" data-step="4" data-action="ch8-step4">
+        <p>Both records now read past 420 parts per million — a level the planet has not seen in millions of years.</p>
+        <p class="pull">The same air sits over the whole Earth. Carbon was not the only thing we put into it — another gas, rising from the world's refrigerators and spray cans, would by the 1980s open a wound in the sky directly above the South.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 9: The hole in the sky =========== -->
+<section class="chapter" id="ch9">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Nine</div>
+    <h2 class="chapter-title">The hole in the sky,<br><em>and why the south paid most</em></h2>
+    <p class="chapter-dek">A class of miracle chemicals tore a hole in the ozone layer over Antarctica. Of all the inhabited world, New Zealand and Australia sat closest to the damage.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">In</span> 1974, two chemists warned that chlorofluorocarbons — CFCs, the inert gases prized in fridges, aerosols and foam — would drift to the stratosphere and destroy ozone. In 1985, British scientists confirmed it in the worst possible way: each austral spring, a hole was opening in the ozone layer over Antarctica.</p>
+  </div>
+
+  <!-- Ozone scrolly — south-polar log-azimuthal map, rendered by scripts/chapters/ch9-ozone.js -->
+  <div class="scrolly" data-chapter="ch9">
+    <div class="viz-pane">
+      <svg id="viz-ch9" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" aria-label="Antarctic ozone hole over time">
+        <!-- title, map + sparkline injected by ch9-ozone.js -->
+      </svg>
+    </div>
+    <div class="text-pane">
+      <div class="step" data-step="1" data-action="ch9-step1">
+        <p class="drop-cap">When measurements began, the hole was small. Through the 1980s it opened wider every spring as chlorine from CFCs built up in the stratosphere over the cold Antarctic vortex.</p>
+      </div>
+      <div class="step" data-step="2" data-action="ch9-step2">
+        <p>In 1987, the world signed the Montreal Protocol and began phasing out CFCs — the most effective environmental treaty ever made. But the chemicals already aloft would keep destroying ozone for decades.</p>
+        <div class="stat">1987</div>
+        <div class="stat-label">Montreal Protocol signed</div>
+      </div>
+      <div class="step" data-step="3" data-action="ch9-step3">
+        <p>The hole kept growing into the 2000s, peaking at nearly 30 million square kilometres — larger than the whole of North America, and far larger than Antarctica itself. New Zealand and Australia sit just north of its edge: the hole rarely covers them, but ozone-poor air spills north over the Southern Ocean toward them each spring.</p>
+        <div class="stat">29.9M km²</div>
+        <div class="stat-label">Record maximum, year 2000</div>
+      </div>
+      <div class="step" data-step="4" data-action="ch9-step4">
+        <p>Since the mid-2000s the hole has stopped growing and slowly begun to heal. Full recovery over Antarctica is projected for around 2066 — within a lifetime of the warning.</p>
+        <p class="pull">It is a rare climate success story: the countries of the world noticed a problem and coordinated to solve it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-chapter">
+    <!-- Melanoma comparison -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Melanoma incidence · relative rate</text>
+        <text class="fig-title" x="0" y="44" font-size="22" fill="#1d1610">The south paid in skin</text>
+        <g font-family="IBM Plex Mono" font-size="11" fill="#4a3d2e" letter-spacing="0.06em">
+          <text x="0" y="92">NZ · AU</text>
+          <rect class="bar-grow" x="150" y="80" width="560" height="20" fill="#5b4a8a"/>
+          <text x="722" y="95" font-family="Fraunces" font-size="18" font-weight="600" fill="#1d1610">≈4×</text>
+          <text x="0" y="134">UK · US · CA</text>
+          <rect class="bar-grow" x="150" y="122" width="140" height="20" fill="#5b4a8a" opacity="0.45" style="transition-delay:.2s"/>
+          <text x="302" y="137" font-family="Fraunces" font-size="14" font-weight="600" fill="#8a7659">1×</text>
+        </g>
+        <line x1="0" y1="170" x2="800" y2="170" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="188" fill="#8a7659">Source: EHINZ</text>
+      </svg>
+    </div>
+
+    <p>New Zealand already had naturally thin ozone and exceptionally clear air; peak summer UV runs around forty per cent higher than at comparable latitudes in the north. The country has, with Australia, the highest rates of melanoma in the world. The ozone hole did not create that risk on its own — but it sharpened it, over exactly the people living beneath it.</p>
+
+    <p class="pull">The replacements, HFCs, spare the ozone and warm the planet instead. The treaty that closed the hole handed the problem back to the climate.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- ============== ACT IV ============== -->
+<div class="act-divider">
+  <div class="marker">Act IV · The Volatile Present</div>
+  <div class="act-title">What is coming</div>
+  <div class="act-years">2010 — 2100</div>
+</div>
+
+<!-- Warming-stripes strip -->
+<div class="strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="warmgrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2c6479"/>
+        <stop offset="0.45" stop-color="#e6d4a8"/>
+        <stop offset="1" stop-color="#a8442d"/>
+      </linearGradient>
+      <pattern id="stripes" width="20" height="80" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="80" stroke="#f7eed5" stroke-width="1" opacity="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="80" fill="url(#warmgrad)"/>
+    <rect width="1200" height="80" fill="url(#stripes)"/>
+  </svg>
+</div>
+
+<!-- =========== CHAPTER 10: Still shaking =========== -->
+<section class="chapter" id="ch10">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Ten</div>
+    <h2 class="chapter-title">Still shaking,<br><em>and learning to live with it</em></h2>
+    <p class="chapter-dek">The deep geology never went quiet. In the last fifteen years it has destroyed a city's heart and rewritten a coastline.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">On</span> 4 September 2010, a magnitude-7.1 earthquake struck near Christchurch in the early morning. Remarkably, no one died. Then, on 22 February 2011, a shallow magnitude-6.3 aftershock hit directly beneath the city at lunchtime. It killed 185 people, collapsed buildings, and turned whole suburbs to liquefied silt.</p>
+
+    <!-- recent quakes figure -->
+    <div class="figure reveal">
+      <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Recent major earthquakes · lives lost</text>
+        <g font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e">
+          <text x="0" y="74">2010 · DARFIELD · M7.1</text>
+          <rect class="bar-grow" x="0" y="80" width="6" height="20" fill="#3a342c"/>
+          <text x="16" y="95" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">0</text>
+
+          <text x="0" y="134">2011 · CHRISTCHURCH · M6.3</text>
+          <rect class="bar-grow" x="0" y="140" width="560" height="20" fill="#c0431f" style="transition-delay:.15s"/>
+          <text x="570" y="155" font-family="Fraunces" font-size="16" font-weight="600" fill="#1d1610">185</text>
+
+          <text x="0" y="194">2016 · KAIKŌURA · M7.8</text>
+          <rect class="bar-grow" x="0" y="200" width="10" height="20" fill="#3a342c" style="transition-delay:.3s"/>
+          <text x="20" y="215" font-family="Fraunces" font-size="14" font-weight="600" fill="#1d1610">2</text>
+        </g>
+        <line x1="0" y1="248" x2="800" y2="248" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="266" fill="#8a7659">Source: GeoNet; GNS Science</text>
+      </svg>
+    </div>
+
+    <p>The lesson was written into the country. Magnitude alone means little; depth and location mean everything. The shallow 6.3 beneath Christchurch was deadlier than the larger Kaikōura quake of 2016, which ruptured more than twenty faults at once — a world record — yet killed two. New Zealand now builds, insures and plans for a ground that will move again.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 11: The heat arrives =========== -->
+<section class="chapter" id="ch11">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Eleven</div>
+    <h2 class="chapter-title">The heat arrives,<br><em>and the summers lengthen</em></h2>
+    <p class="chapter-dek">The country has warmed by about 1.1°C in a century. The change is most visible in the summers — on land, and in an ocean that has begun to run a fever of its own.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">New</span> Zealand's longest temperature record, the seven-station series, shows the country roughly 1.1°C warmer than it was in 1909. The reanalysis record below tells the same story a different way — and the warmest years in it have clustered in the last decade.</p>
+
+    <!-- Warming stripes -->
+    <div class="figure reveal">
+      <svg id="warming-stripes" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg" aria-label="New Zealand warming stripes">
+        <!-- stripes injected by scripts/chapters/ch11-warming.js -->
+      </svg>
+    </div>
+
+    <p>The warming is not only on land. In the summer of 2017–18, a marine heatwave settled over the Tasman Sea, with surface waters up to several degrees above normal; it was the country's hottest summer on record. Such marine heatwaves are becoming more frequent and more intense, reshaping fisheries and coastlines.</p>
+
+    <!-- Seven-station line -->
+    <div class="figure reveal">
+      <svg id="seven-station" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" aria-label="Seven-station national temperature anomaly">
+        <!-- line injected by scripts/chapters/ch11-warming.js -->
+      </svg>
+    </div>
+
+    <p class="pull">Heat is the hazard that does not announce itself with a bang. It arrives as longer summers, warmer nights, and a sea that no longer cools the way it did.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 12: The climates ahead =========== -->
+<section class="chapter" id="ch12">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Twelve</div>
+    <h2 class="chapter-title">The climates ahead,<br><em>and the choice that shapes them</em></h2>
+    <p class="chapter-dek">How much hotter New Zealand becomes is not yet decided. The projections fan out from the present according to how much carbon the world keeps adding.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">The</span> latest projections show the country's path splitting on the choices of this century. Under deep cuts, New Zealand settles around a degree above today's climate. Under high emissions, it keeps climbing — past three degrees by the 2090s, with longer droughts in the north and east, heavier downpours, and a rising sea.</p>
+
+    <!-- Scenario fan -->
+    <div class="figure reveal figure-wide">
+      <svg id="viz-ch12" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" aria-label="Projected New Zealand warming scenarios">
+        <!-- fan injected by scripts/chapters/ch12-futures.js -->
+      </svg>
+    </div>
+
+    <p>Sea-level rise is already locked in to a degree: planners are told to prepare for around 0.8 metres by the 2090s, more beyond. For a country whose cities cluster on the coast — much of it, like central Wellington and Napier, on ground the earth itself only recently delivered — the ocean's slow return is the quiet counterpart to the sudden violence of a quake.</p>
+
+    <p class="pull">The fire and the water made this land. The air is now in flux.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- =========== CHAPTER 13: The made land =========== -->
+<section class="chapter" id="ch13">
+  <div class="chapter-head">
+    <div class="chapter-num">Chapter Thirteen</div>
+    <h2 class="chapter-title">The made land,<br><em>still being made</em></h2>
+    <p class="chapter-dek">A country assembled by forces beyond any human hand is, for the first time, being reshaped by one.</p>
+  </div>
+
+  <div class="full-chapter">
+    <p class="lead"><span class="drop-cap">Aotearoa</span> is the visible fraction of a drowned continent, raised on a plate boundary, studded with volcanoes, shaken on a schedule no one can quite predict. Fire and water built it, and still do.</p>
+
+    <!-- Four-force summary grid -->
+    <div class="composition-grid reveal">
+      <div>
+        <div class="cat">Fire</div>
+        <div><div class="num">53</div><div class="bar" style="background:#c0431f;width:90%"></div></div>
+      </div>
+      <div>
+        <div class="cat">Quake</div>
+        <div><div class="num">M8.2</div><div class="bar" style="background:#3a342c;width:80%"></div></div>
+      </div>
+      <div>
+        <div class="cat">Carbon</div>
+        <div><div class="num">427</div><div class="bar" style="background:#6b6253;width:95%"></div></div>
+      </div>
+      <div>
+        <div class="cat">Heat</div>
+        <div><div class="num">+1.1°</div><div class="bar" style="background:#d8662f;width:55%"></div></div>
+      </div>
+    </div>
+    <p style="font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-faint); letter-spacing:0.06em; margin-top:-30px; margin-bottom:60px;">
+      Auckland's volcanoes · New Zealand's largest recorded quake · CO₂ today, ppm · warming since 1909.
+    </p>
+
+    <p>For all of its settled history, the land made the people: where they could live, what they could grow, when they had to run. The newest chapter reverses the sentence. The forest fell to the axe; the air thinned under our chemicals; the climate is bending to our exhaust. The geology will outlast us regardless — but the weather, now, is partly ours.</p>
+
+    <p class="pull">Geology made the archipelago, and continues to make it — but now a changing climate shapes it too.</p>
+
+    <div class="ornament">· · ·</div>
+  </div>
+</section>
+
+<!-- Closing strip · warming stripes, echoing the cover -->
+<div class="strip" role="presentation" aria-hidden="true">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="80" fill="url(#warmgrad)"/>
+    <rect width="1200" height="80" fill="url(#stripes)"/>
+  </svg>
+</div>
+
+<!-- =========== OUTRO =========== -->
+<section class="outro" id="outro">
+  <h2>Convulsions</h2>
+  <p>Fire, water, and a changing sky over Aotearoa New Zealand.</p>
+  <div class="colophon">Andrew Renninger</div>
+</section>
+
+</body>
+</html>

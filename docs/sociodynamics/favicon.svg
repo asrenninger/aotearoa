@@ -1,0 +1,23 @@
+<!-- Favicon: a single koru — the unfurling fern-frond spiral, the
+     most recognisable Māori design motif. Drawn directly in 32×32
+     coordinates as a thick stroked spiral so it stays legible at
+     browser-tab scale (16px). Paper-tone background (#f3ecdd) matches
+     the migration interactive's --paper token; the spiral is kokowai
+     red (#a8442d, the project's wave-british accent); the bulb at
+     the inner terminus is ink (#1d1610). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#f3ecdd"/>
+  <!-- Spiral path: starts at the bottom-left stem, sweeps up the left
+       side and over the top, curls back down the right side, then
+       curves inward to terminate just below centre at the bulb. -->
+  <path d="M 5 25
+           Q 5 6, 18 6
+           Q 28 6, 28 16
+           Q 28 24, 20 24
+           Q 13 24, 13 17
+           Q 13 13, 18 13"
+        stroke="#a8442d" stroke-width="3.6" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bulb at the inner terminus of the spiral -->
+  <circle cx="18" cy="13" r="1.9" fill="#1d1610"/>
+</svg>

@@ -12,9 +12,11 @@
 
 import { PALETTE } from './palette.js';
 
-// URL-restricted to asrenninger.github.io for the public GitHub Pages
-// deploy. The dev/localhost token lives in the source folder one level
-// up at `../migration/scripts/core/mapbox-style.js`.
+// Mapbox public (pk.*) tokens ship in the browser; protection is the URL
+// restriction set in the Mapbox dashboard, not secrecy. This deployed build
+// hard-codes ONLY the token restricted to the asrenninger.github.io domain, so
+// the unrestricted dev token is never published. Local development uses the dev
+// token via the source site (context/migration), not this build.
 export const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYXNyZW5uaW5nZXIiLCJhIjoiY2szMGV1OG9jMDM4aTNkbnphNXpzcm1wYyJ9.UnnfQkiXT3y4ALqIjzHnNw';
 
