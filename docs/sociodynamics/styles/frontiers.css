@@ -719,6 +719,22 @@ svg { display: block; max-width: 100%; height: auto; }
   color: var(--ink-soft);
   font-size: 18px;
 }
+.outro .survey-citation {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-top: 32px;
+}
+.outro .survey-citation a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 2px;
+}
+.outro .survey-citation a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink-faint);
+}
 .outro .colophon {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
@@ -761,6 +777,28 @@ svg { display: block; max-width: 100%; height: auto; }
   color: var(--ink-soft);
 }
 .composition-grid .bar { height: 6px; margin-top: 8px; background: var(--ink); }
+
+/* Inline survey-fact spans. We don't style them visibly — the values flow
+   inside ordinary prose so the data reads as part of the sentence — but
+   keep a faint dotted underline as a hover affordance for an eventual
+   provenance tooltip. Comment the rule out to disable. */
+[data-fact-item] {
+  /* border-bottom: 1px dotted var(--ink-faint); */
+}
+
+/* Survey-chart blocks — inline SVG figures rendered by
+   scripts/core/survey-charts.js. Sized to sit between paragraphs in the
+   chapter text column. */
+[data-survey-chart] {
+  display: block;
+  max-width: 720px;
+  margin: 36px auto;
+}
+[data-survey-chart] svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* ----- Responsive ----- */
 @media (max-width: 900px) {

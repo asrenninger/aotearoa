@@ -320,6 +320,20 @@ svg { display: block; max-width: 100%; height: auto; }
 .outro h2 { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: clamp(32px, 4.5vw, 56px); margin-bottom: 24px; color: var(--ink); }
 .outro p { max-width: 620px; margin: 0 auto 16px; color: var(--ink-soft); font-size: 18px; }
 .outro .colophon { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-top: 60px; }
+.outro .survey-citation { font-size: 14px; font-style: italic; color: var(--ink-faint); margin-top: 32px; }
+.outro .survey-citation a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+.outro .survey-citation a:hover { color: var(--ink); text-decoration-color: var(--ink-faint); }
+
+/* Inline survey-fact spans. We don't style them visibly — the values
+   flow inside ordinary prose so the data reads as part of the sentence.
+   Keep the hook here in case we later want a hover affordance. */
+[data-fact-item] { /* border-bottom: 1px dotted var(--ink-faint); */ }
+
+/* Survey-chart blocks — inline SVG figures rendered by
+   scripts/core/survey-charts.js. Sit between paragraphs in the chapter
+   text column. */
+[data-survey-chart] { display: block; max-width: 720px; margin: 36px auto; }
+[data-survey-chart] svg { width: 100%; height: auto; display: block; }
 
 /* ----- Responsive ----- */
 @media (max-width: 900px) {

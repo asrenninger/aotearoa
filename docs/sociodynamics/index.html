@@ -22,7 +22,7 @@
 
 <!-- Project styles + entry script -->
 <link rel="stylesheet" href="./styles/frontiers.css">
-<script type="module" src="./scripts/main.js?v=11"></script>
+<script type="module" src="./scripts/main.js?v=24-charts"></script>
 </head>
 
 <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
@@ -437,6 +437,56 @@
       </div>
     </div>
   </div>
+
+  <div class="full-chapter">
+    <p>The legacy of these wars lives on in present-day attitudes to
+       justice and fairness. In 2024 about
+       <span data-fact-item="HistNeg01" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>
+       of New Zealanders agreed that <em>we should all move on as one
+       nation and forget about past differences</em> — down from a
+       supermajority of
+       <span data-fact-item="HistNeg01" data-fact-year="2009"
+             data-fact-stat="pct_agree">—</span>
+       fifteen years earlier. The view is unevenly held:
+       <span data-fact-item="HistNeg01" data-fact-year="2024"
+             data-fact-group="nz_european"
+             data-fact-stat="pct_agree">—</span>
+       of Pākehā still endorse it, against
+       <span data-fact-item="HistNeg01" data-fact-year="2024"
+             data-fact-group="maori"
+             data-fact-stat="pct_agree">—</span>
+       of Māori, who are roughly
+       <span data-fact-item="HistNeg01" data-fact-year="2024"
+             data-fact-group="maori"
+             data-fact-stat="ratio-vs-group"
+             data-fact-vs-group="nz_european"
+             data-fact-base="pct_disagree">—</span>
+       more likely to reject it than Pākehā.</p>
+
+    <p>The wars themselves are long over, and the two groups now rate one
+       another with the muted civility of close neighbours. On a
+       one-to-seven warmth scale, Pākehā rate Māori at
+       <span data-fact-item="Warm.Maori" data-fact-year="2024"
+             data-fact-group="nz_european"
+             data-fact-stat="mean">—</span>
+       and Māori rate Pākehā at
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
+             data-fact-group="maori"
+             data-fact-stat="mean">—</span>
+       — the minority rating the majority slightly warmer than the
+       reverse. Both prefer their own (Māori in-group warmth
+       <span data-fact-item="Warm.Maori" data-fact-year="2024"
+             data-fact-group="maori"
+             data-fact-stat="mean">—</span>;
+       Pākehā in-group
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
+             data-fact-group="nz_european"
+             data-fact-stat="mean">—</span>),
+       but by margins of less than half a point in either direction.</p>
+
+    <div data-survey-chart="warmth-matrix" data-year="2024"></div>
+  </div>
 </section>
 
 <!-- =========== CHAPTER 4: Gold Rush ============ -->
@@ -618,6 +668,29 @@
 
     <p class="pull">The rush built the colony's first large non-British, non-Māori community, and a sustained ethnic split, as the Cantonese outlasted the goldfields.</p>
 
+    <p>A century and a half after the rushes ended, the legacy towns show varied recoveries. The old goldfields of Central Otago and Queenstown report some of the highest levels of life satisfaction in the country,
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+              data-fact-group="ta_central_otago_district"
+              data-fact-stat="mean">—</span>
+       and
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+              data-fact-group="ta_queenstown_lakes_district"
+              data-fact-stat="mean">—</span>
+       out of 7. The Coromandel, now better known for beach holidays and surf, sits just behind at
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+              data-fact-group="ta_thames_coromandel_district"
+              data-fact-stat="mean">—</span>.
+       All three rate measurably above the
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+              data-fact-group="auckland"
+              data-fact-stat="mean">—</span>
+       of residents of Auckland. The goldfields of the west coast, like Grey District around Greymouth and Reefton, show lower levels of life satisfaction, at
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+              data-fact-group="ta_grey_district"
+              data-fact-stat="mean">—</span>.</p>
+
+    <div data-survey-chart="goldfields-lollipop" data-year="2024"></div>
+
     <div class="ornament">· · ·</div>
   </div>
 </section>
@@ -731,6 +804,23 @@
     </div>
 
     <p>Chinese miners were useful when Otago needed miners; later they were cast as racial outsiders. Pacific workers would experience a related pattern a century later. Immigration law did more than ration workers. It defined whiteness.</p>
+
+    <p>The exclusion was legal, and it was also geographic. A faint residue lingers in contemporary attitudes. Warmth toward Asian New Zealanders sits at
+       <span data-fact-item="Warm.Asians" data-fact-year="2024"
+             data-fact-group="auckland" data-fact-stat="mean">—</span>
+       in Auckland but only
+       <span data-fact-item="Warm.Asians" data-fact-year="2024"
+             data-fact-group="goldfields_otago" data-fact-stat="mean">—</span>
+       in the old Otago goldfields,
+       <span data-fact-item="Warm.Asians" data-fact-year="2024"
+             data-fact-group="goldfields_west_coast" data-fact-stat="mean">—</span>
+       on the west coast, and
+       <span data-fact-item="Warm.Asians" data-fact-year="2024"
+             data-fact-group="goldfields_coromandel" data-fact-stat="mean">—</span>
+       in the Coromandel — against a country average of
+       <span data-fact-item="Warm.Asians" data-fact-year="2024"
+             data-fact-stat="mean">—</span>.
+       The cool spots are the very places that hosted and then resented the Cantonese miners.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -1128,6 +1218,22 @@
       </div>
     </div>
   </div>
+
+  <div class="full-chapter">
+    <p>The cultural pivot has been slower than the economic one. New Zealanders of European descent are gently letting go of an older identity. Patriotism among Pākehā has eased from
+       <span data-fact-item="Patriotism01" data-fact-year="2009"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       to
+       <span data-fact-item="Patriotism01" data-fact-year="2024"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       out of 7 over the last fifteen years; the warmth they report toward fellow Pākehā has slipped from
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2009"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       to
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       on the same scale. The country Britain left behind in 1973 has been adjusting since, in its self-image as much as in its sentiment.</p>
+  </div>
 </section>
 
 <!-- =========== CHAPTER 8: Welfare State + Māori Urbanisation ============ -->
@@ -1187,6 +1293,23 @@
 
     <p>It changed Māori politics and it also changed what Pākehā thought Māori life was.</p>
 
+    <p>Most Māori now live in cities — and in Auckland in particular — and the city is where Pākehā most affirm a cultural place for Māori in national life. Asked whether Māori culture helps to define New Zealand in positive ways, Pākehā in the major cities, like Auckland, Wellington and Christchurch, agree most strongly, with an average reading of
+       <span data-fact-item="SymbExcl01r" data-fact-year="2024"
+             data-fact-group="nzeur_high" data-fact-stat="mean">—</span>
+       on a scale where lower readings are more affirming. Pākehā in smaller centres, like Hamilton, Tauranga or Dunedin, follow at
+       <span data-fact-item="SymbExcl01r" data-fact-year="2024"
+             data-fact-group="nzeur_medium" data-fact-stat="mean">—</span>;
+       Pākehā in rural areas are cooler again at
+       <span data-fact-item="SymbExcl01r" data-fact-year="2024"
+             data-fact-group="nzeur_rural" data-fact-stat="mean">—</span>.
+       Asked instead whether New Zealand would be better off forgetting about promoting Māori culture, about
+       <span data-fact-item="SymbExcl03" data-fact-year="2024"
+             data-fact-group="nzeur_high" data-fact-stat="pct_agree">—</span>
+       of Pākehā in the big cities agree, against
+       <span data-fact-item="SymbExcl03" data-fact-year="2024"
+             data-fact-group="nzeur_rural" data-fact-stat="pct_agree">—</span>
+       of those in rural areas. The cultural shift urbanisation produced has taken hold most strongly in the cities themselves; the country it left behind is still arguing the question.</p>
+
     <div class="ornament">· · ·</div>
   </div>
 </section>
@@ -1232,6 +1355,28 @@
         <p class="pull">When labour was scarce, the rules bent. When jobs vanished, they stiffened.</p>
       </div>
     </div>
+  </div>
+
+  <div class="full-chapter">
+    <p>The contemporary arithmetic is friendlier than the policy ever was. On a warmth scale of 1 to 7, Māori rate Pacific peoples at
+       <span data-fact-item="Warm.Pacific" data-fact-year="2024"
+             data-fact-group="maori" data-fact-stat="mean">—</span>,
+       Pākehā at
+       <span data-fact-item="Warm.Pacific" data-fact-year="2024"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>,
+       and Asian New Zealanders at
+       <span data-fact-item="Warm.Pacific" data-fact-year="2024"
+             data-fact-group="asian" data-fact-stat="mean">—</span>.
+       The separation is sharper in time spent. Pākehā report about
+       <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       hours a week of contact with Pacific friends and family; Asian New Zealanders about
+       <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
+             data-fact-group="asian" data-fact-stat="mean">—</span>;
+       Māori, who often live in the same suburbs and share the same workplaces,
+       <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
+             data-fact-group="maori" data-fact-stat="mean">—</span>.
+       The Dawn Raids ended fifty years ago; the segregation of social time has not.</p>
   </div>
 </section>
 
@@ -1688,6 +1833,19 @@
 
     <p class="pull">Both major parties have called affordability a problem; they disagree on whether the lever to fix it operates through immigration, housing, or productivity.</p>
 
+    <p>For most of the 2010s the country reported feeling better year on year. Life satisfaction rose from
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2009"
+             data-fact-stat="mean">—</span>
+       in 2009 to a peak of
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2019"
+             data-fact-stat="mean">—</span>
+       in 2019 — the year the Christchurch attacks turned grief into a brief national consensus, and the year before the pandemic. Since then it has fallen back to
+       <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
+             data-fact-stat="mean">—</span>,
+       about where the series started. The recovery from grief came faster than the recovery from the cost of living, the trans-Tasman drain and the housing market that has paid neither group of arrivals very well.</p>
+
+    <div data-survey-chart="lifesat-trajectory"></div>
+
     <div class="ornament">· · ·</div>
   </div>
 </section>
@@ -1828,6 +1986,24 @@
 
     <p class="pull" style="font-size:24px;">Gold towns that host surfers today are remnants of a Pacific labour market — California, Nevada, Victoria, Otago. The country as a whole is the manifestation of similar logics, built and rebuilt by the search for land, labour, capital and belonging.</p>
 
+    <p>What people say about that mixed inheritance has shifted alongside
+       it. In 2012 around
+       <span data-fact-item="Multiculturalism01r" data-fact-year="2012"
+             data-fact-stat="pct_agree">—</span>
+       of New Zealanders agreed that <em>it is good for New Zealand to
+       be made up of people from different races, religions and cultures</em>;
+       by 2022 that share had risen to
+       <span data-fact-item="Multiculturalism01r" data-fact-year="2022"
+             data-fact-stat="pct_agree">—</span>,
+       and though it has eased to
+       <span data-fact-item="Multiculturalism01r" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>
+       since, the line has bent only slightly. Approval of multicultural
+       Aotearoa rose every year through the late 2010s. Warmth between
+       the country's four founding groups has narrowed in step.</p>
+
+    <div data-survey-chart="convergence"></div>
+
     <p>Throughout its settled existence, opportunity has driven migration to Aotearoa New Zealand; the country has struggled over who belongs.</p>
 
     <div class="ornament">· · ·</div>
@@ -1874,7 +2050,8 @@
 <section class="outro" id="outro">
   <h2>Migrations</h2>
   <p>The arrivals that made Aotearoa New Zealand.</p>
-  <div class="colophon">Andrew Renninger</div>
+  <p class="survey-citation">All survey figures are drawn from the <a href="https://www.psych.auckland.ac.nz/en/about/new-zealand-attitudes-and-values-study.html" rel="noopener">New Zealand Attitudes and Values Study</a>, University of Auckland.</p>
+  <div class="colophon">Andrew Renninger and Olena Hołubowska</div>
 </section>
 
 </body>

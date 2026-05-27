@@ -21,8 +21,8 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js" defer></script>
 
 <!-- Project styles + entry script -->
-<link rel="stylesheet" href="./styles/frontiers.css?v=5">
-<script type="module" src="./scripts/main.js?v=30"></script>
+<link rel="stylesheet" href="./styles/frontiers.css?v=6-survey">
+<script type="module" src="./scripts/main.js?v=34-survey"></script>
 </head>
 
 <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
@@ -511,6 +511,27 @@
       </div>
     </div>
   </div>
+
+  <div class="full-chapter">
+    <p>The country has noticed. In 2009, when the Baring Head record was already four decades long, about
+       <span data-fact-item="Env.ClimateChgReal" data-fact-year="2009"
+             data-fact-stat="pct_agree">—</span>
+       of New Zealanders agreed that climate change is real. By the late 2010s that share had passed
+       <span data-fact-item="Env.ClimateChgReal" data-fact-year="2018"
+             data-fact-stat="pct_agree">—</span>,
+       and it has held just below there since:
+       <span data-fact-item="Env.ClimateChgReal" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>
+       today. Agreement that the change is caused by humans has followed the same arc but a step behind — from
+       <span data-fact-item="Env.ClimateChgCause" data-fact-year="2009"
+             data-fact-stat="pct_agree">—</span>
+       to
+       <span data-fact-item="Env.ClimateChgCause" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>
+       across the same fifteen years. The country that built the longest carbon record in the south now sits among the world's most worried about what the record is showing.</p>
+
+    <div data-survey-chart="climate-belief-trends"></div>
+  </div>
 </section>
 
 <!-- =========== CHAPTER 9: The hole in the sky =========== -->
@@ -640,6 +661,21 @@
 
     <p>The lesson was written into the country. Magnitude alone means little; depth and location mean everything. The shallow 6.3 beneath Christchurch was deadlier than the larger Kaikōura quake of 2016, which ruptured more than twenty faults at once — a world record — yet killed two. New Zealand now builds, insures and plans for a ground that will move again.</p>
 
+    <p>The memory of those mornings lives in the people who were there. Asked whether they worry that a major earthquake might hit their region, around
+       <span data-fact-item="Earthquake.Anxiety" data-fact-year="2018"
+             data-fact-group="region_canterbury"
+             data-fact-stat="pct_agree">—</span>
+       of Cantabrians say sometimes or more often — against
+       <span data-fact-item="Earthquake.Anxiety" data-fact-year="2018"
+             data-fact-group="region_outside_canterbury"
+             data-fact-stat="pct_agree">—</span>
+       of those in the rest of the country. The gap has narrowed a little since 2011 but never closed; in every year on record Canterbury reports earthquake worry at two to three times the national rate, with smaller spikes around the 2016 Kaikōura rupture and the 2020 Kermadec swarm. Wellington, sitting on a fault of its own, runs steadily second — at
+       <span data-fact-item="Earthquake.Anxiety" data-fact-year="2018"
+             data-fact-group="region_wellington"
+             data-fact-stat="pct_agree">—</span>.</p>
+
+    <div data-survey-chart="quake-anxiety-regions"></div>
+
     <div class="ornament">· · ·</div>
   </div>
 </section>
@@ -673,6 +709,21 @@
 
     <p class="pull">Heat is the hazard that does not announce itself with a bang. It arrives as longer summers, warmer nights, and a sea that no longer cools the way it did.</p>
 
+    <p>How worried the country is about that arrival depends a great deal on where the country is standing. Wellingtonians are the most concerned: about
+       <span data-fact-item="Env.ClimateChgConcern" data-fact-year="2024"
+             data-fact-group="region_wellington"
+             data-fact-stat="pct_agree">—</span>
+       agree they are deeply concerned about climate change, against a national share of
+       <span data-fact-item="Env.ClimateChgConcern" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>.
+       Aucklanders and Otago residents sit just behind. The West Coast — the longest and wildest coastline in the country — reports the lowest concern, at
+       <span data-fact-item="Env.ClimateChgConcern" data-fact-year="2024"
+             data-fact-group="region_west_coast"
+             data-fact-stat="pct_agree">—</span>.
+       Canterbury sits a hair under the national mark.</p>
+
+    <div data-survey-chart="regional-concern"></div>
+
     <div class="ornament">· · ·</div>
   </div>
 </section>
@@ -696,6 +747,29 @@
     </div>
 
     <p>Sea-level rise is already locked in to a degree: planners are told to prepare for around 0.8 metres by the 2090s, more beyond. For a country whose cities cluster on the coast — much of it, like central Wellington and Napier, on ground the earth itself only recently delivered — the ocean's slow return is the quiet counterpart to the sudden violence of a quake.</p>
+
+    <p>The country is split on how clean and green the archipelago still is. Across the whole adult population the quality of New Zealand's natural environment rates around
+       <span data-fact-item="Env.SatNZEnvironment" data-fact-year="2024"
+             data-fact-stat="mean">—</span>
+       out of seven. The four groups within that average tell a sharper story. Asian New Zealanders, many of them recent arrivals comparing the country to where they came from, rate it well above the rest, at
+       <span data-fact-item="Env.SatNZEnvironment" data-fact-year="2024"
+             data-fact-group="asian"
+             data-fact-stat="mean">—</span>;
+       Pacific and Pākehā New Zealanders cluster just above the national average, at
+       <span data-fact-item="Env.SatNZEnvironment" data-fact-year="2024"
+             data-fact-group="pacific"
+             data-fact-stat="mean">—</span>
+       and
+       <span data-fact-item="Env.SatNZEnvironment" data-fact-year="2024"
+             data-fact-group="nz_european"
+             data-fact-stat="mean">—</span>.
+       Māori, whose memory of the land includes what was taken from it and who since the 1950s have become one of the most urbanised peoples in the country, rate it lowest, at
+       <span data-fact-item="Env.SatNZEnvironment" data-fact-year="2024"
+             data-fact-group="maori"
+             data-fact-stat="mean">—</span>.
+       The country that has changed the most is the country least satisfied with what is left.</p>
+
+    <div data-survey-chart="env-satisfaction-eth"></div>
 
     <p class="pull">The fire and the water made this land. The air is now in flux.</p>
 
@@ -737,7 +811,7 @@
       Auckland's volcanoes · New Zealand's largest recorded quake · CO₂ today, ppm · warming since 1909.
     </p>
 
-    <p>For all of its settled history, the land made the people: where they could live, what they could grow, when they had to run. The newest chapter reverses the sentence. The forest fell to the axe; the air thinned under our chemicals; the climate is bending to our exhaust. The geology will outlast us regardless — but the weather, now, is partly ours.</p>
+    <p>For all of its settled history, the land made the people: where they could live, what they could grow, when they had to run. The newest chapter reverses the sentence. The forest fell to the axe; the air thinned under our chemicals; the climate is bending to our exhaust. The geology will outlast us. The weather, now, is partly ours.</p>
 
     <p class="pull">Geology made the archipelago, and continues to make it — but now a changing climate shapes it too.</p>
 
@@ -757,7 +831,8 @@
 <section class="outro" id="outro">
   <h2>Convulsions</h2>
   <p>Fire, water, and a changing sky over Aotearoa New Zealand.</p>
-  <div class="colophon">Andrew Renninger</div>
+  <p class="survey-citation">All survey figures are drawn from the <a href="https://www.psych.auckland.ac.nz/en/about/new-zealand-attitudes-and-values-study.html" rel="noopener">New Zealand Attitudes and Values Study</a>, University of Auckland.</p>
+  <div class="colophon">Andrew Renninger and Olena Hołubowska</div>
 </section>
 
 </body>

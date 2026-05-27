@@ -13,8 +13,15 @@
 
 import { setupScroll, markFirstStepsActive } from './core/scroll.js';
 import { renderStaticFigures, setupLazyMapInit, dispatchAction } from './chapters/index.js';
+import { mountSurveyFacts } from './core/survey-facts.js';
+import { mountSurveyCharts } from './core/survey-charts.js';
 
 renderStaticFigures();
 markFirstStepsActive();
 setupLazyMapInit();
 setupScroll(dispatchAction);
+
+// NZAVS data sprinkles. Both no-op when the page has no mount points,
+// so the original index.html is unaffected.
+mountSurveyFacts();
+mountSurveyCharts();
