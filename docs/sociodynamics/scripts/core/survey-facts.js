@@ -13,6 +13,9 @@
  * Supported stats:
  *
  *   mean         — the mean (1–7 Likert or hours/week as recorded)
+ *   mean_unreversed — 8 − mean, for items stored reverse scored on a
+ *                  1–7 scale (names ending `r`), so the value reads in
+ *                  the direction of the statement as worded
  *   pct_agree    — share scoring ≥5 on a 1–7 scale, as a percent
  *   pct_disagree — 1 − pct_agree, as a percent
  *   n            — respondent count for the wave
@@ -25,6 +28,8 @@
  *
  * Group is `data-fact-group` (defaults to `all`); options:
  *   all · nz_european · maori · pacific · asian · outgroup
+ *
+ * Optional `data-fact-dp` sets the decimal places for a mean.
  *
  * The element's existing text is used as a fallback if the lookup fails.
  */
@@ -68,6 +73,7 @@ function statValue(row, stat) {
   if (!row) return null;
   switch (stat) {
     case 'mean':         return row.mean;
+    case 'mean_unreversed': return row.mean == null ? null : 8 - row.mean;
     case 'pct_agree':    return row.pct_agree;
     case 'pct_disagree': return row.pct_agree == null ? null : 1 - row.pct_agree;
     case 'n':            return row.n;
@@ -75,8 +81,11 @@ function statValue(row, stat) {
   }
 }
 
-function fmt(stat, value) {
+function fmt(stat, value, dp) {
   if (value == null || Number.isNaN(value)) return null;
+  if (dp != null && dp !== '' && !Number.isNaN(Number(dp))) {
+    return value.toFixed(Number(dp));
+  }
   if (stat === 'pct_agree' || stat === 'pct_disagree') {
     return `${Math.round(value * 100)}%`;
   }
@@ -143,7 +152,7 @@ function resolve(json, el) {
   // ---- Single-value lookup --------------------------------------------
   const row = wave ? pickWaveByLabel(series, wave)
                    : pickWaveByYear(series, year);
-  return fmt(stat, statValue(row, stat));
+  return fmt(stat, statValue(row, stat), el.dataset.factDp);
 }
 
 /** Fill any `[data-fact-item]` spans on the page. */

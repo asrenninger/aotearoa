@@ -100,7 +100,7 @@ export async function render() {
 
   // -------- Header --------
   text(svg, { class: 'map-label', x: 0, y: 16, fill: PALETTE.inkFaint },
-       'Trans-Tasman net migration · quarterly · 2003–2025');
+       'Trans-Tasman net migration · rolling annual average per quarter · 2003–2025');
   text(svg, {
     x: 0, y: 46,
     'font-family': 'Fraunces', 'font-style': 'italic', 'font-weight': 400, 'font-size': 22, fill: PALETTE.ink
@@ -116,7 +116,7 @@ export async function render() {
   svg.appendChild(statG);
   text(statG, { x: 0, y: 0, 'text-anchor': 'end', 'font-family': 'Fraunces', 'font-weight': 600, 'font-size': 32, fill: PALETTE.ink }, '637,680');
   text(statG, { x: 0, y: 20, 'text-anchor': 'end', 'font-family': 'IBM Plex Mono', 'font-size': 9, 'letter-spacing': 1.5, fill: PALETTE.inkFaint },
-       'NEW ZEALANDERS IN AUSTRALIA');
+       'NZ-BORN RESIDENTS OF AUSTRALIA · JUNE 2025');
 
   // -------- Gridlines + y-axis labels --------
   const yTicks = [-12000, -6000, 0, 6000];
@@ -137,7 +137,7 @@ export async function render() {
     }, v === 0 ? '0' : (v / 1000) + 'k');
   }
   text(gridG, {
-    x: PLOT.x - 8, y: PLOT.y - 6, 'text-anchor': 'end',
+    x: 4, y: PLOT.y - 6, 'text-anchor': 'start',
     'font-family': 'IBM Plex Mono', 'font-size': 8, 'letter-spacing': 1.5, fill: PALETTE.inkFaint
   }, 'PER QUARTER');
 
@@ -194,6 +194,12 @@ export async function render() {
   const topY    = PLOT.y - 14;            // above plot top
   const aG = el('g');
   svg.appendChild(aG);
+  // Arrowhead for the leaders; leaders stop short of the marker dot
+  const defs = el('defs');
+  const mk = el('marker', { id: 'tt-arrow', viewBox: '0 0 8 8', refX: 7, refY: 4, markerWidth: 6, markerHeight: 6, orient: 'auto-start-reverse' });
+  mk.appendChild(el('path', { d: 'M0,0 L8,4 L0,8 z', fill: PALETTE.inkSoft }));
+  defs.appendChild(mk);
+  svg.appendChild(defs);
   for (const a of ANNOTATIONS) {
     const dotX = x(data[a.idx].year);
     const dotY = y(netSmooth[a.idx]);
@@ -209,11 +215,13 @@ export async function render() {
     // Curved leader. Start point sits just above (bottom labels) or
     // just below (top label) the label text; end point lands at the dot.
     const sy = a.where === 'bottom' ? ly - labelGap - 6 : ly + labelGap;
+    const dx = dotX - a.lx, dy = dotY - sy, len = Math.hypot(dx, dy) || 1;
+    const stop = 8;  // clear space between arrow tip and the marker
     aG.appendChild(el('path', {
-      d: arcLeader(a.lx, sy, dotX, dotY),
+      d: arcLeader(a.lx, sy, dotX - dx / len * stop, dotY - dy / len * stop),
       fill: 'none',
       stroke: PALETTE.inkSoft, 'stroke-width': 0.9, 'stroke-linecap': 'round',
-      opacity: 0.75
+      opacity: 0.75, 'marker-end': 'url(#tt-arrow)'
     }));
 
     // Label — serif italic, editorial register
@@ -229,5 +237,5 @@ export async function render() {
   const capY = bottomY + 16;
   svg.appendChild(el('line', { x1: 0, y1: capY, x2: W, y2: capY, stroke: PALETTE.rule, 'stroke-width': 0.5 }));
   text(svg, { class: 'map-label', x: 0, y: capY + 16, fill: PALETTE.inkFaint },
-       'Sources: Statistics New Zealand (arrivals); Australian Bureau of Statistics (departures + resident population).');
+       'Sources: Stats NZ estimates from Stats NZ and ABS data; ABS, NZ-born population, June 2025 (preliminary).');
 }

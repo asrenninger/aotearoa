@@ -700,6 +700,51 @@ svg { display: block; max-width: 100%; height: auto; }
   50%      { transform: scale(1.35); }
 }
 
+/* ----- Sources (after the last chapter, before the outro) -----
+   Chapter labels use the mono instrument style of .chapter-num; the
+   list uses the body serif at the survey-chart caption scale. */
+.sources {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 100px 40px 120px;
+}
+.sources h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300; font-style: italic;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.sources-chapter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 36px 0 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+.sources ol {
+  max-width: 720px;
+  margin: 0;
+  padding-left: 1.6em;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16px; line-height: 1.55;
+  color: var(--ink-soft);
+}
+.sources li { margin-bottom: 6px; }
+.sources a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+.sources a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink-faint);
+}
+
 /* ----- Outro ----- */
 .outro {
   padding: 140px 40px;

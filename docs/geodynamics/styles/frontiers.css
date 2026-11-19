@@ -315,6 +315,22 @@ svg { display: block; max-width: 100%; height: auto; }
 
 .ornament { text-align: center; margin: 32px auto; color: var(--ink-faint); letter-spacing: 0.5em; font-size: 12px; }
 
+/* ----- Sources (after the last chapter, before the outro) ----- */
+.sources { padding: 100px 0 80px; border-top: 1px solid var(--rule); }
+.sources-inner { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+.sources-title { font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: clamp(26px, 3vw, 34px); line-height: 1.2; color: var(--ink); margin-bottom: 48px; }
+.sources-chapter { margin-bottom: 36px; }
+.sources-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink-faint);
+  padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--rule);
+}
+.sources-list { padding-left: 1.6em; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.sources-list li { margin-bottom: 6px; }
+.sources-list li::marker { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-faint); }
+.sources-list a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink-faint); text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.sources-list a:hover { color: var(--fire); text-decoration-color: var(--fire); }
+
 /* ----- Outro ----- */
 .outro { padding: 140px 40px; text-align: center; border-top: 1px solid var(--rule); background: var(--paper-deep); }
 .outro h2 { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: clamp(32px, 4.5vw, 56px); margin-bottom: 24px; color: var(--ink); }
@@ -347,4 +363,8 @@ svg { display: block; max-width: 100%; height: auto; }
   .scrolly-map .map-overline { top: 16px; left: 16px; font-size: 9px; }
   .scrolly-map .map-legend { right: 12px; bottom: 12px; padding: 8px 10px; font-size: 9px; max-width: 200px; }
 }
-@media (max-width: 700px) { .composition-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px) {
+  .composition-grid { grid-template-columns: 1fr 1fr; }
+  .sources { padding: 72px 0 56px; }
+  .sources-inner { padding: 0 16px; }
+}

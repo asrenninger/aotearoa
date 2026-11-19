@@ -22,16 +22,16 @@
 
 import { MAPBOX_TOKEN } from '../core/mapbox-style.js';
 
-import * as ch1Polynesia    from './ch1-polynesia.js';
-import * as ch1Lineages     from './ch1-lineages.js';
-import * as ch3TreatyLand   from './ch3-treaty-land.js';
-import * as ch4Pacific      from './ch4-pacific-circuit.js';
+import * as ch1Polynesia    from './ch1-polynesia.js?v=25-launch';
+import * as ch1Lineages     from './ch1-lineages.js?v=26-launch';
+import * as ch3TreatyLand   from './ch3-treaty-land.js?v=25-launch';
+import * as ch4Pacific      from './ch4-pacific-circuit.js?v=25-launch';
 import * as ch5Exclusion    from './ch5-exclusion.js';
 import * as ch7Exports      from './ch7-exports-chart.js';
-import * as ch8Urbanisation from './ch8-urbanisation.js';
-import * as ch9Pasifika     from './ch9-pasifika.js';
-import * as ch12TwoTides    from './ch12-twotides.js';
-import * as ch12TransTasman from './ch12-trans-tasman.js';
+import * as ch8Urbanisation from './ch8-urbanisation.js?v=25-launch';
+import * as ch9Pasifika     from './ch9-pasifika.js?v=25-launch';
+import * as ch12TwoTides    from './ch12-twotides.js?v=25-launch';
+import * as ch12TransTasman from './ch12-trans-tasman.js?v=31-launch';
 
 mapboxgl.accessToken = MAPBOX_TOKEN;
 

@@ -1,33 +1,39 @@
 /**
  * Chapter 9 — The hole in the sky (ozone), as a scrolly.
  *
- * A sticky south-polar log-azimuthal map of REAL total-column ozone (NASA GIBS
- * / OMI), drawn as a soft Dobson-Unit gradient — so the deep hole over
- * Antarctica and the reduced-ozone shoulder spilling toward the Southern Ocean
- * read as a continuum, not a hard circle. Two observed states (a record
- * deep-hole spring day and a calm summer day) are morphed by each year's
- * measured maximum hole area, so scrolling grows the hole then heals it. The
- * 220 DU contour (the official "hole" edge) is drawn as a line; NZ/AU/AR sit on
- * the coloured field. A sparkline carries the real area-over-time record, with
- * the Montreal Protocol marked.
+ * A sticky south-polar log-azimuthal map of total-column ozone, drawn as a
+ * soft Dobson-Unit gradient. The field is ILLUSTRATIVE: two real OMI scenes
+ * (a deep-hole spring day, 4 Oct 2015, and a calm summer day, 15 Jan 2016)
+ * are blended by each year's measured hole area, so scrolling grows the hole
+ * then shrinks it. These are not observed fields for each year, and OMI did
+ * not fly before 2004; the figure's source line says so. NZ/AU/AR sit on the
+ * coloured field. A sparkline carries the measured area record, with the
+ * Montreal Protocol marked.
  *
- * Field: data/ozone-field.json. Area: NASA Ozone Watch annual maxima.
+ * Field: data/ozone-field.json. Area: NASA Ozone Watch, the largest
+ * single-day hole area of each year (ozonewatch.gsfc.nasa.gov/statistics/
+ * annual_data.html, read 26 Oct 2026). One metric only: never splice in the
+ * 7 Sep–13 Oct seasonal mean. There are no observations for 1995, so it is
+ * a gap in the sparkline and the readout says so.
  */
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import * as topojson from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import { logAzimuthalRaw } from '../core/projection.js';
 
-// year, maximum hole area (million km²) — NASA Ozone Watch
+// year, largest single-day ozone hole area (million km²) — NASA Ozone Watch.
+// 1995 is absent: no observations that year.
 const AREA = [
-  [1979,0.1],[1980,1.4],[1982,4.8],[1984,10.1],[1985,14.2],[1986,11.3],[1987,19.3],
-  [1988,13.8],[1989,19.5],[1990,19.2],[1991,20.0],[1992,22.3],[1993,24.2],[1994,23.6],
-  [1995,23.0],[1996,22.8],[1997,22.1],[1998,25.9],[1999,23.3],[2000,29.9],[2001,25.0],
-  [2002,12.0],[2003,28.2],[2004,19.5],[2005,24.4],[2006,29.6],[2007,25.2],[2008,27.0],
-  [2009,24.1],[2010,22.2],[2011,26.0],[2012,21.2],[2013,24.0],[2014,24.1],[2015,28.2],
-  [2016,23.0],[2017,19.6],[2018,24.8],[2019,16.4],[2020,24.8],[2021,24.8],[2022,26.4],
-  [2023,26.0],[2024,22.0]
+  [1979,1.1],[1980,3.3],[1981,3.1],[1982,10.8],[1983,12.2],[1984,14.7],[1985,18.8],
+  [1986,14.4],[1987,22.5],[1988,13.8],[1989,21.7],[1990,21.1],[1991,22.6],[1992,24.9],
+  [1993,25.8],[1994,25.2],[1996,26.9],[1997,25.1],[1998,27.9],[1999,25.8],[2000,29.9],
+  [2001,26.5],[2002,21.9],[2003,28.4],[2004,22.8],[2005,27.2],[2006,29.6],[2007,25.2],
+  [2008,27.0],[2009,24.4],[2010,22.6],[2011,26.1],[2012,21.1],[2013,24.0],[2014,24.1],
+  [2015,28.2],[2016,22.8],[2017,19.6],[2018,24.8],[2019,16.4],[2020,24.8],[2021,24.8],
+  [2022,26.5],[2023,26.0],[2024,22.4],[2025,22.9]
 ];
+const NO_DATA = new Set([1995]);
+const observed = yr => { const d = AREA.find(a => a[0] === yr); return d ? d[1] : null; };
 const Y0 = AREA[0][0], Y1 = AREA[AREA.length - 1][0], PEAK = 29.9;
 
 // DU thresholds → soft violet ramp (low ozone = deep violet, high = pale).
@@ -72,7 +78,7 @@ async function build() {
   const W = 600, mapTop = 86, mapBot = 512, pad = 34;
 
   // Title block
-  sel.append("text").attr("x", 24).attr("y", 24).attr("font-family", "IBM Plex Mono").attr("font-size", 10).attr("letter-spacing", 2).attr("fill", "#8a7659").text("TOTAL COLUMN OZONE · NASA OMI");
+  sel.append("text").attr("x", 24).attr("y", 24).attr("font-family", "IBM Plex Mono").attr("font-size", 10).attr("letter-spacing", 2).attr("fill", "#8a7659").text("TOTAL COLUMN OZONE · ILLUSTRATIVE");
   sel.append("text").attr("x", 24).attr("y", 52).attr("font-family", "Fraunces").attr("font-style", "italic").attr("font-size", 22).attr("fill", "#1d1610").text("How the hole opened, then began to close");
 
   const raw = logAzimuthalRaw(0.9, 75);
@@ -99,7 +105,7 @@ async function build() {
 
   // Dynamic year + area, top-right
   yearEl = sel.append("text").attr("x", W - 24).attr("y", 42).attr("text-anchor", "end").attr("font-family", "Fraunces").attr("font-weight", 600).attr("font-size", 40).attr("fill", "#1d1610");
-  areaEl = sel.append("text").attr("x", W - 24).attr("y", 60).attr("text-anchor", "end").attr("font-family", "IBM Plex Mono").attr("font-size", 10).attr("letter-spacing", 1).attr("fill", "#5b4a8a");
+  areaEl = sel.append("text").attr("x", W - 24).attr("y", 74).attr("text-anchor", "end").attr("font-family", "IBM Plex Mono").attr("font-size", 10).attr("letter-spacing", 1).attr("fill", "#5b4a8a");
 
   // DU legend — one clean row below the map
   const lg = sel.append("g").attr("transform", `translate(${pad}, ${mapBot + 32})`);
@@ -109,14 +115,24 @@ async function build() {
   lg.append("text").attr("x", BANDS.length * 22 + 6).attr("y", 17).attr("font-family", "IBM Plex Mono").attr("font-size", 8).attr("fill", "#8a7659").text("370+");
 
   // Area-over-time sparkline — clearly separated, below the legend
-  sel.append("text").attr("x", SPL.x).attr("y", SPL.y - 10).attr("font-family", "IBM Plex Mono").attr("font-size", 9.5).attr("letter-spacing", 0.6).attr("fill", "#8a7659").text("MAXIMUM HOLE AREA · MILLION KM²");
-  sel.append("path").attr("d", AREA.map((d, i) => (i ? "L" : "M") + sx(d[0]).toFixed(1) + " " + sy(d[1]).toFixed(1)).join(" ")).attr("fill", "none").attr("stroke", "#5b4a8a").attr("stroke-width", 1.6);
+  sel.append("text").attr("x", SPL.x).attr("y", SPL.y - 10).attr("font-family", "IBM Plex Mono").attr("font-size", 9.5).attr("letter-spacing", 0.6).attr("fill", "#8a7659").text("LARGEST SINGLE-DAY HOLE AREA · MILLION KM²");
+  // Break the line where a year is missing (1995), so no value is implied.
+  sel.append("path").attr("d", AREA.map((d, i) => (i && d[0] - AREA[i - 1][0] === 1 ? "L" : "M") + sx(d[0]).toFixed(1) + " " + sy(d[1]).toFixed(1)).join(" ")).attr("fill", "none").attr("stroke", "#5b4a8a").attr("stroke-width", 1.6);
   const mx = sx(1987);
   sel.append("line").attr("x1", mx).attr("y1", SPL.y - 2).attr("x2", mx).attr("y2", SPL.y + SPL.h).attr("stroke", "#1d1610").attr("stroke-width", 0.8).attr("stroke-dasharray", "3 3");
-  sel.append("text").attr("x", mx + 5).attr("y", SPL.y + 9).attr("font-family", "IBM Plex Mono").attr("font-size", 8.5).attr("fill", "#1d1610").text("MONTREAL 1987");
+  sel.append("text").attr("x", mx + 5).attr("y", SPL.y + SPL.h - 2).attr("font-family", "IBM Plex Mono").attr("font-size", 8.5).attr("fill", "#1d1610").text("MONTREAL 1987");
   cursorEl = sel.append("circle").attr("r", 3.5).attr("fill", "#5b4a8a").attr("stroke", "#f3ecdd").attr("stroke-width", 1.4);
   sel.append("text").attr("x", SPL.x).attr("y", SPL.y + SPL.h + 14).attr("font-family", "IBM Plex Mono").attr("font-size", 8).attr("fill", "#8a7659").text("1979");
-  sel.append("text").attr("x", SPL.x + SPL.w).attr("y", SPL.y + SPL.h + 14).attr("text-anchor", "end").attr("font-family", "IBM Plex Mono").attr("font-size", 8).attr("fill", "#8a7659").text("2024");
+  sel.append("text").attr("x", SPL.x + SPL.w).attr("y", SPL.y + SPL.h + 14).attr("text-anchor", "end").attr("font-family", "IBM Plex Mono").attr("font-size", 8).attr("fill", "#8a7659").text(String(Y1));
+
+  // Source lines: the map is a blend, the sparkline is measured.
+  const src = [
+    "MAP: ILLUSTRATIVE BLEND OF TWO OMI SCENES (4 OCT 2015 AND 15 JAN 2016),",
+    "SCALED BY EACH YEAR'S HOLE AREA · NASA GIBS · BASEMAP NATURAL EARTH",
+    "AREA: NASA OZONE WATCH, LARGEST SINGLE DAY OF EACH YEAR · NO DATA FOR 1995"
+  ];
+  src.forEach((t, i) => sel.append("text").attr("x", SPL.x).attr("y", SPL.y + SPL.h + 38 + i * 13)
+    .attr("font-family", "IBM Plex Mono").attr("font-size", 8.5).attr("letter-spacing", 0.4).attr("fill", "#8a7659").text(t));
 
   update(Y0);
   return true;
@@ -137,9 +153,12 @@ function redrawField(year) {
 function update(year) {
   if (lastYear === null || Math.abs(year - lastYear) >= 1) { redrawField(year); lastYear = year; }
   const a = areaAt(year);
-  yearEl.text(Math.round(year));
-  areaEl.text(a.toFixed(1) + " M KM² HOLE");
-  cursorEl.attr("cx", sx(year)).attr("cy", sy(a));
+  const yr = Math.round(year);
+  const obs = observed(yr);
+  yearEl.text(yr);
+  // Readout shows the measured value for the displayed year, never an interpolation.
+  areaEl.text(NO_DATA.has(yr) || obs === null ? "NO OBSERVATIONS" : obs.toFixed(1) + " M KM² · LARGEST DAY");
+  cursorEl.attr("cx", sx(year)).attr("cy", sy(a)).attr("opacity", NO_DATA.has(yr) ? 0 : 1);
 }
 
 function progressToYear(p) {

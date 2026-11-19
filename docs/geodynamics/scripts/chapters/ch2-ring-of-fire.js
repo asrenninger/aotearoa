@@ -84,6 +84,7 @@ export function init(state) {
     center: [-150, 0], zoom: 1.05,
     interactive: false, attributionControl: false
   });
+  map.addControl(new mapboxgl.AttributionControl({ compact: true }));
   state.map = map;
 
   map.on('load', () => {

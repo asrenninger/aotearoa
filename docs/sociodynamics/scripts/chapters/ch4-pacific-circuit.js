@@ -130,6 +130,7 @@ export function init(state) {
     interactive: false, attributionControl: false
   });
   state.map = map;
+  map.addControl(new mapboxgl.AttributionControl({ compact: true }));
 
   // DOM handle for the population-chart inset.
   state.popChart = document.getElementById('ch4-pop');

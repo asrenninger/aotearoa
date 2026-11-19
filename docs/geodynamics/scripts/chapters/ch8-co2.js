@@ -11,6 +11,9 @@
  *   2 → through 1958, Keeling begins at Mauna Loa
  *   3 → 1972, Baring Head (NZ) begins, marked on the shared curve
  *   4 → through today, past 420 ppm
+ *
+ * The 2015 flag marks Mauna Loa's first annual mean above 400 ppm (401.0);
+ * the head label is the latest monthly value in the data (April 2026).
  */
 
 const PLOT = { x: 64, y: 80, w: 496, h: 400 };
@@ -35,7 +38,7 @@ const FIRE   = '#c0431f';
 const PIVOTS = [
   { year: 1958, label: 'Keeling begins · Mauna Loa' },
   { year: 1972, label: 'Baring Head · NZ begins' },
-  { year: 2016, label: 'Past 400 ppm' }
+  { year: 2015, label: 'Past 400 ppm · annual mean' }
 ];
 
 let curveEl = null, curveLen = 0, iceEl = null, iceLen = 0, ppmAt = () => null;
@@ -85,7 +88,7 @@ async function buildChart() {
   };
 
   // Inline label at the curve head
-  text(plot, { x: xScale(2026) - PLOT.x - 4, y: yScale(431) - PLOT.y - 8, 'text-anchor': 'end', fill: CARBON, 'font-family': 'IBM Plex Mono', 'font-size': 10, id: 'ch8-head' }, '431 ppm');
+  text(plot, { x: xScale(2026) - PLOT.x - 4, y: yScale(431) - PLOT.y - 8, 'text-anchor': 'end', fill: CARBON, 'font-family': 'IBM Plex Mono', 'font-size': 10, id: 'ch8-head' }, '431 ppm · Apr 2026');
 
   // Pivot markers
   const flagsG = el('g', {}, plot);

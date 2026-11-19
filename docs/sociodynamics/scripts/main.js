@@ -12,9 +12,9 @@
  */
 
 import { setupScroll, markFirstStepsActive } from './core/scroll.js';
-import { renderStaticFigures, setupLazyMapInit, dispatchAction } from './chapters/index.js';
-import { mountSurveyFacts } from './core/survey-facts.js';
-import { mountSurveyCharts } from './core/survey-charts.js';
+import { renderStaticFigures, setupLazyMapInit, dispatchAction } from './chapters/index.js?v=31-launch';
+import { mountSurveyFacts } from './core/survey-facts.js?v=25-launch';
+import { mountSurveyCharts } from './core/survey-charts.js?v=30-launch';
 
 renderStaticFigures();
 markFirstStepsActive();

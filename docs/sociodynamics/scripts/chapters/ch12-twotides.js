@@ -144,7 +144,7 @@ function renderPanel({ root, kind, data, eyebrow, title, stat, land }) {
     .text(d => d.country);
   lblG.append("text").attr("class", `tt-city-count tt-${kind}`)
     .attr("text-anchor", "middle").attr("dy", 10.5)
-    .text(d => d3.format(",")(d.value));
+    .text(d => (d.est ? "≈" : "") + d3.format(",")(d.value));
   lblG.attr("transform", d => `translate(${d.x0},${d.y0})`);
 
   lblG.each(function(d) {
@@ -190,20 +190,22 @@ export async function render() {
     d3.csv("data/nz-migrant-departures-2024.csv", d => ({
       country: d.country, iso3: d.iso3,
       value: +d.departures, lonlat: [+d.lon, +d.lat],
+      // Only Australia is a published count; the rest are modelled.
+      est: d.source === "estimated",
     })),
   ]);
   const land = topojson.feature(world, world.objects.land);
 
   renderPanel({
     root: inSvg, kind: "in", data: arrivals, land,
-    eyebrow: "Arrivals to New Zealand",
+    eyebrow: "Arrivals · non-NZ citizens · year to Jan 2026",
     title: "Where new migrants come from",
     stat: "111k",
   });
   renderPanel({
     root: outSvg, kind: "out", data: departures, land,
-    eyebrow: "Departures from New Zealand",
-    title: "Where New Zealanders go",
-    stat: "72k",
+    eyebrow: "Departures · NZ citizens · 2024",
+    title: "Where New Zealanders go (≈ estimated)",
+    stat: "≈72k",
   });
 }

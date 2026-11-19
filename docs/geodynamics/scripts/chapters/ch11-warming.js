@@ -6,7 +6,9 @@
  *   #seven-station   — the same anomalies as a line, warmest year marked.
  *
  * Data: data/nz-temp-annual.json — ERA5 reanalysis (Open-Meteo), a five-point
- * national mean, anomalies vs 1991–2020, built by data/build/fetch-nz-temp.py.
+ * national mean (Kaitaia, Auckland, Wellington, Christchurch, Dunedin),
+ * 1940–2025, anomalies vs 1991–2020, built by data/build/fetch-nz-temp.py.
+ * This is not the seven-station series that the prose cites for 1909–2025.
  * If that file is absent, falls back to a deterministic representative series
  * carrying the published trend (so the figures always render).
  */
@@ -30,7 +32,7 @@ function fallbackSeries() {
     if (y === 2022) a = 1.18;
     series.push({ year: y, anomaly: +a.toFixed(3) });
   }
-  return { baseline: '1981–2010', series, source: 'Source: NIWA', real: false };
+  return { baseline: '1981–2010', series, source: 'Illustrative series, shown only because the data file failed to load', real: false };
 }
 
 function rampColour(a, lo, hi) {
@@ -43,7 +45,7 @@ function rampColour(a, lo, hi) {
   return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
 }
 
-function renderStripes(series, lo, hi) {
+function renderStripes(series, lo, hi, baseline, source) {
   const svg = document.getElementById('warming-stripes');
   if (!svg) return;
   const W = 800, H = 150;
@@ -55,10 +57,12 @@ function renderStripes(series, lo, hi) {
       fill: rampColour(d.anomaly, lo, hi), class: 'stripe', style: `transition-delay:${i * 6}ms`
     }, svg);
   });
-  text(svg, { x: 0, y: 12, class: 'map-label', fill: '#8a7659' }, `New Zealand annual temperature, ${series[0].year}–${series[series.length - 1].year}`);
+  text(svg, { x: 0, y: 12, class: 'map-label', fill: '#8a7659' }, `New Zealand annual temperature, ${series[0].year}–${series[series.length - 1].year} · difference from the ${baseline} mean`);
   text(svg, { x: 0, y: H - 6, class: 'axis-label' }, series[0].year);
   text(svg, { x: W, y: H - 6, 'text-anchor': 'end', class: 'axis-label' }, series[series.length - 1].year);
   text(svg, { x: W / 2, y: H - 6, 'text-anchor': 'middle', class: 'axis-label', fill: '#8a7659' }, 'cooler  ·  warmer →');
+  // Source line below the stripes (the SVG viewBox in index.html is 800 × 172).
+  text(svg, { x: 0, y: H + 16, class: 'map-label', fill: '#8a7659' }, source);
 }
 
 function renderLine(series, lo, hi, baseline, source) {
@@ -70,7 +74,7 @@ function renderLine(series, lo, hi, baseline, source) {
   const xS = y => PLOT.x + (y - Y0) / (Y1 - Y0) * PLOT.w;
   const yS = a => PLOT.y + (1 - (a - yMin) / (yMax - yMin)) * PLOT.h;
 
-  text(svg, { x: 0, y: 14, class: 'map-label', fill: '#8a7659' }, 'New Zealand temperature anomaly');
+  text(svg, { x: 0, y: 14, class: 'map-label', fill: '#8a7659' }, `New Zealand temperature · °C above or below the ${baseline} mean`);
   const warmest = series.reduce((m, d) => d.anomaly > m.anomaly ? d : m, series[0]);
   text(svg, { x: 0, y: 42, class: 'fig-title', 'font-size': 22, fill: '#1d1610' }, 'The warmest years are the recent ones');
 
@@ -83,7 +87,11 @@ function renderLine(series, lo, hi, baseline, source) {
   }
   el('line', { x1: 0, y1: yS(0) - PLOT.y, x2: PLOT.w, y2: yS(0) - PLOT.y, stroke: '#8a7659', 'stroke-width': 0.9 }, plot);
   el('line', { x1: 0, y1: 0, x2: 0, y2: PLOT.h, class: 'axis-line' }, plot);
-  const xticks = [Y0, Math.round((Y0 + Y1) / 2 - (Y1 - Y0) / 4), Math.round((Y0 + Y1) / 2), Math.round((Y0 + Y1) / 2 + (Y1 - Y0) / 4), Y1];
+  // round decades, plus the final year, dropping a decade that would crowd it
+  const xticks = [];
+  for (let yr = Math.ceil(Y0 / 20) * 20; yr <= Y1; yr += 20) xticks.push(yr);
+  if (Y1 - xticks[xticks.length - 1] < 8) xticks.pop();
+  if (xticks[xticks.length - 1] !== Y1) xticks.push(Y1);
   xticks.forEach(yr => text(plot, { x: xS(yr) - PLOT.x, y: PLOT.h + 18, 'text-anchor': 'middle', class: 'axis-label' }, yr));
 
   const pts = series.map(d => [xS(d.year) - PLOT.x, yS(d.anomaly) - PLOT.y]);
@@ -124,15 +132,16 @@ export async function render() {
   let payload;
   try {
     const j = await fetch('./data/nz-temp-annual.json').then(r => r.ok ? r.json() : Promise.reject());
+    const span = `${j.series[0].year}–${j.series[j.series.length - 1].year}`;
     payload = {
-      series: j.series, baseline: j.baseline, real: true,
-      source: 'Source: ECMWF; Open-Meteo'
+      series: j.series, baseline: String(j.baseline).replace('-', '–'), real: true,
+      source: `Source: Copernicus ERA5 (ECMWF) via Open-Meteo · mean of five sites · ${span}`
     };
   } catch (e) {
     payload = fallbackSeries();
   }
   const anomalies = payload.series.map(d => d.anomaly);
   const lo = Math.min(...anomalies), hi = Math.max(...anomalies);
-  renderStripes(payload.series, lo, hi);
+  renderStripes(payload.series, lo, hi, payload.baseline, payload.source);
   renderLine(payload.series, lo, hi, payload.baseline, payload.source);
 }

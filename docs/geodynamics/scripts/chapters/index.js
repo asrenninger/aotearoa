@@ -9,15 +9,15 @@
 import { MAPBOX_TOKEN } from '../core/mapbox-style.js';
 
 import * as ch1Zealandia    from './ch1-zealandia.js?v=12';
-import * as ch2RingOfFire   from './ch2-ring-of-fire.js?v=5';
+import * as ch2RingOfFire   from './ch2-ring-of-fire.js?v=6';
 import * as ch2RingFireStatic from './ch2-ringfire-static.js';
 import * as ch3Rangitoto    from './ch3-rangitoto.js?v=6';
 import * as ch4Tvz          from './ch4-tvz.js?v=17';
 import * as ch6Eruptions    from './ch6-eruptions.js?v=9';
-import * as ch8Co2          from './ch8-co2.js';
-import * as ch9Ozone        from './ch9-ozone.js?v=8';
-import * as ch11Warming     from './ch11-warming.js?v=4';
-import * as ch12Futures     from './ch12-futures.js?v=5';
+import * as ch8Co2          from './ch8-co2.js?v=2';
+import * as ch9Ozone        from './ch9-ozone.js?v=10';
+import * as ch11Warming     from './ch11-warming.js?v=7';
+import * as ch12Futures     from './ch12-futures.js?v=8';
 
 mapboxgl.accessToken = MAPBOX_TOKEN;
 

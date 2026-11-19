@@ -6,9 +6,9 @@
  */
 
 import { setupScroll, markFirstStepsActive } from './core/scroll.js';
-import { renderStaticFigures, setupLazyMapInit, dispatchAction } from './chapters/index.js?v=30';
+import { renderStaticFigures, setupLazyMapInit, dispatchAction } from './chapters/index.js?v=36';
 import { mountSurveyFacts }  from './core/survey-facts.js?v=1';
-import { mountSurveyCharts } from './core/survey-charts.js?v=4';
+import { mountSurveyCharts } from './core/survey-charts.js?v=7';
 
 renderStaticFigures();
 markFirstStepsActive();

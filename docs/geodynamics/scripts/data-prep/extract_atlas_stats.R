@@ -154,6 +154,8 @@ DEMO_STEMS <- c(
 SCALES <- list(
   climate_belief   = list(max = 7, agree_threshold = 5),
   climate_concern  = list(max = 7, agree_threshold = 5),
+  # NB: Env.SatNZEnvironment is scored 0-10 (1-10 in wave 1), not 1-7, so
+  # max = 7 and the agree threshold are wrong for it; the page uses only the mean.
   env_state        = list(max = 7, agree_threshold = 5),
   env_values       = list(max = 7, agree_threshold = 5),
   env_efficacy     = list(max = 7, agree_threshold = 5),

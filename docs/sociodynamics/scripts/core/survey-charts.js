@@ -126,6 +126,12 @@ function lerpHex(a, b, t) {
   return `#${((r << 16) | (g << 8) | b2).toString(16).padStart(6, '0')}`;
 }
 
+// Waves are keyed by the year fieldwork began; each ran into the next
+// year (T16 "2024" ran from May 2024 to September 2025).
+function waveLabel(year) {
+  return `${year}–${String(year + 1).slice(2)}`;
+}
+
 // ---- Lookup ----------------------------------------------------------
 
 function seriesFor(json, item, group) {
@@ -160,8 +166,8 @@ function renderWarmthMatrix(container, json) {
   container.innerHTML = '';
   container.appendChild(svg);
 
-  overline(svg, M.l, 24, 'Inter-ethnic warmth · 2024');
-  title(svg, M.l, 50, 'Who feels warmly toward whom');
+  overline(svg, M.l, 24, `Warmth between groups · ${waveLabel(year)}`);
+  title(svg, M.l, 50, 'Each group rates its own group most warmly');
   caption(svg, M.l, 68, 'Means on a 1–7 thermometer scale. Darker = warmer.');
 
   // Column (target) labels — sit just above the grid
@@ -240,7 +246,7 @@ function renderWarmthMatrix(container, json) {
   }
 
   // Footer line
-  caption(svg, M.l, H - 16, 'Source: NZAVS, T16 (2024).');
+  caption(svg, M.l, H - 16, `Source: NZAVS, T16 (${waveLabel(year)}). Unweighted respondent means.`);
 }
 
 // ---- 2. Goldfields lollipop ------------------------------------------
@@ -283,8 +289,8 @@ function renderGoldfieldsLollipop(container, json) {
   container.innerHTML = '';
   container.appendChild(svg);
 
-  overline(svg, M.l, 24, 'Life satisfaction · 2024');
-  title(svg, M.l, 50, 'The old goldfields, ranked');
+  overline(svg, M.l, 24, `Life satisfaction · ${waveLabel(year)}`);
+  title(svg, M.l, 50, 'Central Otago, Queenstown and the Coromandel rate life highest');
   caption(svg, M.l, 68, 'Mean of "I am satisfied with my life" (1–7).');
 
   // Auckland reference line — runs only behind the data rows, with the
@@ -357,7 +363,7 @@ function renderGoldfieldsLollipop(container, json) {
   });
 
   caption(svg, M.l, H - 16,
-          'Source: NZAVS, T16 (2024). Each district’s respondents pooled into a single wave.');
+          `Source: NZAVS, T16 (${waveLabel(year)}). Unweighted respondent means.`);
 }
 
 // ---- 3. Four-group warmth convergence --------------------------------
@@ -396,8 +402,8 @@ function renderConvergence(container, json) {
   container.innerHTML = '';
   container.appendChild(svg);
 
-  overline(svg, M.l, 24, 'Warmth toward each group · 2009 → 2024');
-  title(svg, M.l, 50, 'The arrivals accumulate, the warmth converges');
+  overline(svg, M.l, 24, 'Warmth towards each group · 2009–10 → 2024–25');
+  title(svg, M.l, 50, 'Warmth towards the four largest ethnic groups has converged');
   caption(svg, M.l, 68,
           'Mean warmth (1–7) from respondents outside each target group.');
 
@@ -461,7 +467,7 @@ function renderConvergence(container, json) {
     }, e.label.toUpperCase());
   });
 
-  caption(svg, M.l, H - 16, 'Source: NZAVS, T1 (2009) → T16 (2024).');
+  caption(svg, M.l, H - 16, 'Source: NZAVS, T1 (2009–10) → T16 (2024–25). Unweighted; years mark the start of fieldwork.');
 }
 
 // ---- 4. Life-satisfaction trajectory --------------------------------
@@ -486,10 +492,10 @@ function renderLifesatTrajectory(container, json) {
   container.innerHTML = '';
   container.appendChild(svg);
 
-  overline(svg, M.l, 24, 'Life satisfaction · 2009 → 2024');
-  title(svg, M.l, 50, 'The peak was 2019');
+  overline(svg, M.l, 24, 'Life satisfaction · 2009–10 → 2024–25');
+  title(svg, M.l, 50, 'The peak came in the 2019–20 wave');
   caption(svg, M.l, 68,
-          'Mean of "I am satisfied with my life" (1–7), whole sample.');
+          'Mean of "I am satisfied with my life" (1–7), all respondents. Axis runs 5.3 to 5.8.');
 
   // Y gridlines
   for (let v = 5.4; v <= 5.8001; v += 0.2) {
@@ -532,7 +538,7 @@ function renderLifesatTrajectory(container, json) {
     'text-anchor': 'middle',
     'font-family': 'IBM Plex Mono, monospace',
     'font-size': 10, 'letter-spacing': 1, fill: PALETTE.british
-  }, `${peak.x} · ${peak.y.toFixed(2)}`);
+  }, `${waveLabel(peak.x)} · ${peak.y.toFixed(2)}`);
 
   // Annotate latest — label sits to the right of the dot, off the line.
   const last = points[points.length - 1];
@@ -541,13 +547,13 @@ function renderLifesatTrajectory(container, json) {
     r: 5, fill: INK, stroke: PAPER, 'stroke-width': 1.5
   }));
   text(svg, {
-    x: xScale(last.x) - 10, y: yScale(last.y) - 12,
+    x: xScale(last.x) + 4, y: yScale(last.y) - 18,
     'text-anchor': 'end',
     'font-family': 'IBM Plex Mono, monospace',
     'font-size': 10, 'letter-spacing': 1, fill: INK
-  }, `${last.x} · ${last.y.toFixed(2)}`);
+  }, `${waveLabel(last.x)} · ${last.y.toFixed(2)}`);
 
-  caption(svg, M.l, H - 16, 'Source: NZAVS, T1 (2009) → T16 (2024).');
+  caption(svg, M.l, H - 16, 'Source: NZAVS, T1 (2009–10) → T16 (2024–25). Unweighted; years mark the start of fieldwork.');
 }
 
 // ---- Mount -----------------------------------------------------------

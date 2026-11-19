@@ -21,8 +21,8 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js" defer></script>
 
 <!-- Project styles + entry script -->
-<link rel="stylesheet" href="./styles/frontiers.css">
-<script type="module" src="./scripts/main.js?v=24-charts"></script>
+<link rel="stylesheet" href="./styles/frontiers.css?v=25-launch">
+<script type="module" src="./scripts/main.js?v=31-launch"></script>
 </head>
 
 <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
@@ -170,7 +170,7 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter One</div>
     <h2 class="chapter-title">The sea was a road,<br><em>and the people who travelled it</em></h2>
-    <p class="chapter-dek">East Polynesian voyagers settled an unpeopled archipelago and became <em>tangata whenua</em>. Later arrivals encountered established communities, kinship networks, and systems of governance.</p>
+    <p class="chapter-dek">East Polynesian voyagers settled the unpeopled islands and became <em>tangata whenua</em>. Later arrivals encountered established communities, kinship networks and systems of governance.</p>
   </div>
 
   <div class="scrolly-map" data-chapter="ch1">
@@ -182,36 +182,39 @@
     <div class="features">
       <div class="step-card" data-step="1" data-action="ch1-step1">
         <div class="step-tag">Step 1 · The Pacific</div>
-        <p class="drop-cap">Aotearoa was the last large landmass on Earth to be settled by humans. Probably between 1250 and 1300 CE, East Polynesian navigators — using winds, currents, swells, stars, bird flight, and inherited knowledge of voyaging — found and settled it.</p>
-        <p>Rather than drift, Polynesians had learned the patterns of winds, swells, stars and birds.</p>
+        <p class="drop-cap">Aotearoa was the last large landmass on Earth to be settled by humans. East Polynesian navigators found and settled it, probably between 1250 and 1300 CE, steering by winds, currents, swells, stars, bird flight and inherited knowledge of voyaging.</p>
       </div>
 
       <div class="step-card" data-step="2" data-action="ch1-step2">
         <div class="step-tag">Step 2 · The vector</div>
         <div class="stat">c. 1250&ndash;1300</div>
         <div class="stat-label">Estimated settlement window</div>
-        <p>The settlers came from somewhere in central East Polynesia — the Society Islands and Cook Islands lie along the most likely vector. Aotearoa was colder, larger, and ecologically different from tropical Polynesia. Settlement required adaptation: kūmara would grow only in some districts; fishing, birding, gathering, and seasonal mobility became central.</p>
+        <p>The settlers came from central East Polynesia; the Society Islands and Cook Islands lie along the most likely route. Aotearoa was colder, larger, and ecologically different from tropical Polynesia. Settlement required adaptation: kūmara would grow only in some districts; fishing, birding, gathering, and seasonal mobility became central.</p>
       </div>
 
       <div class="step-card" data-step="3" data-action="ch1-step3">
         <div class="step-tag">Step 3 · Landfall</div>
         <p>Their descendants became <em>tangata whenua</em> — the people of the land. They built pā, gardens, fishing grounds, waka networks, alliances and rivalries, and the political map with which Europeans would later interact.</p>
-        <p class="pull">Whakapapa and mana ordered wealth. Exchange made obligations as well as goods.</p>
+        <p class="pull">Wealth and standing followed whakapapa and mana, and exchange created obligations as well as moving goods.</p>
         <p>Europeans arrived in a country already governed, worked and claimed.</p>
       </div>
     </div>
   </div>
 
-  <!-- Layered Māori-ancestry map, rendered at runtime by
-       scripts/chapters/ch1-lineages.js. Sits after the scrolly voyaging map,
-       deepening the chapter's argument: voyagers we just watched cross
-       the Pacific carry a layered genome — Austronesian, Melanesian,
-       and Polynesian sub-branch all stacked. -->
+  <div class="full-chapter">
+    <div class="figure-caption"><span>Routes are schematic. Sources: Te Ara, History, page 1; Ioannidis et al. 2021.</span></div>
+  </div>
+
+  <!-- Ancestry figure, rendered at runtime by
+       scripts/chapters/ch1-lineages.js. The surfaces are schematic:
+       weights the authors assigned to AADR sample locations, smoothed.
+       They are not admixture estimates (see the source line). -->
   <div class="figure reveal lineage-fig">
-    <h3 class="lineage-fig-title">Māori are from the Polynesian branch of the Austronesian branch of the human tree, picking up some Melanesian along the way.</h3>
-    <p class="lineage-fig-lead">The broad <span class="lin-east">Austronesian</span> root (~75% of Māori ancestry) sweeps out of Taiwan and across the Pacific. A <span class="lin-pap">Melanesian</span> root (~25%) was picked up in transit across Near Oceania. Within the Austronesian lineage, a Pacific branch — what we today call <span class="lin-poly">Polynesian</span>, traced by the maternal lineage mtDNA B4a1a1 — split off and travelled the Lapita route from Vanuatu into Polynesia and Aotearoa.</p>
+    <h3 class="lineage-fig-title">The Polynesian ancestors of Māori descend mostly from Austronesian-speaking peoples who left Taiwan, with a smaller Papuan share that entered Polynesian ancestry after Remote Oceania was first settled.</h3>
+    <p class="lineage-fig-lead">Ancient genomes from Vanuatu and Tonga, between about 3,100 and 2,300 years old, carry little or no <span class="lin-pap">Papuan</span> ancestry. The first voyagers into Remote Oceania were of East Asian origin and descended from the <span class="lin-east">Austronesian</span>-speaking expansion out of Taiwan (Skoglund 2016; Lipson 2018). Papuan ancestry spread through the islands after they were first settled, and in Polynesians it came from a separate stream of migration (Lipson 2018); people across the region today carry at least a quarter (Skoglund 2016). Lapita voyagers reached Tonga and Samoa about 2,800 years ago. <span class="lin-poly">Polynesian</span> culture took shape there before voyagers moved east through the Cook and Society Islands (Ioannidis 2021). The maternal lineage mtDNA B4a1a1 is common in Polynesians, and where it first arose is still debated (Trejaut 2005).</p>
     <div class="lineage-fig-map" id="lineage-fig-map"></div>
-    <p class="lineage-fig-sources">Sources: Allen Ancient DNA Resource v66 (Harvard Dataverse 2026); Skoglund 2016; Posth 2018; Lipson 2018, 2020; Larena 2021; Liu 2022; Ioannidis 2020.</p>
+    <p class="lineage-fig-sources">Schematic. The shading shows weights the authors assigned by hand to sample locations in the Allen Ancient DNA Resource v66 (Harvard Dataverse, 2026), smoothed over about 650 km. They are not admixture estimates.</p>
+    <p class="lineage-fig-sources">Sources: Skoglund 2016; Posth 2018; Lipson 2018, 2020; Larena 2021; Liu 2022; Ioannidis 2021; Trejaut 2005. Land: Natural Earth.</p>
   </div>
 </section>
 
@@ -226,7 +229,7 @@
   <div class="full-chapter">
     <p class="lead"><span class="drop-cap">From</span> the late eighteenth century, Europeans and Americans entered the waters around New Zealand as part of the wider Australasian maritime economy. Many came via Sydney. They sought seals, whales, timber, flax, food, sex, trade, and strategic position.</p>
 
-    <p>By 1840, there were only about 2,000 non-Māori in the country, against perhaps 100,000 Māori. The newcomers were overwhelmingly male and largely British, though Americans were prominent in some ports. In 1838, 54 of the 96 whaling ships visiting the Bay of Islands were American.</p>
+    <p>By 1840, there were only about 2,000 non-Māori in the country, against perhaps 70,000 to 90,000 Māori. The newcomers were overwhelmingly male and largely British, though Americans were prominent in some ports. In 1838, 54 of the 96 whaling ships visiting the Bay of Islands were American.</p>
 
     <!-- Population imbalance figure -->
     <div class="figure reveal">
@@ -236,8 +239,8 @@
         <!-- Māori bar -->
         <g transform="translate(0, 40)">
           <text x="0" y="-6" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">MĀORI</text>
-          <rect x="0" y="0" width="700" height="44" fill="#2d5a3d"/>
-          <text x="710" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">100,000</text>
+          <rect x="0" y="0" width="660" height="44" fill="#2d5a3d"/>
+          <text x="670" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">~80,000</text>
           <!-- Small dot grid representation -->
           <g fill="#f3ecdd" opacity="0.5">
             <g id="maori-dots"></g>
@@ -247,14 +250,15 @@
         <!-- Pākehā bar -->
         <g transform="translate(0, 110)">
           <text x="0" y="-6" font-family="IBM Plex Mono" font-size="10" fill="#4a3d2e" letter-spacing="1.5">NON-MĀORI</text>
-          <rect x="0" y="0" width="14" height="44" fill="#8c2230"/>
-          <text x="22" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">2,000</text>
+          <rect x="0" y="0" width="16.5" height="44" fill="#8c2230"/>
+          <text x="25" y="28" font-family="Fraunces" font-size="22" font-weight="600" fill="#1d1610">2,000</text>
         </g>
 
         <!-- Caption -->
         <g transform="translate(0, 190)">
           <line x1="0" y1="0" x2="800" y2="0" stroke="#c9b894" stroke-width="0.5"/>
-          <text class="map-label" x="0" y="14" fill="#8a7659">A 50:1 ratio. Each block scaled to population. The newcomers were a coastal fringe.</text>
+          <text class="map-label" x="0" y="14" fill="#8a7659">About 40 to 1. Bars scaled to population, Māori at the midpoint of 70,000 to 90,000.</text>
+          <text class="map-label" x="0" y="34" fill="#8a7659">Sources: Te Ara, Taupori Māori, pages 1–2; Te Ara, History of immigration, page 2.</text>
         </g>
       </svg>
     </div>
@@ -265,23 +269,23 @@
 
     <p class="pull" style="font-size:24px;border-left-color:var(--wave-maori);border-left-width:3px;">In many districts, early colonial towns depended on Māori food, Māori transport and Māori commerce.</p>
 
-    <p>The Americans at port were a harbinger of a broader change: distance was collapsing. Whaling fleets had drawn the first Pākehā into Pacific waters in fragile barques. By the 1860s, fast clippers had cut the London-to-New Zealand passage from about 120 days to 75; auxiliary steam halved it again in the 1880s. Mortality on migrant ships fell from roughly 3% in the 1830s to under half a percent fifty years later. The Pacific that had been the edge of the world was becoming a regular shipping lane. What followed — the gold rush, Vogel's 290,000, the wool and frozen-meat trades — travelled on it.</p>
+    <p>The American ships in port were an early sign of a broader change: the voyage to New Zealand was getting shorter. Whaling fleets had drawn the first Pākehā into Pacific waters in fragile barques. By the 1860s fast clippers had cut the passage from London to New Zealand from about 120 days to 75. Steam cut it to about 50 days in the 1870s and 1880s, and to about 40 by 1900. The Pacific that had been the edge of the world was becoming a regular shipping lane. The gold rush, the 290,000 arrivals of the Vogel years and the trades in wool and frozen meat all travelled on it.</p>
 
     <!-- London → NZ passage-time chart.
          Range bars (aumoana) show typical voyage spread per era; ink dots
          the median; soft envelope band ties them together. The collapse
          is visual — 150 days at the whaling end of the chart, 1 day at
-         the jet bookend. Sources: Bateson, Gold Fleet for California
-         (1963); emigration commissioners' annual reports; Te Ara. -->
+         the jet bookend. Values are representative of each era, after
+         Te Ara, "The voyage out". -->
     <div class="figure reveal">
       <svg viewBox="0 0 800 332" xmlns="http://www.w3.org/2000/svg">
-        <text class="map-label" x="0" y="14" fill="#8a7659">Days from London to New Zealand · 1820–1965</text>
-        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The Pacific stops being the edge of the world</text>
+        <text class="map-label" x="0" y="14" fill="#8a7659">Days from London to New Zealand · 1820s–1965</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The voyage from London fell from about 150 days to one</text>
 
         <!-- Top-right stat callout -->
         <g transform="translate(750, 30)">
-          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="34" fill="#1d1610">120 → 1 day</text>
-          <text x="0" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">LONDON → NEW ZEALAND · 1845 → 1965</text>
+          <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="34" fill="#1d1610">150 → 1 day</text>
+          <text x="0" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">LONDON → NEW ZEALAND · 1820s → 1965</text>
         </g>
 
         <!-- Y-axis gridlines + tick labels.
@@ -357,11 +361,12 @@
 
         <!-- Caption rule + source lines (two-line, to fit the viewBox) -->
         <line x1="0" y1="294" x2="800" y2="294" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="319" fill="#8a7659">Sources: Bateson 1963; emigration commissioners' reports; Te Ara.</text>
+        <text class="map-label" x="0" y="311" fill="#8a7659">Passage times are representative of each era.</text>
+        <text class="map-label" x="0" y="327" fill="#8a7659">Source: Te Ara, The voyage out (sail up to 120 days; Mongol 51 days, 1874; steam about 40 days).</text>
       </svg>
     </div>
 
-    <p>But contact was also a demographic catastrophe for the Māori. Pathogens, muskets, and land appropriation altered the balance. The Māori population fell through the nineteenth century, reaching a low of about 42,000 by 1896.</p>
+    <p>But contact was also a demographic catastrophe for Māori. Pathogens, muskets, and land appropriation altered the balance. The Māori population fell through the nineteenth century, reaching a low of about 42,000 by 1896.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -418,7 +423,7 @@
     <div class="features">
       <div class="step-card" data-step="1" data-action="ch3-step1">
         <div class="step-tag">Step 1 · 1840</div>
-        <p class="drop-cap">The Treaty of Waitangi in 1840 formalised British authority — though Māori and English versions said different things about sovereignty, government and land. After 1840, settlement companies and colonial governments tried to reproduce a British society in the South Pacific: farms, towns, churches, ports, schools, and a disciplined labouring class.</p>
+        <p class="drop-cap">Britain treated the Treaty of Waitangi (1840) as the basis of its sovereignty. The Māori and English texts differ on sovereignty, government and land, and in 2014 the Waitangi Tribunal found that the rangatira who signed in February 1840 did not cede their sovereignty to Britain. After 1840, settlement companies and colonial governments tried to reproduce a British society in the South Pacific: farms, towns, churches, ports, schools, and a disciplined labouring class.</p>
       </div>
       <div class="step-card" data-step="2" data-action="ch3-step2">
         <div class="step-tag">Step 2 · The mechanism</div>
@@ -428,62 +433,61 @@
         <div class="step-tag">Step 3 · Waikato, 1863</div>
         <div class="stat">80% &rarr; 40%</div>
         <div class="stat-label">North Island Māori land share, 1860 → 1890</div>
-        <p>In 1860 Māori still held about 80% of North Island land; by 1890 it had fallen to roughly 40%. The 1863 invasion of Waikato — south from Auckland across the Mangatāwhiri — was tied to punishing the Kīngitanga and clearing land for settlement.</p>
+        <p>In 1860 Māori still held about 80% of North Island land; by 1890 it had fallen to roughly 40%. In July 1863 British troops crossed the Mangatāwhiri, south of Auckland, and invaded Waikato. The invasion was tied to punishing the Kīngitanga and clearing land for settlement.</p>
       </div>
       <div class="step-card" data-step="4" data-action="ch3-step4">
         <div class="step-tag">Step 4 · Taranaki and the Bay</div>
-        <p>Confiscations under the New Zealand Settlements Act of 1863 took more than four million acres across Waikato, Taranaki and the eastern Bay of Plenty. The Native Land Court and associated laws transferred millions more between 1865 and 1890.</p>
-        <p class="pull">The wars of the 1840s and 1860s were wars over land, and thus became wars of migration.</p>
+        <p>Confiscations under the New Zealand Settlements Act of 1863 took between 3 and 4 million acres, by different estimates, in Waikato, Taranaki, Tauranga, the eastern Bay of Plenty and Hawke's Bay. The Waikato confiscation was proclaimed in 1865. The Native Land Court and associated laws transferred some 8 million acres more between 1865 and 1890.</p>
+        <p class="pull">The wars of the 1840s and 1860s were wars over land and authority, and thus became wars of migration.</p>
       </div>
     </div>
   </div>
 
   <div class="full-chapter">
-    <p>The legacy of these wars lives on in present-day attitudes to
-       justice and fairness. In 2024 about
+    <div class="figure-caption"><span>Map is schematic. Confiscation zones are indicative and show four of the confiscation districts; the 1890 areas mark large blocks still in Māori hands. Sources: NZHistory, Māori land loss 1860–2000; Waitangi Tribunal.</span></div>
+
+    <p>In the 2024–25 wave of a national panel survey, about
        <span data-fact-item="HistNeg01" data-fact-year="2024"
              data-fact-stat="pct_agree">—</span>
-       of New Zealanders agreed that <em>we should all move on as one
-       nation and forget about past differences</em> — down from a
-       supermajority of
+       of respondents agreed that <em>we should all move on as one
+       nation and forget about past differences and conflicts between
+       ethnic groups</em>, down from
        <span data-fact-item="HistNeg01" data-fact-year="2009"
              data-fact-stat="pct_agree">—</span>
-       fifteen years earlier. The view is unevenly held:
+       in 2009–10. Agreement was
        <span data-fact-item="HistNeg01" data-fact-year="2024"
              data-fact-group="nz_european"
              data-fact-stat="pct_agree">—</span>
-       of Pākehā still endorse it, against
+       among Pākehā (the survey's NZ European category) and
        <span data-fact-item="HistNeg01" data-fact-year="2024"
              data-fact-group="maori"
              data-fact-stat="pct_agree">—</span>
-       of Māori, who are roughly
+       among Māori, who were
        <span data-fact-item="HistNeg01" data-fact-year="2024"
              data-fact-group="maori"
              data-fact-stat="ratio-vs-group"
              data-fact-vs-group="nz_european"
              data-fact-base="pct_disagree">—</span>
-       more likely to reject it than Pākehā.</p>
+       as likely as Pākehā not to endorse the statement.</p>
 
-    <p>The wars themselves are long over, and the two groups now rate one
-       another with the muted civility of close neighbours. On a
-       one-to-seven warmth scale, Pākehā rate Māori at
+    <p>On a feeling thermometer from 1 to 7, Pākehā respondents rated
+       Māori at
        <span data-fact-item="Warm.Maori" data-fact-year="2024"
              data-fact-group="nz_european"
              data-fact-stat="mean">—</span>
-       and Māori rate Pākehā at
+       and Māori respondents rated Pākehā at
        <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
              data-fact-group="maori"
-             data-fact-stat="mean">—</span>
-       — the minority rating the majority slightly warmer than the
-       reverse. Both prefer their own (Māori in-group warmth
+             data-fact-stat="mean">—</span>.
+       Each group rated its own group more warmly (Māori
        <span data-fact-item="Warm.Maori" data-fact-year="2024"
              data-fact-group="maori"
              data-fact-stat="mean">—</span>;
-       Pākehā in-group
+       Pākehā
        <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
              data-fact-group="nz_european"
              data-fact-stat="mean">—</span>),
-       but by margins of less than half a point in either direction.</p>
+       by less than half a point.</p>
 
     <div data-survey-chart="warmth-matrix" data-year="2024"></div>
   </div>
@@ -509,7 +513,7 @@
           <text class="map-label" x="0" y="14" fill="#8a7659">NZ non-Māori population · 1858–1881</text>
           <g id="ch4-pop-bars" transform="translate(32, 36)"></g>
           <line x1="0" y1="186" x2="400" y2="186" stroke="#c9b894" stroke-width="0.5"/>
-          <text class="ch4-pop-anno" id="ch4-anno-1864" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1864 · OTAGO FIELDS PEAK</text>
+          <text class="ch4-pop-anno" id="ch4-anno-1864" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1864 CENSUS · AFTER THE 1863 OTAGO PEAK</text>
           <text class="ch4-pop-anno" id="ch4-anno-1867" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1867 · WEST COAST PEAK</text>
           <text class="ch4-pop-anno" id="ch4-anno-1881" x="0" y="208" fill="#1d1610" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.5">1881 · ALLUVIAL GOLD WORKED OUT</text>
         </svg>
@@ -519,7 +523,7 @@
     <div class="features features-right">
       <div class="step-card" data-step="1" data-action="ch4-step1">
         <div class="step-tag">Step 1 · A Pacific circuit</div>
-        <p class="drop-cap">From 1848, gold turned the Pacific into a labour market. The strike at Sutter's Mill in California pulled tens of thousands across oceans; Ballarat and Bendigo did the same three years later. By the time Gabriel Read panned a creek in central Otago in May 1861, the circuit was already running — same men, same tools, same dispositions, moving from one strike to the next.</p>
+        <p class="drop-cap">From 1848, gold turned the Pacific into a labour market. The strike at Sutter's Mill in California pulled tens of thousands across oceans; Ballarat and Bendigo did the same three years later. By the time Gabriel Read panned a creek in central Otago in May 1861, the circuit was already running: tools, capital and information moved from strike to strike, and many diggers crossed from Victoria.</p>
         <p class="pull">New Zealand became the next node in a broader Pacific gold rush.</p>
       </div>
 
@@ -527,23 +531,22 @@
         <div class="step-tag">Step 2 · Otago, 1861</div>
         <div class="stat">99,000 → 256,000</div>
         <div class="stat-label">New Zealand's non-Māori population, 1861 → 1871</div>
-        <p>Gabriel Read's strike at Tuapeka in May 1861 was followed a year later by Hartley and Reilly's at Dunstan — a 40-kilogram parcel of gold delivered to Dunedin that triggered the heaviest rush yet. By early 1864 more than 22,000 men were on the Otago fields.</p>
-        <p>The colony had only 99,000 Europeans at the start of the decade. By its end it had 256,000. Three of every four were new arrivals.</p>
-        <p class="pull">Gold made the settler colony grow.</p>
+        <p>Gabriel Read's strike at Tuapeka in May 1861 was followed in August 1862 by Hartley and Reilly's at Dunstan. Their parcel of just under 40 kilograms of gold, delivered to Dunedin, set off the heaviest rush yet. By early 1864 more than 22,000 men were on the Otago fields.</p>
+        <p>The colony had only 99,000 non-Māori residents at the start of the decade. By its end it had 256,000, 2.6 times as many.</p>
       </div>
 
       <div class="step-card" data-step="3" data-action="ch4-step3">
         <div class="step-tag">Step 3 · The crossover, 1865</div>
         <div class="stat">~ 29,000</div>
         <div class="stat-label">West Coast fields population, 1867</div>
-        <p>Hunt's strike on the West Coast in February 1865 emptied parts of Otago in months. By 1866 Hokitika — empty beach two years earlier — was briefly the most populous settlement in the colony, with over a hundred hotels and the country's busiest port.</p>
-        <p>The hop redrew the sectarian map. Otago was Scots and Presbyterian; the West Coast became Irish and Catholic — a contrast that would outlast the gold by a century.</p>
+        <p>The West Coast rush of early 1865, which followed the 1864 find at Greenstone Creek, drew miners out of Otago within months. By 1867 Hokitika, an empty beach three years earlier, was one of the colony's larger towns, and its port led the country in shipping entries.</p>
+        <p>The move changed the religious map. The West Coast drew a far larger Irish Catholic share than anywhere else in the colony.</p>
       </div>
 
       <div class="step-card" data-step="4" data-action="ch4-step4">
         <div class="step-tag">Step 4 · What the rush left</div>
-        <p>By 1881 the alluvial gold was largely worked out. But by then the rush had left a country behind: 60,000 had become nearly half a million in twenty years, in towns whose banks, newspapers, courts, breweries and universities outran the gold itself.</p>
-        <p class="pull">It also bankrolled what came next. Vogel's 1870s borrowing programme — which would assist another 290,000 settlers — leaned on the credit and shipping infrastructure the rush had built. An accidental rush financed a planned colony.</p>
+        <p>By 1881 the alluvial gold was largely worked out. But by then the rush had left a country behind: 60,000 had become nearly half a million in little more than twenty years, in towns whose banks, newspapers, courts, breweries and universities outran the gold itself.</p>
+        <p class="pull">It also paid for what came next. Vogel's borrowing programme of the 1870s, which brought another 290,000 arrivals, about half of them on assisted passages, leaned on the credit and shipping the rush had built.</p>
       </div>
     </div>
   </div>
@@ -554,18 +557,20 @@
        only flows that ended in NZ; lines are weighted by approximate
        contribution to NZ migration, not by total flow through each node. -->
   <div class="full-chapter">
+    <div class="figure-caption"><span>Map routes are schematic. Population inset: non-Māori population at each census, 1858–1881, Stats NZ historical census series. Sources: Te Ara, Gold and gold mining; Te Ara, History of immigration.</span></div>
+
     <p class="lead"><span class="drop-cap">Gold</span> rushes ran on circuits. A strike inherited diggers and kit from the last one, then supplied the next. New Zealand's rush, when it came in 1861, sat downstream of a cascade that had begun in California thirteen years earlier.</p>
 
-    <p>The dominant trans-Tasman pathway into Otago ran through Australia. Cornish, Irish, Welsh and Scots miners had migrated to Victoria across the 1850s, drawn by the Ballarat and Bendigo strikes; when those fields began to thin, many crossed to Otago. Direct British and Irish arrivals — people who had never set foot in Australia — were the next biggest stream.</p>
+    <p>The dominant trans-Tasman pathway into Otago ran through Australia. Cornish, Irish, Welsh and Scots miners had migrated to Victoria across the 1850s, drawn by the Ballarat and Bendigo strikes; when those fields began to thin, many crossed to Otago. Direct British and Irish arrivals, who had never lived in Australia, were another large stream.</p>
 
-    <p>California's contribution was technological as much as demographic. The 1848 strike had primed the whole Anglophone circuit — tools, contracts, supply chains, even boomtown vernacular — but only about five hundred American-born residents were resident in New Zealand by 1871. The Californian imprint travelled mainly through Victoria, in the hands of British and Irish miners who had worked both fields.</p>
+    <p>California contributed methods more than people. The 1848 strike had shaped the tools, contracts, supply chains and slang of the whole English-speaking circuit, but the number of American-born residents in New Zealand rose by only about 500 between 1861 and 1871. The Californian imprint travelled mainly through Victoria, in the hands of British and Irish miners who had worked both fields.</p>
 
-    <p>Another route began in the Pearl River delta of Guangdong, running through Hong Kong, opened in 1865 by an Otago Chamber of Commerce worried about the West Coast drain. From 1869 ships ran direct.</p>
+    <p>Another route began in the Pearl River delta of Guangdong. In 1865 the Otago Chamber of Commerce, worried about the drain of miners to the West Coast, invited Cantonese miners from Victoria. Direct sailings from Hong Kong followed later.</p>
 
     <div class="figure ch4-network-figure reveal">
       <svg viewBox="0 0 1000 712" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
         <text class="map-label" x="40" y="32" fill="#8a7659">Origins · Waystations · Destinations</text>
-        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">A labour circuit, around the pacific rim</text>
+        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">Most Otago miners came by way of Victoria</text>
 
         <!-- Stat callout, top-right -->
         <g transform="translate(960, 50)">
@@ -601,7 +606,7 @@
 
           <!-- Guangdong → Hong Kong (Cantonese embarkation port) -->
           <path d="M 120 480 C 280 480, 360 500, 500 500" stroke="#c9882a" stroke-width="6"  opacity="0.85"/>
-          <!-- Hong Kong → Otago — direct shipping from 1869 -->
+          <!-- Hong Kong → Otago — direct shipping, which came later -->
           <path d="M 500 500 C 680 500, 720 280, 880 260" stroke="#c9882a" stroke-width="5"  opacity="0.8"/>
 
           <!-- California → Victoria — Californians (largely British/Irish)
@@ -631,7 +636,7 @@
 
           <circle cx="120" cy="480" r="14" fill="#c9882a"/>
           <text x="120" y="512" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">GUANGDONG</text>
-          <text x="120" y="527" text-anchor="middle" fill="#8a7659" font-family="Source Serif 4" font-size="11" font-style="italic">Pearl River · Sze Yap districts</text>
+          <text x="120" y="527" text-anchor="middle" fill="#8a7659" font-family="Source Serif 4" font-size="11" font-style="italic">Pearl River · Panyu, Sze Yap</text>
         </g>
 
         <!-- Way-station nodes (open rings — passages, not origins) -->
@@ -643,7 +648,7 @@
           <text x="500" y="349" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">VICTORIA · 1851</text>
 
           <circle cx="500" cy="500" r="9" fill="#f3ecdd" stroke="#c9882a" stroke-width="2"/>
-          <text x="500" y="524" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">HONG KONG · 1865</text>
+          <text x="500" y="524" text-anchor="middle" fill="#1d1610" font-family="IBM Plex Mono" font-size="9"  letter-spacing="2">HONG KONG</text>
         </g>
 
         <!-- NZ field nodes (filled ink) -->
@@ -660,15 +665,15 @@
 
         <line x1="40" y1="660" x2="960" y2="660" stroke="#c9b894" stroke-width="0.5"/>
         <text class="map-label" x="40" y="685" fill="#8a7659">The dominant pathway: Britain → Victoria → Otago, then Otago → West Coast in 1865.</text>
-        <text class="map-label" x="40" y="703" fill="#8a7659">Sources: Eldred-Grigg 2008; Ng 1993; NZ Census 1861–1881; Te Ara.</text>
+        <text class="map-label" x="40" y="703" fill="#8a7659">Schematic; line widths are approximate. Sources: Eldred-Grigg 2008; Ng 1993; NZ Census 1861–1881; Te Ara.</text>
       </svg>
     </div>
 
-    <p>Within New Zealand, the rush kept moving. Otago's diggers hopped to the West Coast in 1865, and on to Thames quartz fields by 1867. Each shift left behind a built environment — towns, banks, newspapers, courts — disproportionate to whatever gold remained.</p>
+    <p>Within New Zealand, the rush kept moving. Otago's diggers hopped to the West Coast in 1865, and on to Thames quartz fields by 1867. Each shift left behind towns, banks, newspapers and courts out of proportion to the gold that remained.</p>
 
     <p class="pull">The rush built the colony's first large non-British, non-Māori community, and a sustained ethnic split, as the Cantonese outlasted the goldfields.</p>
 
-    <p>A century and a half after the rushes ended, the legacy towns show varied recoveries. The old goldfields of Central Otago and Queenstown report some of the highest levels of life satisfaction in the country,
+    <p>Survey respondents in two of the old Otago goldfield districts, Central Otago and Queenstown-Lakes, reported mean life satisfaction of
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
               data-fact-group="ta_central_otago_district"
               data-fact-stat="mean">—</span>
@@ -676,15 +681,15 @@
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
               data-fact-group="ta_queenstown_lakes_district"
               data-fact-stat="mean">—</span>
-       out of 7. The Coromandel, now better known for beach holidays and surf, sits just behind at
+       out of 7 in 2024–25. Thames-Coromandel was close behind at
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
               data-fact-group="ta_thames_coromandel_district"
-              data-fact-stat="mean">—</span>.
-       All three rate measurably above the
+              data-fact-stat="mean">—</span>,
+       and all three were above the
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
               data-fact-group="auckland"
               data-fact-stat="mean">—</span>
-       of residents of Auckland. The goldfields of the west coast, like Grey District around Greymouth and Reefton, show lower levels of life satisfaction, at
+       of respondents in Auckland. In Grey District, around Greymouth on the West Coast, the mean was
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
               data-fact-group="ta_grey_district"
               data-fact-stat="mean">—</span>.</p>
@@ -700,13 +705,13 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Five</div>
     <h2 class="chapter-title">New Gold Mountain,<br><em>and the making of exclusion</em></h2>
-    <p class="chapter-dek">Otago taught the colony a lasting habit: import the labour; resent the labourers.</p>
+    <p class="chapter-dek">Otago recruited Chinese miners; within two decades the colony was legislating against them.</p>
   </div>
 
   <div class="full-chapter">
-    <p class="lead"><span class="drop-cap">The</span> first Chinese migrant arrived at Port Chalmers on the <em>South Australian</em> in December 1865 — a single passenger, sent by Melbourne merchant Lowe Kong Meng on a reconnaissance for the Otago Chamber's invitation. Five more landed weeks later. By 1869 more than 2,000 Cantonese men were working what they called another <em>New Gold Mountain</em> — most from the Sze Yap districts of the Pearl River delta in Guangdong, where famine, drought, population pressures, and political disruptions had made departure a common strategy.</p>
+    <p class="lead"><span class="drop-cap">Appo</span> Hocton, who settled in Nelson in 1842, was the first known Chinese settler in New Zealand. Gold brought the first large group. In 1865 the Otago Chamber of Commerce invited Chinese miners from Victoria, and in December that year Ho A Mee, agent of the Melbourne merchant Lowe Kong Meng, came to inspect the Otago fields. Days later five Chinese miners landed from Melbourne, and the first organised party of 12 followed from Victoria in 1866. By 1869 more than 2,000 Cantonese men were working what they called another <em>New Gold Mountain</em>. Most, about two thirds, came from Panyu county in the Pearl River delta of Guangdong, and others from Sze Yap, Zengcheng, Dongguan and Zhongshan, where famine, drought, population pressure and political disruption had made departure a common strategy.</p>
 
-    <p>The draw was gold, but also remittance — many came intending to earn and return, not to settle. The gender imbalance was extreme: at the 1881 census, of just over 5,000 Chinese in the colony, only nine were women.</p>
+    <p>The draw was gold and remittance. Many came intending to earn money and return home rather than settle. The gender imbalance was extreme: at the 1881 census, of just over 5,000 Chinese in the colony, only nine were women.</p>
 
     <!-- Gender imbalance — single waffle of body silhouettes.
          Men in chinese-gold; the nine women cluster in the bottom-right
@@ -723,7 +728,7 @@
         </defs>
 
         <text class="map-label" x="0" y="14" fill="#8a7659">Chinese population in New Zealand · 1881 census</text>
-        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A bachelor society, by policy as much as by chance</text>
+        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">In 1881, nine of just over 5,000 Chinese in the colony were women</text>
 
         <!-- Stat callouts -->
         <g transform="translate(0, 80)">
@@ -744,21 +749,22 @@
 
         <!-- Caption: rule at 690, label at 712 — well clear of the grid. -->
         <line x1="0" y1="690" x2="800" y2="690" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="712" fill="#8a7659">Each silhouette one person · 1881 census · the bachelor society was structural — and policy hardened it.</text>
+        <text class="map-label" x="0" y="708" fill="#8a7659">Each silhouette is one person. Custom and sojourning made the imbalance; the poll tax later locked it in.</text>
+        <text class="map-label" x="0" y="728" fill="#8a7659">Source: 1881 census, via Te Ara, Chinese, page 2.</text>
       </svg>
     </div>
 
     <p>They mined, grew vegetables, opened shops, ran laundries and built family firms. But they also became the target of a racial politics that wanted New Zealand to be <em>white</em>: a British society in the South Pacific.</p>
 
-    <p>Parliament soon wrote the prejudice into law. From 1881 a <em>poll tax</em> was imposed on every Chinese arrival — £10 at first, raised to £100 in 1896, more than a year's wages for a labourer. The same Act capped Chinese passengers at one per ten tons of ship cargo, then in 1896 at one per two hundred. It would not be repealed for sixty-three years.</p>
+    <p>Parliament soon wrote the prejudice into law. From 1881 a <em>poll tax</em> was imposed on every Chinese arrival: £10 at first, raised in 1896 to £100, equivalent to about $20,000 today. The 1881 Act also allowed one Chinese passenger per ten tons of a ship's tonnage; an 1896 amendment tightened this to one per two hundred. The tax was waived from 1934 and repealed in 1944, sixty-three years after it began.</p>
 
     <!-- Poll tax timeline — reveal-driven animation: line draws from left
          to right; each tick fades in chronologically; the in-force span
          (1881–1944) extends as a coloured bar. -->
     <div class="figure reveal poll-tax-figure">
-      <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg">
         <text class="map-label" x="0" y="14" fill="#8a7659">The poll tax · 1881 → 2002</text>
-        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">Sixty-three years of legislative exclusion. Fifty-eight more before the apology.</text>
+        <text x="0" y="40" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The poll tax ran from 1881 to 1944; the government apologised in 2002</text>
 
         <!-- Year-span shading: tax in force from 1881 to 1944.
              Originating at x=120 (1881), extending to x=620 (1944). -->
@@ -799,28 +805,28 @@
         </g>
 
         <line x1="0" y1="194" x2="800" y2="194" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="214" fill="#8a7659">New Zealand was the last country to repeal its poll tax — and the first to apologise.</text>
+        <text class="map-label" x="0" y="212" fill="#8a7659">In 2002 New Zealand became the first country to apologise for a poll tax on Chinese migrants.</text>
+        <text class="map-label" x="0" y="232" fill="#8a7659">Sources: NZHistory, Poll tax imposed on Chinese; Te Ara, Chinese, page 3.</text>
       </svg>
     </div>
 
-    <p>Chinese miners were useful when Otago needed miners; later they were cast as racial outsiders. Pacific workers would experience a related pattern a century later. Immigration law did more than ration workers. It defined whiteness.</p>
+    <p>Chinese miners were useful when Otago needed miners; later they were cast as racial outsiders. Pacific workers would experience a related pattern a century later. Immigration law selected settlers by race as well as by the labour market.</p>
 
-    <p>The exclusion was legal, and it was also geographic. A faint residue lingers in contemporary attitudes. Warmth toward Asian New Zealanders sits at
+    <p>In the 2024–25 survey, respondents in Auckland rated their warmth towards <em>Asians in general</em> at
        <span data-fact-item="Warm.Asians" data-fact-year="2024"
              data-fact-group="auckland" data-fact-stat="mean">—</span>
-       in Auckland but only
+       on a thermometer from 1 to 7. Respondents in the old Otago goldfield districts gave
        <span data-fact-item="Warm.Asians" data-fact-year="2024"
-             data-fact-group="goldfields_otago" data-fact-stat="mean">—</span>
-       in the old Otago goldfields,
+             data-fact-group="goldfields_otago" data-fact-stat="mean">—</span>,
+       those on the West Coast
        <span data-fact-item="Warm.Asians" data-fact-year="2024"
              data-fact-group="goldfields_west_coast" data-fact-stat="mean">—</span>
-       on the west coast, and
+       and those in Thames-Coromandel
        <span data-fact-item="Warm.Asians" data-fact-year="2024"
-             data-fact-group="goldfields_coromandel" data-fact-stat="mean">—</span>
-       in the Coromandel — against a country average of
+             data-fact-group="goldfields_coromandel" data-fact-stat="mean">—</span>.
+       These regional gaps are small and are not adjusted for age or rural residence; the mean for all respondents was
        <span data-fact-item="Warm.Asians" data-fact-year="2024"
-             data-fact-stat="mean">—</span>.
-       The cool spots are the very places that hosted and then resented the Cantonese miners.</p>
+             data-fact-stat="mean">—</span>.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -831,11 +837,11 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Six</div>
     <h2 class="chapter-title">Vogel's borrowed colony,<br><em>and the infrastructure state</em></h2>
-    <p class="chapter-dek">By the 1870s, gold was declining and wool prices had weakened. The government answered with debt, railways and assisted passages — and in doing so, it built a lasting state.</p>
+    <p class="chapter-dek">By the 1870s, gold was declining and wool prices had weakened. The government answered with debt, railways and assisted passages, and in doing so built a lasting state.</p>
   </div>
 
   <div class="full-chapter">
-    <p class="lead"><span class="drop-cap">Capitalising</span> on the mining boom, the government borrowed in London to fund railways, roads, bridges, and mass assisted migration. Between 1871 and 1885 — when the non-Māori population was only just over a quarter of a million at the start — 289,026 people arrived, although about 40% later moved on. Most came from Britain and Ireland.</p>
+    <p class="lead"><span class="drop-cap">Capitalising</span> on the mining boom, the government borrowed in London to fund railways, roads, bridges, and mass assisted migration. In 1871 the non-Māori population was just over a quarter of a million. Between 1871 and 1885, 289,026 people arrived, almost half of them with government assistance, although about 40% later moved on. Most came from Britain and Ireland.</p>
 
     <!-- Vogel-era public works infographic.
          Composite: four before/after metric bars on the left; simplified
@@ -843,17 +849,17 @@
          silhouette path is the same Natural-Earth simplification used in
          the hero and ch12 figures. Railway segments are hand-traced from
          line-by-line opening dates documented in the Rail Heritage Trust's
-         NZR mileage table — see docs/METHODOLOGY.md for which fragments
-         existed by 1885 and which trunk lines were still under construction. -->
+         NZR mileage table. Which fragments existed by 1885 is not yet
+         written up in docs/METHODOLOGY.md. -->
     <div class="figure ch6-vogel-figure reveal">
       <svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
         <text class="map-label" x="0" y="14" fill="#8a7659">Public works · 1870–1885</text>
-        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A borrowed colony, in numbers</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">289,026 people arrived in 1871–85 as the state borrowed for rail</text>
 
-        <!-- Headline stat — total assisted arrivals across the Vogel window -->
+        <!-- Headline stat — total arrivals across the Vogel window -->
         <g transform="translate(900, 30)">
           <text x="0" y="0" text-anchor="end" font-family="Fraunces" font-weight="600" font-size="36" fill="#1d1610">289,026</text>
-          <text x="0" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">ASSISTED ARRIVALS · 1871–1885</text>
+          <text x="0" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#8a7659">ARRIVALS · 1871–1885</text>
         </g>
 
         <!-- LEFT COLUMN — four before/after metric bars.
@@ -979,12 +985,12 @@
 
         <!-- Caption rule + source line -->
         <line x1="0" y1="510" x2="900" y2="510" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="535" fill="#8a7659">Borrowed money laid the tracks; the tracks pulled the settlers; the settlers worked the land they reached.</text>
+        <text class="map-label" x="0" y="535" fill="#8a7659">Borrowed money paid for the railways, and the railways carried settlers to farmland.</text>
         <text class="map-label" x="0" y="555" fill="#8a7659">Sources: Te Ara; NZ History; NZ Official Yearbook 1893; Statistics New Zealand; NZR Mileage Table; OpenStreetMap; Natural Earth.</text>
       </svg>
     </div>
 
-    <p>The bargain was plain: migrants would occupy land, build infrastructure and stabilise a British settler society. Railways were land policy on iron wheels. They linked farms to ports, ports to London credit, and credit to the next shipload of settlers.</p>
+    <p>The bargain was plain: migrants would occupy land, build infrastructure and stabilise a British settler society. Railways linked farms to ports, ports to London credit, and credit to the next shipload of settlers.</p>
 
     <!-- Yearly arrivals figure — companion to the public-works infographic
          above. The infographic shows the scale of what was built; this
@@ -1003,7 +1009,7 @@
     <div class="figure ch6-arrivals-figure reveal">
       <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
         <text class="map-label" x="0" y="14" fill="#8a7659">Yearly arrivals · 1874–1885</text>
-        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">A wave of migration</text>
+        <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">Arrivals peaked in 1874 at 43,965</text>
 
         <!-- Stat callout, top-right -->
         <g transform="translate(800, 100)">
@@ -1059,11 +1065,11 @@
         <!-- Caption -->
         <line x1="0" y1="300" x2="800" y2="300" stroke="#c9b894" stroke-width="0.5"/>
         <text class="map-label" x="0" y="320" fill="#8a7659">Total annual arrivals — the yearbook series begins at 1874.</text>
-        <text class="map-label" x="0" y="340" fill="#8a7659">Source: NZ Official Yearbook 1894.</text>
+        <text class="map-label" x="0" y="340" fill="#8a7659">Sources: NZ Official Yearbook 1894 (annual bars); Te Ara, History of immigration (1871–1885 total).</text>
       </svg>
     </div>
 
-    <p>Smaller but significant streams arrived alongside. Germans and Scandinavians were recruited for some settlements. Dalmatians (later Croatians) came in connection with kauri gum. Australians moved back and forth across the Tasman. But Britain still supplied most migrants, and much of the self-image. New Zealand imagined itself as a <em>better Britain</em>: rural, moral, prosperous, egalitarian — and racially controlled.</p>
+    <p>Smaller but significant streams arrived alongside. Germans and Scandinavians were recruited for some settlements. From the late 1880s Dalmatians, from today's Croatia, came to dig kauri gum. Australians moved back and forth across the Tasman. But Britain still supplied most migrants, and much of the self-image. New Zealand imagined itself as a <em>better Britain</em>: rural, moral, prosperous, egalitarian and racially controlled.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -1114,7 +1120,7 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Seven</div>
     <h2 class="chapter-title">Refrigeration,<br><em>and a country tied to one market</em></h2>
-    <p class="chapter-dek">The first shipment of frozen meat to Britain in 1882 put meat and dairy at the heart of the country's exports. New Zealand was geographically Pacific — but economically and culturally British.</p>
+    <p class="chapter-dek">The first shipment of frozen meat to Britain in 1882 put meat and dairy at the heart of the country's exports. New Zealand was in the Pacific, but its economy and culture were British.</p>
   </div>
 
     <!-- Vignette: the Dunedin's 1882 voyage. World silhouette is Natural
@@ -1130,7 +1136,7 @@
       <div class="figure ch7-dunedin reveal">
         <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
           <text class="map-label" x="0" y="14" fill="#8a7659">First frozen meat · 1882</text>
-          <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The voyage of the Dunedin</text>
+          <text x="0" y="42" font-family="Fraunces" font-style="italic" font-weight="400" font-size="22" fill="#1d1610">The first frozen cargo reached London in 98 days</text>
 
           <!-- Stat callout, top right -->
           <g transform="translate(800, 30)">
@@ -1182,7 +1188,7 @@
           <!-- Caption rule + source line -->
           <line x1="0" y1="423" x2="800" y2="423" stroke="#c9b894" stroke-width="0.5"/>
           <text class="map-label" x="0" y="443" fill="#8a7659">Mollweide projection — world geometry from Natural Earth 1:110m.</text>
-          <text class="map-label" x="0" y="463" fill="#8a7659">Source: Bateson 1963 (voyage waypoints).</text>
+          <text class="map-label" x="0" y="463" fill="#8a7659">Route is representative. Dates: Te Ara 1966, Lamb and mutton production.</text>
         </svg>
       </div>
     </div>
@@ -1195,44 +1201,60 @@
         <text class="compass" x="20" y="38" fill="#8a7659">A century of dependence, then rapid retreat</text>
         <!-- Plot is generated at runtime by scripts/chapters/ch7-exports-chart.js
              from a 34-point annual-anchor series (Te Ara, Stats NZ, MFAT). -->
-        <text class="map-label" x="20" y="540" fill="#8a7659">Annual anchors with values interpolated between.</text>
-        <text class="map-label" x="20" y="560" fill="#8a7659">Sources: Te Ara; Statistics New Zealand; MFAT.</text>
+        <text class="map-label" x="20" y="540" fill="#8a7659">Annual anchors, interpolated between; indicative before 1930.</text>
+        <text class="map-label" x="20" y="560" fill="#8a7659">Sources: Te Ara (overseas trade policy; 1966, external trade); Stats NZ; MFAT.</text>
       </svg>
     </div>
 
     <div class="text-pane">
       <div class="step" data-step="1" data-action="ch7-step1">
-        <p class="drop-cap">Wool had been important; refrigeration made meat and dairy the country's main export. Family farms, freezing works, dairy factories, rail to ports, agricultural science, producer boards and a state deeply involved in land, credit, marketing and infrastructure: the pastoral-export machine had arrived.</p>
+        <p class="drop-cap">Wool had been important; refrigeration made meat and dairy the country's main export. Family farms, freezing works, dairy factories, rail to ports, agricultural science, producer boards and a state deeply involved in land, credit, marketing and infrastructure: the pastoral export economy was in place.</p>
       </div>
       <div class="step" data-step="2" data-action="ch7-step2">
         <div class="stat">≈ 80%</div>
         <div class="stat-label">Share of exports going to Britain, late 1930s</div>
-        <p>Even in 1960, Britain still took 53% of New Zealand exports. The country's institutions, language, law, parliamentary forms, schools and much of public culture were British-derived. Migrants were British-preferred — legally, culturally, administratively.</p>
+        <p>Even in 1960, Britain still took 53% of New Zealand exports. The country's institutions, language, law, parliamentary forms, schools and much of public culture were British-derived. Law, culture and administration all preferred British migrants.</p>
       </div>
       <div class="step" data-step="3" data-action="ch7-step3">
-        <p>The pastoral economy was built on earlier Māori land loss. The farms that underpinned exports often rested on land taken by purchase, pressure, confiscation or legal fragmentation. Treaty settlements and iwi development have rebuilt part of a modern Māori economy — but the settlements themselves have generally represented only a small fraction of estimated historical losses.</p>
+        <p>The pastoral economy was built on earlier Māori land loss. The farms that underpinned exports often rested on land taken by purchase, pressure, confiscation or legal fragmentation. Treaty settlements and iwi development have rebuilt part of a modern Māori economy, but the settlements themselves have generally represented only a small fraction of estimated historical losses.</p>
       </div>
       <div class="step" data-step="4" data-action="ch7-step4">
-        <p>The cliff in the chart begins long before 1973. Britain first applied to join the EEC in 1961; de Gaulle vetoed it in 1963 and again in 1967, but the signal was clear, and the colony began diversifying. By the time the UK actually entered the Community in 1973, New Zealand's British share had already fallen from 53% (1960) to 27% — most of the decline arrived as anticipation, not aftermath.</p>
-        <p class="pull">Britain joining the EEC in 1973 changed the economic model — and forced a new economic order.</p>
+        <p>The cliff in the chart begins long before 1973. Britain first applied to join the EEC in 1961; de Gaulle vetoed it in 1963 and again in 1967, but the signal was clear, and New Zealand began diversifying its exports. By the time the UK entered the Community in 1973, New Zealand's British share had already fallen from 53% (1960) to 27%. Most of the decline came before entry.</p>
       </div>
     </div>
   </div>
 
   <div class="full-chapter">
-    <p>The cultural pivot has been slower than the economic one. New Zealanders of European descent are gently letting go of an older identity. Patriotism among Pākehā has eased from
+    <p>Among Pākehā respondents to the survey, mean agreement that <em>I feel a great pride in the land that is our New Zealand</em> fell from
        <span data-fact-item="Patriotism01" data-fact-year="2009"
              data-fact-group="nz_european" data-fact-stat="mean">—</span>
-       to
+       in 2009–10 to
        <span data-fact-item="Patriotism01" data-fact-year="2024"
              data-fact-group="nz_european" data-fact-stat="mean">—</span>
-       out of 7 over the last fifteen years; the warmth they report toward fellow Pākehā has slipped from
+       in 2024–25, on a scale of 1 to 7, and their warmth towards Pākehā slipped from
        <span data-fact-item="Warm.NZEuro" data-fact-year="2009"
              data-fact-group="nz_european" data-fact-stat="mean">—</span>
        to
        <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>.
+       Most of the fall in pride came in one wave. Between 2020–21 and 2021–22 the Pākehā mean fell from
+       <span data-fact-item="Patriotism01" data-fact-year="2020"
              data-fact-group="nz_european" data-fact-stat="mean">—</span>
-       on the same scale. The country Britain left behind in 1973 has been adjusting since, in its self-image as much as in its sentiment.</p>
+       to
+       <span data-fact-item="Patriotism01" data-fact-year="2021"
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>,
+       and the means for Māori and Asian respondents fell by similar amounts, from
+       <span data-fact-item="Patriotism01" data-fact-year="2020"
+             data-fact-group="maori" data-fact-stat="mean">—</span>
+       to
+       <span data-fact-item="Patriotism01" data-fact-year="2021"
+             data-fact-group="maori" data-fact-stat="mean">—</span>
+       and from
+       <span data-fact-item="Patriotism01" data-fact-year="2020"
+             data-fact-group="asian" data-fact-stat="mean">—</span>
+       to
+       <span data-fact-item="Patriotism01" data-fact-year="2021"
+             data-fact-group="asian" data-fact-stat="mean">—</span>.</p>
   </div>
 </section>
 
@@ -1241,7 +1263,7 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Eight</div>
     <h2 class="chapter-title">The welfare state,<br><em>and a Māori migration of its own</em></h2>
-    <p class="chapter-dek">From the 1930s through the 1960s: pastoral exports, state protection, full employment, social security, suburban expansion — and a startlingly fast urbanisation.</p>
+    <p class="chapter-dek">From the 1930s through the 1960s: pastoral exports, state protection, full employment, social security, suburban expansion and a rapid Māori move to the cities.</p>
   </div>
 
   <div class="full-chapter">
@@ -1256,14 +1278,14 @@
          dots, 12+4 cell). Grid centres at (158, 138) and (578, 138). Gap
          midpoint at x=368. Arrow centred on (368, 138). -->
     <div class="figure reveal">
-      <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
-        <text class="map-label" x="0" y="14" fill="#8a7659">Māori urban share, 1945 → 1966 · a startlingly fast urbanisation</text>
+      <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <text class="map-label" x="0" y="14" fill="#8a7659">Māori urban share, 1945 → 1966</text>
 
-        <!-- 1945: 25% urban -->
+        <!-- 1945: 26% urban -->
         <g transform="translate(80, 60)">
           <text x="0" y="-12" font-family="IBM Plex Mono" font-size="11" fill="#4a3d2e" letter-spacing="1.5">1945</text>
           <g id="dots-1945"></g>
-          <text x="0" y="200" font-family="Fraunces" font-size="42" font-weight="600" fill="#2d5a3d">25%</text>
+          <text x="0" y="200" font-family="Fraunces" font-size="42" font-weight="600" fill="#2d5a3d">26%</text>
           <text x="0" y="222" font-family="IBM Plex Mono" font-size="10" fill="#8a7659" letter-spacing="1">URBAN</text>
         </g>
 
@@ -1283,32 +1305,33 @@
         </g>
 
         <line x1="0" y1="335" x2="800" y2="335" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="358" fill="#8a7659">Each grid = 100 dots. Filled dots = urban share. The reorganisation of Māori life across one generation.</text>
+        <text class="map-label" x="0" y="358" fill="#8a7659">Each grid is 100 dots; filled dots show the urban share.</text>
+        <text class="map-label" x="0" y="378" fill="#8a7659">Source: Te Ara, Urban Māori, from census data.</text>
       </svg>
     </div>
 
-    <p>Driven by rural land shortages, urban factory jobs and an strong state interventions, Māori urbanisation transformed Auckland, Wellington, Hamilton, Rotorua and other centres. It produced urban marae, protest groups, churches, clubs and new music.</p>
+    <p>Driven by rural land shortages, urban factory jobs and strong state intervention, Māori urbanisation transformed Auckland, Wellington, Hamilton, Rotorua and other centres. It produced urban marae, protest groups, churches, clubs and new music.</p>
 
-    <p class="pull">In a single generation, by and large, Māori moved from kāinga to suburbs, from seasonal work to factories, and from rural iwi politics to the politics of the city.</p>
+    <p class="pull">In a single generation many Māori moved from kāinga to suburbs and from seasonal work to factories, and urban and pan-tribal politics grew alongside iwi politics.</p>
 
     <p>It changed Māori politics and it also changed what Pākehā thought Māori life was.</p>
 
-    <p>Most Māori now live in cities — and in Auckland in particular — and the city is where Pākehā most affirm a cultural place for Māori in national life. Asked whether Māori culture helps to define New Zealand in positive ways, Pākehā in the major cities, like Auckland, Wellington and Christchurch, agree most strongly, with an average reading of
+    <p>Most Māori now live in cities, and Auckland has the largest Māori population of any region. In the 2024–25 survey, Pākehā respondents were asked whether <em>Māori culture helps to define New Zealand in positive ways</em>. On a scale of 1 to 7, those in the major cities (Auckland, Hamilton, Tauranga, Wellington, Christchurch and Dunedin) averaged
        <span data-fact-item="SymbExcl01r" data-fact-year="2024"
-             data-fact-group="nzeur_high" data-fact-stat="mean">—</span>
-       on a scale where lower readings are more affirming. Pākehā in smaller centres, like Hamilton, Tauranga or Dunedin, follow at
+             data-fact-group="nzeur_high" data-fact-stat="mean_unreversed">—</span>,
+       those in smaller centres such as Whangārei, Rotorua, New Plymouth, Nelson and Invercargill
        <span data-fact-item="SymbExcl01r" data-fact-year="2024"
-             data-fact-group="nzeur_medium" data-fact-stat="mean">—</span>;
-       Pākehā in rural areas are cooler again at
+             data-fact-group="nzeur_medium" data-fact-stat="mean_unreversed">—</span>
+       and those in rural areas
        <span data-fact-item="SymbExcl01r" data-fact-year="2024"
-             data-fact-group="nzeur_rural" data-fact-stat="mean">—</span>.
-       Asked instead whether New Zealand would be better off forgetting about promoting Māori culture, about
+             data-fact-group="nzeur_rural" data-fact-stat="mean_unreversed">—</span>.
+       About
        <span data-fact-item="SymbExcl03" data-fact-year="2024"
              data-fact-group="nzeur_high" data-fact-stat="pct_agree">—</span>
-       of Pākehā in the big cities agree, against
+       of Pākehā in the major cities agreed that <em>New Zealand would be a better place to live if we forgot about trying to promote Māori culture to everyone</em>, against
        <span data-fact-item="SymbExcl03" data-fact-year="2024"
              data-fact-group="nzeur_rural" data-fact-stat="pct_agree">—</span>
-       of those in rural areas. The cultural shift urbanisation produced has taken hold most strongly in the cities themselves; the country it left behind is still arguing the question.</p>
+       of those in rural areas.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -1336,47 +1359,48 @@
     <div class="features">
       <div class="step-card" data-step="1" data-action="ch9-step1">
         <div class="step-tag">Step 1 · The wider archipelago</div>
-        <p class="drop-cap">From the late 1950s and especially the 1960s and early 1970s, Pacific workers became essential to Auckland's factories and services. Cook Islanders, Niueans and Tokelauans were New Zealand citizens; Samoans, Tongans and others entered through more regulated channels — though employers and governments often tolerated irregularity while labour was needed.</p>
+        <p class="drop-cap">From the late 1950s and especially the 1960s and early 1970s, Pacific workers became essential to Auckland's factories and services. Cook Islanders, Niueans and Tokelauans were New Zealand citizens; Samoans, Tongans and others entered through more regulated channels, though employers and governments often tolerated irregularity while labour was needed.</p>
       </div>
       <div class="step-card" data-step="2" data-action="ch9-step2">
         <div class="step-tag">Step 2 · The corridors</div>
         <p>Low island wages and limited opportunity met Auckland factory jobs and the demand for labour. Colonial and postcolonial ties opened the door. Churches, kin and remittance flows kept the route running.</p>
-        <p class="pull">A wage in Auckland could feed a village account back home.</p>
+        <p class="pull">Remittances from Auckland wages supported households in the islands.</p>
       </div>
       <div class="step-card" data-step="3" data-action="ch9-step3">
         <div class="step-tag">Step 3 · Auckland</div>
-        <div class="stat">2,159 → 381,642</div>
-        <div class="stat-label">New Zealand's Pacific population, 1945 → 2018</div>
+        <div class="stat">2,159 → 442,632</div>
+        <div class="stat-label">New Zealand's Pacific population, 1945 → 2023 census</div>
         <p>Auckland — Ponsonby and Grey Lynn in particular, through the 1960s, and from the 1970s the southern suburbs around Ōtara, Māngere and Manukau — became a major Pacific city. Churches, rugby and league clubs, music, dance, food, language and politics followed the migrants south and west across the city.</p>
       </div>
       <div class="step-card" data-step="4" data-action="ch9-step4">
-        <div class="step-tag">Step 4 · The Dawn Raids, 1974 – 76</div>
-        <p>1973's oil shock turned the labour migrants into scapegoats. The Dawn Raids targeted alleged overstayers, overwhelmingly Pacific people — even though many overstayers were European or North American. Police entered homes; people were stopped in the street.</p>
-        <p class="pull">When labour was scarce, the rules bent. When jobs vanished, they stiffened.</p>
+        <div class="step-tag">Step 4 · The Dawn Raids, mid-1970s</div>
+        <p>After the 1973 oil shock, Pacific labour migrants were blamed for rising unemployment. The Dawn Raids targeted alleged overstayers. Pacific people were about a third of overstayers but about 86% of those prosecuted; most overstayers came from Britain, Australia, South Africa and North America. Police entered homes, and people were stopped in the street. On 1 August 2021 the Government formally apologised to Pacific communities for the raids.</p>
+        <p class="pull">Enforcement was lax while labour was scarce and tightened when unemployment rose.</p>
       </div>
     </div>
   </div>
 
   <div class="full-chapter">
-    <p>The contemporary arithmetic is friendlier than the policy ever was. On a warmth scale of 1 to 7, Māori rate Pacific peoples at
+    <div class="figure-caption"><span>Map corridors are schematic, not shipping or flight routes. The 1945 count covers people of Pacific Island Polynesian origin; the 2023 count is the Pacific peoples ethnic group, a different definition. Sources: Stats NZ, Demographics of New Zealand's Pacific population (2010); Stats NZ, 2023 Census ethnic group counts.</span></div>
+
+    <p>In the 2024–25 survey, on a feeling thermometer from 1 to 7, Māori respondents rated Pacific peoples at
        <span data-fact-item="Warm.Pacific" data-fact-year="2024"
              data-fact-group="maori" data-fact-stat="mean">—</span>,
-       Pākehā at
+       Pākehā respondents at
        <span data-fact-item="Warm.Pacific" data-fact-year="2024"
-             data-fact-group="nz_european" data-fact-stat="mean">—</span>,
-       and Asian New Zealanders at
+             data-fact-group="nz_european" data-fact-stat="mean">—</span>
+       and Asian respondents at
        <span data-fact-item="Warm.Pacific" data-fact-year="2024"
              data-fact-group="asian" data-fact-stat="mean">—</span>.
-       The separation is sharper in time spent. Pākehā report about
+       Asked how many hours they had spent with Pacific friends or family in the last week, Pākehā respondents reported
        <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
-             data-fact-group="nz_european" data-fact-stat="mean">—</span>
-       hours a week of contact with Pacific friends and family; Asian New Zealanders about
+             data-fact-group="nz_european" data-fact-stat="mean" data-fact-dp="1">—</span>
+       hours on average, Asian respondents
        <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
-             data-fact-group="asian" data-fact-stat="mean">—</span>;
-       Māori, who often live in the same suburbs and share the same workplaces,
+             data-fact-group="asian" data-fact-stat="mean" data-fact-dp="1">—</span>
+       and Māori respondents
        <span data-fact-item="Hours.PacificFRD" data-fact-year="2024"
-             data-fact-group="maori" data-fact-stat="mean">—</span>.
-       The Dawn Raids ended fifty years ago; the segregation of social time has not.</p>
+             data-fact-group="maori" data-fact-stat="mean" data-fact-dp="1">—</span>.</p>
   </div>
 </section>
 
@@ -1418,7 +1442,7 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Ten</div>
     <h2 class="chapter-title">Rupture, restructure,<br><em>and the end of preference</em></h2>
-    <p class="chapter-dek">When the old market closed, the old migration order closed with it.</p>
+    <p class="chapter-dek">Britain's entry to the EEC and the reforms of the 1980s ended the preference for British migrants.</p>
   </div>
 
   <div class="full-chapter">
@@ -1438,7 +1462,7 @@
             <text x="0" y="0" font-family="IBM Plex Mono" font-size="10" fill="#1d1610">1970</text>
             <rect x="50" y="-10" width="280" height="14" fill="#8c2230"/>
             <rect x="50" y="-10" width="0" height="14" fill="#6b3a82"/>
-            <text x="340" y="0" font-family="Fraunces" font-size="11" fill="#8c2230">UK ≈ 90%</text>
+            <text x="340" y="0" font-family="Fraunces" font-size="11" fill="#8c2230">UK > 90% of butter</text>
           </g>
           <!-- 2020 -->
           <g transform="translate(0, 70)">
@@ -1464,10 +1488,14 @@
             <text x="80" y="0" font-family="Fraunces" font-size="14" font-style="italic" fill="#6b3a82">Skills · Capital · Family · Education</text>
           </g>
         </g>
+
+        <line x1="0" y1="300" x2="800" y2="300" stroke="#c9b894" stroke-width="0.5"/>
+        <text class="map-label" x="0" y="320" fill="#8a7659">Schematic. The 1970 bar is butter only; Britain took 36% of all exports in 1970.</text>
+        <text class="map-label" x="0" y="340" fill="#8a7659">Sources: Te Ara, Overseas trade policy; Te Ara, Britain, Europe and New Zealand.</text>
       </svg>
     </div>
 
-    <p>From 1984, the Labour government launched radical market liberalisation: deregulation, removal of many controls, financial liberalisation, state-sector reform, exposure of protected industries to competition. <em>Rogernomics</em> remains contested. It helped shift New Zealand toward an open, market-oriented economy — but it also produced recession, unemployment, and dislocation. Unemployment reached 11.1% in March 1992.</p>
+    <p>From 1984, the Labour government launched radical market liberalisation: deregulation, removal of many controls, financial liberalisation, state-sector reform, exposure of protected industries to competition. <em>Rogernomics</em> remains contested. It helped shift New Zealand towards an open market economy, but it also produced recession, unemployment and dislocation. Unemployment peaked at about 11% in 1991–92.</p>
 
     <p>Migration policy changed alongside the economy. In 1974, New Zealand began moving away from race and nationality as the basis of admission. The 1987 Immigration Act and the 1991 points system changed the test for entry: skills, business, family reunification, capital and education.</p>
 
@@ -1482,7 +1510,7 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Eleven</div>
     <h2 class="chapter-title">Auckland turns to Asia,<br><em>and the city transforms</em></h2>
-    <p class="chapter-dek">The late-20th-century migration came through universities, businesses and families. It changed Auckland first. The city became Asian as well as Pacific.</p>
+    <p class="chapter-dek">Migration in the late twentieth century came through universities, businesses and families. It changed Auckland first. The city became Asian as well as Pacific.</p>
   </div>
 
   <div class="full-chapter">
@@ -1498,7 +1526,7 @@
     <div class="figure ch11-network-figure reveal">
       <svg viewBox="0 0 1000 740" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
         <text class="map-label" x="40" y="32" fill="#8a7659">Asian migration · 1986–2006 · sources and destination</text>
-        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">Many routes to Auckland</text>
+        <text x="40" y="60" font-family="Fraunces" font-style="italic" font-size="20" fill="#1d1610">Asian-born residents rose sevenfold, 1986–2006</text>
 
         <!-- Stat callout, top-right -->
         <g transform="translate(960, 50)">
@@ -1558,7 +1586,7 @@
         <!-- Origin labels -->
         <g text-anchor="middle" fill="#1d1610">
           <text x="180" y="225" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">CHINA</text>
-          <text x="180" y="240" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">mainland · post-FTA surge</text>
+          <text x="180" y="240" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">mainland · post-2000 surge</text>
 
           <text x="180" y="297" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">INDIA</text>
           <text x="180" y="312" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">families, students, professionals</text>
@@ -1574,7 +1602,7 @@
           <text x="180" y="546" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">PHILIPPINES</text>
 
           <text x="180" y="623" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">FIJI</text>
-          <text x="180" y="638" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">Indo-Fijian · 1987 + 2000 coups</text>
+          <text x="180" y="638" font-family="Source Serif 4" font-size="11" font-style="italic" fill="#8a7659">Indo-Fijian · 1987, 2000, 2006 coups</text>
         </g>
 
         <!-- Auckland destination — concentric purple, sized larger -->
@@ -1584,21 +1612,21 @@
           <circle r="20" fill="#6b3a82"/>
         </g>
         <text x="820" y="465" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="2" fill="#1d1610">AUCKLAND</text>
-        <text x="820" y="482" text-anchor="middle" font-family="Source Serif 4" font-size="12" font-style="italic" fill="#6b3a82">⅔ of Asian New Zealanders</text>
+        <text x="820" y="482" text-anchor="middle" font-family="Source Serif 4" font-size="12" font-style="italic" fill="#6b3a82">60% of Asian New Zealanders (2023)</text>
 
         <!-- Caption -->
         <line x1="40" y1="660" x2="960" y2="660" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="40" y="685" fill="#8a7659">Edge width approximates contribution to NZ migration.</text>
+        <text class="map-label" x="40" y="685" fill="#8a7659">Schematic; line widths and circle sizes show relative scale only.</text>
         <text class="map-label" x="40" y="703" fill="#8a7659">Origin mix shifted by era — HK, Taiwan and South Korea peaked in the 1990s; China and India after 2000.</text>
-        <text class="map-label" x="40" y="725" fill="#8a7659">Source: Statistics New Zealand.</text>
+        <text class="map-label" x="40" y="725" fill="#8a7659">Sources: Te Ara, Asia and New Zealand, page 6 (census birthplace counts); 2023 Census via Knowledge Auckland.</text>
       </svg>
     </div>
 
     <p>Hong Kong's handover, Fiji's coups, Asian education markets and New Zealand's points system all pushed in the same direction. So did Auckland's growing migrant networks, English-language schooling, and a clean-country brand.</p>
 
-    <p>By 2006, nearly a quarter of New Zealand's population was foreign-born. Auckland was no longer a British city with Māori and Pacific additions. Asia had become part of its machinery. Shops, schools and property markets changed first; food, media, churches and temples followed.</p>
+    <p>By 2006, nearly a quarter of New Zealand's population was foreign-born. Auckland could no longer be imagined as a British city. Asian New Zealanders had become central to its economy and civic life. Shops, schools and property markets changed first; food, media, churches and temples followed.</p>
 
-    <p class="pull">The shift also provoked backlash — &ldquo;Inv-Asian&rdquo; rhetoric, anxieties about housing and foreign capital, English-language debates, a new anti-Asian politics. But Asian New Zealanders also became more visible in Parliament, business, media and civic life.</p>
+    <p class="pull">The shift also provoked a backlash: &ldquo;Inv-Asian&rdquo; rhetoric, anxieties about housing and foreign capital, English-language debates, a new anti-Asian politics. But Asian New Zealanders also became more visible in Parliament, business, media and civic life.</p>
 
     <div class="ornament">· · ·</div>
   </div>
@@ -1730,11 +1758,11 @@
   <div class="chapter-head">
     <div class="chapter-num">Chapter Twelve</div>
     <h2 class="chapter-title">Two tides,<br><em>and the country between them</em></h2>
-    <p class="chapter-dek">Most arrivals last year came from a small handful of citizenships. Most departures went to a single country across the Tasman. The flows pass one another at customs.</p>
+    <p class="chapter-dek">Arrivals came mainly from a few citizenships. Most New Zealanders who left went to a single country across the Tasman.</p>
   </div>
 
   <div class="full-chapter">
-    <p class="lead"><span class="drop-cap">The</span> most recent year of migration data shows continued arrivals but many departures. Further, the people who depart and the people who arrive are characteristically different. Two flows — one Kiwi and the other foreign —pass one another at customs, going opposite directions, drawn by different forces.</p>
+    <p class="lead"><span class="drop-cap">The</span> latest year of migration data shows arrivals continuing alongside heavy departures. The two flows are made up of different people. Most of those arriving are citizens of other countries, and the net loss is of New Zealand citizens.</p>
 
     <!-- Double map composition — log-azimuthal arrivals + departures.
          Rendered at runtime by scripts/chapters/ch12-twotides.js into the SVGs below. -->
@@ -1744,11 +1772,11 @@
         <figure><svg id="tt-map-out"></svg></figure>
       </div>
       <div class="tt-source-block">
-        <p class="tt-source-text">Sources: Statistics New Zealand; OECD.</p>
+        <p class="tt-source-text">Arrivals: non-NZ citizens, year to January 2026 (Stats NZ, International migration: January 2026). Departures: NZ citizens, calendar 2024. Only the Australia figure is published (Stats NZ); the other destinations, marked ≈, are estimates that share out the remainder by NZ-born populations abroad around 2020 (OECD DIOC). Land: Natural Earth.</p>
       </div>
     </div>
 
-    <p>The country runs two migration economies in opposite directions. In the year to January 2026, <strong>23,200 more people immigrated to Aotearoa than emigrated from the archipelago</strong> — and the country was still growing. Decomposed, though, and the asymmetry is stark: New Zealand gained roughly 60,000 foreign nationals, primarily from India, China and the Philippines, while losing approximately 37,000 New Zealand citizens — three out of every five of them across the Tasman. The previous calendar year was worse — a record net loss of 47,067 citizens, the largest exit in a single year on record. Until the late 1990s, net migration was negative, and limited immigration failed to replace the leavers; today, the replacements come from abroad, and they come from a small group of places. <strong>Six foreign citizenships contribute roughly half the arrivals; one citizenship contributes virtually all of the departures.</strong></p>
+    <p>In the year to January 2026, <strong>23,200 more people arrived in New Zealand than left</strong>, on provisional figures, so migration was still adding to the population. Split by citizenship, New Zealand gained about 60,000 citizens of other countries, mainly from India, China and the Philippines, and lost about 37,000 of its own citizens; three in five of the citizens who left went to Australia. Calendar 2024 was worse, with a net loss of 43,714 citizens in Stats NZ's revised series. New Zealand citizens have left in net terms in most years since the 1970s, and for decades arrivals only intermittently made up the difference. Today the replacements come from abroad, from a small group of places. <strong>Six foreign citizenships supplied about 44% of all arrivals. New Zealand citizens were just over half of all departures, and almost the whole net loss.</strong></p>
 
     <!-- Net migration by citizenship — static horizontal bar chart over
          hard-coded Stats NZ figures, year ended January 2026. Sorted by
@@ -1758,7 +1786,7 @@
       <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
         <text class="tt-eyebrow" x="0" y="16">Net migration by citizenship</text>
         <text class="tt-stat" x="800" y="22" text-anchor="end">+23,200</text>
-        <text class="tt-title" x="0" y="46">More citizens leave than arrive on any single foreign passport</text>
+        <text class="tt-title" x="0" y="46">New Zealand loses more of its own citizens than it gains from any one country</text>
 
         <!-- Zero baseline -->
         <line x1="524" y1="78" x2="524" y2="310" stroke="#1d1610" stroke-width="0.8"/>
@@ -1816,11 +1844,11 @@
              other figure in the interactive. -->
         <line x1="0" y1="338" x2="800" y2="338" stroke="#c9b894" stroke-width="0.5"/>
         <text class="map-label" x="0" y="354" fill="#8a7659">Year ended January 2026.</text>
-        <text class="map-label" x="0" y="374" fill="#8a7659">Source: Statistics New Zealand.</text>
+        <text class="map-label" x="0" y="374" fill="#8a7659">Source: Stats NZ, International migration: January 2026 (provisional).</text>
       </svg>
     </div>
 
-    <p>The push and pull factors are embedding in country's economic conditions, as well as those of neighbouring Australia, which allows New Zealanders to move freely. Half of New Zealanders renting their home pay more than 40% of disposable income on rent — a common threshold for &ldquo;rent burden&rdquo; — and the IMF ranks New Zealand the worst country in the OECD for housing affordability. In the year to June 2025 average rent payments rose 9.0%; mortgage costs rose another 4.9%. Median earnings in Australia run roughly a third higher in nominal terms, and the gap is wider in mining and healthcare — sectors the departures are concentrated in. Whatever the policy answer, the structural pull is hard to legislate away: the Trans-Tasman Travel Arrangement guarantees New Zealanders automatic residency rights in Australia, and they exercise this right with growing frequency as the wage and housing gaps widen.</p>
+    <p>Both flows respond to economic conditions in New Zealand and in Australia, where New Zealanders can live and work freely. In the year to June 2024, more than a quarter of renting households spent over 40% of their disposable income on housing costs, a common threshold for housing stress, and New Zealand ranks among the least affordable housing markets in the OECD. In the year to June 2025 average rent payments rose 9.0% and mortgage payments 4.9%. Median hourly pay in Australia is about a third higher once converted to New Zealand dollars. The Trans-Tasman Travel Arrangement lets New Zealanders live and work in Australia indefinitely on arrival, and they have used it heavily since 2022.</p>
 
     <!-- Quarterly net trans-Tasman migration · rendered at runtime by
          scripts/chapters/ch12-trans-tasman.js from
@@ -1831,18 +1859,17 @@
       <svg id="trans-tasman" aria-label="Quarterly net trans-Tasman migration, Dec 2003 to Mar 2025"></svg>
     </div>
 
-    <p class="pull">Both major parties have called affordability a problem; they disagree on whether the lever to fix it operates through immigration, housing, or productivity.</p>
+    <p class="pull">Both major parties have called affordability a problem; they disagree on whether the lever to fix it operates through immigration, housing or productivity.</p>
 
-    <p>For most of the 2010s the country reported feeling better year on year. Life satisfaction rose from
+    <p>The survey sample changed over this period, with a large booster sample in 2018–19 and new online recruits in 2019–20. Mean life satisfaction among respondents was
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2009"
              data-fact-stat="mean">—</span>
-       in 2009 to a peak of
+       in 2009–10 and moved little through most of the 2010s. It rose to a peak of
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2019"
              data-fact-stat="mean">—</span>
-       in 2019 — the year the Christchurch attacks turned grief into a brief national consensus, and the year before the pandemic. Since then it has fallen back to
+       in the 2019–20 wave, and by 2024–25 it had fallen back to
        <span data-fact-item="SWB.LifeSat01" data-fact-year="2024"
-             data-fact-stat="mean">—</span>,
-       about where the series started. The recovery from grief came faster than the recovery from the cost of living, the trans-Tasman drain and the housing market that has paid neither group of arrivals very well.</p>
+             data-fact-stat="mean">—</span>.</p>
 
     <div data-survey-chart="lifesat-trajectory"></div>
 
@@ -1859,7 +1886,7 @@
   </div>
 
   <div class="full-chapter">
-    <p class="lead"><span class="drop-cap">Today</span>, more than a quarter of New Zealand's population was born overseas. Ethnic identification is overlapping, not mutually exclusive — people identify with more than one group.</p>
+    <p class="lead"><span class="drop-cap">Today</span>, more than a quarter of New Zealand's population was born overseas. Ethnic identification overlaps: people can identify with more than one group.</p>
 
     <!-- Final composition figure -->
     <div class="composition-grid reveal">
@@ -1894,14 +1921,14 @@
     </div>
 
     <p style="font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-faint); letter-spacing:0.06em; margin-top:-30px; margin-bottom:60px;">
-      2023 census · New Zealand statistics allow multigroup identification, so totals exceed 100%.
+      Source: Stats NZ, 2023 Census population counts by ethnic group. People can identify with more than one group, so totals exceed 100%. Middle Eastern, Latin American and African (1.9%) and Other are not shown.
     </p>
 
     <!-- Final layered map: NZ with all migration arcs simultaneously.
          Same Natural-Earth simplified silhouette as the hero, with all
          five waves arriving at once and labelled with their dates. -->
     <div class="figure reveal">
-      <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
         <text class="map-label" x="0" y="14" fill="#8a7659">Aotearoa, layered</text>
 
         <defs>
@@ -1969,38 +1996,43 @@
 
         <!-- Corner labels. Asia gets one label with both years inline. -->
         <g font-family="IBM Plex Mono" font-size="11" letter-spacing="2">
-          <text x="60"  y="60"  fill="#8c2230">EUROPE · 1840</text>
-          <text x="740" y="60"  fill="#1d3557" text-anchor="end">POLYNESIA · 1250</text>
+          <text x="60"  y="60"  fill="#8c2230">EUROPE · 1769, 1840</text>
+          <text x="740" y="60"  fill="#1d3557" text-anchor="end">POLYNESIA · c. 1250–1300</text>
           <text x="60"  y="488" fill="#6b3a82">ASIA · 1865, 1990</text>
           <text x="740" y="488" fill="#cc5e3f" text-anchor="end">PASIFIKA · 1950</text>
         </g>
 
         <line x1="0" y1="510" x2="800" y2="510" stroke="#c9b894" stroke-width="0.5"/>
-        <text class="map-label" x="0" y="532" fill="#8a7659">The routes differ. The question recurs: who may <tspan font-style="italic" fill="#1d1610">belong</tspan>?</text>
+        <text class="map-label" x="0" y="530" fill="#8a7659">The routes differ. The question recurs: who may <tspan font-style="italic" fill="#1d1610">belong</tspan>?</text>
+        <text class="map-label" x="0" y="550" fill="#8a7659">Schematic. Dates mark first contact or the start of mass migration.</text>
       </svg>
     </div>
 
-    <p>Māori settlement built the first societies. British colonisation rewrote both — by purchase, survey, decree and war. Gold added a Pacific contingent, a Cantonese population, and the colony's first poll tax. Refrigeration tied farms to London and made pastoral exports the country's livelihood for a long century.</p>
+    <p>Māori settlement built the first societies. British colonisation remade them by purchase, survey, decree and war. Gold added diggers from California and Victoria, a Cantonese population and, later, the colony's first poll tax. Refrigeration tied farms to London and made pastoral exports the country's livelihood for a long century.</p>
 
-    <p>After 1935 the welfare state reorganised the country around full employment, suburbs, factories and schools. Māori moved into cities; Pacific workers came to staff them; British migrants arrived under assistance. After 1973, Britain's retreat and market reform changed the test for entry from race and nationality to skills, capital and education — and Asian Auckland followed.</p>
+    <p>After 1935 the welfare state reorganised the country around full employment, suburbs, factories and schools. Māori moved into cities; Pacific workers came to staff them; British migrants arrived under assistance. After 1973, Britain's retreat and market reform changed the test for entry from race and nationality to skills, capital and education. Asian migration to Auckland followed.</p>
 
-    <p class="pull" style="font-size:24px;">Gold towns that host surfers today are remnants of a Pacific labour market — California, Nevada, Victoria, Otago. The country as a whole is the manifestation of similar logics, built and rebuilt by the search for land, labour, capital and belonging.</p>
+    <p class="pull" style="font-size:24px;">The gold towns were nodes in a Pacific labour market that ran from California to Victoria and Otago. Land, labour and capital have drawn migrants to New Zealand ever since.</p>
 
-    <p>What people say about that mixed inheritance has shifted alongside
-       it. In 2012 around
-       <span data-fact-item="Multiculturalism01r" data-fact-year="2012"
+    <p>Survey respondents were asked whether <em>the unity of New Zealand
+       is weakened by too many immigrants</em>. In 2013–14,
+       <span data-fact-item="Multiculturalism01r" data-fact-year="2013"
              data-fact-stat="pct_agree">—</span>
-       of New Zealanders agreed that <em>it is good for New Zealand to
-       be made up of people from different races, religions and cultures</em>;
-       by 2022 that share had risen to
+       disagreed; by 2022–23,
        <span data-fact-item="Multiculturalism01r" data-fact-year="2022"
-             data-fact-stat="pct_agree">—</span>,
-       and though it has eased to
-       <span data-fact-item="Multiculturalism01r" data-fact-year="2024"
              data-fact-stat="pct_agree">—</span>
-       since, the line has bent only slightly. Approval of multicultural
-       Aotearoa rose every year through the late 2010s. Warmth between
-       the country's four founding groups has narrowed in step.</p>
+       did, and in 2024–25,
+       <span data-fact-item="Multiculturalism01r" data-fact-year="2024"
+             data-fact-stat="pct_agree">—</span>.
+       Mean warmth towards the four largest ethnic groups, rated by
+       respondents outside each group, has converged, partly because
+       warmth towards Pākehā fell from
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2009"
+             data-fact-group="outgroup" data-fact-stat="mean">—</span>
+       in 2009–10 to
+       <span data-fact-item="Warm.NZEuro" data-fact-year="2024"
+             data-fact-group="outgroup" data-fact-stat="mean">—</span>
+       in 2024–25.</p>
 
     <div data-survey-chart="convergence"></div>
 
@@ -2046,11 +2078,140 @@
   </svg>
 </div>
 
+<!-- ============== SOURCES ============== -->
+<section class="sources" id="sources">
+  <h2>Sources</h2>
+  <h3 class="sources-chapter">Chapter one · The sea was a road</h3>
+  <ol>
+    <li>East Polynesian settlement between 1250 and 1300 CE; kūmara grown in the warmer north. <a href="https://teara.govt.nz/en/history/page-1" rel="noopener">Te Ara, History, page 1</a></li>
+    <li>Settlement route from Samoa through the Cook and Society Islands. <a href="https://doi.org/10.1038/s41586-021-03902-8" rel="noopener">Ioannidis et al. 2021, Nature</a></li>
+    <li>Early Lapita genomes with little or no Papuan ancestry; at least a quarter Papuan ancestry in the region today. <a href="https://doi.org/10.1038/nature19844" rel="noopener">Skoglund et al. 2016, Nature</a></li>
+    <li>Expansion out of Taiwan; Papuan ancestry in Polynesians from a separate, later stream. <a href="https://doi.org/10.1016/j.cub.2018.02.051" rel="noopener">Lipson et al. 2018, Current Biology</a></li>
+    <li>Papuan ancestry arriving after first settlement; the term Papuan-related. <a href="https://doi.org/10.1038/s41559-018-0498-2" rel="noopener">Posth et al. 2018, Nature Ecology and Evolution</a></li>
+    <li>mtDNA B4a1a1 and the debate over where it arose. <a href="https://doi.org/10.1371/journal.pbio.0030247" rel="noopener">Trejaut et al. 2005, PLoS Biology</a></li>
+    <li>Ancestry figure: sample locations behind the schematic weights. <a href="https://doi.org/10.7910/DVN/FFIDCW" rel="noopener">Allen Ancient DNA Resource v66, Harvard Dataverse</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter two · A maritime fringe</h3>
+  <ol>
+    <li>About 2,000 non-Māori by 1839. <a href="https://teara.govt.nz/en/history-of-immigration/page-2" rel="noopener">Te Ara, History of immigration, page 2</a></li>
+    <li>Māori population of 70,000 to 90,000 in 1840. <a href="https://teara.govt.nz/en/taupori-maori-maori-population-change/page-1" rel="noopener">Te Ara, Taupori Māori, page 1</a></li>
+    <li>Ratio of about 1 to 40 in 1840; low of about 42,000 in 1896. <a href="https://teara.govt.nz/en/taupori-maori-maori-population-change/page-2" rel="noopener">Te Ara, Taupori Māori, page 2</a></li>
+    <li>54 American ships among 96 in the Bay of Islands, 1838. <a href="https://teara.govt.nz/en/whaling/page-1" rel="noopener">Te Ara, Whaling, page 1</a></li>
+    <li>Ships registered and licensed to Māori in Auckland province, 1858. <a href="https://teara.govt.nz/en/te-maori-i-te-ohanga-maori-in-the-economy/page-3" rel="noopener">Te Ara, Te Māori i te ōhanga, page 3</a></li>
+    <li>Figure of passage times under sail and steam. <a href="https://teara.govt.nz/en/the-voyage-out/page-4" rel="noopener">Te Ara, The voyage out, page 4</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter three · Treaty, war</h3>
+  <ol>
+    <li>Waitangi Tribunal, 2014: the rangatira did not cede sovereignty. <a href="https://waitangitribunal.govt.nz/news/report-on-stage-1-of-the-te-paparahi-o-te-raki-inquiry-released/" rel="noopener">Waitangi Tribunal, Te Paparahi o Te Raki stage 1 report</a></li>
+    <li>North Island Māori land, 80% in 1860 and 40% in 1890; more than 4 million acres confiscated; 8 million acres through the Native Land Court. <a href="https://nzhistory.govt.nz/media/interactive/maori-land-1860-2000" rel="noopener">NZHistory, Māori land loss 1860–2000</a></li>
+    <li>Lower estimate of about 3 million acres; Waikato confiscation proclaimed in 1865. <a href="https://en.wikipedia.org/wiki/New_Zealand_land_confiscations" rel="noopener">Wikipedia, New Zealand land confiscations</a></li>
+    <li>Confiscation districts, including Tauranga and Mōhaka–Waikare. <a href="https://teara.govt.nz/en/te-tango-whenua-maori-land-alienation/page-4" rel="noopener">Te Ara, Te tango whenua, page 4</a></li>
+    <li>Invasion of Waikato across the Mangatāwhiri, July 1863. <a href="https://nzhistory.govt.nz/british-forces-invade-the-waikato" rel="noopener">NZHistory, British forces invade the Waikato</a></li>
+    <li>Map: indicative confiscation zones and areas held in 1890. <a href="docs/METHODOLOGY.md">Methodology note</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter four · The Pacific gold rush</h3>
+  <ol>
+    <li>Gabriel Read, 1861; Hartley and Reilly, 1862; Otago peak, 1863. <a href="https://teara.govt.nz/en/gold-and-gold-mining/page-3" rel="noopener">Te Ara, Gold and gold mining, page 3</a></li>
+    <li>Greenstone Creek find, 1864. <a href="https://teara.govt.nz/en/gold-and-gold-mining/page-1" rel="noopener">Te Ara, Gold and gold mining, page 1</a></li>
+    <li>About 29,000 on the West Coast in 1867; Hokitika&#x27;s port. <a href="https://teara.govt.nz/en/gold-and-gold-mining/page-4" rel="noopener">Te Ara, Gold and gold mining, page 4</a></li>
+    <li>Miners from Victoria; 22,000 on the Otago fields by 1864; American-born residents up by 500. <a href="https://teara.govt.nz/en/history-of-immigration/page-7" rel="noopener">Te Ara, History of immigration, page 7</a></li>
+    <li>Irish share on the West Coast; Hokitika in 1867. <a href="https://teara.govt.nz/en/west-coast-region/page-6" rel="noopener">Te Ara, West Coast region, page 6</a></li>
+    <li>290,000 arrivals in the Vogel years, about half assisted; population in 1871. <a href="https://teara.govt.nz/en/history-of-immigration/page-8" rel="noopener">Te Ara, History of immigration, page 8</a></li>
+    <li>Non-Māori population in 1881. <a href="https://en.wikipedia.org/wiki/1881_New_Zealand_census" rel="noopener">Wikipedia, 1881 New Zealand census</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter five · New Gold Mountain</h3>
+  <ol>
+    <li>Appo Hocton in 1842; Ho A Mee in 1865; Panyu origins; 2,000 men by 1869; nine women in 1881. <a href="https://teara.govt.nz/en/chinese/page-2" rel="noopener">Te Ara, Chinese, page 2</a></li>
+    <li>Five Chinese miners from Melbourne, December 1865. <a href="https://blogs.otago.ac.nz/thehockenblog/a-brief-glimpse-at-chinese-immigration-to-otago/" rel="noopener">Hocken Collections blog</a></li>
+    <li>Poll tax of £10 and £100; tonnage limits; repeal in 1944. <a href="https://nzhistory.govt.nz/poll-tax-imposed-on-chinese" rel="noopener">NZHistory, Poll tax imposed on Chinese</a></li>
+    <li>Waiver from 1934; government apology in 2002. <a href="https://teara.govt.nz/en/chinese/page-3" rel="noopener">Te Ara, Chinese, page 3</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter six · Vogel&#x27;s borrowed colony</h3>
+  <ol>
+    <li>289,026 arrivals, 1871–1885, almost half assisted; about 40% left. <a href="https://teara.govt.nz/en/history-of-immigration/page-8" rel="noopener">Te Ara, History of immigration, page 8</a></li>
+    <li>Arrivals after 1885. <a href="https://teara.govt.nz/en/history-of-immigration/page-9" rel="noopener">Te Ara, History of immigration, page 9</a></li>
+    <li>Railway building under Vogel. <a href="https://nzhistory.govt.nz/politics/the-vogel-era/building-vogels-railways" rel="noopener">NZHistory, Building Vogel&#x27;s railways</a></li>
+    <li>Borrowing programme. <a href="https://nzhistory.govt.nz/politics/the-vogel-era/vogels-vision" rel="noopener">NZHistory, Vogel&#x27;s vision</a></li>
+    <li>Dalmatian gum diggers from the late 1880s. <a href="https://teara.govt.nz/en/dalmatians/page-1" rel="noopener">Te Ara, Dalmatians, page 1</a></li>
+    <li>Figure of annual arrivals, 1874–1885, from the digitised yearbooks. <a href="https://stats.govt.nz/census/previous-censuses/historical-census-collection" rel="noopener">Stats NZ, historical census and yearbook collection</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter seven · Refrigeration</h3>
+  <ol>
+    <li>The Dunedin&#x27;s voyage, 15 February to 24 May 1882. <a href="https://teara.govt.nz/en/1966/lamb-and-mutton-production" rel="noopener">Te Ara 1966, Lamb and mutton production</a></li>
+    <li>Cargo of the Dunedin. <a href="https://en.wikipedia.org/wiki/Dunedin_(1874_ship)" rel="noopener">Wikipedia, Dunedin (1874 ship)</a></li>
+    <li>Wool as the main export until the early twentieth century. <a href="https://teara.govt.nz/en/meat-and-wool/page-7" rel="noopener">Te Ara, Meat and wool, page 7</a></li>
+    <li>Britain&#x27;s share of exports: over 80% in the late 1930s, 53% in 1960, 36% in 1970. <a href="https://teara.govt.nz/en/overseas-trade-policy/page-4" rel="noopener">Te Ara, Overseas trade policy, page 4</a></li>
+    <li>Britain&#x27;s share of 88% in 1932, in the exports figure. <a href="https://teara.govt.nz/en/1966/trade-external/page-3" rel="noopener">Te Ara 1966, External trade, page 3</a></li>
+    <li>Britain&#x27;s share below 30% by 1973. <a href="https://nzhistory.govt.nz/page/1973-key-events" rel="noopener">NZHistory, 1973 key events</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter eight · The welfare state</h3>
+  <ol>
+    <li>About 77,000 assisted migrants from Britain, 1947–1975. <a href="https://nzhistory.govt.nz/culture/assisted-immigration-to-nz-from-the-uk" rel="noopener">NZHistory, Assisted immigration from the UK</a></li>
+    <li>Māori urban share, 26% in 1945 and 62% in 1966. <a href="https://teara.govt.nz/en/urban-maori/page-1" rel="noopener">Te Ara, Urban Māori, page 1</a></li>
+    <li>Urban and pan-tribal politics alongside iwi. <a href="https://teara.govt.nz/en/nga-taone-nui-maori-and-the-city" rel="noopener">Te Ara, Ngā tāone nui</a></li>
+    <li>Urban tiers used for the survey cut. <a href="https://nzmj.org.nz/journal/vol-135-no-1559/defining-rural-in-aotearoa-new-zealand-a-novel-geographic-classification-for-health-purposes" rel="noopener">Geographic Classification for Health, NZ Medical Journal</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter nine · Pacific labour</h3>
+  <ol>
+    <li>Citizenship of Cook Islanders, Niueans and Tokelauans; the 1945 Pacific count. <a href="https://www.stats.govt.nz/assets/Uploads/Reports/Demographics-of-New-Zealands-Pacific-Population-2010/Demographics-of-New-Zealands-Pacific-Population-June-2010.pdf" rel="noopener">Stats NZ, Demographics of New Zealand&#x27;s Pacific population (2010)</a></li>
+    <li>442,632 Pacific peoples at the 2023 Census. <a href="https://www.stats.govt.nz/information-releases/2023-census-population-counts-by-ethnic-group-age-and-maori-descent-and-dwelling-counts/" rel="noopener">Stats NZ, 2023 Census population counts by ethnic group</a></li>
+    <li>Inner city and southern Auckland suburbs. <a href="https://en.wikipedia.org/wiki/Pasifika_New_Zealanders" rel="noopener">Wikipedia, Pasifika New Zealanders</a></li>
+    <li>The Dawn Raids. <a href="https://nzhistory.govt.nz/culture/dawn-raids" rel="noopener">NZHistory, Dawn Raids</a></li>
+    <li>Pacific people about a third of overstayers and 86% of those prosecuted. <a href="https://en.wikipedia.org/wiki/Dawn_Raids" rel="noopener">Wikipedia, Dawn Raids</a></li>
+    <li>Government apology, 1 August 2021. <a href="https://www.1news.co.nz/2021/08/01/govt-apologises-for-dawn-raids-in-historic-three-hour-ceremony" rel="noopener">1News, 1 August 2021</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter ten · Rupture, restructure</h3>
+  <ol>
+    <li>Britain&#x27;s share of butter (over 90%) and cheese (75%) exports, 1970. <a href="https://teara.govt.nz/en/overseas-trade-policy/page-4" rel="noopener">Te Ara, Overseas trade policy, page 4</a></li>
+    <li>Britain&#x27;s share of total exports in the early 1970s. <a href="https://teara.govt.nz/en/britain-europe-and-new-zealand/page-3" rel="noopener">Te Ara, Britain, Europe and New Zealand, page 3</a></li>
+    <li>Unemployment of about 11% in 1991–92. <a href="https://figure.nz/chart/iaqm0DBcbX6qoPat-UKIbS5pwLLDvVwjL" rel="noopener">Stats NZ data via Figure.NZ</a></li>
+    <li>Policy changes of 1974, 1987 and 1991. <a href="https://en.wikipedia.org/wiki/Immigration_to_New_Zealand" rel="noopener">Wikipedia, Immigration to New Zealand</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter eleven · Auckland turns to Asia</h3>
+  <ol>
+    <li>Asian-born residents, 33,834 in 1986 and 251,130 in 2006; source countries by period. <a href="https://teara.govt.nz/en/asia-and-new-zealand/page-6" rel="noopener">Te Ara, Asia and New Zealand, page 6</a></li>
+    <li>Nearly a quarter born overseas in 2006. <a href="https://en.wikipedia.org/wiki/Immigration_to_New_Zealand" rel="noopener">Wikipedia, Immigration to New Zealand</a></li>
+    <li>60% of Asian New Zealanders live in Auckland (2023). <a href="https://knowledgeauckland.org.nz/media/z3pjptmq/asian-2023-census-summary-auckland.pdf" rel="noopener">Knowledge Auckland, Asian 2023 Census summary</a></li>
+    <li>Fiji&#x27;s 2006 coup. <a href="https://en.wikipedia.org/wiki/2006_Fijian_coup_d%27%C3%A9tat" rel="noopener">Wikipedia, 2006 Fijian coup</a></li>
+    <li>The 1993 Inv-Asian article. <a href="https://publicaddress.net/2418" rel="noopener">Public Address</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter twelve · Two tides</h3>
+  <ol>
+    <li>Net migration of 23,200 by citizenship; departures by citizenship; departures to Australia (year to January 2026, provisional). <a href="https://www.stats.govt.nz/information-releases/international-migration-january-2026/" rel="noopener">Stats NZ, International migration: January 2026</a></li>
+    <li>Citizen net loss of 43,714 in calendar 2024 (revised). <a href="https://figure.nz/chart/BEUPmoZcPzJdNYwB" rel="noopener">Stats NZ data via Figure.NZ</a></li>
+    <li>Net migration in earlier decades. <a href="https://teara.govt.nz/en/population-change/page-2" rel="noopener">Te Ara, Population change, page 2</a></li>
+    <li>28.4% of renting households above 40% of income on housing costs (year to June 2024). <a href="https://www.stats.govt.nz/information-releases/household-income-and-housing-cost-statistics-year-ended-june-2024/" rel="noopener">Stats NZ, Household income and housing cost statistics, June 2024</a></li>
+    <li>Rent payments up 9.0%, mortgage payments up 4.9% (year to June 2025). <a href="https://www.stats.govt.nz/information-releases/household-income-and-housing-cost-statistics-year-ended-june-2025/" rel="noopener">Stats NZ, Household income and housing cost statistics, June 2025</a></li>
+    <li>Housing affordability rankings. <a href="https://www.qv.co.nz/news/affordability-suffers-house-price-juggernaut-moves/" rel="noopener">QV, on the IMF Global Housing Watch</a></li>
+    <li>Median hourly earnings in Australia. <a href="https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/aug-2025" rel="noopener">ABS, Employee earnings, August 2025</a></li>
+    <li>Median hourly earnings in New Zealand. <a href="https://www.stats.govt.nz/information-releases/labour-market-statistics-income-june-2025-quarter/" rel="noopener">Stats NZ, Labour market statistics (income), June 2025</a></li>
+    <li>Trans-Tasman Travel Arrangement. <a href="https://en.wikipedia.org/wiki/Trans-Tasman_Travel_Arrangement" rel="noopener">Wikipedia, Trans-Tasman Travel Arrangement</a></li>
+    <li>637,680 New Zealand-born residents of Australia, June 2025, in the trans-Tasman figure. <a href="https://www.abs.gov.au/statistics/people/population/australias-population-country-birth/jun-2025" rel="noopener">ABS, Australia&#x27;s population by country of birth</a></li>
+  </ol>
+  <h3 class="sources-chapter">Chapter thirteen · The past did not pass</h3>
+  <ol>
+    <li>Ethnic shares at the 2023 Census. <a href="https://www.stats.govt.nz/information-releases/2023-census-population-counts-by-ethnic-group-age-and-maori-descent-and-dwelling-counts/" rel="noopener">Stats NZ, 2023 Census population counts by ethnic group</a></li>
+    <li>28.8% born overseas (2023 Census). <a href="https://figure.nz/chart/WiJF1puQsIHCFA2D" rel="noopener">Stats NZ data via Figure.NZ</a></li>
+  </ol>
+  <h3 class="sources-chapter">Survey</h3>
+  <ol>
+    <li>New Zealand Attitudes and Values Study. <a href="https://www.psych.auckland.ac.nz/en/about/new-zealand-attitudes-and-values-study.html" rel="noopener">University of Auckland</a></li>
+    <li>Sampling, response rates and fieldwork dates of each wave. <a href="https://cdn.auckland.ac.nz/assets/psych/about/our-research/nzavs/NZAVS-Technical-Documents-e01-Sampling-Procedure-and-Sample-Details.pdf" rel="noopener">NZAVS technical document e01</a></li>
+    <li>Wording of every survey item quoted on this page. <a href="https://cdn.auckland.ac.nz/assets/psych/about/our-research/nzavs/NZAVSTechnicalDocuments/NZAVS-Technical-Documents-e06-Archive-of-NZAVS-Questionnaires.pdf" rel="noopener">NZAVS technical document e06, questionnaire archive</a></li>
+  </ol>
+  <h3 class="sources-chapter">Maps</h3>
+  <ol>
+    <li>Basemaps for the scrolling maps. <a href="https://www.mapbox.com/about/maps/" rel="noopener">Mapbox</a></li>
+    <li>Map data and rail lines. <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap contributors</a></li>
+    <li>Coastlines and land for the static maps. <a href="https://www.naturalearthdata.com/" rel="noopener">Natural Earth</a></li>
+  </ol>
+</section>
+
 <!-- =========== OUTRO ============ -->
 <section class="outro" id="outro">
   <h2>Migrations</h2>
   <p>The arrivals that made Aotearoa New Zealand.</p>
-  <p class="survey-citation">All survey figures are drawn from the <a href="https://www.psych.auckland.ac.nz/en/about/new-zealand-attitudes-and-values-study.html" rel="noopener">New Zealand Attitudes and Values Study</a>, University of Auckland.</p>
+  <p class="survey-citation">All survey figures are drawn from the <a href="https://www.psych.auckland.ac.nz/en/about/new-zealand-attitudes-and-values-study.html" rel="noopener">New Zealand Attitudes and Values Study</a>, University of Auckland. They are unweighted means of respondents to a national panel recruited by post from the electoral roll, with response rates of about 9 to 17%. Asian and Pacific New Zealanders are under-represented, and each wave is labelled by the years its fieldwork ran.</p>
   <div class="colophon">Andrew Renninger and Olena Hołubowska</div>
 </section>
 

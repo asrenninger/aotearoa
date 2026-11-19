@@ -12,15 +12,21 @@
  *                           is human-caused, and they are deeply
  *                           concerned about it. The chapter's punchline
  *                           is the gap between "real" and "cause".
- *   regional-concern       — horizontal lollipop ranking the 11 Stats NZ
- *                           regional councils by share concerned about
- *                           climate change in the latest wave, with a
- *                           national-average reference line.
+ *   regional-concern       — horizontal lollipop ranking 10 of the 16
+ *                           regional councils (those in the extract) by
+ *                           share concerned about climate change in the
+ *                           latest wave. No longer mounted on the page
+ *                           (removed at launch: it covered 10 of 16
+ *                           regions and the ranking changes with all 16).
  *   quake-anxiety-regions  — time series, Canterbury vs Wellington vs
- *                           rest of NZ, share who worry "sometimes or
- *                           more often" that a big earthquake might hit
- *                           their region. Spikes around the 2016
- *                           Kaikōura quake and the 2020 swarm.
+ *                           rest of NZ (which includes Wellington), share
+ *                           who worried "some of the time" or more in the
+ *                           past month that a big earthquake might hit
+ *                           their region. Rises in the waves spanning the
+ *                           2016 Kaikoura earthquake and the March 2021
+ *                           Kermadec and East Cape earthquakes (wave
+ *                           labelled 2020). Waves with fewer than 1,000
+ *                           respondents nationally are dropped (T15, 2023).
  *   env-satisfaction-eth   — small horizontal lollipop, mean
  *                           satisfaction with the quality of NZ's
  *                           natural environment in the latest wave,
@@ -205,8 +211,8 @@ function renderClimateBeliefTrends(container, json) {
   container.appendChild(svg);
 
   overline(svg, M.l, 24, `Climate beliefs · ${xMin} → ${xMax}`);
-  title(svg, M.l, 50, 'The country accepts climate change. Attribution lags.');
-  caption(svg, M.l, 68, 'Share of New Zealanders who agree on a 1–7 scale.');
+  title(svg, M.l, 50, 'Belief that climate change is real peaked before 2020 and has eased since');
+  caption(svg, M.l, 68, 'Share of survey respondents who agree (5 or more on a 1–7 scale).');
 
   // Y gridlines + labels
   for (let v = 0.4; v <= 1.0001; v += 0.1) {
@@ -220,7 +226,10 @@ function renderClimateBeliefTrends(container, json) {
 
   // X ticks (5-year markers, plus endpoints)
   const xTicks = new Set([xMin, xMax]);
-  for (let y = Math.ceil(xMin / 5) * 5; y <= xMax; y += 5) xTicks.add(y);
+  for (let y = Math.ceil(xMin / 5) * 5; y <= xMax; y += 5) {
+    // skip a 5-year marker that would crowd an endpoint label
+    if (y - xMin >= 3 && xMax - y >= 3) xTicks.add(y);
+  }
   Array.from(xTicks).sort((a, b) => a - b).forEach(yr => {
     const x = xScale(yr);
     svg.appendChild(el('line', {
@@ -268,7 +277,7 @@ function renderClimateBeliefTrends(container, json) {
     }, `${Math.round(e.value * 100)}%`);
   });
 
-  caption(svg, M.l, H - 16, `Source: NZAVS, T1 (${xMin}) → T16 (${xMax}).`);
+  caption(svg, M.l, H - 16, `Source: NZAVS, unweighted, waves ${xMin}–${String(xMin + 1).slice(2)} to ${xMax}–${String(xMax + 1).slice(2)}. Years mark the start of each wave.`);
 }
 
 // ---- 2. Regional concern lollipop ------------------------------------
@@ -313,7 +322,7 @@ function renderRegionalConcern(container, json) {
   overline(svg, M.l, 24, `Climate concern by region · ${year}`);
   title(svg, M.l, 50, 'Where the worry sits');
   caption(svg, M.l, 68,
-          'Share of New Zealanders who agree they are deeply concerned about climate change.');
+          'Share of survey respondents who agree they are deeply concerned about climate change.');
 
   // National-average reference line — runs only behind the data rows.
   if (national != null) {
@@ -370,7 +379,7 @@ function renderRegionalConcern(container, json) {
   });
 
   caption(svg, M.l, H - 16,
-          `Source: NZAVS, ${year}. Each region's respondents pooled into a single wave.`);
+          `Source: NZAVS, unweighted, wave starting ${year}. Ten of sixteen regions.`);
 }
 
 // ---- 3. Quake-anxiety regional time-series ---------------------------
@@ -386,11 +395,16 @@ function renderQuakeAnxietyRegions(container, json) {
     { key: 'region_outside_canterbury',   label: 'REST OF NZ', color: INK_FAINT }
   ];
 
+  // Drop waves where the item barely ran (T15, 2023: 347 respondents in all).
+  const MIN_N = 1000;
+  const national = seriesFor(json, 'Earthquake.Anxiety', 'all') || [];
+  const keepYear = new Set(national.filter(r => r.n >= MIN_N).map(r => r.year));
+
   const lines = groups.map(g => {
     const s = seriesFor(json, 'Earthquake.Anxiety', g.key) || [];
     return {
       ...g,
-      points: s.filter(r => r.pct_agree != null)
+      points: s.filter(r => r.pct_agree != null && keepYear.has(r.year))
                .map(r => ({ x: r.year, y: r.pct_agree }))
                .sort((a, b) => a.x - b.x)
     };
@@ -415,9 +429,10 @@ function renderQuakeAnxietyRegions(container, json) {
   container.appendChild(svg);
 
   overline(svg, M.l, 24, `Earthquake worry by region · ${xMin} → ${xMax}`);
-  title(svg, M.l, 50, 'Canterbury keeps remembering');
+  title(svg, M.l, 50, 'Earthquake worry in Canterbury has more than halved since 2012');
   caption(svg, M.l, 68,
-          'Share of New Zealanders who say they worry, at least sometimes, about a major quake hitting their region.');
+          'Share of survey respondents who worried at least some of the time in the past month');
+  caption(svg, M.l, 82, 'that a big earthquake might hit their region.');
 
   // Y gridlines + labels
   for (let v = 0; v <= yMax + 1e-6; v += 0.1) {
@@ -477,7 +492,7 @@ function renderQuakeAnxietyRegions(container, json) {
     }, `${Math.round(e.value * 100)}%`);
   });
 
-  caption(svg, M.l, H - 16, `Source: NZAVS, ${xMin} → ${xMax}.`);
+  caption(svg, M.l, H - 16, `Source: NZAVS, unweighted, waves ${xMin}–${String(xMin + 1).slice(2)} to ${xMax}–${String(xMax + 1).slice(2)}. Rest of NZ includes Wellington.`);
 }
 
 // ---- 4. Environment satisfaction by ethnicity ------------------------
@@ -508,9 +523,7 @@ function renderEnvSatisfactionEth(container, json) {
   const rowH = (H - M.t - M.b) / data.length;
 
   // X-axis: snap to the actual data range with a little headroom on
-  // either side. Asians, many of them recent arrivals, frequently rate
-  // the NZ environment well above 6 — well outside any fixed band a
-  // human would pick a priori — so we let the data set the bounds.
+  // either side, so the data set the bounds. The item is scored 0–10.
   const vals = data.map(d => d.value).concat(national != null ? [national] : []);
   const dataMin = Math.min(...vals);
   const dataMax = Math.max(...vals);
@@ -522,10 +535,10 @@ function renderEnvSatisfactionEth(container, json) {
   container.innerHTML = '';
   container.appendChild(svg);
 
-  overline(svg, M.l, 24, `Satisfaction with NZ environment · ${year}`);
-  title(svg, M.l, 50, 'How clean and green is "clean and green"?');
+  overline(svg, M.l, 24, `Satisfaction with the environment · ${year}–${String(year + 1).slice(2)}`);
+  title(svg, M.l, 50, 'Asian respondents rate it highest, Māori lowest');
   caption(svg, M.l, 68,
-          'Mean rating of New Zealand\'s natural environment, on a one-to-seven scale.');
+          'Mean satisfaction with New Zealand\'s natural environment, on a zero-to-ten scale.');
 
   if (national != null) {
     const ax = xScale(national);
@@ -538,7 +551,7 @@ function renderEnvSatisfactionEth(container, json) {
   }
 
   // Axis
-  for (let v = xMin; v <= xMax + 1e-6; v += 0.4) {
+  for (let v = xMin; v <= xMax + 1e-6; v += 0.5) {
     const x = xScale(v);
     svg.appendChild(el('line', {
       x1: x, y1: H - M.b, x2: x, y2: H - M.b + 4, stroke: RULE
@@ -572,7 +585,7 @@ function renderEnvSatisfactionEth(container, json) {
     }, d.value.toFixed(2));
   });
 
-  caption(svg, M.l, H - 16, `Source: NZAVS, ${year}.`);
+  caption(svg, M.l, H - 16, `Source: NZAVS, unweighted, wave ${year}–${String(year + 1).slice(2)}. Pākehā is the survey's NZ European group.`);
 }
 
 // ---- Mount -----------------------------------------------------------

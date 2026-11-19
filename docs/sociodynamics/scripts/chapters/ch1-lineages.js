@@ -1,8 +1,11 @@
 /**
  * Chapter 1 — "The sea was a road" (layered ancestry figure).
  *
- * Renders the Austronesian / Melanesian / Polynesian ancestry surfaces
- * into the SVG slot in index.html. Shares the log-azimuthal projection
+ * Renders the Austronesian / Papuan / Polynesian ancestry surfaces
+ * into the SVG slot in index.html. The surfaces are schematic: weights
+ * the authors assigned to AADR sample locations, smoothed in the
+ * precomputed data/maori-lineage-grids.json. They are not admixture
+ * estimates, and the caption in index.html says so. Shares the log-azimuthal projection
  * (Auckland-centred) with ch12's two-tides flow maps; the projection
  * helpers live in core/projection.js.
  *
@@ -42,7 +45,7 @@ export async function render() {
   try {
     [world, data] = await Promise.all([
       d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json"),
-      d3.json("./data/maori-lineage-grids.json"),
+      d3.json("./data/maori-lineage-grids.json?v=2"),
     ]);
   } catch (err) {
     console.warn("ch1-lineages: failed to load data", err);
@@ -148,19 +151,19 @@ export async function render() {
   const legend = svg.append("g").attr("transform", `translate(${legX}, ${legY})`);
   legend.append("text").attr("class", "lf-legend-heading")
     .attr("x", 0).attr("y", 0)
-    .text("Darker means this lineage is more concentrated here");
+    .text("Darker shading means a higher weight assigned by the authors (schematic)");
 
   const items = [
     { color: "#b8862e", label: "Austronesian",
       sub: "Taiwan, Indonesia, the Philippines" },
-    { color: "#2c6479", label: "Melanesian",
+    { color: "#2c6479", label: "Papuan",
       sub: "New Guinea, the Bismarcks, the Solomons" },
     { color: "#a8442d", label: "Polynesian",
       sub: "Tonga, Samoa, Hawaiʻi, Aotearoa" },
   ];
   const SWATCH_W = 56, SWATCH_H = 12;
   items.forEach((it, i) => {
-    const y = 22 + i * 22;
+    const y = 22 + i * 30;
     [0.18, 0.40, 0.70].forEach((a, k) => {
       legend.append("rect")
         .attr("x", k * (SWATCH_W / 3))
